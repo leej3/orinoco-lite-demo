@@ -1,0 +1,17 @@
+attributes:
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Annual Review of Neuroscience
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Annual Review of Neuroscience
+display_label: Annual Review of Neuroscience
+identifiers:
+- creator: ror:026ytr635
+  notation: 0147-006X
+  schema_type: dlthings:Identifier
+- notation: ISSN:0147-006X
+  schema_type: dlthings:Identifier
+pid: xyzrins:publication-venues/issn-0147-006x
+schema_type: xyzri:XYZPublicationVenue
+title: Annual Review of Neuroscience

@@ -1,0 +1,7 @@
+attributes:
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Senior author
+display_label: Senior author
+pid: obo:MS_1002035
+schema_type: xyzri:XYZAgentRole

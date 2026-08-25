@@ -1,0 +1,6 @@
+assertions:
+- assertion_sha256: sha256:f9cf8cb8e1f48b109eca384157987be4f0e25ec37fa131b16f38f067513dd1b1
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v1
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZOrganization.json#record=ror%3A026ytr635
+record: ror:026ytr635

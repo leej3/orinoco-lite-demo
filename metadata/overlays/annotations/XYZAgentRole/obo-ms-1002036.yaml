@@ -1,0 +1,6 @@
+assertions:
+- assertion_sha256: sha256:428637476a52693602fa01f32577bb1240c008dce32d362127f87ca685f87a86
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v1
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZAgentRole.json#record=obo%3AMS_1002036
+record: obo:MS_1002036
