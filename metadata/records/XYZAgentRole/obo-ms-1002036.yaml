@@ -1,0 +1,7 @@
+attributes:
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Co-author
+display_label: Co-author
+pid: obo:MS_1002036
+schema_type: xyzri:XYZAgentRole
