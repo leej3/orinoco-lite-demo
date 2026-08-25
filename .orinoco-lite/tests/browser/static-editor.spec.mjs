@@ -31,8 +31,8 @@ async function assertCatalog(catalog) {
     version: contract.catalog.version,
   });
   expect(catalog.source_commit).toMatch(/^[0-9a-f]{40}$/);
-  expect(catalog.records).toHaveLength(186);
-  expect(new Set(catalog.records.map(({ pid }) => pid)).size).toBe(186);
+  expect(catalog.records).toHaveLength(188);
+  expect(new Set(catalog.records.map(({ pid }) => pid)).size).toBe(188);
   for (const record of catalog.records) {
     expect(Object.keys(record).sort()).toEqual(contract.catalog.record_fields);
     expect(record.path).toMatch(/^metadata\/records\/.+\.ya?ml$/);
