@@ -38,6 +38,10 @@ DUMP_AGENT = "https://example.invalid/agents/dump-interaction-test-v1"
 ZOTERO_VERSION = 451
 REVIEWER = "https://github.com/fixture-curator"
 REPOSITORY = "con/test-orinoco-downstream-website"
+REVIEWED_ADAPTER_AGENTS = (
+    "xyzrins:source-adapters/dump-research-info/v1",
+    "xyzrins:source-adapters/zotero/v1",
+)
 
 
 def schema_fixture() -> Path:
@@ -75,6 +79,13 @@ def load_module(name: str, path: Path) -> ModuleType:
     return module
 
 
+fixture_metadata = load_module(
+    "orinoco_interaction_fixture_metadata_tests",
+    Path(__file__).with_name("fixture_metadata.py"),
+)
+neutralize_reviewed_adapter_state = (
+    fixture_metadata.neutralize_reviewed_adapter_state
+)
 ZOTERO = load_module(
     "orinoco_zotero_interaction_candidates",
     ROOT / "source-adapters/zotero/candidates.py",
@@ -154,6 +165,14 @@ def prepared_repository(destination: Path) -> tuple[Path, str]:
             root / "source-adapters" / adapter,
             ignore=shutil.ignore_patterns("__pycache__", "*.pyc"),
         )
+    neutralize_reviewed_adapter_state(
+        root,
+        adapter_agent_pids=REVIEWED_ADAPTER_AGENTS,
+        decision_caches=tuple(
+            Path(f"source-adapters/{adapter}/policy/curation-decisions.yaml")
+            for adapter in ("zotero", "dump-research-info")
+        ),
+    )
     for relative in ("custom", "extensions", "site"):
         shutil.copytree(ROOT / relative, root / relative)
     shutil.copytree(

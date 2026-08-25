@@ -26,6 +26,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[3]
 AGENT_PID = "https://example.invalid/agents/zotero-adapter-test-v1"
+REVIEWED_AGENT_PID = "xyzrins:source-adapters/zotero/v1"
 METADATA_BASE = "1" * 40
 
 
@@ -62,6 +63,13 @@ def load_module(name: str, path: Path) -> ModuleType:
     return module
 
 
+fixture_metadata = load_module(
+    "orinoco_zotero_fixture_metadata_tests",
+    Path(__file__).with_name("fixture_metadata.py"),
+)
+neutralize_reviewed_adapter_state = (
+    fixture_metadata.neutralize_reviewed_adapter_state
+)
 provider = load_module(
     "orinoco_zotero_candidates_tests",
     ROOT / "source-adapters/zotero/candidates.py",
@@ -72,6 +80,16 @@ def prepared_root(destination: Path) -> Path:
     root = destination / "consumer"
     shutil.copytree(ROOT / "source-adapters/zotero", root / "source-adapters/zotero")
     shutil.copytree(ROOT / "metadata/records", root / "metadata/records")
+    annotations = ROOT / "metadata/overlays/annotations"
+    if annotations.is_dir():
+        shutil.copytree(annotations, root / "metadata/overlays/annotations")
+    neutralize_reviewed_adapter_state(
+        root,
+        adapter_agent_pids=(REVIEWED_AGENT_PID,),
+        decision_caches=(
+            Path("source-adapters/zotero/policy/curation-decisions.yaml"),
+        ),
+    )
     for path in sorted((root / "metadata/records").rglob("*.yaml")):
         if path.name == ".dumpthings.yaml":
             continue
