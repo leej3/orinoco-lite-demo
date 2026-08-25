@@ -1,0 +1,14 @@
+assertions:
+- assertion_sha256: sha256:0690a6ce0682e08b0964009ae91a3233e25a1deba1b651f9a0cf08510ee6a0d2
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/GT4IQW3U
+- assertion_sha256: sha256:1be75a4e96df10234bfafbb08dedf7b9d1cd77cd923dd91ddd3c8c068d013321
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/GT4IQW3U
+- assertion_sha256: sha256:daaf525b6f3d3378a5630d6cee38e0b0b19098a51ceab864edf5e50321977190
+  path: /characterized_by
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/GT4IQW3U
+record: xyzrins:publications/doi-10-3389-neuro-11-003-2009

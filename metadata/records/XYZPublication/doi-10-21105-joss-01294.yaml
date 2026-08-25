@@ -34,6 +34,15 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2019'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'PyBIDS: Python tools for BIDS datasets'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'PyBIDS: Python tools for BIDS datasets'
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: 'PyBIDS: Python tools for BIDS datasets'
 identifiers:
 - notation: 10.21105/joss.01294

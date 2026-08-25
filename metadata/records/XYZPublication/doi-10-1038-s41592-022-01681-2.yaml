@@ -21,6 +21,29 @@ attributes:
 - predicate: dcterms:language
   schema_type: dlthings:AttributeSpecification
   value: en
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'TemplateFlow: FAIR-sharing of multi-scale, multi-species brain models'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'TemplateFlow: FAIR-sharing of multi-scale, multi-species brain models'
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: "Abstract\n            Reference anatomies of the brain (‘templates’) and\
+    \ corresponding atlases are the foundation for reporting standardized neuroimaging\
+    \ results. Currently, there is no registry of templates and atlases; therefore,\
+    \ the redistribution of these resources occurs either bundled within existing\
+    \ software or in ad hoc ways such as downloads from institutional sites and general-purpose\
+    \ data repositories. We introduce TemplateFlow as a publicly available framework\
+    \ for human and non-human brain models. The framework combines an open database\
+    \ with software for access, management, and vetting, allowing scientists to share\
+    \ their resources under FAIR—findable, accessible, interoperable, and reusable—principles.\
+    \ TemplateFlow enables multifaceted insights into brains across species, and supports\
+    \ multiverse analyses testing whether results generalize across standard references,\
+    \ scales, and in the long term, species."
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 description: "Abstract\n            Reference anatomies of the brain (‘templates’)\
   \ and corresponding atlases are the foundation for reporting standardized neuroimaging\
   \ results. Currently, there is no registry of templates and atlases; therefore,\

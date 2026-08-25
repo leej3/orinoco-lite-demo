@@ -1,0 +1,18 @@
+assertions:
+- assertion_sha256: sha256:3fb288cdfc58d874a25a983848984bd98e0b6842661de6f148cc73ad3f677dd1
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items?itemKey=4IBTF6HG%2C9KS9CGNB
+- assertion_sha256: sha256:9a2b709ddbb4c21455fbb88cd90236db78f1b56f95c35475311f0dddf736277f
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items?itemKey=4IBTF6HG%2C9KS9CGNB
+- assertion_sha256: sha256:a62f8404ab73da0b9627becda04035bc3da5884a554462830756d5771a8d8a66
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items?itemKey=4IBTF6HG%2C9KS9CGNB
+- assertion_sha256: sha256:daaf525b6f3d3378a5630d6cee38e0b0b19098a51ceab864edf5e50321977190
+  path: /characterized_by
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items?itemKey=4IBTF6HG%2C9KS9CGNB
+record: xyzrins:publications/doi-10-1038-sdata-2016-44

@@ -15,6 +15,15 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2010'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Improving efficiency in cognitive neuroscience research with NeuroDebian
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Improving efficiency in cognitive neuroscience research with NeuroDebian
+characterized_by:
+- object: bibo:Document
+  predicate: dcterms:type
 display_label: Improving efficiency in cognitive neuroscience research with NeuroDebian
 identifiers:
 - notation: zotero:group:6197458:item:HYWV9D2A

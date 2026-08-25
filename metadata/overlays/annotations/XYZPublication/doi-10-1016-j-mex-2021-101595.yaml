@@ -1,0 +1,14 @@
+assertions:
+- assertion_sha256: sha256:19676fe92f35790437b9d3b4b24555f31a991ae180ad369a46eabd001d92c692
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/I3FRTJW7
+- assertion_sha256: sha256:21f68a7e189d6cf4a0f0b91ecdf2d1314b62047ce908d8e8c10734ad62c3f5fe
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/I3FRTJW7
+- assertion_sha256: sha256:daaf525b6f3d3378a5630d6cee38e0b0b19098a51ceab864edf5e50321977190
+  path: /characterized_by
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/I3FRTJW7
+record: xyzrins:publications/doi-10-1016-j-mex-2021-101595

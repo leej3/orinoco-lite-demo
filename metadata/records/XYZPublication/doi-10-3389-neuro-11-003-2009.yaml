@@ -18,6 +18,15 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2009'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'PyMVPA: A Unifying Approach to the Analysis of Neuroscientific Data'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'PyMVPA: A Unifying Approach to the Analysis of Neuroscientific Data'
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: 'PyMVPA: A Unifying Approach to the Analysis of Neuroscientific Data'
 identifiers:
 - notation: 10.3389/neuro.11.003.2009

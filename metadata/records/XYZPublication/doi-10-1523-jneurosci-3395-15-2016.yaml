@@ -26,6 +26,17 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: 2016-05
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: How the human brain represents perceived dangerousness or "predacity" of
+    animals
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: How the human brain represents perceived dangerousness or "predacity" of
+    animals
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: How the human brain represents perceived dangerousness or "predacity"
   of animals
 identifiers:

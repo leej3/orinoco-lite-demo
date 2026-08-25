@@ -23,6 +23,17 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2016'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'The Brain Imaging Data Structure: a standard for organizing and describing
+    outputs of neuroimaging experiments'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'The Brain Imaging Data Structure: a standard for organizing and describing
+    outputs of neuroimaging experiments'
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: 'The Brain Imaging Data Structure: a standard for organizing and describing
   outputs of neuroimaging experiments'
 identifiers:

@@ -10,6 +10,19 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: 2022-02
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: The Relationship Between Default Mode and Dorsal Attention Networks Is Associated
+    With Depressive Disorder Diagnosis and the Strength of Memory Representations
+    Acquired Prior to the Resting State Scan
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: The Relationship Between Default Mode and Dorsal Attention Networks Is Associated
+    With Depressive Disorder Diagnosis and the Strength of Memory Representations
+    Acquired Prior to the Resting State Scan
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: The Relationship Between Default Mode and Dorsal Attention Networks
   Is Associated With Depressive Disorder Diagnosis and the Strength of Memory Representations
   Acquired Prior to the Resting State Scan

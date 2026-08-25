@@ -15,6 +15,32 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2020'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Analysis of task-based functional MRI data preprocessed with fMRIPrep
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Analysis of task-based functional MRI data preprocessed with fMRIPrep
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: Functional magnetic resonance imaging (fMRI) is a standard tool to investigate
+    the neural correlates of cognition. fMRI noninvasively measures brain activity,
+    allowing identification of patterns evoked by tasks performed during scanning.
+    Despite the long history of this technique, the idiosyncrasies of each dataset
+    have led to the use of ad-hoc preprocessing protocols customized for nearly every
+    different study. This approach is time-consuming, error-prone, and unsuitable
+    for combining datasets from many sources. Here we showcase fMRIPrep (http://fmriprep.org),
+    a robust tool to prepare human fMRI data for statistical analysis. This software
+    instrument addresses the reproducibility concerns of the established protocols
+    for fMRI preprocessing. By leveraging the Brain Imaging Data Structure (BIDS)
+    to standardize both the input datasets —MRI data as stored by the scanner— and
+    the outputs —data ready for modeling and analysis—, fMRIPrep is capable of preprocessing
+    a diversity of datasets without manual intervention. In support of the growing
+    popularity of fMRIPrep, this protocol describes how to integrate the tool in a
+    task-based fMRI investigation workflow.
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 description: Functional magnetic resonance imaging (fMRI) is a standard tool to investigate
   the neural correlates of cognition. fMRI noninvasively measures brain activity,
   allowing identification of patterns evoked by tasks performed during scanning. Despite

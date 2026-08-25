@@ -15,6 +15,17 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2018'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Temporal dynamics and effective connectivity in the distributed system of
+    familiar face processing
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Temporal dynamics and effective connectivity in the distributed system of
+    familiar face processing
+characterized_by:
+- object: bibo:Document
+  predicate: dcterms:type
 display_label: Temporal dynamics and effective connectivity in the distributed system
   of familiar face processing
 identifiers:

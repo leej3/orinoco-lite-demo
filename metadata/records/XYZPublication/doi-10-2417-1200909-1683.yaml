@@ -11,6 +11,15 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: 2010-05
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Advancing Neuroimaging Research with Predictive Multivariate Pattern Analysis
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Advancing Neuroimaging Research with Predictive Multivariate Pattern Analysis
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: Advancing Neuroimaging Research with Predictive Multivariate Pattern
   Analysis
 identifiers:

@@ -7,6 +7,15 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2012'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Incorrect probabilities in Harvard-Oxford-sub Left hemisphere
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Incorrect probabilities in Harvard-Oxford-sub Left hemisphere
+characterized_by:
+- object: bibo:Document
+  predicate: dcterms:type
 display_label: Incorrect probabilities in Harvard-Oxford-sub Left hemisphere
 identifiers:
 - notation: https://www.jiscmail.ac.uk/cgi-bin/webadmin?A2=fsl;e46ecc4c.1210

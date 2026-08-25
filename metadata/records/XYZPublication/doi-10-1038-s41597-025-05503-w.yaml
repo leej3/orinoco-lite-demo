@@ -10,6 +10,17 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: 2025-07
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: DICOM datasets for reproducible neuroimaging research across manufacturers
+    and software versions
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: DICOM datasets for reproducible neuroimaging research across manufacturers
+    and software versions
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: DICOM datasets for reproducible neuroimaging research across manufacturers
   and software versions
 identifiers:

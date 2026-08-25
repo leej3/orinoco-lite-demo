@@ -11,6 +11,17 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2016'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: DueCredit - automagically collect citations for software, methods, and data
+    you use
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: DueCredit - automagically collect citations for software, methods, and data
+    you use
+characterized_by:
+- object: bibo:Document
+  predicate: dcterms:type
 display_label: DueCredit - automagically collect citations for software, methods,
   and data you use
 identifiers:

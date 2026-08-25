@@ -1,0 +1,18 @@
+assertions:
+- assertion_sha256: sha256:017fb5229d90bbe78da0b4203c3a3378b8e11a81f80ddd22bf3ca443c4f39076
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/SLYSCID8
+- assertion_sha256: sha256:1b152b1456ec7cd7396b97ebf0ea4da135a6db76b8c313ce18254c72c7048cd0
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/SLYSCID8
+- assertion_sha256: sha256:945409bf049226e2deace16d476a20f287876ffc91ffbc7cdcccedca83b73d52
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/SLYSCID8
+- assertion_sha256: sha256:daaf525b6f3d3378a5630d6cee38e0b0b19098a51ceab864edf5e50321977190
+  path: /characterized_by
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/SLYSCID8
+record: xyzrins:publications/doi-10-3389-fnins-2022-871228
