@@ -543,7 +543,7 @@ def review_url(
             ("expected_head_sha", expected_head_sha),
         )
     )
-    return f"https://{authority}/edit?{query}"
+    return f"https://{authority}/edit/?{query}"
 
 
 def _parser() -> argparse.ArgumentParser:

@@ -456,7 +456,7 @@ class MaterializedCommitTests(unittest.TestCase):
 class ReviewLinkTests(unittest.TestCase):
     def test_link_uses_only_configurable_origin_and_git_coordinates(self) -> None:
         self.assertEqual(
-            "https://review.example.test:8443/edit?"
+            "https://review.example.test:8443/edit/?"
             "repository=con%2Fexample&pull_request=17&expected_head_sha=" + "a" * 40,
             HANDOFF.review_url(
                 "https://review.example.test:8443/",

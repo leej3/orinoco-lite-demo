@@ -140,7 +140,7 @@ class ShaclVueWorkflowTests(unittest.TestCase):
         self.assertIn('pull.get("head", {}).get("sha")', run)
         self.assertIn('--expected-head-sha "$HEAD_SHA"', run)
         helper = HELPER.read_text(encoding="utf-8")
-        self.assertIn("/edit?{query}", helper)
+        self.assertIn("/edit/?{query}", helper)
         self.assertIn("--paginate --slurp", run)
         self.assertIn("orinoco-shacl-vue-proposal", run)
         self.assertIn("**AI-generated draft — not reviewed by John**", run)

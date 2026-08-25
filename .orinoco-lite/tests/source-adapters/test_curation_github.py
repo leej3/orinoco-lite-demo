@@ -173,7 +173,7 @@ class ReviewArtifactTests(unittest.TestCase):
 
         self.assertTrue(body.startswith(HOST.ATTRIBUTION + "\n"))
         self.assertIn(
-            "https://orinoco-curation-review.pages.dev/?"
+            "https://orinoco-curation-review.pages.dev/review/?"
             "repository=con%2Fexample&pull_request=17&artifact_id=5678",
             body,
         )
@@ -198,7 +198,7 @@ class ReviewArtifactTests(unittest.TestCase):
             review_application="https://review.example.test:8443",
             **arguments,
         )
-        self.assertIn("https://review.example.test:8443/?", self_hosted)
+        self.assertIn("https://review.example.test:8443/review/?", self_hosted)
         for invalid in (
             "http://review.example.test",
             "https://user@review.example.test",
