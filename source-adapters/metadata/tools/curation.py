@@ -377,7 +377,7 @@ def render_pull_request_body(
             ("artifact_id", str(artifact_id)),
         )
     )
-    review_url = f"{application}?{query}"
+    review_url = f"{application}review/?{query}"
     visible_coordinate = escape(coordinate, quote=True).replace("`", "&#96;")
     return (
         f"{ATTRIBUTION}\n\n"
