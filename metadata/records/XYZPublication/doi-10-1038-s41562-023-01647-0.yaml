@@ -1,15 +1,3 @@
-pid: xyzrins:publications/doi-10-1038-s41562-023-01647-0
-schema_type: xyzri:XYZPublication
-title: Align with the NMIND consortium for better neuroimaging
-display_label: Align with the NMIND consortium for better neuroimaging
-kind: bibo:AcademicArticle
-identifiers:
-- notation: 10.1038/s41562-023-01647-0
-  schema_type: dlthings:DOI
-- notation: https://doi.org/10.1038/s41562-023-01647-0
-  schema_type: dlthings:Identifier
-- notation: zotero:group:6197458:item:WR3PJI7I
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/chris-markiewicz
   roles:
@@ -25,5 +13,17 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: dcterms:issued
-  value: 2023-06
   schema_type: dlthings:AttributeSpecification
+  value: 2023-06
+display_label: Align with the NMIND consortium for better neuroimaging
+identifiers:
+- notation: 10.1038/s41562-023-01647-0
+  schema_type: dlthings:DOI
+- notation: https://doi.org/10.1038/s41562-023-01647-0
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:WR3PJI7I
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/doi-10-1038-s41562-023-01647-0
+schema_type: xyzri:XYZPublication
+title: Align with the NMIND consortium for better neuroimaging

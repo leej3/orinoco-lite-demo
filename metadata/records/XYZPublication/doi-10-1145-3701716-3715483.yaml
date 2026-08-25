@@ -1,19 +1,3 @@
-pid: xyzrins:publications/doi-10-1145-3701716-3715483
-schema_type: xyzri:XYZPublication
-title: 'Bridging the Scientific Knowledge Gap and Reproducibility: A Survey of Provenance,
-  Assertion and Evidence Ontologies'
-display_label: 'Bridging the Scientific Knowledge Gap and Reproducibility: A Survey of Provenance,
-  Assertion and Evidence Ontologies'
-kind: bibo:Article
-identifiers:
-- notation: 10.1145/3701716.3715483
-  schema_type: dlthings:DOI
-- notation: ISBN:9798400713316
-  schema_type: dlthings:Identifier
-- notation: https://dl.acm.org/doi/10.1145/3701716.3715483
-  schema_type: dlthings:Identifier
-- notation: zotero:group:6197458:item:FURW46DX
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/yaroslav-halchenko
   roles:
@@ -25,11 +9,27 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: bibo:locator
+  schema_type: dlthings:AttributeSpecification
   value: 924-928
-  schema_type: dlthings:AttributeSpecification
 - predicate: dcterms:issued
+  schema_type: dlthings:AttributeSpecification
   value: '2025-05-08'
-  schema_type: dlthings:AttributeSpecification
 - predicate: dcterms:language
-  value: en
   schema_type: dlthings:AttributeSpecification
+  value: en
+display_label: 'Bridging the Scientific Knowledge Gap and Reproducibility: A Survey
+  of Provenance, Assertion and Evidence Ontologies'
+identifiers:
+- notation: 10.1145/3701716.3715483
+  schema_type: dlthings:DOI
+- notation: ISBN:9798400713316
+  schema_type: dlthings:Identifier
+- notation: https://dl.acm.org/doi/10.1145/3701716.3715483
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:FURW46DX
+  schema_type: dlthings:Identifier
+kind: bibo:Article
+pid: xyzrins:publications/doi-10-1145-3701716-3715483
+schema_type: xyzri:XYZPublication
+title: 'Bridging the Scientific Knowledge Gap and Reproducibility: A Survey of Provenance,
+  Assertion and Evidence Ontologies'

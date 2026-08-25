@@ -1,13 +1,3 @@
-pid: xyzrins:publications/zotero-fdb48tzj
-schema_type: xyzri:XYZPublication
-title: Temporal dynamics and effective connectivity in the distributed system of familiar
-  face processing
-display_label: Temporal dynamics and effective connectivity in the distributed system of familiar
-  face processing
-kind: bibo:Document
-identifiers:
-- notation: zotero:group:6197458:item:FDB48TZJ
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/oliver-contier
   roles:
@@ -23,5 +13,15 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: dcterms:issued
-  value: '2018'
   schema_type: dlthings:AttributeSpecification
+  value: '2018'
+display_label: Temporal dynamics and effective connectivity in the distributed system
+  of familiar face processing
+identifiers:
+- notation: zotero:group:6197458:item:FDB48TZJ
+  schema_type: dlthings:Identifier
+kind: bibo:Document
+pid: xyzrins:publications/zotero-fdb48tzj
+schema_type: xyzri:XYZPublication
+title: Temporal dynamics and effective connectivity in the distributed system of familiar
+  face processing

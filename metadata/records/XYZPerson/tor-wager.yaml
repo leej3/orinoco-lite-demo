@@ -1,19 +1,18 @@
-pid: xyzrins:persons/tor-wager
-schema_type: xyzri:XYZPerson
-given_name: Tor
 additional_names:
-  - D.
+- D.
+attributes:
+- predicate: vcard:Email
+  schema_type: dlthings:AttributeSpecification
+  value: tor.d.wager@dartmouth.edu
+description: Professor at Dartmouth College. Director of Dartmouth Brain Imaging Center
+  and Center for Cognitive Neuroscience. Dedicated to developing functional neuroimaging
+  analysis methods and sharing tools and data with the community.
+display_label: Tor D. Wager
 family_name: Wager
 formatted_name: Tor D. Wager
-display_label: Tor D. Wager
-description: >-
-  Professor at Dartmouth College. Director of Dartmouth Brain Imaging Center
-  and Center for Cognitive Neuroscience. Dedicated to developing functional
-  neuroimaging analysis methods and sharing tools and data with the community.
-attributes:
-  - predicate: vcard:Email
-    value: tor.d.wager@dartmouth.edu
-    schema_type: dlthings:AttributeSpecification
+given_name: Tor
 identifiers:
-  - notation: torwager
-    schema_type: dlthings:Identifier
+- notation: torwager
+  schema_type: dlthings:Identifier
+pid: xyzrins:persons/tor-wager
+schema_type: xyzri:XYZPerson

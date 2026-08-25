@@ -1,21 +1,19 @@
+associated_with:
+- object: xyzrins:persons/isaac-to
+  roles:
+  - marcrel:led
+  schema_type: dlthings:Association
+attributes:
+- predicate: foaf:homepage
+  schema_type: dlthings:AttributeSpecification
+  value: https://registry.datalad.org
+description: Service maintaining up-to-date information on an expanding collection
+  of datasets, currently numbering over ten thousand. Provides automatic dataset registration,
+  metadata extraction, and search functionality via web interface and RESTful API.
+display_label: DataLad Registry
+part_of:
+- xyzrins:.
 pid: xyzrins:projects/datalad-registry
 schema_type: xyzri:XYZProject
-title: DataLad Registry
 short_name: DataLad-Registry
-display_label: DataLad Registry
-description: >-
-  Service maintaining up-to-date information on an expanding collection of
-  datasets, currently numbering over ten thousand. Provides automatic dataset
-  registration, metadata extraction, and search functionality via web
-  interface and RESTful API.
-part_of:
-  - xyzrins:.
-associated_with:
-  - object: xyzrins:persons/isaac-to
-    roles:
-      - marcrel:led
-    schema_type: dlthings:Association
-attributes:
-  - predicate: foaf:homepage
-    value: https://registry.datalad.org
-    schema_type: dlthings:AttributeSpecification
+title: DataLad Registry

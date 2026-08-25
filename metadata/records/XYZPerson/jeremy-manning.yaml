@@ -1,18 +1,17 @@
-pid: xyzrins:persons/jeremy-manning
-schema_type: xyzri:XYZPerson
-given_name: Jeremy
 additional_names:
-  - Rothman
+- Rothman
+attributes:
+- predicate: vcard:Email
+  schema_type: dlthings:AttributeSpecification
+  value: jeremy.r.manning@dartmouth.edu
+description: Associate Professor of Psychological and Brain Sciences at Dartmouth
+  College. Director of the Contextual Dynamics Lab.
+display_label: Jeremy R. Manning
 family_name: Manning
 formatted_name: Jeremy Rothman Manning
-display_label: Jeremy R. Manning
-description: >-
-  Associate Professor of Psychological and Brain Sciences at Dartmouth
-  College. Director of the Contextual Dynamics Lab.
-attributes:
-  - predicate: vcard:Email
-    value: jeremy.r.manning@dartmouth.edu
-    schema_type: dlthings:AttributeSpecification
+given_name: Jeremy
 identifiers:
-  - notation: jeremymanning
-    schema_type: dlthings:Identifier
+- notation: jeremymanning
+  schema_type: dlthings:Identifier
+pid: xyzrins:persons/jeremy-manning
+schema_type: xyzri:XYZPerson

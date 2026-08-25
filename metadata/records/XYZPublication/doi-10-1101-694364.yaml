@@ -1,28 +1,3 @@
-pid: xyzrins:publications/doi-10-1101-694364
-schema_type: xyzri:XYZPublication
-title: Analysis of task-based functional MRI data preprocessed with fMRIPrep
-display_label: Analysis of task-based functional MRI data preprocessed with fMRIPrep
-description: Functional magnetic resonance imaging (fMRI) is a standard tool to investigate
-  the neural correlates of cognition. fMRI noninvasively measures brain activity, allowing
-  identification of patterns evoked by tasks performed during scanning. Despite the long history
-  of this technique, the idiosyncrasies of each dataset have led to the use of ad-hoc preprocessing
-  protocols customized for nearly every different study. This approach is time-consuming,
-  error-prone, and unsuitable for combining datasets from many sources. Here we showcase fMRIPrep
-  (http://fmriprep.org), a robust tool to prepare human fMRI data for statistical analysis.
-  This software instrument addresses the reproducibility concerns of the established protocols
-  for fMRI preprocessing. By leveraging the Brain Imaging Data Structure (BIDS) to standardize
-  both the input datasets —MRI data as stored by the scanner— and the outputs —data ready
-  for modeling and analysis—, fMRIPrep is capable of preprocessing a diversity of datasets
-  without manual intervention. In support of the growing popularity of fMRIPrep, this protocol
-  describes how to integrate the tool in a task-based fMRI investigation workflow.
-kind: bibo:AcademicArticle
-identifiers:
-- notation: 10.1101/694364
-  schema_type: dlthings:DOI
-- notation: https://www.biorxiv.org/content/early/2020/01/03/694364
-  schema_type: dlthings:Identifier
-- notation: zotero:group:6197458:item:MFQ9RIJA
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/chris-markiewicz
   roles:
@@ -38,5 +13,31 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: dcterms:issued
-  value: '2020'
   schema_type: dlthings:AttributeSpecification
+  value: '2020'
+description: Functional magnetic resonance imaging (fMRI) is a standard tool to investigate
+  the neural correlates of cognition. fMRI noninvasively measures brain activity,
+  allowing identification of patterns evoked by tasks performed during scanning. Despite
+  the long history of this technique, the idiosyncrasies of each dataset have led
+  to the use of ad-hoc preprocessing protocols customized for nearly every different
+  study. This approach is time-consuming, error-prone, and unsuitable for combining
+  datasets from many sources. Here we showcase fMRIPrep (http://fmriprep.org), a robust
+  tool to prepare human fMRI data for statistical analysis. This software instrument
+  addresses the reproducibility concerns of the established protocols for fMRI preprocessing.
+  By leveraging the Brain Imaging Data Structure (BIDS) to standardize both the input
+  datasets —MRI data as stored by the scanner— and the outputs —data ready for modeling
+  and analysis—, fMRIPrep is capable of preprocessing a diversity of datasets without
+  manual intervention. In support of the growing popularity of fMRIPrep, this protocol
+  describes how to integrate the tool in a task-based fMRI investigation workflow.
+display_label: Analysis of task-based functional MRI data preprocessed with fMRIPrep
+identifiers:
+- notation: 10.1101/694364
+  schema_type: dlthings:DOI
+- notation: https://www.biorxiv.org/content/early/2020/01/03/694364
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:MFQ9RIJA
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/doi-10-1101-694364
+schema_type: xyzri:XYZPublication
+title: Analysis of task-based functional MRI data preprocessed with fMRIPrep

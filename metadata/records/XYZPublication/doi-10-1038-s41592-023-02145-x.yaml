@@ -1,19 +1,3 @@
-pid: xyzrins:publications/doi-10-1038-s41592-023-02145-x
-schema_type: xyzri:XYZPublication
-title: 'Neurodesk: an accessible, flexible and portable data analysis environment for reproducible
-  neuroimaging'
-display_label: 'Neurodesk: an accessible, flexible and portable data analysis environment
-  for reproducible neuroimaging'
-kind: bibo:AcademicArticle
-identifiers:
-- notation: 10.1038/s41592-023-02145-x
-  schema_type: dlthings:DOI
-- notation: 1548-7105
-  schema_type: dlthings:ISSN
-- notation: http://dx.doi.org/10.1038/s41592-023-02145-x
-  schema_type: dlthings:Identifier
-- notation: zotero:group:6197458:item:7LQHX3IT
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/satrajit-ghosh
   roles:
@@ -29,8 +13,24 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: bibo:locator
+  schema_type: dlthings:AttributeSpecification
   value: 21, 5, 804–808
-  schema_type: dlthings:AttributeSpecification
 - predicate: dcterms:issued
-  value: 2024-01
   schema_type: dlthings:AttributeSpecification
+  value: 2024-01
+display_label: 'Neurodesk: an accessible, flexible and portable data analysis environment
+  for reproducible neuroimaging'
+identifiers:
+- notation: 10.1038/s41592-023-02145-x
+  schema_type: dlthings:DOI
+- notation: 1548-7105
+  schema_type: dlthings:ISSN
+- notation: http://dx.doi.org/10.1038/s41592-023-02145-x
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:7LQHX3IT
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/doi-10-1038-s41592-023-02145-x
+schema_type: xyzri:XYZPublication
+title: 'Neurodesk: an accessible, flexible and portable data analysis environment
+  for reproducible neuroimaging'

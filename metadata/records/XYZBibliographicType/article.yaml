@@ -1,7 +1,5 @@
-# Source: dump-research-info pool snapshot at 04ad6ff735daedaf3173a4e2f72bf930a63c0e37
+description: A written composition in prose, usually nonfiction, on a specific topic,
+  forming an independent part of a book or other publication.
+display_label: Article
 pid: bibo:Article
 schema_type: xyzri:XYZBibliographicType
-display_label: Article
-description: >-
-  A written composition in prose, usually nonfiction, on a specific topic,
-  forming an independent part of a book or other publication.

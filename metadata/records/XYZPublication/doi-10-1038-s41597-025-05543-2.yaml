@@ -1,27 +1,3 @@
-pid: xyzrins:publications/doi-10-1038-s41597-025-05543-2
-schema_type: xyzri:XYZPublication
-title: MRS-BIDS, an extension to the Brain Imaging Data Structure for magnetic resonance spectroscopy
-display_label: MRS-BIDS, an extension to the Brain Imaging Data Structure for magnetic resonance
-  spectroscopy
-description: The Brain Imaging Data Structure (BIDS) is an increasingly adopted standard for
-  organizing scientific data and metadata. It facilitates easier and more straightforward
-  data sharing and reuse. BIDS currently encompasses several biomedical imaging and non-imaging
-  techniques, and as more research groups begin to use it, additional experimental techniques
-  are being incorporated into the standard, allowing diverse experimental methods to be stored
-  within the same cohesive structure. Here, we present an extension for magnetic resonance
-  spectroscopy (MRS) data, termed MRS-BIDS.
-kind: bibo:AcademicArticle
-identifiers:
-- notation: 10.1038/s41597-025-05543-2
-  schema_type: dlthings:DOI
-- notation: 2052-4463
-  schema_type: dlthings:ISSN
-- notation: https://doi.org/10.1038/s41597-025-05543-2
-  schema_type: dlthings:Identifier
-- notation: zotero:group:6197458:item:7PWG497Y
-  schema_type: dlthings:Identifier
-- notation: zotero:group:6197458:item:VYEFN2PE
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/yaroslav-halchenko
   roles:
@@ -33,8 +9,33 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: bibo:locator
+  schema_type: dlthings:AttributeSpecification
   value: 12, 1, 1384
-  schema_type: dlthings:AttributeSpecification
 - predicate: dcterms:issued
-  value: '2025-08-08'
   schema_type: dlthings:AttributeSpecification
+  value: '2025-08-08'
+description: The Brain Imaging Data Structure (BIDS) is an increasingly adopted standard
+  for organizing scientific data and metadata. It facilitates easier and more straightforward
+  data sharing and reuse. BIDS currently encompasses several biomedical imaging and
+  non-imaging techniques, and as more research groups begin to use it, additional
+  experimental techniques are being incorporated into the standard, allowing diverse
+  experimental methods to be stored within the same cohesive structure. Here, we present
+  an extension for magnetic resonance spectroscopy (MRS) data, termed MRS-BIDS.
+display_label: MRS-BIDS, an extension to the Brain Imaging Data Structure for magnetic
+  resonance spectroscopy
+identifiers:
+- notation: 10.1038/s41597-025-05543-2
+  schema_type: dlthings:DOI
+- notation: 2052-4463
+  schema_type: dlthings:ISSN
+- notation: https://doi.org/10.1038/s41597-025-05543-2
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:7PWG497Y
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:VYEFN2PE
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/doi-10-1038-s41597-025-05543-2
+schema_type: xyzri:XYZPublication
+title: MRS-BIDS, an extension to the Brain Imaging Data Structure for magnetic resonance
+  spectroscopy

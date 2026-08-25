@@ -1,25 +1,5 @@
-pid: xyzrins:publications/doi-10-12688-f1000research-10783-2
-schema_type: xyzri:XYZPublication
-title: A very simple, re-executable neuroimaging publication
-display_label: A very simple, re-executable neuroimaging publication
-description: Reproducible research is a key element of the scientific process. Re-executability
-  of neuroimaging workflows that lead to the conclusions arrived at in the literature has
-  not yet been sufficiently addressed and adopted by the neuroimaging community. In this paper,
-  we document a set of procedures, which include supplemental additions to a manuscript, that
-  unambiguously define the data, workflow, execution environment and results of a neuroimaging
-  analysis, in order to generate a verifiable re-executable publication. Re-executability
-  provides a starting point for examination of the generalizability and reproducibility of
-  a given finding.
-kind: bibo:AcademicArticle
-identifiers:
-- notation: 10.12688/f1000research.10783.2
-  schema_type: dlthings:DOI
-- notation: 2046-1402
-  schema_type: dlthings:ISSN
-- notation: https://f1000research.com/articles/6-124/v2
-  schema_type: dlthings:Identifier
-- notation: zotero:group:6197458:item:RU4FEZ66
-  schema_type: dlthings:Identifier
+about:
+- xyzrins:topics/neuroimaging
 attributed_to:
 - object: xyzrins:persons/satrajit-ghosh
   roles:
@@ -37,15 +17,35 @@ attributed_to:
   roles:
   - marcrel:aut
   schema_type: dlthings:Attribution
-about:
-- xyzrins:topics/neuroimaging
 attributes:
 - predicate: bibo:locator
+  schema_type: dlthings:AttributeSpecification
   value: 6, 124
-  schema_type: dlthings:AttributeSpecification
 - predicate: dcterms:issued
+  schema_type: dlthings:AttributeSpecification
   value: 2017-6-15
-  schema_type: dlthings:AttributeSpecification
 - predicate: dcterms:language
-  value: en
   schema_type: dlthings:AttributeSpecification
+  value: en
+description: Reproducible research is a key element of the scientific process. Re-executability
+  of neuroimaging workflows that lead to the conclusions arrived at in the literature
+  has not yet been sufficiently addressed and adopted by the neuroimaging community.
+  In this paper, we document a set of procedures, which include supplemental additions
+  to a manuscript, that unambiguously define the data, workflow, execution environment
+  and results of a neuroimaging analysis, in order to generate a verifiable re-executable
+  publication. Re-executability provides a starting point for examination of the generalizability
+  and reproducibility of a given finding.
+display_label: A very simple, re-executable neuroimaging publication
+identifiers:
+- notation: 10.12688/f1000research.10783.2
+  schema_type: dlthings:DOI
+- notation: 2046-1402
+  schema_type: dlthings:ISSN
+- notation: https://f1000research.com/articles/6-124/v2
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:RU4FEZ66
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/doi-10-12688-f1000research-10783-2
+schema_type: xyzri:XYZPublication
+title: A very simple, re-executable neuroimaging publication

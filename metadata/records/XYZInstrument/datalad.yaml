@@ -1,11 +1,10 @@
+description: Open-source software for distributed data management and reproducible
+  research workflows.
+display_label: DataLad software
+generated_by:
+- object: xyzrins:projects/datalad
+  schema_type: dlthings:Generation
+kind: obo:IAO_0000010
+name: DataLad
 pid: xyzrins:instruments/datalad
 schema_type: xyzri:XYZInstrument
-name: DataLad
-display_label: DataLad software
-description: >-
-  Open-source software for distributed data management and reproducible
-  research workflows.
-kind: obo:IAO_0000010
-generated_by:
-  - object: xyzrins:projects/datalad
-    schema_type: dlthings:Generation

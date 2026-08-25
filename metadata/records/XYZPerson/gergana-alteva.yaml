@@ -1,16 +1,15 @@
-pid: xyzrins:persons/gergana-alteva
-schema_type: xyzri:XYZPerson
-given_name: Gergana
+attributes:
+- predicate: vcard:Email
+  schema_type: dlthings:AttributeSpecification
+  value: glalteva@gmail.com
+description: Emeritus member of the Center for Open Neuroscience. CS undergraduate
+  at Barnard College, Columbia University. 2016 DataLad developer intern.
+display_label: Gergana Alteva
 family_name: Alteva
 formatted_name: Gergana Alteva
-display_label: Gergana Alteva
-description: >-
-  Emeritus member of the Center for Open Neuroscience. CS undergraduate at
-  Barnard College, Columbia University. 2016 DataLad developer intern.
-attributes:
-  - predicate: vcard:Email
-    value: glalteva@gmail.com
-    schema_type: dlthings:AttributeSpecification
+given_name: Gergana
 identifiers:
-  - notation: glalteva
-    schema_type: dlthings:Identifier
+- notation: glalteva
+  schema_type: dlthings:Identifier
+pid: xyzrins:persons/gergana-alteva
+schema_type: xyzri:XYZPerson

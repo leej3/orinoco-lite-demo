@@ -1,15 +1,3 @@
-pid: xyzrins:publications/zotero-sfqu8qby
-schema_type: xyzri:XYZPublication
-title: 'NeuroDebian: from disjoint tools and data to robust turnkey platform for neuroimaging
-  and beyond'
-display_label: 'NeuroDebian: from disjoint tools and data to robust turnkey platform for neuroimaging
-  and beyond'
-kind: bibo:Document
-identifiers:
-- notation: http://www.youtube.com/watch?v=WhUrTRuMoFs
-  schema_type: dlthings:Identifier
-- notation: zotero:group:6197458:item:SFQU8QBY
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/yaroslav-halchenko
   roles:
@@ -17,5 +5,17 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: dcterms:issued
-  value: '2013'
   schema_type: dlthings:AttributeSpecification
+  value: '2013'
+display_label: 'NeuroDebian: from disjoint tools and data to robust turnkey platform
+  for neuroimaging and beyond'
+identifiers:
+- notation: http://www.youtube.com/watch?v=WhUrTRuMoFs
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:SFQU8QBY
+  schema_type: dlthings:Identifier
+kind: bibo:Document
+pid: xyzrins:publications/zotero-sfqu8qby
+schema_type: xyzri:XYZPublication
+title: 'NeuroDebian: from disjoint tools and data to robust turnkey platform for neuroimaging
+  and beyond'

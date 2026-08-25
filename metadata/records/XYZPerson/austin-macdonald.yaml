@@ -1,17 +1,16 @@
-pid: xyzrins:persons/austin-macdonald
-schema_type: xyzri:XYZPerson
-given_name: Austin
+attributes:
+- predicate: vcard:Email
+  schema_type: dlthings:AttributeSpecification
+  value: austin@dartmouth.edu
+description: Software Engineer at the Center for Open Neuroscience, Dartmouth College.
+  Passionate about open source values and developing inclusive, transparent open science
+  tools.
+display_label: Austin Macdonald
 family_name: Macdonald
 formatted_name: Austin Macdonald
-display_label: Austin Macdonald
-description: >-
-  Software Engineer at the Center for Open Neuroscience, Dartmouth College.
-  Passionate about open source values and developing inclusive, transparent
-  open science tools.
-attributes:
-  - predicate: vcard:Email
-    value: austin@dartmouth.edu
-    schema_type: dlthings:AttributeSpecification
+given_name: Austin
 identifiers:
-  - notation: asmacdo
-    schema_type: dlthings:Identifier
+- notation: asmacdo
+  schema_type: dlthings:Identifier
+pid: xyzrins:persons/austin-macdonald
+schema_type: xyzri:XYZPerson

@@ -1,28 +1,3 @@
-pid: xyzrins:publications/doi-10-1038-s41597-021-01033-3
-schema_type: xyzri:XYZPublication
-title: The “Narratives” fMRI dataset for evaluating models of naturalistic language comprehension
-display_label: The “Narratives” fMRI dataset for evaluating models of naturalistic language
-  comprehension
-description: "Abstract\n            The “Narratives” collection aggregates a variety of functional\
-  \ MRI datasets collected while human subjects listened to naturalistic spoken stories. The\
-  \ current release includes 345 subjects, 891 functional scans, and 27 diverse stories of\
-  \ varying duration totaling ~4.6 hours of unique stimuli (~43,000 words). This data collection\
-  \ is well-suited for naturalistic neuroimaging analysis, and is intended to serve as a benchmark\
-  \ for models of language and narrative comprehension. We provide standardized MRI data accompanied\
-  \ by rich metadata, preprocessed versions of the data ready for immediate use, and the spoken\
-  \ story stimuli with time-stamped phoneme- and word-level transcripts. All code and data\
-  \ are publicly available with full provenance in keeping with current best practices in\
-  \ transparent and reproducible neuroimaging."
-kind: bibo:AcademicArticle
-identifiers:
-- notation: 10.1038/s41597-021-01033-3
-  schema_type: dlthings:DOI
-- notation: 2052-4463
-  schema_type: dlthings:ISSN
-- notation: https://www.nature.com/articles/s41597-021-01033-3
-  schema_type: dlthings:Identifier
-- notation: zotero:group:6197458:item:NFYHSYVV
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/samuel-nastase
   roles:
@@ -34,11 +9,38 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: bibo:locator
+  schema_type: dlthings:AttributeSpecification
   value: 8, 1, 250
-  schema_type: dlthings:AttributeSpecification
 - predicate: dcterms:issued
+  schema_type: dlthings:AttributeSpecification
   value: '2021-09-28'
-  schema_type: dlthings:AttributeSpecification
 - predicate: dcterms:language
-  value: en
   schema_type: dlthings:AttributeSpecification
+  value: en
+description: "Abstract\n            The “Narratives” collection aggregates a variety\
+  \ of functional MRI datasets collected while human subjects listened to naturalistic\
+  \ spoken stories. The current release includes 345 subjects, 891 functional scans,\
+  \ and 27 diverse stories of varying duration totaling ~4.6 hours of unique stimuli\
+  \ (~43,000 words). This data collection is well-suited for naturalistic neuroimaging\
+  \ analysis, and is intended to serve as a benchmark for models of language and narrative\
+  \ comprehension. We provide standardized MRI data accompanied by rich metadata,\
+  \ preprocessed versions of the data ready for immediate use, and the spoken story\
+  \ stimuli with time-stamped phoneme- and word-level transcripts. All code and data\
+  \ are publicly available with full provenance in keeping with current best practices\
+  \ in transparent and reproducible neuroimaging."
+display_label: The “Narratives” fMRI dataset for evaluating models of naturalistic
+  language comprehension
+identifiers:
+- notation: 10.1038/s41597-021-01033-3
+  schema_type: dlthings:DOI
+- notation: 2052-4463
+  schema_type: dlthings:ISSN
+- notation: https://www.nature.com/articles/s41597-021-01033-3
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:NFYHSYVV
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/doi-10-1038-s41597-021-01033-3
+schema_type: xyzri:XYZPublication
+title: The “Narratives” fMRI dataset for evaluating models of naturalistic language
+  comprehension

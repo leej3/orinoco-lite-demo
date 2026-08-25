@@ -1,24 +1,3 @@
-pid: xyzrins:publications/doi-10-48550-arxiv-2309-05768
-schema_type: xyzri:XYZPublication
-title: The Past, Present, and Future of the Brain Imaging Data Structure (BIDS)
-display_label: The Past, Present, and Future of the Brain Imaging Data Structure (BIDS)
-description: The Brain Imaging Data Structure (BIDS) is a community-driven standard for the
-  organization of data and metadata from a growing range of neuroscience modalities. This
-  paper is meant as a history of how the standard has developed and grown over time. We outline
-  the principles behind the project, the mechanisms by which it has been extended, and some
-  of the challenges being addressed as it evolves. We also discuss the lessons learned through
-  the project, with the aim of enabling researchers in other domains to learn from the success
-  of BIDS.
-kind: bibo:AcademicArticle
-identifiers:
-- notation: 10.48550/arxiv.2309.05768
-  schema_type: dlthings:DOI
-- notation: https://arxiv.org/abs/2309.05768
-  schema_type: dlthings:Identifier
-- notation: zotero:group:6197458:item:65GF4WEG
-  schema_type: dlthings:Identifier
-- notation: zotero:group:6197458:item:A8MQ2A7G
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/chris-markiewicz
   roles:
@@ -46,8 +25,29 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: dcterms:issued
+  schema_type: dlthings:AttributeSpecification
   value: '2023'
-  schema_type: dlthings:AttributeSpecification
 - predicate: dcterms:rights
-  value: Creative Commons Attribution 4.0 International
   schema_type: dlthings:AttributeSpecification
+  value: Creative Commons Attribution 4.0 International
+description: The Brain Imaging Data Structure (BIDS) is a community-driven standard
+  for the organization of data and metadata from a growing range of neuroscience modalities.
+  This paper is meant as a history of how the standard has developed and grown over
+  time. We outline the principles behind the project, the mechanisms by which it has
+  been extended, and some of the challenges being addressed as it evolves. We also
+  discuss the lessons learned through the project, with the aim of enabling researchers
+  in other domains to learn from the success of BIDS.
+display_label: The Past, Present, and Future of the Brain Imaging Data Structure (BIDS)
+identifiers:
+- notation: 10.48550/arxiv.2309.05768
+  schema_type: dlthings:DOI
+- notation: https://arxiv.org/abs/2309.05768
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:65GF4WEG
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:A8MQ2A7G
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/doi-10-48550-arxiv-2309-05768
+schema_type: xyzri:XYZPublication
+title: The Past, Present, and Future of the Brain Imaging Data Structure (BIDS)

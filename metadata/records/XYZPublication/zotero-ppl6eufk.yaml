@@ -1,13 +1,3 @@
-pid: xyzrins:publications/zotero-ppl6eufk
-schema_type: xyzri:XYZPublication
-title: Localizing functional regions of interest based on responses to dynamic naturalistic
-  stimuli
-display_label: Localizing functional regions of interest based on responses to dynamic naturalistic
-  stimuli
-kind: bibo:Document
-identifiers:
-- notation: zotero:group:6197458:item:PPL6EUFK
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/samuel-nastase
   roles:
@@ -23,5 +13,15 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: dcterms:issued
-  value: '2016'
   schema_type: dlthings:AttributeSpecification
+  value: '2016'
+display_label: Localizing functional regions of interest based on responses to dynamic
+  naturalistic stimuli
+identifiers:
+- notation: zotero:group:6197458:item:PPL6EUFK
+  schema_type: dlthings:Identifier
+kind: bibo:Document
+pid: xyzrins:publications/zotero-ppl6eufk
+schema_type: xyzri:XYZPublication
+title: Localizing functional regions of interest based on responses to dynamic naturalistic
+  stimuli

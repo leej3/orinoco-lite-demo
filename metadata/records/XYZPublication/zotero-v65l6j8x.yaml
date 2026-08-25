@@ -1,11 +1,3 @@
-pid: xyzrins:publications/zotero-v65l6j8x
-schema_type: xyzri:XYZPublication
-title: 'NICEMAN: NeuroImaging Computational Environments Manager'
-display_label: 'NICEMAN: NeuroImaging Computational Environments Manager'
-kind: bibo:Document
-identifiers:
-- notation: zotero:group:6197458:item:V65L6J8X
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/kyle-meyer
   roles:
@@ -17,5 +9,13 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: dcterms:issued
-  value: '2018'
   schema_type: dlthings:AttributeSpecification
+  value: '2018'
+display_label: 'NICEMAN: NeuroImaging Computational Environments Manager'
+identifiers:
+- notation: zotero:group:6197458:item:V65L6J8X
+  schema_type: dlthings:Identifier
+kind: bibo:Document
+pid: xyzrins:publications/zotero-v65l6j8x
+schema_type: xyzri:XYZPublication
+title: 'NICEMAN: NeuroImaging Computational Environments Manager'

@@ -1,15 +1,3 @@
-pid: xyzrins:publications/zotero-iw32d26f
-schema_type: xyzri:XYZPublication
-title: 'Finding cortical patches of shared representations: a comparison of clustering algorithms
-  on representational geometries, and the effect of cross-validation to reduce physiological
-  noise'
-display_label: 'Finding cortical patches of shared representations: a comparison of clustering
-  algorithms on representational geometries, and the effect of cross-validation to reduce
-  physiological noise'
-kind: bibo:Document
-identifiers:
-- notation: zotero:group:6197458:item:IW32D26F
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/matteo-visconti-di-oleggio-castello
   roles:
@@ -29,5 +17,17 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: dcterms:issued
-  value: '2015'
   schema_type: dlthings:AttributeSpecification
+  value: '2015'
+display_label: 'Finding cortical patches of shared representations: a comparison of
+  clustering algorithms on representational geometries, and the effect of cross-validation
+  to reduce physiological noise'
+identifiers:
+- notation: zotero:group:6197458:item:IW32D26F
+  schema_type: dlthings:Identifier
+kind: bibo:Document
+pid: xyzrins:publications/zotero-iw32d26f
+schema_type: xyzri:XYZPublication
+title: 'Finding cortical patches of shared representations: a comparison of clustering
+  algorithms on representational geometries, and the effect of cross-validation to
+  reduce physiological noise'

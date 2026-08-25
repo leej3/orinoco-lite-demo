@@ -1,7 +1,5 @@
-# Source: dump-research-info pool snapshot at 04ad6ff735daedaf3173a4e2f72bf930a63c0e37
+description: A bounded representation of a body of information designed with the capacity
+  and usually the intent to communicate.
+display_label: Document
 pid: bibo:Document
 schema_type: xyzri:XYZBibliographicType
-display_label: Document
-description: >-
-  A bounded representation of a body of information designed with the
-  capacity and usually the intent to communicate.

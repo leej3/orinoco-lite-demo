@@ -1,11 +1,3 @@
-pid: xyzrins:publications/zotero-tarqrcj3
-schema_type: xyzri:XYZPublication
-title: Attentional allocation locally warps representational space
-display_label: Attentional allocation locally warps representational space
-kind: bibo:Document
-identifiers:
-- notation: zotero:group:6197458:item:TARQRCJ3
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/samuel-nastase
   roles:
@@ -29,5 +21,13 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: dcterms:issued
-  value: '2014'
   schema_type: dlthings:AttributeSpecification
+  value: '2014'
+display_label: Attentional allocation locally warps representational space
+identifiers:
+- notation: zotero:group:6197458:item:TARQRCJ3
+  schema_type: dlthings:Identifier
+kind: bibo:Document
+pid: xyzrins:publications/zotero-tarqrcj3
+schema_type: xyzri:XYZPublication
+title: Attentional allocation locally warps representational space

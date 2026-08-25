@@ -1,17 +1,3 @@
-pid: xyzrins:publications/doi-10-1038-s41398-022-02211-6
-schema_type: xyzri:XYZPublication
-title: 'Working memory updating in individuals with bipolar and unipolar depression: fMRI
-  study'
-display_label: 'Working memory updating in individuals with bipolar and unipolar depression:
-  fMRI study'
-kind: bibo:AcademicArticle
-identifiers:
-- notation: 10.1038/s41398-022-02211-6
-  schema_type: dlthings:DOI
-- notation: https://doi.org/10.1038/s41398-022-02211-6
-  schema_type: dlthings:Identifier
-- notation: zotero:group:6197458:item:BL29REW4
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/yaroslav-halchenko
   roles:
@@ -19,8 +5,22 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: bibo:locator
+  schema_type: dlthings:AttributeSpecification
   value: 12, 1
-  schema_type: dlthings:AttributeSpecification
 - predicate: dcterms:issued
-  value: 2022-10
   schema_type: dlthings:AttributeSpecification
+  value: 2022-10
+display_label: 'Working memory updating in individuals with bipolar and unipolar depression:
+  fMRI study'
+identifiers:
+- notation: 10.1038/s41398-022-02211-6
+  schema_type: dlthings:DOI
+- notation: https://doi.org/10.1038/s41398-022-02211-6
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:BL29REW4
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/doi-10-1038-s41398-022-02211-6
+schema_type: xyzri:XYZPublication
+title: 'Working memory updating in individuals with bipolar and unipolar depression:
+  fMRI study'

@@ -1,16 +1,15 @@
-pid: xyzrins:persons/jason-gors
-schema_type: xyzri:XYZPerson
-given_name: Jason
+attributes:
+- predicate: vcard:Email
+  schema_type: dlthings:AttributeSpecification
+  value: jason.gors@dartmouth.edu
+description: Emeritus member of the Center for Open Neuroscience. Pythonista. DataLad
+  project contributor.
+display_label: Jason Gors
 family_name: Gors
 formatted_name: Jason Gors
-display_label: Jason Gors
-description: >-
-  Emeritus member of the Center for Open Neuroscience. Pythonista. DataLad
-  project contributor.
-attributes:
-  - predicate: vcard:Email
-    value: jason.gors@dartmouth.edu
-    schema_type: dlthings:AttributeSpecification
+given_name: Jason
 identifiers:
-  - notation: jgors
-    schema_type: dlthings:Identifier
+- notation: jgors
+  schema_type: dlthings:Identifier
+pid: xyzrins:persons/jason-gors
+schema_type: xyzri:XYZPerson

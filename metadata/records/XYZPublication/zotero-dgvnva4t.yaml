@@ -1,13 +1,3 @@
-pid: xyzrins:publications/zotero-dgvnva4t
-schema_type: xyzri:XYZPublication
-title: 'The best of both worlds: using semantic web with JSON-LD. An example with NIDM-Results
-  & DataLad'
-display_label: 'The best of both worlds: using semantic web with JSON-LD. An example with
-  NIDM-Results & DataLad'
-kind: bibo:Document
-identifiers:
-- notation: zotero:group:6197458:item:DGVNVA4T
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/satrajit-ghosh
   roles:
@@ -27,5 +17,15 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: dcterms:issued
-  value: '2019'
   schema_type: dlthings:AttributeSpecification
+  value: '2019'
+display_label: 'The best of both worlds: using semantic web with JSON-LD. An example
+  with NIDM-Results & DataLad'
+identifiers:
+- notation: zotero:group:6197458:item:DGVNVA4T
+  schema_type: dlthings:Identifier
+kind: bibo:Document
+pid: xyzrins:publications/zotero-dgvnva4t
+schema_type: xyzri:XYZPublication
+title: 'The best of both worlds: using semantic web with JSON-LD. An example with
+  NIDM-Results & DataLad'

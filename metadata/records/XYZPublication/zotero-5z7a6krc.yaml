@@ -1,14 +1,3 @@
-pid: xyzrins:publications/zotero-5z7a6krc
-schema_type: xyzri:XYZPublication
-title: Overview of statistical evaluation techniques adopted by publicly available MVPA toolboxes
-display_label: Overview of statistical evaluation techniques adopted by publicly available
-  MVPA toolboxes
-kind: bibo:Document
-identifiers:
-- notation: http://www.pymvpa.org/files/OHBM2015_Halchenko.pdf
-  schema_type: dlthings:Identifier
-- notation: zotero:group:6197458:item:5Z7A6KRC
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/yaroslav-halchenko
   roles:
@@ -16,5 +5,17 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: dcterms:issued
-  value: '2015'
   schema_type: dlthings:AttributeSpecification
+  value: '2015'
+display_label: Overview of statistical evaluation techniques adopted by publicly available
+  MVPA toolboxes
+identifiers:
+- notation: http://www.pymvpa.org/files/OHBM2015_Halchenko.pdf
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:5Z7A6KRC
+  schema_type: dlthings:Identifier
+kind: bibo:Document
+pid: xyzrins:publications/zotero-5z7a6krc
+schema_type: xyzri:XYZPublication
+title: Overview of statistical evaluation techniques adopted by publicly available
+  MVPA toolboxes

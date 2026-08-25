@@ -1,25 +1,3 @@
-pid: xyzrins:publications/zotero-kp46b5su
-schema_type: xyzri:XYZPublication
-title: 'Everything Matters: The ReproNim Perspective on Reproducible Neuroimaging'
-display_label: 'Everything Matters: The ReproNim Perspective on Reproducible Neuroimaging'
-description: 'There has been a recent major upsurge in the concerns about reproducibility
-  in many areas of science. Within the neuroimaging domain, one approach is to promote reproducibility
-  is to target the re-executability of the publication. The information supporting such re-executability
-  can enable the detailed examination of how an initial finding generalizes across changes
-  in the processing approach, and sampled population, in a controlled scientific fashion.
-  ReproNim: A Center for Reproducible Neuroimaging Computation is a recently funded initiative
-  that seeks to facilitate the “last mile” implementations of core re-executability tools
-  in order to reduce the accessibility barrier and increase adoption of standards and best
-  practices at the neuroimaging research laboratory level. In this report, we summarize the
-  overall approach and tools we have developed in this domain.'
-kind: bibo:AcademicArticle
-identifiers:
-- notation: 1662-5196
-  schema_type: dlthings:ISSN
-- notation: https://www.frontiersin.org/articles/10.3389/fninf.2019.00001
-  schema_type: dlthings:Identifier
-- notation: zotero:group:6197458:item:KP46B5SU
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/david-kennedy
   roles:
@@ -47,8 +25,31 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: bibo:locator
+  schema_type: dlthings:AttributeSpecification
   value: '13'
-  schema_type: dlthings:AttributeSpecification
 - predicate: dcterms:issued
-  value: '2019'
   schema_type: dlthings:AttributeSpecification
+  value: '2019'
+description: 'There has been a recent major upsurge in the concerns about reproducibility
+  in many areas of science. Within the neuroimaging domain, one approach is to promote
+  reproducibility is to target the re-executability of the publication. The information
+  supporting such re-executability can enable the detailed examination of how an initial
+  finding generalizes across changes in the processing approach, and sampled population,
+  in a controlled scientific fashion. ReproNim: A Center for Reproducible Neuroimaging
+  Computation is a recently funded initiative that seeks to facilitate the “last mile”
+  implementations of core re-executability tools in order to reduce the accessibility
+  barrier and increase adoption of standards and best practices at the neuroimaging
+  research laboratory level. In this report, we summarize the overall approach and
+  tools we have developed in this domain.'
+display_label: 'Everything Matters: The ReproNim Perspective on Reproducible Neuroimaging'
+identifiers:
+- notation: 1662-5196
+  schema_type: dlthings:ISSN
+- notation: https://www.frontiersin.org/articles/10.3389/fninf.2019.00001
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:KP46B5SU
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/zotero-kp46b5su
+schema_type: xyzri:XYZPublication
+title: 'Everything Matters: The ReproNim Perspective on Reproducible Neuroimaging'

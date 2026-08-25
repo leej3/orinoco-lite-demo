@@ -1,13 +1,3 @@
-pid: xyzrins:publications/zotero-yq6vtmde
-schema_type: xyzri:XYZPublication
-title: Investigation of the familiar face recognition model
-display_label: Investigation of the familiar face recognition model
-kind: bibo:Document
-identifiers:
-- notation: http://haxbylab.dartmouth.edu/publications/HGG+12_sfn12_famfaces.png
-  schema_type: dlthings:Identifier
-- notation: zotero:group:6197458:item:YQ6VTMDE
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/yaroslav-halchenko
   roles:
@@ -23,5 +13,15 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: dcterms:issued
-  value: '2012'
   schema_type: dlthings:AttributeSpecification
+  value: '2012'
+display_label: Investigation of the familiar face recognition model
+identifiers:
+- notation: http://haxbylab.dartmouth.edu/publications/HGG+12_sfn12_famfaces.png
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:YQ6VTMDE
+  schema_type: dlthings:Identifier
+kind: bibo:Document
+pid: xyzrins:publications/zotero-yq6vtmde
+schema_type: xyzri:XYZPublication
+title: Investigation of the familiar face recognition model

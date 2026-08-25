@@ -1,20 +1,19 @@
+associated_with:
+- object: xyzrins:persons/jeremy-manning
+  roles:
+  - marcrel:led
+  schema_type: dlthings:Association
+attributes:
+- predicate: foaf:homepage
+  schema_type: dlthings:AttributeSpecification
+  value: https://cdl-quail.readthedocs.io/en/latest/
+description: Python toolbox for analyzing data from free recall memory experiments.
+  Provides data structures for encoding/recall data, memory performance metric functions,
+  customizable plots, and support for naturalistic stimuli.
+display_label: Quail
+part_of:
+- xyzrins:.
 pid: xyzrins:projects/quail
 schema_type: xyzri:XYZProject
-title: Quail
 short_name: Quail
-display_label: Quail
-description: >-
-  Python toolbox for analyzing data from free recall memory experiments.
-  Provides data structures for encoding/recall data, memory performance metric
-  functions, customizable plots, and support for naturalistic stimuli.
-part_of:
-  - xyzrins:.
-associated_with:
-  - object: xyzrins:persons/jeremy-manning
-    roles:
-      - marcrel:led
-    schema_type: dlthings:Association
-attributes:
-  - predicate: foaf:homepage
-    value: https://cdl-quail.readthedocs.io/en/latest/
-    schema_type: dlthings:AttributeSpecification
+title: Quail

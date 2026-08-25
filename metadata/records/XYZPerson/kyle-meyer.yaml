@@ -1,16 +1,15 @@
-pid: xyzrins:persons/kyle-meyer
-schema_type: xyzri:XYZPerson
-given_name: Kyle
+attributes:
+- predicate: vcard:Email
+  schema_type: dlthings:AttributeSpecification
+  value: kyle@kyleam.com
+description: Emeritus member of the Center for Open Neuroscience. ReproMan and DataLad
+  contributor. Git expert and Magit authority.
+display_label: Kyle Meyer
 family_name: Meyer
 formatted_name: Kyle Meyer
-display_label: Kyle Meyer
-description: >-
-  Emeritus member of the Center for Open Neuroscience. ReproMan and DataLad
-  contributor. Git expert and Magit authority.
-attributes:
-  - predicate: vcard:Email
-    value: kyle@kyleam.com
-    schema_type: dlthings:AttributeSpecification
+given_name: Kyle
 identifiers:
-  - notation: kyleam
-    schema_type: dlthings:Identifier
+- notation: kyleam
+  schema_type: dlthings:Identifier
+pid: xyzrins:persons/kyle-meyer
+schema_type: xyzri:XYZPerson

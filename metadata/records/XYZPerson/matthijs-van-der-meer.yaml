@@ -1,18 +1,17 @@
-pid: xyzrins:persons/matthijs-van-der-meer
-schema_type: xyzri:XYZPerson
-given_name: Matthijs
+attributes:
+- predicate: vcard:Email
+  schema_type: dlthings:AttributeSpecification
+  value: mvdm@dartmouth.edu
+description: Associate Professor of Psychological and Brain Sciences at Dartmouth
+  College. Studies how neural ensembles across brain areas organize experience for
+  adaptive behavior.
+display_label: Matt van der Meer
 family_name: van der Meer
 formatted_name: Matthijs van der Meer
-nickname: Matt
-display_label: Matt van der Meer
-description: >-
-  Associate Professor of Psychological and Brain Sciences at Dartmouth
-  College. Studies how neural ensembles across brain areas organize experience
-  for adaptive behavior.
-attributes:
-  - predicate: vcard:Email
-    value: mvdm@dartmouth.edu
-    schema_type: dlthings:AttributeSpecification
+given_name: Matthijs
 identifiers:
-  - notation: vandermeerlab
-    schema_type: dlthings:Identifier
+- notation: vandermeerlab
+  schema_type: dlthings:Identifier
+nickname: Matt
+pid: xyzrins:persons/matthijs-van-der-meer
+schema_type: xyzri:XYZPerson

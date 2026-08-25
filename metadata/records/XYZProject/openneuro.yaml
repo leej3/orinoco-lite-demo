@@ -1,20 +1,19 @@
+associated_with:
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:rtm
+  schema_type: dlthings:Association
+attributes:
+- predicate: foaf:homepage
+  schema_type: dlthings:AttributeSpecification
+  value: https://openneuro.org
+description: One of the oldest and most well-known BRAIN Initiative archives for neuroimaging
+  data. Uses git-annex as core technology, inspired by early DataLad crawling efforts.
+  Successor to OpenfMRI.org.
+display_label: OpenNeuro
+part_of:
+- xyzrins:.
 pid: xyzrins:projects/openneuro
 schema_type: xyzri:XYZProject
-title: OpenNeuro
 short_name: OpenNeuro
-display_label: OpenNeuro
-description: >-
-  One of the oldest and most well-known BRAIN Initiative archives for
-  neuroimaging data. Uses git-annex as core technology, inspired by early
-  DataLad crawling efforts. Successor to OpenfMRI.org.
-part_of:
-  - xyzrins:.
-associated_with:
-  - object: xyzrins:persons/yaroslav-halchenko
-    roles:
-      - marcrel:rtm
-    schema_type: dlthings:Association
-attributes:
-  - predicate: foaf:homepage
-    value: https://openneuro.org
-    schema_type: dlthings:AttributeSpecification
+title: OpenNeuro

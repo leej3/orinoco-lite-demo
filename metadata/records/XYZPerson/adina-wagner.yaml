@@ -1,17 +1,16 @@
-pid: xyzrins:persons/adina-wagner
-schema_type: xyzri:XYZPerson
-given_name: Adina
+attributes:
+- predicate: vcard:Email
+  schema_type: dlthings:AttributeSpecification
+  value: adina.wagner@t-online.de
+description: Ph.D. Student at INM-7, Research Centre Jülich, Germany. Lead of the
+  DataLad Handbook. Clinical Psychology background pursuing open science and open
+  software.
+display_label: Adina Wagner
 family_name: Wagner
 formatted_name: Adina Wagner
-display_label: Adina Wagner
-description: >-
-  Ph.D. Student at INM-7, Research Centre Jülich, Germany. Lead of the DataLad
-  Handbook. Clinical Psychology background pursuing open science and open
-  software.
-attributes:
-  - predicate: vcard:Email
-    value: adina.wagner@t-online.de
-    schema_type: dlthings:AttributeSpecification
+given_name: Adina
 identifiers:
-  - notation: adswa
-    schema_type: dlthings:Identifier
+- notation: adswa
+  schema_type: dlthings:Identifier
+pid: xyzrins:persons/adina-wagner
+schema_type: xyzri:XYZPerson

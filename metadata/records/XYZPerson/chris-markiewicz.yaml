@@ -1,15 +1,13 @@
-pid: xyzrins:persons/chris-markiewicz
-schema_type: xyzri:XYZPerson
-given_name: Chris
+description: BIDS Guru and Jedi Master of all the *Preps. Software developer at Stanford's
+  Poldrack Lab and research affiliate of the MIT McGovern Institute for Brain Research.
+  Core developer of fMRIPrep and other NiPreps, long-standing BIDS maintainer, and
+  one of the pillars of the neuroimaging Python ecosystem (NiBabel, Nipype, FitLins).
+display_label: Chris Markiewicz
 family_name: Markiewicz
 formatted_name: Chris Markiewicz
-display_label: Chris Markiewicz
-description: >-
-  BIDS Guru and Jedi Master of all the *Preps. Software developer at
-  Stanford's Poldrack Lab and research affiliate of the MIT McGovern Institute
-  for Brain Research. Core developer of fMRIPrep and other NiPreps,
-  long-standing BIDS maintainer, and one of the pillars of the neuroimaging
-  Python ecosystem (NiBabel, Nipype, FitLins).
+given_name: Chris
 identifiers:
-  - notation: effigies
-    schema_type: dlthings:Identifier
+- notation: effigies
+  schema_type: dlthings:Identifier
+pid: xyzrins:persons/chris-markiewicz
+schema_type: xyzri:XYZPerson

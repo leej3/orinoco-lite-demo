@@ -1,17 +1,15 @@
-pid: xyzrins:persons/isaac-to
-schema_type: xyzri:XYZPerson
-given_name: Isaac
+attributes:
+- predicate: vcard:Email
+  schema_type: dlthings:AttributeSpecification
+  value: Isaac.C.To@dartmouth.edu
+description: Software Developer at the Center for Open Neuroscience. Python and open-source
+  enthusiast. Works on DataLad-Registry and DANDI metadata-related initiatives.
+display_label: Isaac To
 family_name: To
 formatted_name: Isaac To
-display_label: Isaac To
-description: >-
-  Software Developer at the Center for Open Neuroscience. Python and
-  open-source enthusiast. Works on DataLad-Registry and DANDI metadata-related
-  initiatives.
-attributes:
-  - predicate: vcard:Email
-    value: Isaac.C.To@dartmouth.edu
-    schema_type: dlthings:AttributeSpecification
+given_name: Isaac
 identifiers:
-  - notation: candleindark
-    schema_type: dlthings:Identifier
+- notation: candleindark
+  schema_type: dlthings:Identifier
+pid: xyzrins:persons/isaac-to
+schema_type: xyzri:XYZPerson

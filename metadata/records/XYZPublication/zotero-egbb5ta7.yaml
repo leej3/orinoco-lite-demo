@@ -1,11 +1,3 @@
-pid: xyzrins:publications/zotero-egbb5ta7
-schema_type: xyzri:XYZPublication
-title: The model of associative processor for numerical data sorting
-display_label: The model of associative processor for numerical data sorting
-kind: bibo:BookSection
-identifiers:
-- notation: zotero:group:6197458:item:EGBB5TA7
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/yaroslav-halchenko
   roles:
@@ -13,8 +5,16 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: bibo:locator
+  schema_type: dlthings:AttributeSpecification
   value: 2, 19-23
-  schema_type: dlthings:AttributeSpecification
 - predicate: dcterms:issued
-  value: '1997'
   schema_type: dlthings:AttributeSpecification
+  value: '1997'
+display_label: The model of associative processor for numerical data sorting
+identifiers:
+- notation: zotero:group:6197458:item:EGBB5TA7
+  schema_type: dlthings:Identifier
+kind: bibo:BookSection
+pid: xyzrins:publications/zotero-egbb5ta7
+schema_type: xyzri:XYZPublication
+title: The model of associative processor for numerical data sorting

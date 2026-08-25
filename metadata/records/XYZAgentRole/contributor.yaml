@@ -1,9 +1,8 @@
+description: A person, family or organization responsible for making contributions
+  to the resource. This includes those whose work has been contributed to a larger
+  work, such as an anthology, serial publication, or other compilation of individual
+  works. If a more specific role is available, prefer that, e.g. editor, compiler,
+  illustrator
+display_label: Contributor
 pid: marcrel:ctb
 schema_type: xyzri:XYZAgentRole
-display_label: Contributor
-description: >-
-  A person, family or organization responsible for making contributions to the
-  resource. This includes those whose work has been contributed to a larger
-  work, such as an anthology, serial publication, or other compilation of
-  individual works. If a more specific role is available, prefer that, e.g.
-  editor, compiler, illustrator

@@ -1,15 +1,3 @@
-pid: xyzrins:publications/doi-10-1109-prni-2016-7552355
-schema_type: xyzri:XYZPublication
-title: 'Cross-modal searchlight classification: Methodological challenges and recommended
-  solutions'
-display_label: 'Cross-modal searchlight classification: Methodological challenges and recommended
-  solutions'
-kind: bibo:Article
-identifiers:
-- notation: 10.1109/prni.2016.7552355
-  schema_type: dlthings:DOI
-- notation: zotero:group:6197458:item:J697F9FM
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/samuel-nastase
   roles:
@@ -21,8 +9,20 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: bibo:locator
+  schema_type: dlthings:AttributeSpecification
   value: 1-4
-  schema_type: dlthings:AttributeSpecification
 - predicate: dcterms:issued
-  value: 2016-06
   schema_type: dlthings:AttributeSpecification
+  value: 2016-06
+display_label: 'Cross-modal searchlight classification: Methodological challenges
+  and recommended solutions'
+identifiers:
+- notation: 10.1109/prni.2016.7552355
+  schema_type: dlthings:DOI
+- notation: zotero:group:6197458:item:J697F9FM
+  schema_type: dlthings:Identifier
+kind: bibo:Article
+pid: xyzrins:publications/doi-10-1109-prni-2016-7552355
+schema_type: xyzri:XYZPublication
+title: 'Cross-modal searchlight classification: Methodological challenges and recommended
+  solutions'

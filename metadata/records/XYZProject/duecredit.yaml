@@ -1,25 +1,23 @@
+associated_with:
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:cre
+  schema_type: dlthings:Association
+- object: xyzrins:persons/matteo-visconti-di-oleggio-castello
+  roles:
+  - marcrel:cre
+  schema_type: dlthings:Association
+attributes:
+- predicate: foaf:homepage
+  schema_type: dlthings:AttributeSpecification
+  value: https://github.com/duecredit/duecredit
+description: Provides a solution for the problem of inadequate citation and referencing
+  of scientific software and methods. A Python-focused framework embedding publication
+  references in code with automatic citation collection and reporting.
+display_label: DueCredit
+part_of:
+- xyzrins:.
 pid: xyzrins:projects/duecredit
 schema_type: xyzri:XYZProject
-title: DueCredit
 short_name: DueCredit
-display_label: DueCredit
-description: >-
-  Provides a solution for the problem of inadequate citation and referencing
-  of scientific software and methods. A Python-focused framework embedding
-  publication references in code with automatic citation collection and
-  reporting.
-part_of:
-  - xyzrins:.
-associated_with:
-  - object: xyzrins:persons/yaroslav-halchenko
-    roles:
-      - marcrel:cre
-    schema_type: dlthings:Association
-  - object: xyzrins:persons/matteo-visconti-di-oleggio-castello
-    roles:
-      - marcrel:cre
-    schema_type: dlthings:Association
-attributes:
-  - predicate: foaf:homepage
-    value: https://github.com/duecredit/duecredit
-    schema_type: dlthings:AttributeSpecification
+title: DueCredit

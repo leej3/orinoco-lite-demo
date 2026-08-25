@@ -1,15 +1,14 @@
+attributes:
+- predicate: foaf:homepage
+  schema_type: dlthings:AttributeSpecification
+  value: https://github.com/con/duct
+description: Lightweight wrapper that collects execution data for an arbitrary command
+  including execution time, system information, and resource usage statistics. Particularly
+  suited for HPC environments.
+display_label: con/duct
+part_of:
+- xyzrins:.
 pid: xyzrins:projects/con-duct
 schema_type: xyzri:XYZProject
-title: con/duct
 short_name: duct
-display_label: con/duct
-description: >-
-  Lightweight wrapper that collects execution data for an arbitrary command
-  including execution time, system information, and resource usage statistics.
-  Particularly suited for HPC environments.
-part_of:
-  - xyzrins:.
-attributes:
-  - predicate: foaf:homepage
-    value: https://github.com/con/duct
-    schema_type: dlthings:AttributeSpecification
+title: con/duct

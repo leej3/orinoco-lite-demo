@@ -1,17 +1,15 @@
-pid: xyzrins:persons/matteo-visconti-di-oleggio-castello
-schema_type: xyzri:XYZPerson
-given_name: Matteo
+attributes:
+- predicate: vcard:Email
+  schema_type: dlthings:AttributeSpecification
+  value: matteo.visconti.gr@dartmouth.edu
+description: Emeritus member of the Center for Open Neuroscience. Formerly Dartmouth
+  Ph.D. student, now at UC Berkeley. Cognitive Neuroscience Ph.D. DueCredit co-developer.
+display_label: Matteo Visconti di Oleggio Castello
 family_name: Visconti di Oleggio Castello
 formatted_name: Matteo Visconti di Oleggio Castello
-display_label: Matteo Visconti di Oleggio Castello
-description: >-
-  Emeritus member of the Center for Open Neuroscience. Formerly Dartmouth
-  Ph.D. student, now at UC Berkeley. Cognitive Neuroscience Ph.D. DueCredit
-  co-developer.
-attributes:
-  - predicate: vcard:Email
-    value: matteo.visconti.gr@dartmouth.edu
-    schema_type: dlthings:AttributeSpecification
+given_name: Matteo
 identifiers:
-  - notation: mvdoc
-    schema_type: dlthings:Identifier
+- notation: mvdoc
+  schema_type: dlthings:Identifier
+pid: xyzrins:persons/matteo-visconti-di-oleggio-castello
+schema_type: xyzri:XYZPerson

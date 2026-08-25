@@ -1,18 +1,17 @@
-pid: xyzrins:persons/david-kennedy
-schema_type: xyzri:XYZPerson
-given_name: David
 additional_names:
-  - N.
+- N.
+attributes:
+- predicate: vcard:Email
+  schema_type: dlthings:AttributeSpecification
+  value: dnkennedy@umassmed.edu
+description: Collaborator at the Center for Open Neuroscience. Affiliated with UMass
+  Chan Medical School. The master-mind of the ReproNim project.
+display_label: David N. Kennedy
 family_name: Kennedy
 formatted_name: David N. Kennedy
-display_label: David N. Kennedy
-description: >-
-  Collaborator at the Center for Open Neuroscience. Affiliated with UMass Chan
-  Medical School. The master-mind of the ReproNim project.
-attributes:
-  - predicate: vcard:Email
-    value: dnkennedy@umassmed.edu
-    schema_type: dlthings:AttributeSpecification
+given_name: David
 identifiers:
-  - notation: dnkennedy
-    schema_type: dlthings:Identifier
+- notation: dnkennedy
+  schema_type: dlthings:Identifier
+pid: xyzrins:persons/david-kennedy
+schema_type: xyzri:XYZPerson

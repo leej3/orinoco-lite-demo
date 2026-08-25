@@ -1,7 +1,5 @@
-# Source: dump-research-info pool snapshot at 04ad6ff735daedaf3173a4e2f72bf930a63c0e37
+description: An unpublished document that may also be submitted to a publisher for
+  publication.
+display_label: Manuscript
 pid: bibo:Manuscript
 schema_type: xyzri:XYZBibliographicType
-display_label: Manuscript
-description: >-
-  An unpublished document that may also be submitted to a publisher for
-  publication.

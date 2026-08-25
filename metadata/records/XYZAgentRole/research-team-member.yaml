@@ -1,6 +1,5 @@
+description: A person who participated in a research project but whose role did not
+  involve direction or management of it
+display_label: Research team member
 pid: marcrel:rtm
 schema_type: xyzri:XYZAgentRole
-display_label: Research team member
-description: >-
-  A person who participated in a research project but whose role did not
-  involve direction or management of it

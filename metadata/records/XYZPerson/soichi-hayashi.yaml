@@ -1,16 +1,15 @@
-pid: xyzrins:persons/soichi-hayashi
-schema_type: xyzri:XYZPerson
-given_name: Soichi
+attributes:
+- predicate: vcard:Email
+  schema_type: dlthings:AttributeSpecification
+  value: soichih@gmail.com
+description: Emeritus member of the Center for Open Neuroscience. Software engineer
+  at Indiana University, Bloomington, working on brainlife.io.
+display_label: Soichi Hayashi
 family_name: Hayashi
 formatted_name: Soichi Hayashi
-display_label: Soichi Hayashi
-description: >-
-  Emeritus member of the Center for Open Neuroscience. Software engineer at
-  Indiana University, Bloomington, working on brainlife.io.
-attributes:
-  - predicate: vcard:Email
-    value: soichih@gmail.com
-    schema_type: dlthings:AttributeSpecification
+given_name: Soichi
 identifiers:
-  - notation: soichih
-    schema_type: dlthings:Identifier
+- notation: soichih
+  schema_type: dlthings:Identifier
+pid: xyzrins:persons/soichi-hayashi
+schema_type: xyzri:XYZPerson

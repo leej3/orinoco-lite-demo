@@ -1,9 +1,8 @@
+description: A person or organization that takes primary responsibility for a particular
+  activity or endeavor. May be combined with another relator term or code to show
+  the greater importance this person or organization has regarding that particular
+  role. If more than one relator is assigned to a heading, use the Lead relator only
+  if it applies to all the relators
+display_label: Lead
 pid: marcrel:led
 schema_type: xyzri:XYZAgentRole
-display_label: Lead
-description: >-
-  A person or organization that takes primary responsibility for a particular
-  activity or endeavor. May be combined with another relator term or code to
-  show the greater importance this person or organization has regarding that
-  particular role. If more than one relator is assigned to a heading, use the
-  Lead relator only if it applies to all the relators

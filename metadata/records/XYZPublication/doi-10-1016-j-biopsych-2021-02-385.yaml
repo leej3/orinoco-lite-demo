@@ -1,15 +1,3 @@
-pid: xyzrins:publications/doi-10-1016-j-biopsych-2021-02-385
-schema_type: xyzri:XYZPublication
-title: 'IQ in Typical Development: A Mega-Analysis of the Historical Literature'
-display_label: 'IQ in Typical Development: A Mega-Analysis of the Historical Literature'
-kind: bibo:AcademicArticle
-identifiers:
-- notation: 10.1016/j.biopsych.2021.02.385
-  schema_type: dlthings:DOI
-- notation: https://doi.org/10.1016/j.biopsych.2021.02.385
-  schema_type: dlthings:Identifier
-- notation: zotero:group:6197458:item:EPNPNFV7
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/david-kennedy
   roles:
@@ -29,8 +17,20 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: bibo:locator
+  schema_type: dlthings:AttributeSpecification
   value: 89, 9, S150
-  schema_type: dlthings:AttributeSpecification
 - predicate: dcterms:issued
-  value: 2021-05
   schema_type: dlthings:AttributeSpecification
+  value: 2021-05
+display_label: 'IQ in Typical Development: A Mega-Analysis of the Historical Literature'
+identifiers:
+- notation: 10.1016/j.biopsych.2021.02.385
+  schema_type: dlthings:DOI
+- notation: https://doi.org/10.1016/j.biopsych.2021.02.385
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:EPNPNFV7
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/doi-10-1016-j-biopsych-2021-02-385
+schema_type: xyzri:XYZPublication
+title: 'IQ in Typical Development: A Mega-Analysis of the Historical Literature'

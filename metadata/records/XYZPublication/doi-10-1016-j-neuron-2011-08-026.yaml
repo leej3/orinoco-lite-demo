@@ -1,17 +1,3 @@
-pid: xyzrins:publications/doi-10-1016-j-neuron-2011-08-026
-schema_type: xyzri:XYZPublication
-title: A Common, High-Dimensional Model of the Representational Space in Human Ventral Temporal
-  Cortex
-display_label: A Common, High-Dimensional Model of the Representational Space in Human Ventral
-  Temporal Cortex
-kind: bibo:AcademicArticle
-identifiers:
-- notation: 10.1016/j.neuron.2011.08.026
-  schema_type: dlthings:DOI
-- notation: 0896-6273
-  schema_type: dlthings:ISSN
-- notation: zotero:group:6197458:item:HARUUH9R
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/james-haxby
   roles:
@@ -27,8 +13,22 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: bibo:locator
+  schema_type: dlthings:AttributeSpecification
   value: 72, 2, 404-416
-  schema_type: dlthings:AttributeSpecification
 - predicate: dcterms:issued
-  value: 2011-10
   schema_type: dlthings:AttributeSpecification
+  value: 2011-10
+display_label: A Common, High-Dimensional Model of the Representational Space in Human
+  Ventral Temporal Cortex
+identifiers:
+- notation: 10.1016/j.neuron.2011.08.026
+  schema_type: dlthings:DOI
+- notation: 0896-6273
+  schema_type: dlthings:ISSN
+- notation: zotero:group:6197458:item:HARUUH9R
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/doi-10-1016-j-neuron-2011-08-026
+schema_type: xyzri:XYZPublication
+title: A Common, High-Dimensional Model of the Representational Space in Human Ventral
+  Temporal Cortex

@@ -1,15 +1,3 @@
-pid: xyzrins:publications/doi-10-1117-12-388446
-schema_type: xyzri:XYZPublication
-title: Method for image coordinate definition on extended laser paths
-display_label: Method for image coordinate definition on extended laser paths
-kind: bibo:Article
-identifiers:
-- notation: 10.1117/12.388446
-  schema_type: dlthings:DOI
-- notation: http://link.aip.org/link/?PSI/4148/19/1
-  schema_type: dlthings:Identifier
-- notation: zotero:group:6197458:item:MTDEYQV7
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/yaroslav-halchenko
   roles:
@@ -17,8 +5,20 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: bibo:locator
+  schema_type: dlthings:AttributeSpecification
   value: 4148:1, 19-26
-  schema_type: dlthings:AttributeSpecification
 - predicate: dcterms:issued
-  value: '2000'
   schema_type: dlthings:AttributeSpecification
+  value: '2000'
+display_label: Method for image coordinate definition on extended laser paths
+identifiers:
+- notation: 10.1117/12.388446
+  schema_type: dlthings:DOI
+- notation: http://link.aip.org/link/?PSI/4148/19/1
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:MTDEYQV7
+  schema_type: dlthings:Identifier
+kind: bibo:Article
+pid: xyzrins:publications/doi-10-1117-12-388446
+schema_type: xyzri:XYZPublication
+title: Method for image coordinate definition on extended laser paths

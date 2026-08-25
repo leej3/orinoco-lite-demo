@@ -1,13 +1,3 @@
-pid: xyzrins:publications/zotero-qltpv7jm
-schema_type: xyzri:XYZPublication
-title: Converging catalogues, warehouses, and deployment logistics into a federated 'data
-  distribution'
-display_label: Converging catalogues, warehouses, and deployment logistics into a federated
-  'data distribution'
-kind: bibo:Document
-identifiers:
-- notation: zotero:group:6197458:item:QLTPV7JM
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/yaroslav-halchenko
   roles:
@@ -19,5 +9,15 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: dcterms:issued
-  value: '2014'
   schema_type: dlthings:AttributeSpecification
+  value: '2014'
+display_label: Converging catalogues, warehouses, and deployment logistics into a
+  federated 'data distribution'
+identifiers:
+- notation: zotero:group:6197458:item:QLTPV7JM
+  schema_type: dlthings:Identifier
+kind: bibo:Document
+pid: xyzrins:publications/zotero-qltpv7jm
+schema_type: xyzri:XYZPublication
+title: Converging catalogues, warehouses, and deployment logistics into a federated
+  'data distribution'

@@ -1,14 +1,13 @@
+attributes:
+- predicate: foaf:homepage
+  schema_type: dlthings:AttributeSpecification
+  value: https://www.distribits.live/
+description: Community for enthusiasts of tools and workflows in the domain of distributed
+  data.
+display_label: distribits
+part_of:
+- xyzrins:.
 pid: xyzrins:projects/distribits
 schema_type: xyzri:XYZProject
-title: distribits
 short_name: distribits
-display_label: distribits
-description: >-
-  Community for enthusiasts of tools and workflows in the domain of
-  distributed data.
-part_of:
-  - xyzrins:.
-attributes:
-  - predicate: foaf:homepage
-    value: https://www.distribits.live/
-    schema_type: dlthings:AttributeSpecification
+title: distribits

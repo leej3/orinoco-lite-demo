@@ -1,13 +1,3 @@
-pid: xyzrins:publications/doi-10-2417-1200909-1683
-schema_type: xyzri:XYZPublication
-title: Advancing Neuroimaging Research with Predictive Multivariate Pattern Analysis
-display_label: Advancing Neuroimaging Research with Predictive Multivariate Pattern Analysis
-kind: bibo:AcademicArticle
-identifiers:
-- notation: 10.2417/1200909.1683
-  schema_type: dlthings:DOI
-- notation: zotero:group:6197458:item:DD2JG54D
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/yaroslav-halchenko
   roles:
@@ -19,5 +9,16 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: dcterms:issued
-  value: 2010-05
   schema_type: dlthings:AttributeSpecification
+  value: 2010-05
+display_label: Advancing Neuroimaging Research with Predictive Multivariate Pattern
+  Analysis
+identifiers:
+- notation: 10.2417/1200909.1683
+  schema_type: dlthings:DOI
+- notation: zotero:group:6197458:item:DD2JG54D
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/doi-10-2417-1200909-1683
+schema_type: xyzri:XYZPublication
+title: Advancing Neuroimaging Research with Predictive Multivariate Pattern Analysis

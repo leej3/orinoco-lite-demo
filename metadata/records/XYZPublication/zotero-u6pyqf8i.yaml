@@ -1,13 +1,3 @@
-pid: xyzrins:publications/zotero-u6pyqf8i
-schema_type: xyzri:XYZPublication
-title: 'The impact of shared data in neuroimaging: the case of OpenfMRI.org'
-display_label: 'The impact of shared data in neuroimaging: the case of OpenfMRI.org'
-kind: bibo:Document
-identifiers:
-- notation: http://f1000research.com/posters/4-299
-  schema_type: dlthings:Identifier
-- notation: zotero:group:6197458:item:U6PYQF8I
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/yaroslav-halchenko
   roles:
@@ -19,5 +9,15 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: dcterms:issued
-  value: '2015'
   schema_type: dlthings:AttributeSpecification
+  value: '2015'
+display_label: 'The impact of shared data in neuroimaging: the case of OpenfMRI.org'
+identifiers:
+- notation: http://f1000research.com/posters/4-299
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:U6PYQF8I
+  schema_type: dlthings:Identifier
+kind: bibo:Document
+pid: xyzrins:publications/zotero-u6pyqf8i
+schema_type: xyzri:XYZPublication
+title: 'The impact of shared data in neuroimaging: the case of OpenfMRI.org'

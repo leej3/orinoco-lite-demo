@@ -1,12 +1,3 @@
-pid: xyzrins:publications/zotero-qhqktyyq
-schema_type: xyzri:XYZPublication
-title: DueCredit - automagically collect citations for software, methods, and data you use
-display_label: DueCredit - automagically collect citations for software, methods, and data
-  you use
-kind: bibo:Document
-identifiers:
-- notation: zotero:group:6197458:item:QHQKTYYQ
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/yaroslav-halchenko
   roles:
@@ -18,5 +9,15 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: dcterms:issued
-  value: '2016'
   schema_type: dlthings:AttributeSpecification
+  value: '2016'
+display_label: DueCredit - automagically collect citations for software, methods,
+  and data you use
+identifiers:
+- notation: zotero:group:6197458:item:QHQKTYYQ
+  schema_type: dlthings:Identifier
+kind: bibo:Document
+pid: xyzrins:publications/zotero-qhqktyyq
+schema_type: xyzri:XYZPublication
+title: DueCredit - automagically collect citations for software, methods, and data
+  you use

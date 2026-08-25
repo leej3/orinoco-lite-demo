@@ -1,14 +1,13 @@
+attributes:
+- predicate: foaf:homepage
+  schema_type: dlthings:AttributeSpecification
+  value: https://www.nwb.org/
+description: A data standard providing neuroscientists with a common standard to share,
+  archive, use, and build analysis tools for neurophysiology data.
+display_label: NWB
+part_of:
+- xyzrins:.
 pid: xyzrins:projects/nwb
 schema_type: xyzri:XYZProject
-title: 'Neurodata Without Borders: Neurophysiology'
 short_name: NWB
-display_label: NWB
-description: >-
-  A data standard providing neuroscientists with a common standard to share,
-  archive, use, and build analysis tools for neurophysiology data.
-part_of:
-  - xyzrins:.
-attributes:
-  - predicate: foaf:homepage
-    value: https://www.nwb.org/
-    schema_type: dlthings:AttributeSpecification
+title: 'Neurodata Without Borders: Neurophysiology'

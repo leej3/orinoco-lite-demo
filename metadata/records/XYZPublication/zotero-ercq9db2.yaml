@@ -1,26 +1,3 @@
-pid: xyzrins:publications/zotero-ercq9db2
-schema_type: xyzri:XYZPublication
-title: 'Advanced Image Processing in Magnetic Resonance Imaging: fMRI, MRI, EEG, MEG'
-display_label: 'Advanced Image Processing in Magnetic Resonance Imaging: fMRI, MRI, EEG, MEG'
-description: This chapter provides a comprehensive survey of the motivations, assumptions
-  and pitfalls associated with combining signals such as fMRI with EEG or MEG. Our initial
-  focus in the chapter concerns mathematical approaches for solving the localization problem
-  in EEG and MEG. Next we document the most recent and promising ways in which these signals
-  can be combined with fMRI. Specifically, we look at correlative analysis, decomposition
-  techniques, equivalent dipole fitting, distributed sources modeling, beamforming, and Bayesian
-  methods. Due to difficulties in assessing ground truth of a combined signal in any realistic
-  experiment – a difficulty further confounded by lack of accurate biophysical models of BOLD
-  signal – we are cautious to be optimistic about multimodal integration. Nonetheless, as
-  we highlight and explore the technical and methodological difficulties of fusing heterogeneous
-  signals, it seems likely that correct fusion of multimodal data will allow previously inaccessible
-  spatiotemporal structures to be visualized and formalized and thus eventually become a useful
-  tool in brain imaging research.
-kind: bibo:BookSection
-identifiers:
-- notation: http://www.onerussian.com/Sci/fusion
-  schema_type: dlthings:Identifier
-- notation: zotero:group:6197458:item:ERCQ9DB2
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/yaroslav-halchenko
   roles:
@@ -28,8 +5,33 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: bibo:locator
+  schema_type: dlthings:AttributeSpecification
   value: 223-65
-  schema_type: dlthings:AttributeSpecification
 - predicate: dcterms:issued
-  value: '2005'
   schema_type: dlthings:AttributeSpecification
+  value: '2005'
+description: This chapter provides a comprehensive survey of the motivations, assumptions
+  and pitfalls associated with combining signals such as fMRI with EEG or MEG. Our
+  initial focus in the chapter concerns mathematical approaches for solving the localization
+  problem in EEG and MEG. Next we document the most recent and promising ways in which
+  these signals can be combined with fMRI. Specifically, we look at correlative analysis,
+  decomposition techniques, equivalent dipole fitting, distributed sources modeling,
+  beamforming, and Bayesian methods. Due to difficulties in assessing ground truth
+  of a combined signal in any realistic experiment – a difficulty further confounded
+  by lack of accurate biophysical models of BOLD signal – we are cautious to be optimistic
+  about multimodal integration. Nonetheless, as we highlight and explore the technical
+  and methodological difficulties of fusing heterogeneous signals, it seems likely
+  that correct fusion of multimodal data will allow previously inaccessible spatiotemporal
+  structures to be visualized and formalized and thus eventually become a useful tool
+  in brain imaging research.
+display_label: 'Advanced Image Processing in Magnetic Resonance Imaging: fMRI, MRI,
+  EEG, MEG'
+identifiers:
+- notation: http://www.onerussian.com/Sci/fusion
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:ERCQ9DB2
+  schema_type: dlthings:Identifier
+kind: bibo:BookSection
+pid: xyzrins:publications/zotero-ercq9db2
+schema_type: xyzri:XYZPublication
+title: 'Advanced Image Processing in Magnetic Resonance Imaging: fMRI, MRI, EEG, MEG'

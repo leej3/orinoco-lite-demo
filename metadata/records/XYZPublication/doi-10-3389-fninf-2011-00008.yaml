@@ -1,15 +1,3 @@
-pid: xyzrins:publications/doi-10-3389-fninf-2011-00008
-schema_type: xyzri:XYZPublication
-title: Neuroscience Runs on GNU/Linux
-display_label: Neuroscience Runs on GNU/Linux
-kind: bibo:AcademicArticle
-identifiers:
-- notation: 10.3389/fninf.2011.00008
-  schema_type: dlthings:DOI
-- notation: 1662-5196
-  schema_type: dlthings:ISSN
-- notation: zotero:group:6197458:item:RY6RBBJF
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/michael-hanke
   roles:
@@ -21,11 +9,23 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: bibo:locator
+  schema_type: dlthings:AttributeSpecification
   value: 5, 8
-  schema_type: dlthings:AttributeSpecification
 - predicate: dcterms:issued
+  schema_type: dlthings:AttributeSpecification
   value: '2011'
-  schema_type: dlthings:AttributeSpecification
 - predicate: dcterms:language
-  value: eng
   schema_type: dlthings:AttributeSpecification
+  value: eng
+display_label: Neuroscience Runs on GNU/Linux
+identifiers:
+- notation: 10.3389/fninf.2011.00008
+  schema_type: dlthings:DOI
+- notation: 1662-5196
+  schema_type: dlthings:ISSN
+- notation: zotero:group:6197458:item:RY6RBBJF
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/doi-10-3389-fninf-2011-00008
+schema_type: xyzri:XYZPublication
+title: Neuroscience Runs on GNU/Linux

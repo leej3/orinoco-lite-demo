@@ -1,17 +1,3 @@
-pid: xyzrins:publications/doi-10-1093-cercor-bhw068
-schema_type: xyzri:XYZPublication
-title: A Model of Representational Spaces in Human Cortex
-display_label: A Model of Representational Spaces in Human Cortex
-kind: bibo:AcademicArticle
-identifiers:
-- notation: 10.1093/cercor/bhw068
-  schema_type: dlthings:DOI
-- notation: 1047-3211
-  schema_type: dlthings:ISSN
-- notation: 1460-2199
-  schema_type: dlthings:ISSN
-- notation: zotero:group:6197458:item:XG2GWNFB
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/michael-hanke
   roles:
@@ -27,8 +13,22 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: bibo:locator
+  schema_type: dlthings:AttributeSpecification
   value: 6, 2919-2934
-  schema_type: dlthings:AttributeSpecification
 - predicate: dcterms:issued
-  value: 2016-06
   schema_type: dlthings:AttributeSpecification
+  value: 2016-06
+display_label: A Model of Representational Spaces in Human Cortex
+identifiers:
+- notation: 10.1093/cercor/bhw068
+  schema_type: dlthings:DOI
+- notation: 1047-3211
+  schema_type: dlthings:ISSN
+- notation: 1460-2199
+  schema_type: dlthings:ISSN
+- notation: zotero:group:6197458:item:XG2GWNFB
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/doi-10-1093-cercor-bhw068
+schema_type: xyzri:XYZPublication
+title: A Model of Representational Spaces in Human Cortex

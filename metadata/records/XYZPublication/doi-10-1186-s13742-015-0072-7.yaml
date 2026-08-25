@@ -1,13 +1,3 @@
-pid: xyzrins:publications/doi-10-1186-s13742-015-0072-7
-schema_type: xyzri:XYZPublication
-title: Four aspects to make science open "by design" and not as an after-thought
-display_label: Four aspects to make science open "by design" and not as an after-thought
-kind: bibo:AcademicArticle
-identifiers:
-- notation: 10.1186/s13742-015-0072-7
-  schema_type: dlthings:DOI
-- notation: zotero:group:6197458:item:KPIENLBK
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/yaroslav-halchenko
   roles:
@@ -19,8 +9,18 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: bibo:locator
+  schema_type: dlthings:AttributeSpecification
   value: 4, 31
-  schema_type: dlthings:AttributeSpecification
 - predicate: dcterms:issued
-  value: '2015'
   schema_type: dlthings:AttributeSpecification
+  value: '2015'
+display_label: Four aspects to make science open "by design" and not as an after-thought
+identifiers:
+- notation: 10.1186/s13742-015-0072-7
+  schema_type: dlthings:DOI
+- notation: zotero:group:6197458:item:KPIENLBK
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/doi-10-1186-s13742-015-0072-7
+schema_type: xyzri:XYZPublication
+title: Four aspects to make science open "by design" and not as an after-thought

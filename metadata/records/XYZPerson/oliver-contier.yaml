@@ -1,16 +1,15 @@
-pid: xyzrins:persons/oliver-contier
-schema_type: xyzri:XYZPerson
-given_name: Oliver
+attributes:
+- predicate: vcard:Email
+  schema_type: dlthings:AttributeSpecification
+  value: o.contier@gmail.com
+description: Emeritus member of the Center for Open Neuroscience. Masters student
+  in Psychology/Cognitive Neuroscience at University of Magdeburg.
+display_label: Oliver Contier
 family_name: Contier
 formatted_name: Oliver Contier
-display_label: Oliver Contier
-description: >-
-  Emeritus member of the Center for Open Neuroscience. Masters student in
-  Psychology/Cognitive Neuroscience at University of Magdeburg.
-attributes:
-  - predicate: vcard:Email
-    value: o.contier@gmail.com
-    schema_type: dlthings:AttributeSpecification
+given_name: Oliver
 identifiers:
-  - notation: oliver-contier
-    schema_type: dlthings:Identifier
+- notation: oliver-contier
+  schema_type: dlthings:Identifier
+pid: xyzrins:persons/oliver-contier
+schema_type: xyzri:XYZPerson

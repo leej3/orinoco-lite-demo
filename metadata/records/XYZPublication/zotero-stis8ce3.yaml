@@ -1,13 +1,3 @@
-pid: xyzrins:publications/zotero-stis8ce3
-schema_type: xyzri:XYZPublication
-title: Attention alters animal and action representation in highly-distributed functionally-defined
-  cortical parcels
-display_label: Attention alters animal and action representation in highly-distributed functionally-defined
-  cortical parcels
-kind: bibo:Document
-identifiers:
-- notation: zotero:group:6197458:item:STIS8CE3
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/samuel-nastase
   roles:
@@ -31,5 +21,15 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: dcterms:issued
-  value: '2015'
   schema_type: dlthings:AttributeSpecification
+  value: '2015'
+display_label: Attention alters animal and action representation in highly-distributed
+  functionally-defined cortical parcels
+identifiers:
+- notation: zotero:group:6197458:item:STIS8CE3
+  schema_type: dlthings:Identifier
+kind: bibo:Document
+pid: xyzrins:publications/zotero-stis8ce3
+schema_type: xyzri:XYZPublication
+title: Attention alters animal and action representation in highly-distributed functionally-defined
+  cortical parcels

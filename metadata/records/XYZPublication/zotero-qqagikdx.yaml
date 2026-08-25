@@ -1,12 +1,3 @@
-pid: xyzrins:publications/zotero-qqagikdx
-schema_type: xyzri:XYZPublication
-title: (Meta)Data and workflow management for your most important work and your daily routine
-display_label: (Meta)Data and workflow management for your most important work and your daily
-  routine
-kind: bibo:Document
-identifiers:
-- notation: zotero:group:6197458:item:QQAGIKDX
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/michael-hanke
   roles:
@@ -26,5 +17,15 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: dcterms:issued
-  value: '2018'
   schema_type: dlthings:AttributeSpecification
+  value: '2018'
+display_label: (Meta)Data and workflow management for your most important work and
+  your daily routine
+identifiers:
+- notation: zotero:group:6197458:item:QQAGIKDX
+  schema_type: dlthings:Identifier
+kind: bibo:Document
+pid: xyzrins:publications/zotero-qqagikdx
+schema_type: xyzri:XYZPublication
+title: (Meta)Data and workflow management for your most important work and your daily
+  routine

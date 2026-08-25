@@ -1,11 +1,3 @@
-pid: xyzrins:publications/zotero-c62b4pex
-schema_type: xyzri:XYZPublication
-title: 'Pybids: Python tools for manipulation and analysis of BIDS datasets'
-display_label: 'Pybids: Python tools for manipulation and analysis of BIDS datasets'
-kind: bibo:Document
-identifiers:
-- notation: zotero:group:6197458:item:C62B4PEX
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/yaroslav-halchenko
   roles:
@@ -25,5 +17,13 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: dcterms:issued
-  value: '2018'
   schema_type: dlthings:AttributeSpecification
+  value: '2018'
+display_label: 'Pybids: Python tools for manipulation and analysis of BIDS datasets'
+identifiers:
+- notation: zotero:group:6197458:item:C62B4PEX
+  schema_type: dlthings:Identifier
+kind: bibo:Document
+pid: xyzrins:publications/zotero-c62b4pex
+schema_type: xyzri:XYZPublication
+title: 'Pybids: Python tools for manipulation and analysis of BIDS datasets'

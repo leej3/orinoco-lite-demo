@@ -1,13 +1,12 @@
-pid: ror:04tfhh831
-schema_type: xyzri:XYZOrganization
-name: Center for Open Neuroscience
-short_name: CON
-display_label: Center for Open Neuroscience (CON)
-description: >-
-  Provides open software frameworks, platforms, data and methodologies for
-  neuroscience and beyond.
 at_location: https://www.wikidata.org/entity/Q131908
 attributes:
-  - predicate: foaf:homepage
-    value: https://centerforopenneuroscience.org/
-    schema_type: dlthings:AttributeSpecification
+- predicate: foaf:homepage
+  schema_type: dlthings:AttributeSpecification
+  value: https://centerforopenneuroscience.org/
+description: Provides open software frameworks, platforms, data and methodologies
+  for neuroscience and beyond.
+display_label: Center for Open Neuroscience (CON)
+name: Center for Open Neuroscience
+pid: ror:04tfhh831
+schema_type: xyzri:XYZOrganization
+short_name: CON

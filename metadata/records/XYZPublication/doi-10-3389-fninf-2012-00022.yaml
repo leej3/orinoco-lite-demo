@@ -1,17 +1,3 @@
-pid: xyzrins:publications/doi-10-3389-fninf-2012-00022
-schema_type: xyzri:XYZPublication
-title: 'Open is not enough. Let''s take the next step: An integrated, community-driven computing
-  platform for neuroscience'
-display_label: 'Open is not enough. Let''s take the next step: An integrated, community-driven
-  computing platform for neuroscience'
-kind: bibo:AcademicArticle
-identifiers:
-- notation: 10.3389/fninf.2012.00022
-  schema_type: dlthings:DOI
-- notation: 1662-5196
-  schema_type: dlthings:ISSN
-- notation: zotero:group:6197458:item:R9YLFWR2
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/yaroslav-halchenko
   roles:
@@ -23,8 +9,22 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: bibo:locator
+  schema_type: dlthings:AttributeSpecification
   value: 6, 00022
-  schema_type: dlthings:AttributeSpecification
 - predicate: dcterms:issued
-  value: '2012'
   schema_type: dlthings:AttributeSpecification
+  value: '2012'
+display_label: 'Open is not enough. Let''s take the next step: An integrated, community-driven
+  computing platform for neuroscience'
+identifiers:
+- notation: 10.3389/fninf.2012.00022
+  schema_type: dlthings:DOI
+- notation: 1662-5196
+  schema_type: dlthings:ISSN
+- notation: zotero:group:6197458:item:R9YLFWR2
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/doi-10-3389-fninf-2012-00022
+schema_type: xyzri:XYZPublication
+title: 'Open is not enough. Let''s take the next step: An integrated, community-driven
+  computing platform for neuroscience'

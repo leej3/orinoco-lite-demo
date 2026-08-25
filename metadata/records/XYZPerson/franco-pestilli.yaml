@@ -1,13 +1,11 @@
-pid: xyzrins:persons/franco-pestilli
-schema_type: xyzri:XYZPerson
-given_name: Franco
+description: Collaborator at the Center for Open Neuroscience. Affiliated with University
+  of Texas, Austin. Director and founder of brainlife.io cloud computing platform.
+display_label: Franco Pestilli
 family_name: Pestilli
 formatted_name: Franco Pestilli
-display_label: Franco Pestilli
-description: >-
-  Collaborator at the Center for Open Neuroscience. Affiliated with University
-  of Texas, Austin. Director and founder of brainlife.io cloud computing
-  platform.
+given_name: Franco
 identifiers:
-  - notation: francopestilli
-    schema_type: dlthings:Identifier
+- notation: francopestilli
+  schema_type: dlthings:Identifier
+pid: xyzrins:persons/franco-pestilli
+schema_type: xyzri:XYZPerson

@@ -1,13 +1,3 @@
-pid: xyzrins:publications/zotero-4j5d6v7h
-schema_type: xyzri:XYZPublication
-title: Resources for practicing PR4NI – pragmatic cursory overview
-display_label: Resources for practicing PR4NI – pragmatic cursory overview
-kind: bibo:Document
-identifiers:
-- notation: http://www.pymvpa.org/files/OHBM2016_Halchenko_resources.pdf
-  schema_type: dlthings:Identifier
-- notation: zotero:group:6197458:item:4J5D6V7H
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/yaroslav-halchenko
   roles:
@@ -15,5 +5,15 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: dcterms:issued
-  value: '2016'
   schema_type: dlthings:AttributeSpecification
+  value: '2016'
+display_label: Resources for practicing PR4NI – pragmatic cursory overview
+identifiers:
+- notation: http://www.pymvpa.org/files/OHBM2016_Halchenko_resources.pdf
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:4J5D6V7H
+  schema_type: dlthings:Identifier
+kind: bibo:Document
+pid: xyzrins:publications/zotero-4j5d6v7h
+schema_type: xyzri:XYZPublication
+title: Resources for practicing PR4NI – pragmatic cursory overview

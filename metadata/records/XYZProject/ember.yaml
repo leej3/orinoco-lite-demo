@@ -1,20 +1,19 @@
+associated_with:
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:rtm
+  schema_type: dlthings:Association
+attributes:
+- predicate: foaf:homepage
+  schema_type: dlthings:AttributeSpecification
+  value: https://emberarchive.org
+description: BRAIN Initiative archive for multi-modal neurophysiological and behavioral
+  data, supporting the Brain Behavior Quantification and Synchronization Program.
+  Being developed based on DANDI.
+display_label: EMBER
+part_of:
+- xyzrins:.
 pid: xyzrins:projects/ember
 schema_type: xyzri:XYZProject
-title: Ecosystem for Multi-modal Brain-behavior Experimentation and Research
 short_name: EMBER
-display_label: EMBER
-description: >-
-  BRAIN Initiative archive for multi-modal neurophysiological and behavioral
-  data, supporting the Brain Behavior Quantification and Synchronization
-  Program. Being developed based on DANDI.
-part_of:
-  - xyzrins:.
-associated_with:
-  - object: xyzrins:persons/yaroslav-halchenko
-    roles:
-      - marcrel:rtm
-    schema_type: dlthings:Association
-attributes:
-  - predicate: foaf:homepage
-    value: https://emberarchive.org
-    schema_type: dlthings:AttributeSpecification
+title: Ecosystem for Multi-modal Brain-behavior Experimentation and Research

@@ -1,15 +1,3 @@
-pid: xyzrins:publications/doi-10-3389-fninf-2012-00009
-schema_type: xyzri:XYZPublication
-title: Data sharing in neuroimaging research
-display_label: Data sharing in neuroimaging research
-kind: bibo:AcademicArticle
-identifiers:
-- notation: 10.3389/fninf.2012.00009
-  schema_type: dlthings:DOI
-- notation: 1662-5196
-  schema_type: dlthings:ISSN
-- notation: zotero:group:6197458:item:JMGMU882
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/jean-baptiste-poline
   roles:
@@ -33,8 +21,20 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: bibo:locator
+  schema_type: dlthings:AttributeSpecification
   value: 6, 9
-  schema_type: dlthings:AttributeSpecification
 - predicate: dcterms:issued
-  value: '2012'
   schema_type: dlthings:AttributeSpecification
+  value: '2012'
+display_label: Data sharing in neuroimaging research
+identifiers:
+- notation: 10.3389/fninf.2012.00009
+  schema_type: dlthings:DOI
+- notation: 1662-5196
+  schema_type: dlthings:ISSN
+- notation: zotero:group:6197458:item:JMGMU882
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/doi-10-3389-fninf-2012-00009
+schema_type: xyzri:XYZPublication
+title: Data sharing in neuroimaging research

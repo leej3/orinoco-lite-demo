@@ -1,35 +1,3 @@
-pid: xyzrins:publications/doi-10-1038-sdata-2016-44
-schema_type: xyzri:XYZPublication
-title: The brain imaging data structure, a format for organizing and describing outputs of
-  neuroimaging experiments
-display_label: The brain imaging data structure, a format for organizing and describing outputs
-  of neuroimaging experiments
-description: "Abstract\n            The development of magnetic resonance imaging (MRI) techniques\
-  \ has defined modern neuroimaging. Since its inception, tens of thousands of studies using\
-  \ techniques such as functional MRI and diffusion weighted imaging have allowed for the\
-  \ non-invasive study of the brain. Despite the fact that MRI is routinely used to obtain\
-  \ data for neuroscience research, there has been no widely adopted standard for organizing\
-  \ and describing the data collected in an imaging experiment. This renders sharing and reusing\
-  \ data (within or between labs) difficult if not impossible and unnecessarily complicates\
-  \ the application of automatic pipelines and quality assurance protocols. To solve this\
-  \ problem, we have developed the Brain Imaging Data Structure (BIDS), a standard for organizing\
-  \ and describing MRI datasets. The BIDS standard uses file formats compatible with existing\
-  \ software, unifies the majority of practices already common in the field, and captures\
-  \ the metadata necessary for most common data processing operations."
-kind: bibo:AcademicArticle
-identifiers:
-- notation: 10.1038/sdata.2016.44
-  schema_type: dlthings:DOI
-- notation: 2052-4463
-  schema_type: dlthings:ISSN
-- notation: http://www.nature.com/articles/sdata201644
-  schema_type: dlthings:Identifier
-- notation: https://www.nature.com/articles/sdata201644
-  schema_type: dlthings:Identifier
-- notation: zotero:group:6197458:item:4IBTF6HG
-  schema_type: dlthings:Identifier
-- notation: zotero:group:6197458:item:9KS9CGNB
-  schema_type: dlthings:Identifier
 attributed_to:
 - object: xyzrins:persons/satrajit-ghosh
   roles:
@@ -53,11 +21,44 @@ attributed_to:
   schema_type: dlthings:Attribution
 attributes:
 - predicate: bibo:locator
+  schema_type: dlthings:AttributeSpecification
   value: 3, 1, 160044
-  schema_type: dlthings:AttributeSpecification
 - predicate: dcterms:issued
+  schema_type: dlthings:AttributeSpecification
   value: '2016-06-21'
-  schema_type: dlthings:AttributeSpecification
 - predicate: dcterms:language
-  value: en
   schema_type: dlthings:AttributeSpecification
+  value: en
+description: "Abstract\n            The development of magnetic resonance imaging\
+  \ (MRI) techniques has defined modern neuroimaging. Since its inception, tens of\
+  \ thousands of studies using techniques such as functional MRI and diffusion weighted\
+  \ imaging have allowed for the non-invasive study of the brain. Despite the fact\
+  \ that MRI is routinely used to obtain data for neuroscience research, there has\
+  \ been no widely adopted standard for organizing and describing the data collected\
+  \ in an imaging experiment. This renders sharing and reusing data (within or between\
+  \ labs) difficult if not impossible and unnecessarily complicates the application\
+  \ of automatic pipelines and quality assurance protocols. To solve this problem,\
+  \ we have developed the Brain Imaging Data Structure (BIDS), a standard for organizing\
+  \ and describing MRI datasets. The BIDS standard uses file formats compatible with\
+  \ existing software, unifies the majority of practices already common in the field,\
+  \ and captures the metadata necessary for most common data processing operations."
+display_label: The brain imaging data structure, a format for organizing and describing
+  outputs of neuroimaging experiments
+identifiers:
+- notation: 10.1038/sdata.2016.44
+  schema_type: dlthings:DOI
+- notation: 2052-4463
+  schema_type: dlthings:ISSN
+- notation: http://www.nature.com/articles/sdata201644
+  schema_type: dlthings:Identifier
+- notation: https://www.nature.com/articles/sdata201644
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:4IBTF6HG
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:9KS9CGNB
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/doi-10-1038-sdata-2016-44
+schema_type: xyzri:XYZPublication
+title: The brain imaging data structure, a format for organizing and describing outputs
+  of neuroimaging experiments
