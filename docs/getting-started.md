@@ -103,6 +103,11 @@ self-hosted deployment, set the repository Actions variable
 `CURATION_REVIEW_APP_ORIGIN` to its credential-free HTTPS origin, with no path,
 query, or fragment.
 
+The central service keeps its workflows distinct: source-adapter decision
+reviews open under `/review/`, while the trusted SHACL Vue wrapper opens under
+`/edit/`. The downstream site's own `/edit/` route remains the credential-free
+SHACL Vue **Download bundle** workflow and does not gain GitHub semantics.
+
 Concrete source-adapter acquisition, candidate policy, and
 `.github/workflows/curation-review.yml` remain site-owned. Adding those pieces
 does not transfer `source-adapters/`, decision caches, records, or annotation
