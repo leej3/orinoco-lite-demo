@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 from collections.abc import Mapping, Sequence
+from contextlib import redirect_stdout
 from dataclasses import dataclass
 from html import escape
 import importlib.util
@@ -886,15 +887,16 @@ def build_plan(
                 "dump-research-info does not use a Zotero library version"
             )
         revision = _exact_sha(source_revision, "Source revision")
-        plan = provider.build_candidate_plan(
-            root,
-            source_checkout.resolve(),
-            trusted_root=trusted_root,
-            metadata_base=metadata_base,
-            expected_source_commit=revision,
-            adapter_agent_pid=owner,
-            schema=schema,
-        )
+        with redirect_stdout(sys.stderr):
+            plan = provider.build_candidate_plan(
+                root,
+                source_checkout.resolve(),
+                trusted_root=trusted_root,
+                metadata_base=metadata_base,
+                expected_source_commit=revision,
+                adapter_agent_pid=owner,
+                schema=schema,
+            )
     else:
         if source_checkout is not None or source_revision is not None:
             raise CurationHostError("Zotero does not use a source checkout")
@@ -904,15 +906,16 @@ def build_plan(
             or expected_library_version < 1
         ):
             raise CurationHostError("Zotero requires an exact positive library version")
-        plan = provider.build_candidate_plan(
-            root,
-            scratch.resolve(),
-            trusted_root=trusted_root,
-            metadata_base=metadata_base,
-            expected_library_version=expected_library_version,
-            adapter_agent_pid=owner,
-            schema=schema,
-        )
+        with redirect_stdout(sys.stderr):
+            plan = provider.build_candidate_plan(
+                root,
+                scratch.resolve(),
+                trusted_root=trusted_root,
+                metadata_base=metadata_base,
+                expected_library_version=expected_library_version,
+                adapter_agent_pid=owner,
+                schema=schema,
+            )
     if not isinstance(plan, CandidatePlan):
         raise CurationHostError("Adapter did not return a CandidatePlan")
     if plan.adapter != adapter or plan.metadata_base != metadata_base:
