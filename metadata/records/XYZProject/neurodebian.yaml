@@ -11,6 +11,20 @@ attributes:
 - predicate: foaf:homepage
   schema_type: dlthings:AttributeSpecification
   value: https://neuro.debian.net
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: Turnkey research software platform for all aspects of the neuroscientific
+    research process. Provides a comprehensive suite of readily usable and fully integrated
+    software with robust testing and deployment infrastructure.
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: NeuroDebian
+- predicate: dlthings:short_name
+  schema_type: dlthings:AttributeSpecification
+  value: NeuroDebian
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: NeuroDebian
 description: Turnkey research software platform for all aspects of the neuroscientific
   research process. Provides a comprehensive suite of readily usable and fully integrated
   software with robust testing and deployment infrastructure.

@@ -11,6 +11,20 @@ attributes:
 - predicate: foaf:homepage
   schema_type: dlthings:AttributeSpecification
   value: http://reproman.repronim.org
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: Aims to facilitate reproducible computation via collection of detailed information
+    about origin of used components including Debian/Conda packages and VCS repositories.
+    Part of the NIH-supported ReproNim effort.
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: ReproMan
+- predicate: dlthings:short_name
+  schema_type: dlthings:AttributeSpecification
+  value: ReproMan
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: ReproMan - Reproducible Computational Environments Manager
 description: Aims to facilitate reproducible computation via collection of detailed
   information about origin of used components including Debian/Conda packages and
   VCS repositories. Part of the NIH-supported ReproNim effort.

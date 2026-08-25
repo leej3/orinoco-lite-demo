@@ -1,0 +1,11 @@
+attributes:
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: McGill University
+- predicate: dlthings:name
+  schema_type: dlthings:AttributeSpecification
+  value: McGill University
+display_label: McGill University
+name: McGill University
+pid: ror:01pxwe438
+schema_type: xyzri:XYZOrganization

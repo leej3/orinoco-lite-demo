@@ -1,0 +1,7 @@
+attributes:
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: First author
+display_label: First author
+pid: obo:MS_1002034
+schema_type: xyzri:XYZAgentRole

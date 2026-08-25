@@ -1,0 +1,7 @@
+attributes:
+- predicate: dlthings:name
+  schema_type: dlthings:AttributeSpecification
+  value: GitHub
+name: GitHub
+pid: rrid:SCR_002630
+schema_type: xyzri:XYZOrganization

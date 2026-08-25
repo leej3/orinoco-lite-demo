@@ -19,6 +19,10 @@ attributed_to:
   roles:
   - marcrel:aut
   schema_type: dlthings:Attribution
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - obo:MS_1002036
+  schema_type: dlthings:Attribution
 attributes:
 - predicate: bibo:locator
   schema_type: dlthings:AttributeSpecification
@@ -29,6 +33,13 @@ attributes:
 - predicate: dcterms:language
   schema_type: dlthings:AttributeSpecification
   value: en
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Gorgolewski et al. 2016
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: The brain imaging data structure, a format for organizing and describing
+    outputs of neuroimaging experiments
 description: "Abstract\n            The development of magnetic resonance imaging\
   \ (MRI) techniques has defined modern neuroimaging. Since its inception, tens of\
   \ thousands of studies using techniques such as functional MRI and diffusion weighted\
@@ -56,6 +67,8 @@ identifiers:
 - notation: zotero:group:6197458:item:4IBTF6HG
   schema_type: dlthings:Identifier
 - notation: zotero:group:6197458:item:9KS9CGNB
+  schema_type: dlthings:Identifier
+- notation: https://doi.org/10.1038/sdata.2016.44
   schema_type: dlthings:Identifier
 kind: bibo:AcademicArticle
 pid: xyzrins:publications/doi-10-1038-sdata-2016-44

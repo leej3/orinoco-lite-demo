@@ -1,0 +1,7 @@
+attributes:
+- predicate: dlthings:name
+  schema_type: dlthings:AttributeSpecification
+  value: ISSN International Centre
+name: ISSN International Centre
+pid: ror:026ytr635
+schema_type: xyzri:XYZOrganization
