@@ -410,8 +410,12 @@ def equivalent_bootstrap_targets(
     answers: dict[str, Any],
     args: argparse.Namespace,
     current_classes: dict[str, list[str]],
-) -> dict[str, tuple[bytes, int]]:
-    """Preapprove exact target merges or exact intervening release states."""
+) -> tuple[
+    dict[str, tuple[bytes, int]],
+    dict[str, list[str]],
+    dict[str, list[str]],
+]:
+    """Preapprove exact target merges and return release ownership maps."""
 
     base_data = {
         key: value for key, value in answers.items() if not key.startswith("_")
@@ -518,7 +522,34 @@ def equivalent_bootstrap_targets(
             )
             if merged.returncode == 0 and merged.stdout == target_bytes:
                 approved[relative] = (target_bytes, target_mode)
-    return approved
+    return approved, base_classes, target_classes
+
+
+def regenerable_engine_lock_rejections(
+    conflicts: list[str],
+    *,
+    previous_classes: dict[str, list[str]],
+    current_classes: dict[str, list[str]],
+    target_classes: dict[str, list[str]],
+    refresh_pixi_lock: bool,
+) -> list[str]:
+    """Return every rejection only when all are scheduled engine-lock rebuilds."""
+
+    scheduled = {"orinoco.lock"}
+    if refresh_pixi_lock:
+        scheduled.add("pixi.lock")
+    witnesses: list[str] = []
+    for conflict in conflicts:
+        if not conflict.endswith(".rej"):
+            return []
+        relative = conflict.removesuffix(".rej")
+        if relative not in scheduled or any(
+            classify(relative, classes) != ["engine_lock"]
+            for classes in (previous_classes, current_classes, target_classes)
+        ):
+            return []
+        witnesses.append(conflict)
+    return sorted(witnesses)
 
 
 def reconcile_equivalent_rejections(
@@ -817,7 +848,11 @@ def execute(args: argparse.Namespace) -> int:
             "pre-existing conflict artifacts require review before an update: "
             + ", ".join(existing_conflicts)
         )
-    approved_equivalent = equivalent_bootstrap_targets(
+    (
+        approved_equivalent,
+        previous_classes,
+        target_classes,
+    ) = equivalent_bootstrap_targets(
         root,
         template_source,
         previous_template_version,
@@ -831,11 +866,21 @@ def execute(args: argparse.Namespace) -> int:
     result = run(copier, cwd=root)
     conflicts = conflict_paths(root)
     reconciled_conflicts: list[str] = []
+    engine_lock_rejections: list[str] = []
     removed_placeholders: list[str] = []
     if result.returncode == 0:
         conflicts, reconciled_conflicts = reconcile_equivalent_rejections(
             root, conflicts, approved_equivalent
         )
+        engine_lock_rejections = regenerable_engine_lock_rejections(
+            conflicts,
+            previous_classes=previous_classes,
+            current_classes=classes,
+            target_classes=target_classes,
+            refresh_pixi_lock=not args.skip_pixi_lock,
+        )
+        if engine_lock_rejections:
+            conflicts = []
         updated_classes = ownership_classes(
             load_yaml(root / ".orinoco-lite/template-ownership.yml")
         )
@@ -916,6 +961,9 @@ def execute(args: argparse.Namespace) -> int:
             "Copier changed protected site content: "
             + ", ".join(site_changes)
         )
+
+    for conflict in engine_lock_rejections:
+        (root / conflict).unlink()
 
     lock_after = update_lock(lock_after, answers_after, args)
     answers_after["template_version"] = args.to_template
