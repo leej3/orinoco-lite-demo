@@ -10,6 +10,15 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2004'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Fusion of functional brain imaging modalities via linear programming
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Fusion of functional brain imaging modalities via linear programming
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: Fusion of functional brain imaging modalities via linear programming
 identifiers:
 - notation: http://www.onerussian.com/Sci/pubs/lpnfsi2003.pdf

@@ -15,6 +15,17 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: 2022-05
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'The Individualized Neural Tuning Model: Precise and generalizable cartography
+    of functional architecture in individual brains'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'The Individualized Neural Tuning Model: Precise and generalizable cartography
+    of functional architecture in individual brains'
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: 'The Individualized Neural Tuning Model: Precise and generalizable
   cartography of functional architecture in individual brains'
 identifiers:

@@ -53,6 +53,15 @@ attributes:
 - predicate: dcterms:rights
   schema_type: dlthings:AttributeSpecification
   value: http://creativecommons.org/licenses/by/4.0/
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: HeuDiConv — flexible DICOM conversion into structureddirectory layouts
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: HeuDiConv — flexible DICOM conversion into structureddirectory layouts
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: HeuDiConv — flexible DICOM conversion into structureddirectory layouts
 identifiers:
 - notation: 10.21105/joss.05839

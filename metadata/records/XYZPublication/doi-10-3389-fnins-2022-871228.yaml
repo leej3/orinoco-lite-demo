@@ -18,6 +18,32 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: 2022-4-19
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'Microscopy-BIDS: An Extension to the Brain Imaging Data Structure for Microscopy
+    Data'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'Microscopy-BIDS: An Extension to the Brain Imaging Data Structure for Microscopy
+    Data'
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: "The Brain Imaging Data Structure (BIDS) is a specification for organizing,\
+    \ sharing, and archiving neuroimaging data and metadata in a reusable way. First\
+    \ developed for magnetic resonance imaging (MRI) datasets, the community-led specification\
+    \ evolved rapidly to include other modalities such as magnetoencephalography,\
+    \ positron emission tomography, and quantitative MRI (qMRI). In this work, we\
+    \ present an extension to BIDS for microscopy imaging data, along with example\
+    \ datasets. Microscopy-BIDS supports common imaging methods, including 2D/3D,\n\
+    \              ex\n              /\n              in vivo\n              , micro-CT,\
+    \ and optical and electron microscopy. Microscopy-BIDS also includes comprehensible\
+    \ metadata definitions for hardware, image acquisition, and sample properties.\
+    \ This extension will facilitate future harmonization efforts in the context of\
+    \ multi-modal, multi-scale imaging such as the characterization of tissue microstructure\
+    \ with qMRI."
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 description: "The Brain Imaging Data Structure (BIDS) is a specification for organizing,\
   \ sharing, and archiving neuroimaging data and metadata in a reusable way. First\
   \ developed for magnetic resonance imaging (MRI) datasets, the community-led specification\

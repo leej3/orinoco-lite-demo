@@ -1,0 +1,14 @@
+assertions:
+- assertion_sha256: sha256:b7c5cef54f1f490fa11b2f9cd8b4cbcca99ea7e8faefce58f90f1e72ffbaf64a
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/Z3AQGPJK
+- assertion_sha256: sha256:faf2dec79cce632a08a23245cfc5e5c17201152bb07d48f84cda3a3c9d0cf89b
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/Z3AQGPJK
+- assertion_sha256: sha256:daaf525b6f3d3378a5630d6cee38e0b0b19098a51ceab864edf5e50321977190
+  path: /characterized_by
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/Z3AQGPJK
+record: xyzrins:publications/doi-10-1371-journal-pone-0066620

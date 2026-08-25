@@ -18,6 +18,15 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2009'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'PyMVPA: A Python toolbox for multivariate pattern analysis of fMRI data'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'PyMVPA: A Python toolbox for multivariate pattern analysis of fMRI data'
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: 'PyMVPA: A Python toolbox for multivariate pattern analysis of fMRI
   data'
 identifiers:

@@ -19,6 +19,17 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2015'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Application of the Neuroimaging Data Model to Represent and Exchange Primary
+    and Derived Data
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Application of the Neuroimaging Data Model to Represent and Exchange Primary
+    and Derived Data
+characterized_by:
+- object: bibo:Document
+  predicate: dcterms:type
 display_label: Application of the Neuroimaging Data Model to Represent and Exchange
   Primary and Derived Data
 identifiers:

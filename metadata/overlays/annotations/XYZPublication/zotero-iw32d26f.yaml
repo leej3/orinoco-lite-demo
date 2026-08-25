@@ -1,0 +1,14 @@
+assertions:
+- assertion_sha256: sha256:2ff262c75b24f9205e353b320e9d51d15994c5b2c97325f9a7bf82165e8310be
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/IW32D26F
+- assertion_sha256: sha256:a9e8c3647bd45782286c58a7e2c301eeb60aae67c080ad7f65eefd8f21fa7c42
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/IW32D26F
+- assertion_sha256: sha256:b431012d3bf579da4d487b108ee425bc054cda63b8d0fcf81ec301c02cb71eca
+  path: /characterized_by
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/IW32D26F
+record: xyzrins:publications/zotero-iw32d26f

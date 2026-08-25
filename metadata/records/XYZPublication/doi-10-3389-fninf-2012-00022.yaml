@@ -14,6 +14,17 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2012'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'Open is not enough. Let''s take the next step: An integrated, community-driven
+    computing platform for neuroscience'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'Open is not enough. Let''s take the next step: An integrated, community-driven
+    computing platform for neuroscience'
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: 'Open is not enough. Let''s take the next step: An integrated, community-driven
   computing platform for neuroscience'
 identifiers:

@@ -18,6 +18,17 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2017'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: The Neural Representation Of Personally Familiar And Unfamiliar Faces In
+    The Distributed System For Face Perception
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: The Neural Representation Of Personally Familiar And Unfamiliar Faces In
+    The Distributed System For Face Perception
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: The Neural Representation Of Personally Familiar And Unfamiliar Faces
   In The Distributed System For Face Perception
 identifiers:

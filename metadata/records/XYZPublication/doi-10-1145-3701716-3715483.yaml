@@ -17,6 +17,17 @@ attributes:
 - predicate: dcterms:language
   schema_type: dlthings:AttributeSpecification
   value: en
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'Bridging the Scientific Knowledge Gap and Reproducibility: A Survey of Provenance,
+    Assertion and Evidence Ontologies'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'Bridging the Scientific Knowledge Gap and Reproducibility: A Survey of Provenance,
+    Assertion and Evidence Ontologies'
+characterized_by:
+- object: bibo:Article
+  predicate: dcterms:type
 display_label: 'Bridging the Scientific Knowledge Gap and Reproducibility: A Survey
   of Provenance, Assertion and Evidence Ontologies'
 identifiers:

@@ -10,6 +10,17 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2021'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Protocol for a machine learning algorithm predicting depressive disorders
+    using the T1w/T2w ratio
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Protocol for a machine learning algorithm predicting depressive disorders
+    using the T1w/T2w ratio
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: Protocol for a machine learning algorithm predicting depressive disorders
   using the T1w/T2w ratio
 identifiers:

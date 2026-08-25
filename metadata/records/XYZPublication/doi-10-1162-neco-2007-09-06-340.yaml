@@ -10,6 +10,17 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2008'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'Brain reading using full brain support vector machines for object recognition:
+    there is no “face” identification area'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'Brain reading using full brain support vector machines for object recognition:
+    there is no “face” identification area'
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: 'Brain reading using full brain support vector machines for object
   recognition: there is no “face” identification area'
 identifiers:
