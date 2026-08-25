@@ -26,7 +26,10 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[3]
 AGENT_PID = "https://example.invalid/agents/zotero-adapter-test-v1"
-REVIEWED_AGENT_PID = "xyzrins:source-adapters/zotero/v1"
+REVIEWED_ADAPTER_AGENT_PIDS = (
+    "xyzrins:source-adapters/dump-research-info/v1",
+    "xyzrins:source-adapters/zotero/v1",
+)
 METADATA_BASE = "1" * 40
 
 
@@ -85,7 +88,7 @@ def prepared_root(destination: Path) -> Path:
         shutil.copytree(annotations, root / "metadata/overlays/annotations")
     neutralize_reviewed_adapter_state(
         root,
-        adapter_agent_pids=(REVIEWED_AGENT_PID,),
+        adapter_agent_pids=REVIEWED_ADAPTER_AGENT_PIDS,
         decision_caches=(
             Path("source-adapters/zotero/policy/curation-decisions.yaml"),
         ),
