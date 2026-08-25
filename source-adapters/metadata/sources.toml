@@ -15,5 +15,5 @@ group_id = 6197458
 id = "dump-research-info"
 adapter = "source-adapters/dump-research-info/metadata_adapter.py"
 enabled_by_default = false
-source_directory = "data/con_site"
+source_roots = ["data/con_site", "data/pool_psychoinformatics_de"]
 evidence_root = "source-adapters/dump-research-info/source/con-site-gap"

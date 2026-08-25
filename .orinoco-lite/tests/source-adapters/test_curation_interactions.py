@@ -26,6 +26,7 @@ from orinoco_lite.decisions import (
     load_decision_cache,
     serialize_decision_cache,
 )
+from orinoco_lite.errors import DriverError
 from orinoco_lite.finalization import finalize_candidate_plan
 from orinoco_lite.projection import validate_semantics
 from orinoco_lite.validation import validate_workspace
@@ -34,7 +35,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[3]
 ZOTERO_AGENT = "https://example.invalid/agents/zotero-interaction-test-v1"
-DUMP_AGENT = "https://example.invalid/agents/dump-interaction-test-v1"
+DUMP_AGENT = "https://example.invalid/agents/dump-interaction-test-v2"
 ZOTERO_VERSION = 451
 REVIEWER = "https://github.com/fixture-curator"
 REPOSITORY = "con/test-orinoco-downstream-website"
@@ -195,11 +196,11 @@ def prepared_repository(destination: Path) -> tuple[Path, str]:
             },
         ),
         (
-            "XYZProject/dump-interaction-test-v1.yaml",
+            "XYZProject/dump-interaction-test-v2.yaml",
             {
                 "pid": DUMP_AGENT,
                 "schema_type": "xyzri:XYZProject",
-                "title": "Synthetic Dump interaction adapter v1",
+                "title": "Synthetic Dump interaction adapter v2",
             },
         ),
     )
@@ -214,19 +215,32 @@ def write_dump_source(
     source: Path,
     records: dict[str, list[dict[str, object]]],
     message: str,
+    *,
+    role_records: list[dict[str, object]] | None = None,
 ) -> str:
     for class_name, values in records.items():
         write_json(source / "data/con_site" / f"{class_name}.json", values)
+    write_json(
+        source / "data/pool_psychoinformatics_de/XYZAgentRole.json",
+        role_records or [],
+    )
     return commit_all(source, message)
 
 
 def make_dump_source(
     destination: Path,
     records: dict[str, list[dict[str, object]]],
+    *,
+    role_records: list[dict[str, object]] | None = None,
 ) -> tuple[Path, str]:
     source = destination / "dump-source"
     init_repository(source)
-    return source, write_dump_source(source, records, "source v1")
+    return source, write_dump_source(
+        source,
+        records,
+        "source v1",
+        role_records=role_records,
+    )
 
 
 def build_zotero(
@@ -450,6 +464,60 @@ class CrossAdapterInteractionTests(unittest.TestCase):
         self.temporary = tempfile.TemporaryDirectory()
         self.addCleanup(self.temporary.cleanup)
         self.destination = Path(self.temporary.name)
+
+    def test_rejecting_an_absent_role_dependency_leaves_invalid_primary(self) -> None:
+        root, base = prepared_repository(self.destination)
+        role_pid = "xyzrins:roles/required-by-publication"
+        publication_pid = "xyzrins:publications/role-dependent"
+        source, source_commit = make_dump_source(
+            self.destination,
+            {
+                "XYZPublication": [
+                    {
+                        "attributed_to": [
+                            {
+                                "object": "xyzrins:persons/austin-macdonald",
+                                "roles": [role_pid],
+                                "schema_type": "dlthings:Attribution",
+                            }
+                        ],
+                        "pid": publication_pid,
+                        "title": "Role-dependent publication",
+                    }
+                ]
+            },
+            role_records=[
+                {
+                    "display_label": "Required publication role",
+                    "pid": role_pid,
+                    "schema_type": "xyzri:XYZAgentRole",
+                }
+            ],
+        )
+        plan = build_dump(root, source, base, source_commit)
+        self.assertEqual(
+            {publication_pid, role_pid},
+            {candidate.pid for candidate in plan.candidates},
+        )
+
+        git(root, "switch", "--quiet", "--create", "role-rejected", base)
+        proposal = apply_plan(root, plan, "role dependency proposal")
+        finalize_candidate_plan(
+            root,
+            plan=plan,
+            proposal_commit=proposal,
+            submitted_head=proposal,
+            dispositions={
+                publication_pid: Disposition.ACCEPT,
+                role_pid: Disposition.REJECT,
+            },
+        )
+
+        with self.assertRaisesRegex(
+            DriverError,
+            "dangling attributed_to.roles target",
+        ):
+            validate_semantics(load_workspace(root), root.parent / "runtime")
 
     def test_shared_thing_keeps_independent_pav_caches_and_reopens_material_changes(
         self,

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from copy import deepcopy
 import importlib.util
 import json
 import os
@@ -28,7 +29,21 @@ from orinoco_lite.decisions import (
 ROOT = Path(__file__).resolve().parents[3]
 ADAPTER_PATH = ROOT / "source-adapters/dump-research-info/metadata_adapter.py"
 CANDIDATES_PATH = ROOT / "source-adapters/dump-research-info/candidates.py"
-AGENT_PID = "urn:example:test:dump-research-info-adapter:v1"
+AGENT_PID = "urn:example:test:dump-research-info-adapter:v2"
+FIRST_AUTHOR_ROLE = {
+    "broad_mappings": ["marcrel:aut"],
+    "description": "The first of a set of authors associated with a publication.",
+    "display_label": "First author",
+    "pid": "obo:MS_1002034",
+    "schema_type": "xyzri:XYZAgentRole",
+}
+SENIOR_AUTHOR_ROLE = {
+    "broad_mappings": ["marcrel:aut"],
+    "description": "The senior author associated with a publication.",
+    "display_label": "Senior author",
+    "pid": "obo:MS_1002035",
+    "schema_type": "xyzri:XYZAgentRole",
+}
 
 
 def schema_fixture() -> Path:
@@ -95,13 +110,24 @@ def write_yaml(path: Path, value: object) -> None:
     )
 
 
-def write_source(root: Path, records: dict[str, list[dict[str, object]]]) -> str:
+def write_source(
+    root: Path,
+    records: dict[str, list[dict[str, object]]],
+    *,
+    role_records: list[dict[str, object]] | None = None,
+) -> str:
     source = root / "data/con_site"
     source.mkdir(parents=True, exist_ok=True)
     for class_name, values in records.items():
         (source / f"{class_name}.json").write_text(
             json.dumps(values, indent=2) + "\n", encoding="utf-8"
         )
+    pool = root / "data/pool_psychoinformatics_de"
+    pool.mkdir(parents=True, exist_ok=True)
+    (pool / "XYZAgentRole.json").write_text(
+        json.dumps(role_records or [], indent=2) + "\n",
+        encoding="utf-8",
+    )
     return commit_all(root, "source")
 
 
@@ -138,11 +164,14 @@ def create_downstream(
 
 
 def make_source(
-    root: Path, records: dict[str, list[dict[str, object]]]
+    root: Path,
+    records: dict[str, list[dict[str, object]]],
+    *,
+    role_records: list[dict[str, object]] | None = None,
 ) -> tuple[Path, str]:
     source = root / "source"
     init_repository(source)
-    return source, write_source(source, records)
+    return source, write_source(source, records, role_records=role_records)
 
 
 def build(
@@ -267,6 +296,423 @@ class SourceMappingTests(unittest.TestCase):
             self.assertEqual(source_commit, coordinate["commit"])
             self.assertNotIn("path", coordinate)
 
+    def test_equal_duplicate_role_coalesces_to_the_full_authoritative_pool_record(
+        self,
+    ) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            downstream = root / "downstream"
+            base = create_downstream(downstream, [])
+            source, source_commit = make_source(
+                root,
+                {
+                    "XYZAgentRole": [deepcopy(FIRST_AUTHOR_ROLE)],
+                    "XYZPublication": [
+                        {
+                            "attributed_to": [
+                                {
+                                    "object": "xyzrins:persons/author",
+                                    "roles": ["obo:MS_1002034"],
+                                    "schema_type": "dlthings:Attribution",
+                                }
+                            ],
+                            "pid": "doi:10.1234/role-dependency",
+                            "title": "Role dependency",
+                        }
+                    ],
+                },
+                role_records=[deepcopy(FIRST_AUTHOR_ROLE)],
+            )
+
+            targets, coordinate = ADAPTER.build_source_targets(
+                source,
+                downstream,
+                expected_source_commit=source_commit,
+            )
+
+            self.assertEqual(2, len(targets))
+            role_target = next(
+                target for target in targets if target.source_class == "XYZAgentRole"
+            )
+            self.assertEqual(
+                "data/pool_psychoinformatics_de",
+                role_target.source_directory,
+            )
+            self.assertEqual(
+                "data/pool_psychoinformatics_de:XYZAgentRole:obo:MS_1002034",
+                role_target.source_record_id,
+            )
+            self.assertEqual(FIRST_AUTHOR_ROLE, role_target.transformed_record)
+            self.assertEqual(
+                {
+                    "data/con_site": git(source, "rev-parse", "HEAD:data/con_site"),
+                    "data/pool_psychoinformatics_de": git(
+                        source,
+                        "rev-parse",
+                        "HEAD:data/pool_psychoinformatics_de",
+                    ),
+                },
+                coordinate["source_roots"],
+            )
+
+            first = build(downstream, source, base, source_commit)
+            self.assertEqual("2", first.adapter_version)
+            self.assertEqual(2, len(first.candidates))
+            role = next(
+                candidate
+                for candidate in first.candidates
+                if candidate.pid == "obo:MS_1002034"
+            )
+            self.assertEqual(
+                "XYZAgentRole/obo-ms-1002034.yaml",
+                role.record_path,
+            )
+            self.assertEqual("First author", role.proposed_record["display_label"])
+            self.assertEqual(
+                ["marcrel:aut"],
+                role.proposed_record["broad_mappings"],
+            )
+            self.assertIsNotNone(role.proposed_companion)
+            self.assertTrue(
+                all(
+                    "/blob/main/data/pool_psychoinformatics_de/" in entry["pav:importedFrom"]
+                    for entry in role.proposed_companion["assertions"]
+                )
+            )
+            publication = next(
+                candidate
+                for candidate in first.candidates
+                if candidate.pid != "obo:MS_1002034"
+            )
+            self.assertTrue(
+                all(
+                    "/blob/main/data/con_site/" in entry["pav:importedFrom"]
+                    for entry in publication.proposed_companion["assertions"]
+                )
+            )
+
+            for change in first.file_changes():
+                path = downstream / change.path
+                self.assertIsNotNone(change.proposed)
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_bytes(change.proposed)
+            second = build(downstream, source, "2" * 40, source_commit)
+            self.assertEqual((), second.candidates)
+            self.assertEqual((), second.file_changes())
+
+    def test_unequal_duplicate_role_across_source_roots_is_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            downstream = root / "downstream"
+            create_downstream(downstream, [])
+            source, source_commit = make_source(
+                root,
+                {
+                    "XYZAgentRole": [
+                        {
+                            "display_label": "Bounded duplicate",
+                            "pid": "obo:MS_1002034",
+                            "schema_type": "xyzri:XYZAgentRole",
+                        }
+                    ],
+                    "XYZPublication": [
+                        {
+                            "attributed_to": [
+                                {
+                                    "object": "xyzrins:persons/author",
+                                    "roles": ["obo:MS_1002034"],
+                                    "schema_type": "dlthings:Attribution",
+                                }
+                            ],
+                            "pid": "doi:10.1234/conflict",
+                        }
+                    ],
+                },
+                role_records=[deepcopy(FIRST_AUTHOR_ROLE)],
+            )
+
+            with self.assertRaisesRegex(
+                ADAPTER.DumpResearchInfoAdapterError,
+                "has conflicting records",
+            ):
+                ADAPTER.build_source_targets(
+                    source,
+                    downstream,
+                    expected_source_commit=source_commit,
+                )
+
+    def test_required_role_must_exist_in_pool_even_when_already_canonical(
+        self,
+    ) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            downstream = root / "downstream"
+            create_downstream(
+                downstream,
+                [("XYZAgentRole/first-author.yaml", deepcopy(FIRST_AUTHOR_ROLE))],
+            )
+            source, source_commit = make_source(
+                root,
+                {
+                    "XYZPublication": [
+                        {
+                            "attributed_to": [
+                                {
+                                    "object": "xyzrins:persons/author",
+                                    "roles": ["obo:MS_1002034"],
+                                    "schema_type": "dlthings:Attribution",
+                                }
+                            ],
+                            "pid": "doi:10.1234/missing-authority",
+                        }
+                    ]
+                },
+            )
+
+            with self.assertRaisesRegex(
+                ADAPTER.DumpResearchInfoAdapterError,
+                "has no authoritative XYZAgentRole record",
+            ):
+                ADAPTER.build_source_targets(
+                    source,
+                    downstream,
+                    expected_source_commit=source_commit,
+                )
+
+    def test_exact_canonical_pool_role_is_validated_without_a_candidate(
+        self,
+    ) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            downstream = root / "downstream"
+            base = create_downstream(
+                downstream,
+                [("XYZAgentRole/first-author.yaml", deepcopy(FIRST_AUTHOR_ROLE))],
+            )
+            source, source_commit = make_source(
+                root,
+                {
+                    "XYZPublication": [
+                        {
+                            "attributed_to": [
+                                {
+                                    "object": "xyzrins:persons/author",
+                                    "roles": ["obo:MS_1002034"],
+                                    "schema_type": "dlthings:Attribution",
+                                }
+                            ],
+                            "pid": "doi:10.1234/already-canonical-role",
+                        }
+                    ]
+                },
+                role_records=[deepcopy(FIRST_AUTHOR_ROLE)],
+            )
+
+            plan = build(downstream, source, base, source_commit)
+
+            self.assertEqual(
+                {"xyzrins:publications/doi-10-1234-already-canonical-role"},
+                {candidate.pid for candidate in plan.candidates},
+            )
+            self.assertNotIn(
+                "obo:MS_1002034",
+                {candidate.pid for candidate in plan.candidates},
+            )
+
+    def test_stale_same_pid_canonical_role_fails_as_a_prerequisite(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            downstream = root / "downstream"
+            stale = deepcopy(FIRST_AUTHOR_ROLE)
+            stale["display_label"] = "Stale first-author role"
+            base = create_downstream(
+                downstream,
+                [("XYZAgentRole/first-author.yaml", stale)],
+            )
+            source, source_commit = make_source(
+                root,
+                {
+                    "XYZPublication": [
+                        {
+                            "attributed_to": [
+                                {
+                                    "object": "xyzrins:persons/author",
+                                    "roles": ["obo:MS_1002034"],
+                                    "schema_type": "dlthings:Attribution",
+                                }
+                            ],
+                            "pid": "doi:10.1234/stale-role",
+                        }
+                    ]
+                },
+                role_records=[deepcopy(FIRST_AUTHOR_ROLE)],
+            )
+
+            with self.assertRaisesRegex(
+                CANDIDATES.DumpResearchInfoCandidateError,
+                "authoritative role differs from the same-PID canonical role",
+            ):
+                build(downstream, source, base, source_commit)
+
+    def test_authoritative_pool_role_does_not_alias_through_an_identifier(
+        self,
+    ) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            downstream = root / "downstream"
+            create_downstream(
+                downstream,
+                [
+                    (
+                        "XYZAgentRole/alias.yaml",
+                        {
+                            "display_label": "Local alias",
+                            "identifiers": [
+                                {
+                                    "notation": "obo:MS_1002034",
+                                    "schema_type": "dlthings:Identifier",
+                                }
+                            ],
+                            "pid": "xyzrins:roles/local-alias",
+                            "schema_type": "xyzri:XYZAgentRole",
+                        },
+                    )
+                ],
+            )
+            source, source_commit = make_source(
+                root,
+                {
+                    "XYZPublication": [
+                        {
+                            "attributed_to": [
+                                {
+                                    "object": "xyzrins:persons/author",
+                                    "roles": ["obo:MS_1002034"],
+                                    "schema_type": "dlthings:Attribution",
+                                }
+                            ],
+                            "pid": "doi:10.1234/exact-role-identity",
+                        }
+                    ]
+                },
+                role_records=[deepcopy(FIRST_AUTHOR_ROLE)],
+            )
+
+            targets, _coordinate = ADAPTER.build_source_targets(
+                source,
+                downstream,
+                expected_source_commit=source_commit,
+            )
+
+            role = next(
+                target for target in targets if target.source_class == "XYZAgentRole"
+            )
+            self.assertEqual("obo:MS_1002034", role.target_pid)
+            self.assertIsNone(role.baseline_record)
+            self.assertEqual(
+                "XYZAgentRole/obo-ms-1002034.yaml",
+                role.record_path,
+            )
+
+    def test_unreferenced_primary_role_is_not_selected(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            downstream = root / "downstream"
+            create_downstream(downstream, [])
+            source, source_commit = make_source(
+                root,
+                {
+                    "XYZAgentRole": [deepcopy(FIRST_AUTHOR_ROLE)],
+                    "XYZProject": [
+                        {
+                            "pid": "xyzrins:projects/no-role-reference",
+                            "title": "No role reference",
+                        }
+                    ],
+                },
+                role_records=[deepcopy(FIRST_AUTHOR_ROLE)],
+            )
+
+            targets, _coordinate = ADAPTER.build_source_targets(
+                source,
+                downstream,
+                expected_source_commit=source_commit,
+            )
+
+            self.assertEqual(
+                {"xyzrins:projects/no-role-reference"},
+                {target.target_pid for target in targets},
+            )
+
+    def test_duplicate_pid_inside_the_pool_source_is_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            downstream = root / "downstream"
+            create_downstream(downstream, [])
+            source, source_commit = make_source(
+                root,
+                {"XYZProject": [{"pid": "xyzrins:projects/test"}]},
+                role_records=[
+                    deepcopy(FIRST_AUTHOR_ROLE),
+                    deepcopy(FIRST_AUTHOR_ROLE),
+                ],
+            )
+
+            with self.assertRaisesRegex(
+                ADAPTER.DumpResearchInfoAdapterError,
+                "Source PID is duplicated: obo:MS_1002034",
+            ):
+                ADAPTER.build_source_targets(
+                    source,
+                    downstream,
+                    expected_source_commit=source_commit,
+                )
+
+    def test_source_record_order_does_not_change_dependency_candidates(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            downstream = root / "downstream"
+            base = create_downstream(downstream, [])
+            publications = [
+                {
+                    "attributed_to": [
+                        {
+                            "object": f"xyzrins:persons/{name}",
+                            "roles": [role["pid"]],
+                            "schema_type": "dlthings:Attribution",
+                        }
+                    ],
+                    "pid": f"doi:10.1234/{name}",
+                    "title": name.title(),
+                }
+                for name, role in (
+                    ("first", FIRST_AUTHOR_ROLE),
+                    ("senior", SENIOR_AUTHOR_ROLE),
+                )
+            ]
+            first_source, first_commit = make_source(
+                root / "first",
+                {"XYZPublication": publications},
+                role_records=[
+                    deepcopy(FIRST_AUTHOR_ROLE),
+                    deepcopy(SENIOR_AUTHOR_ROLE),
+                ],
+            )
+            second_source, second_commit = make_source(
+                root / "second",
+                {"XYZPublication": list(reversed(publications))},
+                role_records=[
+                    deepcopy(SENIOR_AUTHOR_ROLE),
+                    deepcopy(FIRST_AUTHOR_ROLE),
+                ],
+            )
+
+            first = build(downstream, first_source, base, first_commit)
+            second = build(downstream, second_source, base, second_commit)
+
+            self.assertEqual(first.candidates, second.candidates)
+            self.assertNotEqual(first.source_coordinate, second.source_coordinate)
+
     def test_ambiguous_same_class_identifier_stops_mapping(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
@@ -369,8 +815,16 @@ class CandidatePlanTests(unittest.TestCase):
                 {
                     "commit": source_commit,
                     "repository": "https://github.com/con/dump-research-info",
-                    "source_directory": "data/con_site",
-                    "tree": git(source, "rev-parse", "HEAD:data/con_site"),
+                    "source_roots": {
+                        "data/con_site": git(
+                            source, "rev-parse", "HEAD:data/con_site"
+                        ),
+                        "data/pool_psychoinformatics_de": git(
+                            source,
+                            "rev-parse",
+                            "HEAD:data/pool_psychoinformatics_de",
+                        ),
+                    },
                 },
                 dict(plan.source_coordinate),
             )
@@ -1038,8 +1492,8 @@ class CandidatePlanTests(unittest.TestCase):
                 transported.source_coordinate["commit"],
             )
             self.assertEqual(
-                initial.source_coordinate["tree"],
-                transported.source_coordinate["tree"],
+                initial.source_coordinate["source_roots"],
+                transported.source_coordinate["source_roots"],
             )
             initial_by_pid = {
                 candidate.pid: candidate for candidate in initial.candidates

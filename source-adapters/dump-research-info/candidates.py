@@ -15,6 +15,7 @@ import yaml
 
 from linkml_runtime.utils.schemaview import SchemaView
 from orinoco_lite.annotations import compact_enrichment_view
+from orinoco_lite.canonical import canonical_json_bytes
 from orinoco_lite.candidates import Candidate, CandidatePlan
 from orinoco_lite.decisions import load_decision_cache
 from orinoco_lite.enrichment import (
@@ -26,9 +27,9 @@ from orinoco_lite.enrichment import (
 
 
 ADAPTER = "dump-research-info"
-ADAPTER_VERSION = "1"
-SOURCE_DIRECTORY = "data/con_site"
+ADAPTER_VERSION = "2"
 SOURCE_NAMESPACE = "https://github.com/con/dump-research-info"
+ROLE_SOURCE_DIRECTORY = "data/pool_psychoinformatics_de"
 DECISION_CACHE = PurePosixPath(
     "source-adapters/dump-research-info/policy/curation-decisions.yaml"
 )
@@ -40,6 +41,8 @@ TOPICAL_FIELDS = frozenset(
         "about",
         "additional_names",
         "at_location",
+        "broad_mappings",
+        "close_mappings",
         "description",
         "display_label",
         "family_name",
@@ -105,11 +108,13 @@ def _load_companion(root: Path, record_path: str) -> dict[str, object] | None:
     return value
 
 
-def _source_record_uri(source_class: str, source_pid: str) -> str:
+def _source_record_uri(
+    source_directory: str, source_class: str, source_pid: str
+) -> str:
     """Identify a logical source row independently of its Git revision."""
 
     return (
-        f"{SOURCE_NAMESPACE}/blob/main/{SOURCE_DIRECTORY}/"
+        f"{SOURCE_NAMESPACE}/blob/main/{source_directory}/"
         f"{quote(source_class, safe='')}.json#record={quote(source_pid, safe='')}"
     )
 
@@ -235,7 +240,11 @@ def _apply_source_claim(
     companion = (
         deepcopy(dict(baseline_companion)) if baseline_companion is not None else None
     )
-    source_id = _source_record_uri(target.source_class, target.source_pid)
+    source_id = _source_record_uri(
+        target.source_directory,
+        target.source_class,
+        target.source_pid,
+    )
     reserved_predicates = {
         resolve_enrichment_slot(schema, field).predicate for field in TOPICAL_FIELDS
     }
@@ -325,6 +334,25 @@ def _candidate(
     )
     if baseline_record == proposed_record and baseline_companion == proposed_companion:
         return None
+    if target.source_directory == ROLE_SOURCE_DIRECTORY and baseline_record is not None:
+        try:
+            exact_semantic_match = canonical_json_bytes(
+                baseline_record
+            ) == canonical_json_bytes(target.transformed_record)
+        except (TypeError, ValueError) as error:
+            raise DumpResearchInfoCandidateError(
+                f"{target.source_record_id}: canonical role is not deterministic JSON"
+            ) from error
+        if exact_semantic_match:
+            # The authoritative-pool lookup above is still mandatory. Once it
+            # establishes an exact canonical match, do not manufacture a
+            # proposal whose only effect is duplicate qualification/PAV.
+            return None
+        raise DumpResearchInfoCandidateError(
+            f"{target.source_record_id}: authoritative role differs from the "
+            "same-PID canonical role; reconcile that prerequisite before "
+            "importing dependent primary records"
+        )
     return Candidate(
         source_namespace=SOURCE_NAMESPACE,
         source_record_id=target.source_record_id,
@@ -373,7 +401,6 @@ def build_candidate_plan(
         source_checkout,
         downstream,
         expected_source_commit=expected_source_commit,
-        source_directory=SOURCE_DIRECTORY,
     )
     candidates = tuple(
         candidate
