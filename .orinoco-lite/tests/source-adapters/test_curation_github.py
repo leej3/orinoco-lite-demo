@@ -1,7 +1,8 @@
 from __future__ import annotations
 
-from contextlib import ExitStack
+from contextlib import ExitStack, redirect_stderr, redirect_stdout
 import importlib.util
+from io import StringIO
 import json
 from pathlib import Path
 import subprocess
@@ -350,6 +351,42 @@ class TextEnvelopeTests(unittest.TestCase):
 
 
 class TrustedProviderBoundaryTests(unittest.TestCase):
+    def test_provider_progress_cannot_contaminate_machine_readable_stdout(
+        self,
+    ) -> None:
+        value = plan()
+
+        class Provider:
+            @staticmethod
+            def build_candidate_plan(*_args, **_kwargs):
+                print("provider progress")
+                return value
+
+        stdout = StringIO()
+        stderr = StringIO()
+        with (
+            mock.patch.object(HOST, "_head", return_value=BASE),
+            mock.patch.object(HOST, "_load_provider", return_value=Provider),
+            mock.patch.object(HOST, "_schema", return_value=object()),
+            redirect_stdout(stdout),
+            redirect_stderr(stderr),
+        ):
+            result = HOST.build_plan(
+                Path("/tmp/metadata-root"),
+                Path("/tmp/trusted-root"),
+                adapter="dump-research-info",
+                metadata_base=BASE,
+                adapter_agent_pid=value.adapter_agent_pid,
+                runtime_root=Path("/tmp/runtime"),
+                scratch=Path("/tmp/metadata-root/build/curation"),
+                source_checkout=Path("/tmp/source"),
+                source_revision="d" * 40,
+            )
+
+        self.assertIs(result, value)
+        self.assertEqual("", stdout.getvalue())
+        self.assertEqual("provider progress\n", stderr.getvalue())
+
     def test_host_passes_separate_trusted_and_metadata_roots(self) -> None:
         value = plan()
         metadata_root = Path("/tmp/metadata-root")
