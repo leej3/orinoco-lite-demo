@@ -11,7 +11,7 @@ nodejs = ">=22,<23"
 pyyaml = "==6.0.2"
 
 [pypi-dependencies]
-orinoco-lite = { url = "https://github.com/con/orinoco-lite-dev/releases/download/v0.2.0rc2/orinoco_lite-0.2.0rc2-py3-none-any.whl#sha256=f504d1fb9f2dfdbdd224dcbbcc663843a7ac34107c304d0eb5ed538e45a43198" }
+orinoco-lite = { url = "https://github.com/con/orinoco-lite-dev/releases/download/v0.2.0rc3/orinoco_lite-0.2.0rc3-py3-none-any.whl#sha256=5224bf90ca441b70012f7297b21b1b8072fe612e9c8984d3682c824118037267" }
 datalad = ">=1.6.2,<2"
 
 [tasks]
