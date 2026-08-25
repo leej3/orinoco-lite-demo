@@ -1,14 +1,34 @@
 from __future__ import annotations
 
+import importlib.util
 from pathlib import Path
+import sys
 import tempfile
+from types import ModuleType
 import unittest
 
 from orinoco_lite.annotations import annotation_companion, assertion_sha256
 from orinoco_lite.canonical import canonical_yaml_bytes
 import yaml
 
-from adapter_fixture import neutralize_reviewed_adapter_state
+
+def load_module(name: str, path: Path) -> ModuleType:
+    specification = importlib.util.spec_from_file_location(name, path)
+    if specification is None or specification.loader is None:
+        raise RuntimeError(f"Cannot load test module {path}")
+    module = importlib.util.module_from_spec(specification)
+    sys.modules[name] = module
+    specification.loader.exec_module(module)
+    return module
+
+
+fixture_metadata = load_module(
+    "orinoco_fixture_metadata_tests",
+    Path(__file__).with_name("fixture_metadata.py"),
+)
+neutralize_reviewed_adapter_state = (
+    fixture_metadata.neutralize_reviewed_adapter_state
+)
 
 
 class AdapterFixtureTests(unittest.TestCase):

@@ -23,8 +23,6 @@ from orinoco_lite.decisions import (
 )
 import yaml
 
-from adapter_fixture import neutralize_reviewed_adapter_state
-
 
 ROOT = Path(__file__).resolve().parents[3]
 AGENT_PID = "https://example.invalid/agents/zotero-adapter-test-v1"
@@ -65,6 +63,13 @@ def load_module(name: str, path: Path) -> ModuleType:
     return module
 
 
+fixture_metadata = load_module(
+    "orinoco_zotero_fixture_metadata_tests",
+    Path(__file__).with_name("fixture_metadata.py"),
+)
+neutralize_reviewed_adapter_state = (
+    fixture_metadata.neutralize_reviewed_adapter_state
+)
 provider = load_module(
     "orinoco_zotero_candidates_tests",
     ROOT / "source-adapters/zotero/candidates.py",

@@ -31,8 +31,6 @@ from orinoco_lite.projection import validate_semantics
 from orinoco_lite.validation import validate_workspace
 import yaml
 
-from adapter_fixture import neutralize_reviewed_adapter_state
-
 
 ROOT = Path(__file__).resolve().parents[3]
 ZOTERO_AGENT = "https://example.invalid/agents/zotero-interaction-test-v1"
@@ -81,6 +79,13 @@ def load_module(name: str, path: Path) -> ModuleType:
     return module
 
 
+fixture_metadata = load_module(
+    "orinoco_interaction_fixture_metadata_tests",
+    Path(__file__).with_name("fixture_metadata.py"),
+)
+neutralize_reviewed_adapter_state = (
+    fixture_metadata.neutralize_reviewed_adapter_state
+)
 ZOTERO = load_module(
     "orinoco_zotero_interaction_candidates",
     ROOT / "source-adapters/zotero/candidates.py",
