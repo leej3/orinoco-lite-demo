@@ -25,6 +25,15 @@ attributes:
 - predicate: dcterms:language
   schema_type: dlthings:AttributeSpecification
   value: en
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'Open and reproducible neuroimaging: From study inception to publication'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'Open and reproducible neuroimaging: From study inception to publication'
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: 'Open and reproducible neuroimaging: From study inception to publication'
 identifiers:
 - notation: 10.1016/j.neuroimage.2022.119623

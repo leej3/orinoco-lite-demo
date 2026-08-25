@@ -7,6 +7,15 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2004'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Fusion of Functional Brain Imaging Modalities using L-Norms Signal Reconstruction
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Fusion of Functional Brain Imaging Modalities using L-Norms Signal Reconstruction
+characterized_by:
+- object: bibo:Article
+  predicate: dcterms:type
 display_label: Fusion of Functional Brain Imaging Modalities using L-Norms Signal
   Reconstruction
 identifiers:

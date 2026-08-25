@@ -19,6 +19,15 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2018'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Variability of the Neuroimaging Results Across OS, and How to Avoid it
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Variability of the Neuroimaging Results Across OS, and How to Avoid it
+characterized_by:
+- object: bibo:Document
+  predicate: dcterms:type
 display_label: Variability of the Neuroimaging Results Across OS, and How to Avoid
   it
 identifiers:

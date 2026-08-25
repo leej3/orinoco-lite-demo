@@ -1,0 +1,14 @@
+assertions:
+- assertion_sha256: sha256:08cc515892b9b3defc63795fa95b18f03a49bcdee1f58ac449a50aaec0ce1ef1
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/MUYTSHYU
+- assertion_sha256: sha256:e7d85f9391e59c9a929ec4a9ac5ed50501caf806c973a2b9ee09526a4ac6f8c0
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/MUYTSHYU
+- assertion_sha256: sha256:daaf525b6f3d3378a5630d6cee38e0b0b19098a51ceab864edf5e50321977190
+  path: /characterized_by
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/MUYTSHYU
+record: xyzrins:publications/doi-10-1038-s41597-025-05154-x

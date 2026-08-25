@@ -14,6 +14,26 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2025-08-08'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: MRS-BIDS, an extension to the Brain Imaging Data Structure for magnetic resonance
+    spectroscopy
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: MRS-BIDS, an extension to the Brain Imaging Data Structure for magnetic resonance
+    spectroscopy
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: The Brain Imaging Data Structure (BIDS) is an increasingly adopted standard
+    for organizing scientific data and metadata. It facilitates easier and more straightforward
+    data sharing and reuse. BIDS currently encompasses several biomedical imaging
+    and non-imaging techniques, and as more research groups begin to use it, additional
+    experimental techniques are being incorporated into the standard, allowing diverse
+    experimental methods to be stored within the same cohesive structure. Here, we
+    present an extension for magnetic resonance spectroscopy (MRS) data, termed MRS-BIDS.
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 description: The Brain Imaging Data Structure (BIDS) is an increasingly adopted standard
   for organizing scientific data and metadata. It facilitates easier and more straightforward
   data sharing and reuse. BIDS currently encompasses several biomedical imaging and

@@ -1,0 +1,18 @@
+assertions:
+- assertion_sha256: sha256:607ccd53d65f1c123ccdd97a03c3933eaad4a3f0318556808f682363886cda5e
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/CMI7RGJ8
+- assertion_sha256: sha256:7ead91272a5f4815d40ecea10b9eee3eee00ef9c7ce7bee5ee477e9973b2e0c8
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/CMI7RGJ8
+- assertion_sha256: sha256:8769d07e5b6592be88c03c894179e58d26f9f213d41edbcfe49f47f1dcdfd836
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/CMI7RGJ8
+- assertion_sha256: sha256:daaf525b6f3d3378a5630d6cee38e0b0b19098a51ceab864edf5e50321977190
+  path: /characterized_by
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/CMI7RGJ8
+record: xyzrins:publications/doi-10-1371-journal-pbio-3002133

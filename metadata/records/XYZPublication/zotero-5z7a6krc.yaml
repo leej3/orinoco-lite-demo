@@ -7,6 +7,17 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2015'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Overview of statistical evaluation techniques adopted by publicly available
+    MVPA toolboxes
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Overview of statistical evaluation techniques adopted by publicly available
+    MVPA toolboxes
+characterized_by:
+- object: bibo:Document
+  predicate: dcterms:type
 display_label: Overview of statistical evaluation techniques adopted by publicly available
   MVPA toolboxes
 identifiers:

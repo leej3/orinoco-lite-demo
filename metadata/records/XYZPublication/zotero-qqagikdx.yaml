@@ -19,6 +19,17 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2018'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: (Meta)Data and workflow management for your most important work and your
+    daily routine
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: (Meta)Data and workflow management for your most important work and your
+    daily routine
+characterized_by:
+- object: bibo:Document
+  predicate: dcterms:type
 display_label: (Meta)Data and workflow management for your most important work and
   your daily routine
 identifiers:

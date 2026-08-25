@@ -30,6 +30,15 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2017'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Attention selectively reshapes the geometry of distributed semantic representation
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Attention selectively reshapes the geometry of distributed semantic representation
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: Attention selectively reshapes the geometry of distributed semantic
   representation
 identifiers:

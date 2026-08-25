@@ -7,6 +7,15 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: 2009-05
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Predictive Decoding of Neural Data
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Predictive Decoding of Neural Data
+characterized_by:
+- object: bibo:Thesis
+  predicate: dcterms:type
 display_label: Predictive Decoding of Neural Data
 identifiers:
 - notation: http://www.onerussian.com/Sci/thesis

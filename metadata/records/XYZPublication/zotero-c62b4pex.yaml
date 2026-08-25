@@ -19,6 +19,15 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2018'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'Pybids: Python tools for manipulation and analysis of BIDS datasets'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'Pybids: Python tools for manipulation and analysis of BIDS datasets'
+characterized_by:
+- object: bibo:Document
+  predicate: dcterms:type
 display_label: 'Pybids: Python tools for manipulation and analysis of BIDS datasets'
 identifiers:
 - notation: zotero:group:6197458:item:C62B4PEX

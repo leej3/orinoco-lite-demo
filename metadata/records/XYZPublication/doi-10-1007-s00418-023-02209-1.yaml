@@ -11,6 +11,17 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: 2023-07
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'OME-Zarr: a cloud-optimized bioimaging file format with international community
+    support'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'OME-Zarr: a cloud-optimized bioimaging file format with international community
+    support'
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: 'OME-Zarr: a cloud-optimized bioimaging file format with international
   community support'
 identifiers:

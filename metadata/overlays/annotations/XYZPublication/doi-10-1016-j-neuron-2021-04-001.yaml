@@ -1,0 +1,14 @@
+assertions:
+- assertion_sha256: sha256:2a015ef7f7271e94086f1eb57109b67124ecd84a3cd561829b72f79c670c3ee3
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/UIBT7JR4
+- assertion_sha256: sha256:2ed2fd0cf7473a8eaef46ed1663b05d6e73849f0360149fa3a5754c296550591
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/UIBT7JR4
+- assertion_sha256: sha256:daaf525b6f3d3378a5630d6cee38e0b0b19098a51ceab864edf5e50321977190
+  path: /characterized_by
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/UIBT7JR4
+record: xyzrins:publications/doi-10-1016-j-neuron-2021-04-001

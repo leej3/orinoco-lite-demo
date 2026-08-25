@@ -65,6 +65,22 @@ attributes:
 - predicate: dcterms:language
   schema_type: dlthings:AttributeSpecification
   value: en
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'DataLad: distributed system for joint management of code, data, and their
+    relationship'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'DataLad: distributed system for joint management of code, data, and their
+    relationship'
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: 'Halchenko et al., (2021). DataLad: distributed system for joint management
+    of code, data, and their relationship. Journal of Open Source Software, 6(63),
+    3262, https://doi.org/10.21105/joss.03262'
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 description: 'Halchenko et al., (2021). DataLad: distributed system for joint management
   of code, data, and their relationship. Journal of Open Source Software, 6(63), 3262,
   https://doi.org/10.21105/joss.03262'

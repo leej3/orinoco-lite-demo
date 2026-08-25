@@ -30,6 +30,15 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: 2024-03
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: The past, present, and future of the brain imaging data structure (BIDS)
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: The past, present, and future of the brain imaging data structure (BIDS)
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: The past, present, and future of the brain imaging data structure (BIDS)
 identifiers:
 - notation: 10.1162/imag_a_00103

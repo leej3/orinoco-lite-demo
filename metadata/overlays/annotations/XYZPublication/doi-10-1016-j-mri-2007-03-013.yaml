@@ -1,0 +1,18 @@
+assertions:
+- assertion_sha256: sha256:2a0e4af3624af702fe2e457d860cadff76b0635773c62cda2ad2d1f1ffb4df51
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/MK2JAMFC
+- assertion_sha256: sha256:2c30940c4aca48542810670abe4506f5e3859569602af3d8e3fcaf505cff473b
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/MK2JAMFC
+- assertion_sha256: sha256:9ccbd9961e8c6065f36f4b6b4f6b80535f303ac760eccf1321cb60cca2ea1c2a
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/MK2JAMFC
+- assertion_sha256: sha256:daaf525b6f3d3378a5630d6cee38e0b0b19098a51ceab864edf5e50321977190
+  path: /characterized_by
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/MK2JAMFC
+record: xyzrins:publications/doi-10-1016-j-mri-2007-03-013

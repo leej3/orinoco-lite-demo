@@ -19,6 +19,15 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2019'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Fantastic containers and how to tame them
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Fantastic containers and how to tame them
+characterized_by:
+- object: bibo:Document
+  predicate: dcterms:type
 display_label: Fantastic containers and how to tame them
 identifiers:
 - notation: https://github.com/ReproNim/artwork/raw/master/posters/ohbm2019-containers.pdf

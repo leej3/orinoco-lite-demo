@@ -23,6 +23,17 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2015'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Attention alters animal and action representation in highly-distributed functionally-defined
+    cortical parcels
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Attention alters animal and action representation in highly-distributed functionally-defined
+    cortical parcels
+characterized_by:
+- object: bibo:Document
+  predicate: dcterms:type
 display_label: Attention alters animal and action representation in highly-distributed
   functionally-defined cortical parcels
 identifiers:

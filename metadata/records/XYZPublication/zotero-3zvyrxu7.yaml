@@ -11,6 +11,17 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2011'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'Debian Med: Integrated software environment for all medical purposes based
+    on Debian GNU/Linux'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'Debian Med: Integrated software environment for all medical purposes based
+    on Debian GNU/Linux'
+characterized_by:
+- object: bibo:Article
+  predicate: dcterms:type
 display_label: 'Debian Med: Integrated software environment for all medical purposes
   based on Debian GNU/Linux'
 identifiers:

@@ -26,6 +26,15 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2012'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Data sharing in neuroimaging research
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Data sharing in neuroimaging research
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: Data sharing in neuroimaging research
 identifiers:
 - notation: 10.3389/fninf.2012.00009

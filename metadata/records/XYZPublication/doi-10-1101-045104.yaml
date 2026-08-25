@@ -15,6 +15,15 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2016'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Towards standard practices for sharing computer code and programs in neuroscience
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Towards standard practices for sharing computer code and programs in neuroscience
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: Towards standard practices for sharing computer code and programs in
   neuroscience
 identifiers:

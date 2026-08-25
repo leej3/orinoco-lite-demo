@@ -35,6 +35,15 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: 2021-04
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'Brainhack: Developing a culture of open, inclusive, community-driven neuroscience'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'Brainhack: Developing a culture of open, inclusive, community-driven neuroscience'
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: 'Brainhack: Developing a culture of open, inclusive, community-driven
   neuroscience'
 identifiers:

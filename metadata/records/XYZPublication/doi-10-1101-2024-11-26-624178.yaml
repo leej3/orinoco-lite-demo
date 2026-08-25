@@ -15,6 +15,17 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: 2024-11
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Behaviorally-relevant features of observed actions dominate cortical representational
+    geometry in natural vision
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Behaviorally-relevant features of observed actions dominate cortical representational
+    geometry in natural vision
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: Behaviorally-relevant features of observed actions dominate cortical
   representational geometry in natural vision
 identifiers:

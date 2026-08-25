@@ -10,6 +10,15 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '1997'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: The model of associative processor for numerical data sorting
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: The model of associative processor for numerical data sorting
+characterized_by:
+- object: bibo:BookSection
+  predicate: dcterms:type
 display_label: The model of associative processor for numerical data sorting
 identifiers:
 - notation: zotero:group:6197458:item:EGBB5TA7

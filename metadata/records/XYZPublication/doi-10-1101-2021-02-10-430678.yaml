@@ -15,6 +15,17 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: 2021-02
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'TemplateFlow: a community archive of imaging templates and atlases for improved
+    consistency in neuroimaging'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'TemplateFlow: a community archive of imaging templates and atlases for improved
+    consistency in neuroimaging'
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: 'TemplateFlow: a community archive of imaging templates and atlases
   for improved consistency in neuroimaging'
 identifiers:

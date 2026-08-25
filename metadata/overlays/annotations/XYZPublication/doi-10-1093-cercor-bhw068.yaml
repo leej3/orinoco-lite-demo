@@ -1,0 +1,14 @@
+assertions:
+- assertion_sha256: sha256:79e457a72239b0571ad0f95198b6daee16dcb7528994aeb9515088bf119a0574
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/XG2GWNFB
+- assertion_sha256: sha256:c189357bfae1b5fa5fb0778bdedda42a11999e347dba6a65250576bdf3e3d6d5
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/XG2GWNFB
+- assertion_sha256: sha256:daaf525b6f3d3378a5630d6cee38e0b0b19098a51ceab864edf5e50321977190
+  path: /characterized_by
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/XG2GWNFB
+record: xyzrins:publications/doi-10-1093-cercor-bhw068

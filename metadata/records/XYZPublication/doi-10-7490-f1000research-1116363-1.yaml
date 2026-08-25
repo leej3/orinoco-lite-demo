@@ -23,6 +23,15 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2018'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'YODA: YODA’s organigram on data analysis'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'YODA: YODA’s organigram on data analysis'
+characterized_by:
+- object: bibo:Document
+  predicate: dcterms:type
 display_label: 'YODA: YODA’s organigram on data analysis'
 identifiers:
 - notation: 10.7490/f1000research.1116363.1
