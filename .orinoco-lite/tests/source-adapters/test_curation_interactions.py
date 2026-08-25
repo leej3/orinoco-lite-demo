@@ -31,6 +31,8 @@ from orinoco_lite.projection import validate_semantics
 from orinoco_lite.validation import validate_workspace
 import yaml
 
+from adapter_fixture import neutralize_reviewed_adapter_state
+
 
 ROOT = Path(__file__).resolve().parents[3]
 ZOTERO_AGENT = "https://example.invalid/agents/zotero-interaction-test-v1"
@@ -38,6 +40,10 @@ DUMP_AGENT = "https://example.invalid/agents/dump-interaction-test-v1"
 ZOTERO_VERSION = 451
 REVIEWER = "https://github.com/fixture-curator"
 REPOSITORY = "con/test-orinoco-downstream-website"
+REVIEWED_ADAPTER_AGENTS = (
+    "xyzrins:source-adapters/dump-research-info/v1",
+    "xyzrins:source-adapters/zotero/v1",
+)
 
 
 def schema_fixture() -> Path:
@@ -154,6 +160,14 @@ def prepared_repository(destination: Path) -> tuple[Path, str]:
             root / "source-adapters" / adapter,
             ignore=shutil.ignore_patterns("__pycache__", "*.pyc"),
         )
+    neutralize_reviewed_adapter_state(
+        root,
+        adapter_agent_pids=REVIEWED_ADAPTER_AGENTS,
+        decision_caches=tuple(
+            Path(f"source-adapters/{adapter}/policy/curation-decisions.yaml")
+            for adapter in ("zotero", "dump-research-info")
+        ),
+    )
     for relative in ("custom", "extensions", "site"):
         shutil.copytree(ROOT / relative, root / relative)
     shutil.copytree(
