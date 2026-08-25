@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate and map ``dump-research-info/data/con_site`` records.
+"""Validate and map the reviewed ``dump-research-info`` source roots.
 
 This module owns only source-specific acquisition checks, identity matching,
 and transformation policy. Candidate construction, canonical serialization,
@@ -27,6 +27,9 @@ RELATION_SCALAR_FIELDS = {"at_location", "creator"}
 RELATION_LIST_FIELDS = {"about", "part_of"}
 CLASS_NAME = re.compile(r"XYZ[A-Za-z0-9]+\Z")
 SAFE_STEM = re.compile(r"[^a-z0-9]+")
+PRIMARY_SOURCE_DIRECTORY = "data/con_site"
+ROLE_SOURCE_DIRECTORY = "data/pool_psychoinformatics_de"
+ROLE_CLASS = "XYZAgentRole"
 
 
 class DumpResearchInfoAdapterError(RuntimeError):
@@ -39,6 +42,7 @@ class SourceTarget:
 
     source_class: str
     source_pid: str
+    source_directory: str
     target_pid: str
     record_path: str
     source_record: Mapping[str, object]
@@ -47,7 +51,10 @@ class SourceTarget:
 
     @property
     def source_record_id(self) -> str:
-        return f"{self.source_class}:{self.source_pid}"
+        identity = f"{self.source_class}:{self.source_pid}"
+        if self.source_directory == PRIMARY_SOURCE_DIRECTORY:
+            return identity
+        return f"{self.source_directory}:{identity}"
 
 
 def git_output(path: Path, *arguments: str) -> str:
@@ -185,6 +192,95 @@ def load_source(root: Path) -> dict[str, dict[str, dict[str, object]]]:
             records[pid] = record
         result[path.stem] = records
     return result
+
+
+def referenced_role_pids(value: object) -> set[str]:
+    """Return every role PID from the reviewed nested relationship shapes."""
+
+    result: set[str] = set()
+    if isinstance(value, dict):
+        for field, child in value.items():
+            if field == "roles":
+                if not isinstance(child, list) or not all(
+                    isinstance(role, str) and role for role in child
+                ):
+                    raise DumpResearchInfoAdapterError(
+                        "Source relationship roles must be non-empty PID strings"
+                    )
+                result.update(child)
+            else:
+                result.update(referenced_role_pids(child))
+    elif isinstance(value, list):
+        for child in value:
+            result.update(referenced_role_pids(child))
+    return result
+
+
+def source_records_with_role_dependencies(
+    primary: Mapping[str, Mapping[str, Mapping[str, object]]],
+    role_pool: Mapping[str, Mapping[str, Mapping[str, object]]],
+) -> tuple[
+    dict[str, dict[str, dict[str, object]]],
+    dict[tuple[str, str], str],
+]:
+    """Assemble one PID-coalesced source view with authoritative pool roles."""
+
+    records = {
+        class_name: {
+            pid: deepcopy(dict(record)) for pid, record in source_records.items()
+        }
+        for class_name, source_records in primary.items()
+        if class_name != ROLE_CLASS
+    }
+    directories = {
+        (class_name, pid): PRIMARY_SOURCE_DIRECTORY
+        for class_name, source_records in records.items()
+        for pid in source_records
+    }
+    required_roles = {
+        role
+        for source_records in primary.values()
+        for record in source_records.values()
+        for role in referenced_role_pids(record)
+    }
+    pool_roles = role_pool.get(ROLE_CLASS, {})
+    primary_by_pid = {
+        pid: (class_name, record)
+        for class_name, source_records in primary.items()
+        for pid, record in source_records.items()
+    }
+    pool_by_pid = {
+        pid: (class_name, record)
+        for class_name, source_records in role_pool.items()
+        for pid, record in source_records.items()
+    }
+
+    for pid in sorted(set(primary_by_pid) & set(pool_by_pid)):
+        primary_class, primary_record = primary_by_pid[pid]
+        pool_class, pool_record = pool_by_pid[pid]
+        if primary_class != pool_class:
+            raise DumpResearchInfoAdapterError(
+                f"Source PID {pid} is a {primary_class} in "
+                f"{PRIMARY_SOURCE_DIRECTORY}, but a {pool_class} in "
+                f"{ROLE_SOURCE_DIRECTORY}"
+            )
+        if dict(primary_record) != dict(pool_record):
+            raise DumpResearchInfoAdapterError(
+                f"Source PID {pid} has conflicting records in "
+                f"{PRIMARY_SOURCE_DIRECTORY} and {ROLE_SOURCE_DIRECTORY}"
+            )
+
+    for pid in sorted(required_roles):
+        pool_record = pool_roles.get(pid)
+        if pool_record is None:
+            raise DumpResearchInfoAdapterError(
+                f"Required role target {pid} has no authoritative {ROLE_CLASS} "
+                f"record in {ROLE_SOURCE_DIRECTORY}"
+            )
+        records.setdefault(ROLE_CLASS, {})[pid] = deepcopy(dict(pool_record))
+        directories[(ROLE_CLASS, pid)] = ROLE_SOURCE_DIRECTORY
+
+    return records, directories
 
 
 def load_yaml_records(downstream_root: Path) -> dict[str, dict[str, object]]:
@@ -409,21 +505,31 @@ def build_source_targets(
     downstream_root: Path,
     *,
     expected_source_commit: str,
-    source_directory: str = "data/con_site",
 ) -> tuple[tuple[SourceTarget, ...], dict[str, object]]:
-    """Return every current source upsert; source absence never means deletion."""
+    """Return primary upserts plus their authoritative role dependencies."""
 
     root = downstream_root.resolve()
-    checkout, source_tree = validate_source_checkout(
+    checkout, primary_tree = validate_source_checkout(
         source_checkout,
         expected_commit=expected_source_commit,
-        source_directory=source_directory,
+        source_directory=PRIMARY_SOURCE_DIRECTORY,
     )
-    relative_source = source_directory_path(source_directory)
-    source_records = load_source(
-        checkout.joinpath(*PurePosixPath(relative_source).parts)
+    _, role_tree = validate_source_checkout(
+        source_checkout,
+        expected_commit=expected_source_commit,
+        source_directory=ROLE_SOURCE_DIRECTORY,
+    )
+    primary_records = load_source(
+        checkout.joinpath(*PurePosixPath(PRIMARY_SOURCE_DIRECTORY).parts)
+    )
+    role_pool = load_source(
+        checkout.joinpath(*PurePosixPath(ROLE_SOURCE_DIRECTORY).parts)
     )
     downstream = load_yaml_records(root)
+    source_records, source_directories = source_records_with_role_dependencies(
+        primary_records,
+        role_pool,
+    )
 
     token_index: dict[str, set[str]] = {}
     for pid, entry in downstream.items():
@@ -436,9 +542,25 @@ def build_source_targets(
     matches: dict[tuple[str, str], str] = {}
     for class_name, records in sorted(source_records.items()):
         for source_pid, source_record in sorted(records.items()):
-            target_pid, method, candidates = match_record(
-                class_name, source_record, downstream, token_index
-            )
+            if source_directories[(class_name, source_pid)] == ROLE_SOURCE_DIRECTORY:
+                if source_pid in downstream:
+                    downstream_class = downstream[source_pid].get("class")
+                    if downstream_class != ROLE_CLASS:
+                        raise DumpResearchInfoAdapterError(
+                            f"Authoritative role {source_pid} is in {ROLE_CLASS}, "
+                            f"but its exact downstream PID is in {downstream_class}"
+                        )
+                    target_pid, method, candidates = (
+                        source_pid,
+                        "exact-pid",
+                        (source_pid,),
+                    )
+                else:
+                    target_pid, method, candidates = None, "unmatched", ()
+            else:
+                target_pid, method, candidates = match_record(
+                    class_name, source_record, downstream, token_index
+                )
             if method == "ambiguous-identifier":
                 raise DumpResearchInfoAdapterError(
                     f"Source record {class_name}:{source_pid} ambiguously matches "
@@ -502,6 +624,7 @@ def build_source_targets(
                 SourceTarget(
                     source_class=class_name,
                     source_pid=source_pid,
+                    source_directory=source_directories[(class_name, source_pid)],
                     target_pid=target_pid,
                     record_path=record_path,
                     source_record=deepcopy(source_record),
@@ -517,8 +640,10 @@ def build_source_targets(
     coordinate = {
         "repository": "https://github.com/con/dump-research-info",
         "commit": expected_source_commit,
-        "tree": source_tree,
-        "source_directory": relative_source,
+        "source_roots": {
+            PRIMARY_SOURCE_DIRECTORY: primary_tree,
+            ROLE_SOURCE_DIRECTORY: role_tree,
+        },
     }
     return tuple(targets), coordinate
 
@@ -535,7 +660,9 @@ __all__ = [
     "native_record",
     "normalized_doi",
     "record_stem",
+    "referenced_role_pids",
     "rewrite_relation_targets",
+    "source_records_with_role_dependencies",
     "transformed_source_record",
     "validate_source_checkout",
 ]
