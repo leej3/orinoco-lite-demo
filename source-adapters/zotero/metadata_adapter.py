@@ -458,14 +458,12 @@ def review(context: Mapping[str, object]) -> dict[str, object]:
         )
 
     canonical_publications = yaml_map(root / "metadata" / "records" / "XYZPublication")
+    # Canonical drift is proposal input, not a source-evidence blocker. The
+    # refreshed evidence must reach the default branch before curation can
+    # materialize and review the corresponding canonical change.
     reviewed_canonical_violations = canonical_projection_violations(
         yaml_map(reviewed_site), canonical_publications
     )
-    if reviewed_canonical_violations:
-        raise ZoteroAdapterError(
-            "Canonical publications do not contain the reviewed Zotero projection: "
-            + ", ".join(reviewed_canonical_violations[:10])
-        )
 
     reviewed_source = source_metadata(reviewed_snapshot)
     live_source = source_metadata(live_snapshot)
@@ -539,7 +537,7 @@ def review(context: Mapping[str, object]) -> dict[str, object]:
         "noncanonical_mapping_targets": noncanonical_identities["identities"],
         "baseline": {
             "reviewed_candidates_current": True,
-            "canonical_publications_current": True,
+            "canonical_publications_current": not reviewed_canonical_violations,
         },
         "artifacts": {
             "live_snapshot": relative(root, live_snapshot_path),

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections import Counter
 from copy import deepcopy
 import importlib.util
 import json
@@ -204,10 +205,10 @@ class FrozenZoteroCandidateTests(unittest.TestCase):
             for candidate in self.plan.candidates
             for assertion in candidate.proposed_companion["assertions"]
         ]
-        self.assertEqual(len(assertions), 408)
+        self.assertEqual(len(assertions), 429)
         self.assertEqual(
             {assertion["path"] for assertion in assertions},
-            {"/attributes", "/characterized_by"},
+            {"/attributes", "/attributed_to", "/characterized_by"},
         )
         self.assertTrue(
             all(assertion["pav:importedBy"] == AGENT_PID for assertion in assertions)
@@ -220,6 +221,26 @@ class FrozenZoteroCandidateTests(unittest.TestCase):
             assert baseline is not None
             for field in ("title", "display_label", "description", "kind", "about"):
                 self.assertEqual(proposed.get(field), baseline.get(field))
+
+        attribution_counts = Counter(
+            attribution["object"]
+            for candidate in self.plan.candidates
+            for attribution in candidate.proposed_record.get("attributed_to", [])
+            if attribution["object"]
+            in {
+                "xyzrins:persons/brock-wester",
+                "xyzrins:persons/russell-poldrack",
+            }
+        )
+        self.assertEqual(
+            attribution_counts,
+            Counter(
+                {
+                    "xyzrins:persons/brock-wester": 2,
+                    "xyzrins:persons/russell-poldrack": 19,
+                }
+            ),
+        )
 
     def test_trusted_code_and_source_are_separate_from_metadata(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

@@ -100,6 +100,7 @@ The version `668` snapshot deterministically generates 153 records, all of which
 All 126 publications and 20 venues reconcile to existing canonical records.
 These are the same entities, not new IDs.
 Multi-source consumers reconcile records by PID and apply the adapter's explicit field-level merge behavior.
+The reviewed site policy includes 2 Brock Wester and 19 Russell Poldrack author attributions because both targets now have accepted canonical public person records.
 
 The refresh report also identifies 1,817 unresolved creator occurrences across 1,221 names, 52 unmapped tag occurrences across 37 values, and 42 venue occurrences across 32 names without ISSNs.
 Their source information remains in the committed Zotero snapshot for later registry enrichment and review; it is not converted into unsafe local identities.

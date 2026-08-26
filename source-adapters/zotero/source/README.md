@@ -14,9 +14,10 @@ The snapshot is source evidence, not a validated research-information file, and 
 Candidate generation verifies its provenance, ordering, unique keys, counts, and digest before transforming it.
 
 `site-policy.yaml` is the reviewed translation boundary for the static CON profile.
-It lists permitted and deliberately omitted relationship targets plus the one preserved publication PID override.
+It records reviewed relationship-target decisions plus the one preserved publication PID override.
 Every behavioral policy entry must match the current source records; stale entries and unknown policy fields stop the export.
 Likewise, a new or missing Zotero creator role stops ingestion until its MARC relationship has been reviewed.
 The metadata review and source curation paths first verify that promoted JSON is current, then render isolated candidate YAML and a provenance report under ignored `build/` state.
+Canonical differences are reported as curation input rather than evidence-refresh blockers, because refreshed evidence must reach the default branch before the review workflow can propose those differences.
 The exporter rejects destinations outside that repository build area, path overlaps, and symlinks, and stages the complete result before replacing an older candidate artifact.
 It never writes the website repository.
