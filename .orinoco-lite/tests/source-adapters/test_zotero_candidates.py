@@ -25,7 +25,7 @@ import yaml
 
 
 ROOT = Path(__file__).resolve().parents[3]
-AGENT_PID = "https://example.invalid/agents/zotero-adapter-test-v1"
+AGENT_PID = "xyzrins:source-adapters/zotero/v1"
 REVIEWED_ADAPTER_AGENT_PIDS = (
     "xyzrins:source-adapters/dump-research-info/v1",
     "xyzrins:source-adapters/dump-research-info/v2",
@@ -100,16 +100,6 @@ def prepared_root(destination: Path) -> Path:
         value = yaml.safe_load(path.read_text(encoding="utf-8"))
         assert isinstance(value, dict)
         path.write_bytes(canonical_yaml_bytes(value))
-    agent = root / "metadata/records/XYZInstrument/zotero-adapter-test-v1.yaml"
-    agent.write_bytes(
-        canonical_yaml_bytes(
-            {
-                "display_label": "Synthetic Zotero adapter test agent v1",
-                "pid": AGENT_PID,
-                "schema_type": "xyzri:XYZInstrument",
-            }
-        )
-    )
     return root
 
 
@@ -182,6 +172,7 @@ class FrozenZoteroCandidateTests(unittest.TestCase):
         self.assertEqual(metadata_snapshot(self.root), self.before)
         self.assertEqual(self.plan.adapter, "zotero")
         self.assertEqual(self.plan.adapter_version, "1")
+        self.assertEqual(provider.PROVENANCE_IDENTITY, AGENT_PID)
         self.assertEqual(self.plan.adapter_agent_pid, AGENT_PID)
         self.assertEqual(self.plan.metadata_base, METADATA_BASE)
         self.assertEqual(
@@ -470,10 +461,10 @@ class FrozenZoteroCandidateTests(unittest.TestCase):
                 )
             )
 
-    def test_agent_pid_must_name_a_canonical_thing(self) -> None:
+    def test_provenance_identity_must_match_the_current_adapter_version(self) -> None:
         with self.assertRaisesRegex(
             provider.ZoteroCandidateError,
-            "must identify a canonical versioned Thing",
+            "must equal the reviewed identity for adapter version 1",
         ):
             provider.build_candidate_plan(
                 self.root,
@@ -483,6 +474,24 @@ class FrozenZoteroCandidateTests(unittest.TestCase):
                 adapter_agent_pid="https://example.invalid/agents/missing-v1",
                 schema=SCHEMA,
             )
+
+    def test_provenance_identity_must_name_a_reviewed_instrument(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = prepared_root(Path(directory))
+            identity_path = (
+                root
+                / "metadata/records/XYZInstrument/source-adapter-zotero-v1.yaml"
+            )
+            identity = yaml.safe_load(identity_path.read_text(encoding="utf-8"))
+            self.assertIsInstance(identity, dict)
+            identity["schema_type"] = "xyzri:XYZProject"
+            identity_path.write_bytes(canonical_yaml_bytes(identity))
+
+            with self.assertRaisesRegex(
+                provider.ZoteroCandidateError,
+                "must identify a reviewed xyzri:XYZInstrument record",
+            ):
+                build(root, "wrong-identity-type")
 
     def test_noncanonical_candidate_baseline_is_loaded_semantically(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

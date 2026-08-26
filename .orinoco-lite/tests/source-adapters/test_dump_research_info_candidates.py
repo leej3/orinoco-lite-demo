@@ -29,7 +29,7 @@ from orinoco_lite.decisions import (
 ROOT = Path(__file__).resolve().parents[3]
 ADAPTER_PATH = ROOT / "source-adapters/dump-research-info/metadata_adapter.py"
 CANDIDATES_PATH = ROOT / "source-adapters/dump-research-info/candidates.py"
-AGENT_PID = "urn:example:test:dump-research-info-adapter:v2"
+AGENT_PID = "xyzrins:source-adapters/dump-research-info/v2"
 FIRST_AUTHOR_ROLE = {
     "broad_mappings": ["marcrel:aut"],
     "description": "The first of a set of authors associated with a publication.",
@@ -146,11 +146,11 @@ def create_downstream(
     if include_adapter_agent:
         canonical_records.append(
             (
-                "XYZProject/dump-adapter-v1.yaml",
+                "XYZInstrument/source-adapter-dump-research-info-v2.yaml",
                 {
                     "pid": AGENT_PID,
-                    "schema_type": "xyzri:XYZProject",
-                    "title": "Synthetic dump adapter v1",
+                    "schema_type": "xyzri:XYZInstrument",
+                    "title": "Synthetic dump adapter v2",
                 },
             )
         )
@@ -357,6 +357,8 @@ class SourceMappingTests(unittest.TestCase):
 
             first = build(downstream, source, base, source_commit)
             self.assertEqual("2", first.adapter_version)
+            self.assertEqual(CANDIDATES.PROVENANCE_IDENTITY, AGENT_PID)
+            self.assertEqual(first.adapter_agent_pid, AGENT_PID)
             self.assertEqual(2, len(first.candidates))
             role = next(
                 candidate
@@ -829,7 +831,7 @@ class CandidatePlanTests(unittest.TestCase):
                 dict(plan.source_coordinate),
             )
 
-    def test_adapter_agent_pid_must_identify_a_canonical_versioned_thing(
+    def test_provenance_identity_must_name_a_reviewed_instrument(
         self,
     ) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -847,7 +849,63 @@ class CandidatePlanTests(unittest.TestCase):
 
             with self.assertRaisesRegex(
                 CANDIDATES.DumpResearchInfoCandidateError,
-                "must identify a canonical versioned Thing",
+                "must identify a reviewed xyzri:XYZInstrument record",
+            ):
+                build(downstream, source, base, source_commit)
+
+    def test_provenance_identity_must_match_the_current_adapter_version(
+        self,
+    ) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            downstream = root / "downstream"
+            base = create_downstream(downstream, [])
+            source, source_commit = make_source(
+                root,
+                {"XYZProject": [{"pid": "xyzrins:projects/new", "title": "New"}]},
+            )
+
+            with self.assertRaisesRegex(
+                CANDIDATES.DumpResearchInfoCandidateError,
+                "must equal the reviewed identity for adapter version 2",
+            ):
+                CANDIDATES.build_candidate_plan(
+                    downstream,
+                    source,
+                    metadata_base=base,
+                    expected_source_commit=source_commit,
+                    adapter_agent_pid=(
+                        "xyzrins:source-adapters/dump-research-info/v1"
+                    ),
+                    schema=SCHEMA,
+                )
+
+    def test_provenance_identity_rejects_a_non_instrument_record(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            downstream = root / "downstream"
+            base = create_downstream(
+                downstream,
+                [],
+                include_adapter_agent=False,
+            )
+            write_yaml(
+                downstream / "metadata/records/XYZProject/wrong-agent.yaml",
+                {
+                    "pid": AGENT_PID,
+                    "schema_type": "xyzri:XYZProject",
+                    "title": "Wrong adapter identity type",
+                },
+            )
+            base = commit_all(downstream, "wrong adapter identity type")
+            source, source_commit = make_source(
+                root,
+                {"XYZProject": [{"pid": "xyzrins:projects/new", "title": "New"}]},
+            )
+
+            with self.assertRaisesRegex(
+                CANDIDATES.DumpResearchInfoCandidateError,
+                "must identify a reviewed xyzri:XYZInstrument record",
             ):
                 build(downstream, source, base, source_commit)
 

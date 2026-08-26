@@ -2,6 +2,10 @@
 
 The Milestone 5 curation host and GitHub workflow are described in [`GITHUB-CURATION.md`](GITHUB-CURATION.md).
 They use the shared Orinoco candidate, annotation, decision-cache, and finalization APIs while keeping site mapping policy in each adapter.
+Each source declares its reviewed adapter provenance identity in trusted
+`sources.toml`.
+The GitHub workflow derives that value after the operator selects a source; it
+is not a dispatch input or override.
 
 The older read-only `metadata-review` command remains available for inspecting the accepted Milestone 3 source evidence.
 It is not the Milestone 5 proposal, decision, or finalization interface.

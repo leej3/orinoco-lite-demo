@@ -3,7 +3,10 @@
 This guide covers the site-owned layer of `test-orinoco-downstream-website`.
 It is for reviewing and operating this concrete full-content test site, not for maintaining the generic template or implementing the Orinoco engine.
 
-The repository deliberately carries the complete accepted CON snapshot: 199 metadata records, ten editorial sources, 71 declared content assets, the accepted presentation snapshot, and consumer-specific behavior tests.
+The repository deliberately carries the complete accepted CON content baseline,
+subsequent reviewed source-adapter metadata and provenance records, ten editorial
+sources, 71 declared content assets, the accepted presentation snapshot, and
+consumer-specific behavior tests.
 There is no content-selection subset.
 
 This repository is a distribution fixture, not a production-content approval.

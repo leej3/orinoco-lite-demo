@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 import re
+import tomllib
 import unittest
 
 import yaml
@@ -10,6 +11,7 @@ import yaml
 ROOT = Path(__file__).resolve().parents[3]
 WORKFLOW = ROOT / ".github/workflows/curation-review.yml"
 VALIDATE_WORKFLOW = ROOT / ".github/workflows/validate.yml"
+SOURCES = ROOT / "source-adapters/metadata/sources.toml"
 
 
 class CurationReviewWorkflowTests(unittest.TestCase):
@@ -31,8 +33,7 @@ class CurationReviewWorkflowTests(unittest.TestCase):
             {"workflow_dispatch", "issue_comment"}, set(self.contract["on"])
         )
         inputs = self.contract["on"]["workflow_dispatch"]["inputs"]
-        self.assertEqual("true", inputs["adapter_agent_pid"]["required"])
-        self.assertIn("Existing canonical", inputs["adapter_agent_pid"]["description"])
+        self.assertNotIn("adapter_agent_pid", inputs)
         self.assertEqual("true", inputs["acknowledge_public_review_data"]["required"])
         self.assertEqual("false", inputs["acknowledge_public_review_data"]["default"])
         self.assertEqual({}, self.contract["permissions"])
@@ -57,6 +58,53 @@ class CurationReviewWorkflowTests(unittest.TestCase):
             "startsWith(github.event.comment.body, '/curation submit')",
             self.text,
         )
+
+    def test_proposal_derives_one_reviewed_provenance_identity_from_policy(
+        self,
+    ) -> None:
+        configured = tomllib.loads(SOURCES.read_text(encoding="utf-8"))
+        identities = {
+            source["id"]: source["provenance_identity"]
+            for source in configured["sources"]
+        }
+        self.assertEqual(
+            {
+                "dump-research-info": (
+                    "xyzrins:source-adapters/dump-research-info/v2"
+                ),
+                "zotero": "xyzrins:source-adapters/zotero/v1",
+            },
+            identities,
+        )
+
+        resolution = self.propose_steps[
+            "Resolve the reviewed adapter provenance identity"
+        ]
+        self.assertEqual("source_policy", resolution["id"])
+        self.assertEqual("${{ inputs.adapter }}", resolution["env"]["ADAPTER"])
+        self.assertIn("source-adapters/metadata/sources.toml", resolution["run"])
+        self.assertIn("metadata/tools/review.py", resolution["run"])
+        self.assertIn("resolve-provenance-identity", resolution["run"])
+        self.assertIn("pixi run python", resolution["run"])
+        self.assertIn("GITHUB_OUTPUT", resolution["run"])
+        self.assertNotIn("tomllib", resolution["run"])
+        step_names = [step["name"] for step in self.propose["steps"]]
+        self.assertLess(
+            step_names.index("Install the trusted locked Pixi environment"),
+            step_names.index("Resolve the reviewed adapter provenance identity"),
+        )
+
+        output = "${{ steps.source_policy.outputs.provenance_identity }}"
+        for name in (
+            "Build the ephemeral candidate plan",
+            "Create one explicit DataLad proposal commit",
+            "Render one untracked review bundle from the proposal",
+        ):
+            self.assertEqual(
+                output,
+                self.propose_steps[name]["env"]["PROVENANCE_IDENTITY"],
+            )
+        self.assertNotIn("${{ inputs.adapter_agent_pid }}", self.text)
 
     def test_token_created_writes_dispatch_validation_for_the_exact_refs(self) -> None:
         proposal = self.propose_steps[

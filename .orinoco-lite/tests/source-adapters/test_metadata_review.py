@@ -46,6 +46,52 @@ EMPTY_DIFF = {
 
 
 class MetadataReviewHostTests(unittest.TestCase):
+    def test_provenance_identity_uses_the_validated_manifest_contract(self) -> None:
+        self.assertEqual(
+            "xyzrins:source-adapters/zotero/v1",
+            review.resolve_provenance_identity("zotero"),
+        )
+        self.assertEqual(
+            "xyzrins:source-adapters/dump-research-info/v2",
+            review.resolve_provenance_identity("dump-research-info"),
+        )
+
+        cases = (
+            (
+                "contract_version = 2\n",
+                "contract_version is unsupported",
+            ),
+            (
+                "contract_version = 1\n"
+                "[[sources]]\n"
+                'id = "fake"\n'
+                'adapter = "fake.py"\n',
+                "has no reviewed provenance_identity",
+            ),
+            (
+                "contract_version = 1\n"
+                "[[sources]]\n"
+                'id = "fake"\n'
+                'adapter = "fake.py"\n'
+                'provenance_identity = " first "\n',
+                "must be one nonempty line",
+            ),
+            (
+                "contract_version = 1\n"
+                "[[sources]]\n"
+                'id = "other"\n'
+                'adapter = "other.py"\n'
+                'provenance_identity = "example:other/v1"\n',
+                "Unknown metadata source",
+            ),
+        )
+        for manifest, message in cases:
+            with self.subTest(message=message), tempfile.TemporaryDirectory() as name:
+                path = Path(name) / "sources.toml"
+                path.write_text(manifest, encoding="utf-8")
+                with self.assertRaisesRegex(review.MetadataReviewError, message):
+                    review.resolve_provenance_identity("fake", path)
+
     def test_semantic_diff_reports_identity_and_field_changes(self) -> None:
         before = {
             "gone": {"pid": "gone"},

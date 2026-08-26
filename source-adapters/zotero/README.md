@@ -5,7 +5,9 @@ This directory retains the complete reviewed Milestone 3 Zotero evidence from `d
 - `source/` contains the reviewed public API snapshot and deterministic transformed class files;
 - `policy/` contains the reviewed creator, addition, migration, and site policies;
 - `tools/` contains the read-only acquisition and transformation tools adapted to this ordinary downstream repository; and
-- `candidates.py` derives an ephemeral shared `CandidatePlan` from the exact source revision, canonical metadata base, and an explicitly supplied versioned adapter-agent PID.
+- `candidates.py` derives an ephemeral shared `CandidatePlan` from the exact
+  source revision, canonical metadata base, and the trusted host's reviewed
+  adapter provenance identity.
 The trusted host also supplies a `SchemaView` constructed from the pinned Things Schema in the verified released runtime.
 For proposal and finalization, it passes the trusted default checkout separately as `trusted_root`.
 Executable helpers, the frozen snapshot and transformed candidates, and site policy are read only from that trusted checkout.
@@ -27,4 +29,9 @@ The current decision state, when it exists, is the compact shared cache at `poli
 
 The candidate provider writes only ignored transformation output.
 The trusted proposal task applies the reviewable plan through the project DataLad boundary; neither path writes to Zotero.
-A production proposal also remains intentionally blocked until the separate corpus-normalization change has landed and the explicit adapter-agent PID identifies an extant approved canonical versioned Thing.
+A production proposal also remains intentionally blocked until the separate
+corpus-normalization change has landed and the configured provenance identity
+identifies an existing reviewed `xyzri:XYZInstrument` record.
+The trusted `sources.toml` maps Zotero adapter version 1 to
+`xyzrins:source-adapters/zotero/v1`; operators do not supply an identity or
+fall back to another adapter version.

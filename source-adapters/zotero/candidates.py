@@ -28,6 +28,9 @@ import yaml
 
 ADAPTER_ID = "zotero"
 ADAPTER_VERSION = "1"
+PROVENANCE_IDENTITY = (
+    f"xyzrins:source-adapters/{ADAPTER_ID}/v{ADAPTER_VERSION}"
+)
 DECISION_CACHE = Path("source-adapters/zotero/policy/curation-decisions.yaml")
 ZOTERO_NOTATION = re.compile(r"^zotero:group:(\d+):item:([A-Z0-9]+)$")
 SHA256 = re.compile(r"[0-9a-f]{64}\Z")
@@ -531,11 +534,17 @@ def build_candidate_plan(
         )
     group_id = int(coordinate["group_id"])
 
-    canonical = canonical_state(metadata_root)
-    if adapter_agent_pid not in canonical:
+    if adapter_agent_pid != PROVENANCE_IDENTITY:
         raise ZoteroCandidateError(
-            "Zotero adapter agent PID must identify a canonical versioned Thing: "
-            f"{adapter_agent_pid}"
+            "Zotero adapter provenance identity must equal the reviewed identity "
+            f"for adapter version {ADAPTER_VERSION}: {PROVENANCE_IDENTITY}"
+        )
+    canonical = canonical_state(metadata_root)
+    identity = canonical.get(adapter_agent_pid)
+    if identity is None or identity[1].get("schema_type") != "xyzri:XYZInstrument":
+        raise ZoteroCandidateError(
+            "Zotero adapter provenance identity must identify a reviewed "
+            f"xyzri:XYZInstrument record: {adapter_agent_pid}"
         )
     source_publications = load_publications(publications_path)
     source_by_pid = {str(record.get("pid")): record for record in source_publications}
