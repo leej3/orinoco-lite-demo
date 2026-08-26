@@ -2955,10 +2955,6 @@
         "schema_type": "dlthings:Identifier"
       },
       {
-        "notation": "zotero:group:6197458:item:7PWG497Y",
-        "schema_type": "dlthings:Identifier"
-      },
-      {
         "notation": "zotero:group:6197458:item:VYEFN2PE",
         "schema_type": "dlthings:Identifier"
       }
@@ -3123,15 +3119,7 @@
         "schema_type": "dlthings:ISSN"
       },
       {
-        "notation": "http://www.nature.com/articles/sdata201644",
-        "schema_type": "dlthings:Identifier"
-      },
-      {
         "notation": "https://www.nature.com/articles/sdata201644",
-        "schema_type": "dlthings:Identifier"
-      },
-      {
-        "notation": "zotero:group:6197458:item:4IBTF6HG",
         "schema_type": "dlthings:Identifier"
       },
       {
@@ -3617,15 +3605,7 @@
         "schema_type": "dlthings:Identifier"
       },
       {
-        "notation": "https://www.medrxiv.org/content/early/2021/03/01/2021.02.25.21252472",
-        "schema_type": "dlthings:Identifier"
-      },
-      {
         "notation": "zotero:group:6197458:item:NTH9GIBW",
-        "schema_type": "dlthings:Identifier"
-      },
-      {
-        "notation": "zotero:group:6197458:item:VWFN4ZUS",
         "schema_type": "dlthings:Identifier"
       }
     ],
@@ -5113,10 +5093,6 @@
       {
         "notation": "zotero:group:6197458:item:H8IFRMC4",
         "schema_type": "dlthings:Identifier"
-      },
-      {
-        "notation": "zotero:group:6197458:item:M7WZZRWV",
-        "schema_type": "dlthings:Identifier"
       }
     ],
     "kind": "bibo:AcademicArticle",
@@ -5229,10 +5205,6 @@
       },
       {
         "notation": "zotero:group:6197458:item:W9MC83Q7",
-        "schema_type": "dlthings:Identifier"
-      },
-      {
-        "notation": "zotero:group:6197458:item:XHF43I5N",
         "schema_type": "dlthings:Identifier"
       }
     ],
@@ -5980,10 +5952,6 @@
       },
       {
         "notation": "https://arxiv.org/abs/2309.05768",
-        "schema_type": "dlthings:Identifier"
-      },
-      {
-        "notation": "zotero:group:6197458:item:65GF4WEG",
         "schema_type": "dlthings:Identifier"
       },
       {

@@ -129,6 +129,63 @@ def yaml_map(directory: Path) -> dict[str, dict[str, object]]:
     return records
 
 
+def projection_violations(
+    reviewed: object,
+    canonical: object,
+    path: str = "",
+) -> list[str]:
+    """Report where a reviewed source projection is absent from canonical data.
+
+    Canonical records can be enriched by another reviewed source adapter. A
+    mapping therefore contains the reviewed mapping when every reviewed key is
+    present, and a sequence contains the reviewed sequence when its entries
+    remain an ordered subsequence. Scalar source values must remain equal.
+    """
+
+    if isinstance(reviewed, dict) and isinstance(canonical, dict):
+        violations: list[str] = []
+        for key, value in reviewed.items():
+            child = f"{path}/{key}"
+            if key not in canonical:
+                violations.append(child)
+            else:
+                violations.extend(projection_violations(value, canonical[key], child))
+        return violations
+    if isinstance(reviewed, list) and isinstance(canonical, list):
+        canonical_index = 0
+        violations = []
+        for reviewed_index, value in enumerate(reviewed):
+            while canonical_index < len(canonical) and projection_violations(
+                value,
+                canonical[canonical_index],
+            ):
+                canonical_index += 1
+            if canonical_index == len(canonical):
+                violations.append(f"{path}/{reviewed_index}")
+            else:
+                canonical_index += 1
+        return violations
+    return [] if reviewed == canonical else [path or "/"]
+
+
+def canonical_projection_violations(
+    reviewed: Mapping[str, Mapping[str, object]],
+    canonical: Mapping[str, Mapping[str, object]],
+) -> list[str]:
+    """Report missing or altered records from one reviewed source projection."""
+
+    violations: list[str] = []
+    for pid, record in reviewed.items():
+        if pid not in canonical:
+            violations.append(f"/{pid}")
+        else:
+            violations.extend(
+                f"/{pid}{path}"
+                for path in projection_violations(record, canonical[pid])
+            )
+    return violations
+
+
 def export_canonical_json(root: Path, destination: Path) -> dict[str, Path]:
     grouped: dict[str, list[dict[str, object]]] = {}
     records_root = root / "metadata" / "records"
@@ -157,13 +214,11 @@ def export_noncanonical_mapping_identities(
 ) -> dict[str, object]:
     """Make reviewed source identities explicit without promoting site records.
 
-    Creator mappings describe the source identity model.  That model can be
-    broader than the public site's canonical records: the reviewed migration
-    policy currently omits Russell Poldrack from the published people graph
-    while retaining his Zotero creator mappings and candidate attributions.
-    The underlying ingestion tool correctly refuses mappings to unknown
-    identities, so the adapter supplies a temporary, reportable identity
-    closure derived only from separate, reviewed adapter evidence.
+    Creator mappings describe the source identity model. That model can be
+    broader than the public site's canonical records. The underlying ingestion
+    tool correctly refuses mappings to unknown identities, so the adapter can
+    supply a temporary, reportable identity closure derived only from separate,
+    reviewed adapter evidence.
     """
 
     document = yaml.safe_load(review_identities.read_text(encoding="utf-8"))
@@ -403,13 +458,12 @@ def review(context: Mapping[str, object]) -> dict[str, object]:
         )
 
     canonical_publications = yaml_map(root / "metadata" / "records" / "XYZPublication")
-    reviewed_canonical_diff = semantic_diff(
-        canonical_publications, yaml_map(reviewed_site)
+    # Canonical drift is proposal input, not a source-evidence blocker. The
+    # refreshed evidence must reach the default branch before curation can
+    # materialize and review the corresponding canonical change.
+    reviewed_canonical_violations = canonical_projection_violations(
+        yaml_map(reviewed_site), canonical_publications
     )
-    if reviewed_canonical_diff["summary"]["different"]:
-        raise ZoteroAdapterError(
-            "Canonical publications are stale relative to reviewed Zotero candidates"
-        )
 
     reviewed_source = source_metadata(reviewed_snapshot)
     live_source = source_metadata(live_snapshot)
@@ -483,7 +537,7 @@ def review(context: Mapping[str, object]) -> dict[str, object]:
         "noncanonical_mapping_targets": noncanonical_identities["identities"],
         "baseline": {
             "reviewed_candidates_current": True,
-            "canonical_publications_current": True,
+            "canonical_publications_current": not reviewed_canonical_violations,
         },
         "artifacts": {
             "live_snapshot": relative(root, live_snapshot_path),

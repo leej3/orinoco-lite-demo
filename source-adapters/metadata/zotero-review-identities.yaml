@@ -1,28 +1,7 @@
 format_version: 1
 description: >-
   Source identities needed to reproduce reviewed Zotero candidates but
-  intentionally omitted from the public canonical site by current site policy
-  policy. This evidence does not create or promote canonical records.
+  intentionally omitted from the public canonical site by current site policy.
+  This evidence does not create or promote canonical records.
 
-identities:
-  - pid: xyzrins:persons/brock-wester
-    aliases:
-      - Brock Wester
-    rationale: >-
-      Retain the exact source identity while public person visibility remains
-      a separate human decision.
-    evidence:
-      - https://api.zotero.org/groups/6197458/items/CMI7RGJ8
-      - https://api.zotero.org/groups/6197458/items/N8L2GWY5
-  - pid: xyzrins:persons/russell-poldrack
-    aliases:
-      - Russell Poldrack
-      - Russell A Poldrack
-      - Russell A. Poldrack
-      - R. A. Poldrack
-    rationale: >-
-      Retain reviewed full-name and initials variants while public person
-      visibility remains a separate human decision.
-    evidence:
-      - https://orcid.org/0000-0001-6755-0259
-      - https://api.zotero.org/groups/6197458/items/BEINDI3Z
+identities: []

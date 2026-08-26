@@ -10,6 +10,7 @@ allowed_attribution_targets:
   - xyzrins:persons/adina-wagner
   - xyzrins:persons/austin-macdonald
   - xyzrins:persons/benjamin-poldrack
+  - xyzrins:persons/brock-wester
   - xyzrins:persons/chris-markiewicz
   - xyzrins:persons/cody-baker
   - xyzrins:persons/david-kennedy
@@ -26,6 +27,7 @@ allowed_attribution_targets:
   - xyzrins:persons/michael-hanke
   - xyzrins:persons/nikolaas-oosterhof
   - xyzrins:persons/oliver-contier
+  - xyzrins:persons/russell-poldrack
   - xyzrins:persons/samuel-nastase
   - xyzrins:persons/satrajit-ghosh
   - xyzrins:persons/soichi-hayashi
@@ -33,13 +35,7 @@ allowed_attribution_targets:
   - xyzrins:persons/vanessa-sochat
   - xyzrins:persons/yaroslav-halchenko
 
-omitted_attribution_targets:
-  xyzrins:persons/brock-wester: >-
-    The source identity is modeled, but Milestone 2 intentionally deferred a
-    public person record pending the hidden-person visibility policy.
-  xyzrins:persons/russell-poldrack: >-
-    The source identity is modeled, but Milestone 2 intentionally deferred a
-    public person record pending the hidden-person visibility policy.
+omitted_attribution_targets: {}
 
 allowed_about_targets:
   - xyzrins:topics/neuroimaging

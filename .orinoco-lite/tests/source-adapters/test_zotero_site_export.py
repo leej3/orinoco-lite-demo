@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+from collections import Counter
 from copy import deepcopy
 import importlib.util
 import json
@@ -28,33 +29,6 @@ SPEC.loader.exec_module(EXPORT)
 
 
 class ZoteroSiteExportTests(unittest.TestCase):
-    def assert_additive_subset(
-        self, expected: object, observed: object, *, path: str
-    ) -> None:
-        if isinstance(expected, dict):
-            self.assertIsInstance(observed, dict, path)
-            assert isinstance(observed, dict)
-            self.assertLessEqual(set(expected), set(observed), path)
-            for key, value in expected.items():
-                self.assert_additive_subset(
-                    value,
-                    observed[key],
-                    path=f"{path}/{key}",
-                )
-            return
-        if isinstance(expected, list):
-            self.assertIsInstance(observed, list, path)
-            assert isinstance(observed, list)
-            self.assertGreaterEqual(len(observed), len(expected), path)
-            for index, value in enumerate(expected):
-                self.assert_additive_subset(
-                    value,
-                    observed[index],
-                    path=f"{path}/{index}",
-                )
-            return
-        self.assertEqual(expected, observed, path)
-
     def build_temporary_directory(self) -> tempfile.TemporaryDirectory[str]:
         EXPORT.BUILD_ROOT.mkdir(exist_ok=True)
         return tempfile.TemporaryDirectory(dir=EXPORT.BUILD_ROOT)
@@ -143,16 +117,32 @@ class ZoteroSiteExportTests(unittest.TestCase):
                     "dlthings:AttributeSpecification",
                 )
         canonical = {
-            path.name: path.read_bytes()
+            path.name
             for path in (ROOT / "metadata/records/XYZPublication").glob("*.yaml")
         }
-        self.assertLessEqual(set(first_files), set(canonical))
-        for name, payload in first_files.items():
-            self.assert_additive_subset(
-                yaml.safe_load(payload),
-                yaml.safe_load(canonical[name]),
-                path=name,
-            )
+        self.assertLessEqual(set(first_files), canonical)
+        canonical_people = {
+            yaml.safe_load(path.read_text(encoding="utf-8"))["pid"]
+            for path in (ROOT / "metadata/records/XYZPerson").glob("*.yaml")
+        }
+        self.assertLessEqual(
+            {
+                "xyzrins:persons/brock-wester",
+                "xyzrins:persons/russell-poldrack",
+            },
+            canonical_people,
+        )
+        attribution_counts = Counter(
+            attribution["object"]
+            for record in records
+            for attribution in record.get("attributed_to", [])
+        )
+        self.assertEqual(attribution_counts["xyzrins:persons/brock-wester"], 2)
+        self.assertEqual(attribution_counts["xyzrins:persons/russell-poldrack"], 19)
+        self.assertEqual(
+            report["reviewed_omissions"],
+            {"omitted generation obo:IAO_0000444": 38},
+        )
 
     def test_export_hashes_the_same_single_reads_that_it_renders(self) -> None:
         with self.build_temporary_directory() as directory:
