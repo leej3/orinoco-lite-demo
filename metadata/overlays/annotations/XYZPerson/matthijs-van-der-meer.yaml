@@ -1,0 +1,30 @@
+assertions:
+- assertion_sha256: sha256:06ccda1edf8f40a2deee13dbbe2e936e9198eab3861cee8ca7db55fe76bbb36b
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fmatthijs-van-der-meer
+- assertion_sha256: sha256:3aa808c9fb92ad2d7223814b3b1110f7df06b2a88cae9e833da07facfa9bdb40
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fmatthijs-van-der-meer
+- assertion_sha256: sha256:4f262ec60143faa11685607a75dca7c8014c86df9492ae8c791416bd4cae125d
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fmatthijs-van-der-meer
+- assertion_sha256: sha256:58c21aed04d903bcbb63957a97be2ebd2b92be34d8d72aea858a3daab01ebd98
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fmatthijs-van-der-meer
+- assertion_sha256: sha256:5adc657b65f8abe9d89068b9afa7074b5c82c5e0675ad678155601d992803b59
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fmatthijs-van-der-meer
+- assertion_sha256: sha256:fc0c5b2c4a4a8a2bb72194661f5043cef17d0167a256d58630002589c05fcfbd
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fmatthijs-van-der-meer
+- assertion_sha256: sha256:44d307653cc272419acfd23705ea9bd3254359df9ad5bbb2900fb3f78003e28c
+  path: /identifiers
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fmatthijs-van-der-meer
+record: xyzrins:persons/matthijs-van-der-meer

@@ -1,0 +1,14 @@
+assertions:
+- assertion_sha256: sha256:76bbe8e3f8eb15a85f50756297a4cb491ba508438df5a0ae89df266eca9e6e6b
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZOrganization.json#record=ror%3A049s0rh22
+- assertion_sha256: sha256:790473e40f49271957cc718438ab67719a19dbcebe643274dab88a0aa8d83044
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZOrganization.json#record=ror%3A049s0rh22
+- assertion_sha256: sha256:f51149bbb5f4e1455ccfa889515df2f4175c08d494d32dc9c276ef3a85a3a3f3
+  path: /characterized_by
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZOrganization.json#record=ror%3A049s0rh22
+record: ror:049s0rh22

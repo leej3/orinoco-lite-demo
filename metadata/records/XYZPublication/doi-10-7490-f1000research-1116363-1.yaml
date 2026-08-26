@@ -19,10 +19,36 @@ attributed_to:
   roles:
   - marcrel:aut
   schema_type: dlthings:Attribution
+- object: xyzrins:persons/michael-hanke
+  roles:
+  - obo:MS_1002034
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/kyle-meyer
+  roles:
+  - obo:MS_1002036
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/matteo-visconti-di-oleggio-castello
+  roles:
+  - obo:MS_1002036
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/benjamin-poldrack
+  roles:
+  - obo:MS_1002036
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - obo:MS_1002036
+  schema_type: dlthings:Attribution
 attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2018'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: YODA 2018 F1000Research
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'YODA: YODA''s Organigram on Data Analysis'
 display_label: 'YODA: YODA’s organigram on data analysis'
 identifiers:
 - notation: 10.7490/f1000research.1116363.1
@@ -30,6 +56,8 @@ identifiers:
 - notation: https://github.com/myyoda/poster/blob/master/ohbm2018.pdf
   schema_type: dlthings:Identifier
 - notation: zotero:group:6197458:item:S7T734SL
+  schema_type: dlthings:Identifier
+- notation: https://doi.org/10.7490/f1000research.1116363.1
   schema_type: dlthings:Identifier
 kind: bibo:Document
 pid: xyzrins:publications/doi-10-7490-f1000research-1116363-1

@@ -1,0 +1,26 @@
+assertions:
+- assertion_sha256: sha256:4eae4f14455b4a54fd94d134343d416d65de416bedc787ce87beef01e430784f
+  path: /attributed_to
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPublication.json#record=https%3A%2F%2Fdoi.org%2F10.12688%2Ff1000research.7628.1
+- assertion_sha256: sha256:a7d88a3ef2f76c26764d57f66ce3e89858ceb86281925034619d0d0d8051a831
+  path: /attributed_to
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPublication.json#record=https%3A%2F%2Fdoi.org%2F10.12688%2Ff1000research.7628.1
+- assertion_sha256: sha256:044abe65913165952f537ce13e043b05ec0480b6f6ffd075d8e9f0f90132de14
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPublication.json#record=https%3A%2F%2Fdoi.org%2F10.12688%2Ff1000research.7628.1
+- assertion_sha256: sha256:724f992619f11f66842b53cf55edf335db443bbf644d87afa9391c72a75cc1ab
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPublication.json#record=https%3A%2F%2Fdoi.org%2F10.12688%2Ff1000research.7628.1
+- assertion_sha256: sha256:086f224d65d8fafddee5843937a769595e77c18b6a087b522b2928b97134d847
+  path: /identifiers
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPublication.json#record=https%3A%2F%2Fdoi.org%2F10.12688%2Ff1000research.7628.1
+- assertion_sha256: sha256:17f943c2f47357617add13bfee5d1f4f66d47989b38882f3dc7f0acc3b657fa5
+  path: /identifiers
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPublication.json#record=https%3A%2F%2Fdoi.org%2F10.12688%2Ff1000research.7628.1
+record: xyzrins:publications/doi-10-12688-f1000research-7628-1

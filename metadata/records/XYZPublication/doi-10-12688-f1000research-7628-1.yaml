@@ -1,0 +1,25 @@
+attributed_to:
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - obo:MS_1002034
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/michael-hanke
+  roles:
+  - obo:MS_1002035
+  schema_type: dlthings:Attribution
+attributes:
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Halchenko & Hanke 2015
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Four aspects to make science open by design and not as an after-thought
+display_label: Halchenko & Hanke 2015
+identifiers:
+- notation: 10.12688/f1000research.7628.1
+  schema_type: dlthings:DOI
+- notation: https://doi.org/10.12688/f1000research.7628.1
+  schema_type: dlthings:Identifier
+pid: xyzrins:publications/doi-10-12688-f1000research-7628-1
+schema_type: xyzri:XYZPublication
+title: Four aspects to make science open by design and not as an after-thought

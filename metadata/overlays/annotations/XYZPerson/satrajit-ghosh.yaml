@@ -1,0 +1,26 @@
+assertions:
+- assertion_sha256: sha256:1f706a0ee97a001763df0a02bae8a009dd3c6cb1ddb87b550863c0533fcc1022
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fsatrajit-ghosh
+- assertion_sha256: sha256:24ef85523bf6c32565b00808e406d9519bd02a07a97b026788d82768cf64291f
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fsatrajit-ghosh
+- assertion_sha256: sha256:a12bbaa99060192d509606f92fcb6e0a21b7ab7ef4fe5ab243ade69d602d4b58
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fsatrajit-ghosh
+- assertion_sha256: sha256:ca3f13f9e78e50103ae6422c2c583437d428b3441930108d263820f8a9f763c8
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fsatrajit-ghosh
+- assertion_sha256: sha256:e9ffa48284cf44827d1919c31a5460e55eddd6e52a1a2cc7aabe0f26c67b4eca
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fsatrajit-ghosh
+- assertion_sha256: sha256:476fe2f9b4a25fbd0219baf999525bb367042be921ef745044246098a1fd9fa6
+  path: /identifiers
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fsatrajit-ghosh
+record: xyzrins:persons/satrajit-ghosh

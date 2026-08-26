@@ -1,0 +1,26 @@
+assertions:
+- assertion_sha256: sha256:06bc87c1963e41a77232811820d9b63c0caa0d364eb89d978a0c5c8ee33a3379
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fjohn-wodder
+- assertion_sha256: sha256:3d938162ec88900f58f7b14392400886250612cf4b346308b2c8c0ab0d5d4ea3
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fjohn-wodder
+- assertion_sha256: sha256:59517a3bfcfc7340e536a724a4d16e98f21c4d6405a94fd6311596330daa2214
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fjohn-wodder
+- assertion_sha256: sha256:88ca7c896c67c3ee6bce669233141aee08ab4dab5a5afcd5a70570b39d96723c
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fjohn-wodder
+- assertion_sha256: sha256:dfe425bd937059a6acb49e27a8721a6a1de42250b1091790e30dd2ce37e3ccdd
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fjohn-wodder
+- assertion_sha256: sha256:9c80c2243f1389a2163e9ddd37461ac7e100ed529ee9228b2e521b0d2f626d10
+  path: /identifiers
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fjohn-wodder
+record: xyzrins:persons/john-wodder

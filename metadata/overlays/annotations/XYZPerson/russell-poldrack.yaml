@@ -1,0 +1,34 @@
+assertions:
+- assertion_sha256: sha256:073e4081701e73dfc872c3641210fb49163dfe0cd56c7b542b17171e68ec7f54
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Frussell-poldrack
+- assertion_sha256: sha256:4b1ba3c583c65d83ae1be603cb8680556b77f9fde14a7c48b9200a0a102e1d2e
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Frussell-poldrack
+- assertion_sha256: sha256:5a73b381a2d8421a99be23eaada2632cbc5fdfab573aa29d485b6a01e5e77a96
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Frussell-poldrack
+- assertion_sha256: sha256:8e9a73919a4861aa0596e9e08681b1926dcaf3a22a9c9566a031a28ae47d957d
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Frussell-poldrack
+- assertion_sha256: sha256:b901ad37c481c67fd34150881858cb8e057122dca744e2ce2997c706f4a6d426
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Frussell-poldrack
+- assertion_sha256: sha256:bc72598247bda68c7cb4c354b3d0f2ded5feec9ca3de04ccbf95881d7e46a1d3
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Frussell-poldrack
+- assertion_sha256: sha256:5cd0d5ea8bc8cb749202dda550520b01d8dd711d48cfc185f99fd4b6e60e5b05
+  path: /identifiers
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Frussell-poldrack
+- assertion_sha256: sha256:f3057783dcdb7dcf7b0dd097e8bf9152693cc3647e8e7e63055d7ffeff8b4979
+  path: /identifiers
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Frussell-poldrack
+record: xyzrins:persons/russell-poldrack

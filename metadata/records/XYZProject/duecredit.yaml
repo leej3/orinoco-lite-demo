@@ -11,6 +11,20 @@ attributes:
 - predicate: foaf:homepage
   schema_type: dlthings:AttributeSpecification
   value: https://github.com/duecredit/duecredit
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: Provides a solution for the problem of inadequate citation and referencing
+    of scientific software and methods. A Python-focused framework embedding publication
+    references in code with automatic citation collection and reporting.
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: DueCredit
+- predicate: dlthings:short_name
+  schema_type: dlthings:AttributeSpecification
+  value: DueCredit
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: DueCredit
 description: Provides a solution for the problem of inadequate citation and referencing
   of scientific software and methods. A Python-focused framework embedding publication
   references in code with automatic citation collection and reporting.

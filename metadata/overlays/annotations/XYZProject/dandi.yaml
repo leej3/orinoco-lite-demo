@@ -1,0 +1,18 @@
+assertions:
+- assertion_sha256: sha256:1f855a0c4d67bc79cdff53ae0682db984da09f27f6100e6f781eed3ff2b4067b
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZProject.json#record=xyzrins%3Aprojects%2Fdandi
+- assertion_sha256: sha256:5f8a08e33cb1e5ab3b9408380f09a83fe74ba43cea1a7f0372ce7132eb6ee562
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZProject.json#record=xyzrins%3Aprojects%2Fdandi
+- assertion_sha256: sha256:b50373a24eac64bfb4269775893a81da6782ad0e13ccc17e33c68b63dd96fbab
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZProject.json#record=xyzrins%3Aprojects%2Fdandi
+- assertion_sha256: sha256:fbc8f712f66342d9eaf45e3dbf7e272bfcf59f82d5b8f4b407e079723a81cc5d
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZProject.json#record=xyzrins%3Aprojects%2Fdandi
+record: xyzrins:projects/dandi

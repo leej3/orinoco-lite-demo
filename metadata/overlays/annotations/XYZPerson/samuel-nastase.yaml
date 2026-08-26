@@ -1,0 +1,26 @@
+assertions:
+- assertion_sha256: sha256:58ea46d98bd3c035a313a4edfd4f605fd6d887f3cb47ff50a4faf380af192fd4
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fsamuel-nastase
+- assertion_sha256: sha256:80489bf110f7c1b08166328d428e9e4a68495317698d8ec9d5169d96f75910bc
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fsamuel-nastase
+- assertion_sha256: sha256:91db8654b691118471571fead783d16fcdcebb83e25cdf2043c16283cc6a8b70
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fsamuel-nastase
+- assertion_sha256: sha256:c8d5080d92a93c764c80416752543543a09c772975094f1b2c1848af9d1d338b
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fsamuel-nastase
+- assertion_sha256: sha256:f752dae59ff0780e4f58926b44ee05d4156c5e3287a6c580ca1fa58860452c18
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fsamuel-nastase
+- assertion_sha256: sha256:647e13193626ca4b1802412f80130d1dc2fa0ade2c50ba270dd8b506c343b9bd
+  path: /identifiers
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fsamuel-nastase
+record: xyzrins:persons/samuel-nastase
