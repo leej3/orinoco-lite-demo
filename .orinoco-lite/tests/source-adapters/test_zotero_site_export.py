@@ -25,35 +25,21 @@ assert SPEC is not None and SPEC.loader is not None
 EXPORT = importlib.util.module_from_spec(SPEC)
 sys.modules[SPEC.name] = EXPORT
 SPEC.loader.exec_module(EXPORT)
+ADAPTER_SPEC = importlib.util.spec_from_file_location(
+    "zotero_metadata_adapter_for_site_export_tests",
+    ROOT / "source-adapters/zotero/metadata_adapter.py",
+)
+assert ADAPTER_SPEC is not None and ADAPTER_SPEC.loader is not None
+ADAPTER = importlib.util.module_from_spec(ADAPTER_SPEC)
+sys.modules[ADAPTER_SPEC.name] = ADAPTER
+ADAPTER_SPEC.loader.exec_module(ADAPTER)
 
 
 class ZoteroSiteExportTests(unittest.TestCase):
     def assert_additive_subset(
         self, expected: object, observed: object, *, path: str
     ) -> None:
-        if isinstance(expected, dict):
-            self.assertIsInstance(observed, dict, path)
-            assert isinstance(observed, dict)
-            self.assertLessEqual(set(expected), set(observed), path)
-            for key, value in expected.items():
-                self.assert_additive_subset(
-                    value,
-                    observed[key],
-                    path=f"{path}/{key}",
-                )
-            return
-        if isinstance(expected, list):
-            self.assertIsInstance(observed, list, path)
-            assert isinstance(observed, list)
-            self.assertGreaterEqual(len(observed), len(expected), path)
-            for index, value in enumerate(expected):
-                self.assert_additive_subset(
-                    value,
-                    observed[index],
-                    path=f"{path}/{index}",
-                )
-            return
-        self.assertEqual(expected, observed, path)
+        self.assertEqual(ADAPTER.projection_violations(expected, observed), [], path)
 
     def build_temporary_directory(self) -> tempfile.TemporaryDirectory[str]:
         EXPORT.BUILD_ROOT.mkdir(exist_ok=True)

@@ -42,7 +42,7 @@ class ZoteroAcquisitionTests(unittest.TestCase):
     def test_current_and_historical_collection_labels_classify_identically(
         self,
     ) -> None:
-        for label in ("Articles", "CON Articles"):
+        for label in ("Articles", "CON Articles", "CON Articles & Posters"):
             snapshot = {
                 "collections": [{"data": {"key": "COLL0001", "name": label}}],
                 "items": [

@@ -296,6 +296,63 @@ class MetadataReviewHostTests(unittest.TestCase):
 
 
 class ZoteroAdapterContractTests(unittest.TestCase):
+    def test_canonical_projection_allows_ordered_additive_enrichment(self) -> None:
+        reviewed = {
+            "publication": {
+                "pid": "publication",
+                "identifiers": [
+                    {"notation": "doi:example", "schema_type": "Identifier"},
+                    {"notation": "zotero:item", "schema_type": "Identifier"},
+                ],
+                "title": "Reviewed title",
+            }
+        }
+        canonical = {
+            "other-source-publication": {"pid": "other-source-publication"},
+            "publication": {
+                "pid": "publication",
+                "identifiers": [
+                    {"notation": "doi:example", "schema_type": "Identifier"},
+                    {"notation": "crossref:example", "schema_type": "Identifier"},
+                    {"notation": "zotero:item", "schema_type": "Identifier"},
+                ],
+                "title": "Reviewed title",
+                "description": "Added by another reviewed adapter",
+            },
+        }
+
+        self.assertEqual(
+            zotero.canonical_projection_violations(reviewed, canonical), []
+        )
+
+    def test_canonical_projection_rejects_missing_changed_or_reordered_data(
+        self,
+    ) -> None:
+        reviewed = {
+            "publication": {
+                "pid": "publication",
+                "identifiers": ["first", "second"],
+                "title": "Reviewed title",
+            },
+            "missing": {"pid": "missing"},
+        }
+        canonical = {
+            "publication": {
+                "pid": "publication",
+                "identifiers": ["second", "first"],
+                "title": "Changed title",
+            }
+        }
+
+        self.assertEqual(
+            zotero.canonical_projection_violations(reviewed, canonical),
+            [
+                "/publication/identifiers/1",
+                "/publication/title",
+                "/missing",
+            ],
+        )
+
     def test_snapshot_map_namespaces_collection_and_item_keys(self) -> None:
         snapshot = {
             "collections": [{"data": {"key": "SAME", "name": "Articles"}}],

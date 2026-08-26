@@ -121,7 +121,7 @@ def build(
         root,
         root / f"build/{name}",
         metadata_base=METADATA_BASE,
-        expected_library_version=451,
+        expected_library_version=668,
         adapter_agent_pid=AGENT_PID,
         schema=SCHEMA,
         trusted_root=trusted_root,
@@ -180,11 +180,11 @@ class FrozenZoteroCandidateTests(unittest.TestCase):
             {
                 "content_sha256": (
                     "sha256:"
-                    "5e0f5fe1d68c18214110a37c24a8e9177dc484f64a1d9d832f322b477bfef20d"
+                    "23aa443a248e9e1dfc73003cde76f3a93c533bf9e57cc5674539b80da52f17b8"
                 ),
                 "group_id": 6197458,
                 "kind": "zotero-public-library",
-                "library_version": 451,
+                "library_version": 668,
             },
         )
         self.assertEqual(len(self.plan.candidates), 126)
@@ -331,7 +331,7 @@ class FrozenZoteroCandidateTests(unittest.TestCase):
                 root,
                 root / "build/rerun",
                 metadata_base="2" * 40,
-                expected_library_version=451,
+                expected_library_version=668,
                 adapter_agent_pid=AGENT_PID,
                 schema=SCHEMA,
             )
@@ -470,7 +470,7 @@ class FrozenZoteroCandidateTests(unittest.TestCase):
                 self.root,
                 self.root / "build/missing-agent",
                 metadata_base=METADATA_BASE,
-                expected_library_version=451,
+                expected_library_version=668,
                 adapter_agent_pid="https://example.invalid/agents/missing-v1",
                 schema=SCHEMA,
             )

@@ -50,8 +50,12 @@ PUBLICATION_KINDS = {
     "webpage": "bibo:Webpage",
 }
 
-INCLUDED_COLLECTIONS = {
+PUBLICATION_COLLECTIONS = {
     "articles",
+    "articles & posters",
+}
+
+INCLUDED_COLLECTIONS = PUBLICATION_COLLECTIONS | {
     "datasets",
     "software",
     "zenodo/osf dois",
@@ -546,10 +550,11 @@ def classify(item: SourceItem) -> tuple[str | None, str | None, str | None]:
             for hint, collection in (
                 ("dataset", "datasets"),
                 ("instrument", "software"),
-                ("publication", "articles"),
             )
             if collection in collection_set
         }
+        if PUBLICATION_COLLECTIONS & collection_set:
+            hints.add("publication")
         if len(hints) > 1:
             return None, None, "conflicting collection classification"
         if hints == {"dataset"}:
