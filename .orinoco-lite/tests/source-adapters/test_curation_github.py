@@ -99,6 +99,18 @@ def submission_payload(value: CandidatePlan) -> dict[str, object]:
 
 
 def comment(payload: dict[str, object]) -> str:
+    return (
+        "/curation submit\n\n"
+        "<details>\n\n"
+        "<summary>Complete curation submission JSON</summary>\n\n"
+        "```json\n"
+        + json.dumps(payload, indent=2)
+        + "\n```\n\n"
+        "</details>"
+    )
+
+
+def legacy_comment(payload: dict[str, object]) -> str:
     return "/curation submit\n\n```json\n" + json.dumps(payload, indent=2) + "\n```"
 
 
@@ -237,6 +249,14 @@ class SubmissionTests(unittest.TestCase):
             },
         )
 
+    def test_exact_legacy_submission_remains_accepted(self) -> None:
+        submission = HOST.parse_submission_comment(
+            legacy_comment(submission_payload(self.plan))
+        )
+
+        self.assertEqual("con/example", submission.repository)
+        self.assertEqual(2, len(submission.decisions))
+
     def test_incomplete_submission_is_rejected_but_array_order_is_not_authority(
         self,
     ) -> None:
@@ -335,13 +355,32 @@ class TextEnvelopeTests(unittest.TestCase):
         with self.assertRaisesRegex(HOST.CurationHostError, "comment.*too large"):
             HOST.parse_submission_comment(oversized)
 
-    def test_submission_rejects_markdown_html_and_envelope_variations(self) -> None:
+    def test_submission_rejects_shared_envelope_variations(self) -> None:
+        payload = submission_payload(plan())
+        for valid in (comment(payload), legacy_comment(payload)):
+            for invalid in (
+                "<!-- hidden -->\n" + valid,
+                "Review this first\n" + valid,
+                valid.replace("```json", "```JSON"),
+                valid + "\nadditional prose",
+            ):
+                with self.subTest(invalid=invalid[:30]):
+                    with self.assertRaisesRegex(
+                        HOST.CurationHostError, "exact /curation submit"
+                    ):
+                        HOST.parse_submission_comment(invalid)
+
+    def test_submission_rejects_collapsed_wrapper_variations(self) -> None:
         valid = comment(submission_payload(plan()))
         for invalid in (
-            "<!-- hidden -->\n" + valid,
-            "Review this first\n" + valid,
-            valid.replace("```json", "```JSON"),
-            valid + "\nadditional prose",
+            valid.replace("<details>", "<details open>"),
+            valid.replace(
+                "Complete curation submission JSON",
+                "View complete curation submission",
+            ),
+            valid.replace("<details>\n\n<summary>", "<details>\n<summary>"),
+            valid.replace("</summary>\n\n```json", "</summary>\n```json"),
+            valid.replace("\n\n</details>", "\n</details>"),
         ):
             with self.subTest(invalid=invalid[:30]):
                 with self.assertRaisesRegex(

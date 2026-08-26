@@ -44,6 +44,8 @@ The origin changes only the generated link; it has no decision authority.
 Reviewers may use the hosted application, inspect or edit the diff in GitHub, apply GitHub suggestions, or push ordinary metadata commits.
 GitHub attributes suggestions and direct commits, and neither path requires a local checkout.
 The hosted application posts one complete authenticated comment whose first line is `/curation submit`.
+The JSON is inside an exact Markdown `details` element that is closed by default, keeping the pull-request conversation readable while the full comment remains durable in GitHub and the resulting decision remains in commit history.
+The trusted host also accepts the former exact unwrapped fenced-JSON envelope for historical comments and event replays; no other wrapper variations are accepted.
 Its JSON is bound to the repository, pull request, proposal SHA, current head, adapter, exact source coordinate, and complete candidate mapping.
 Decision-array order is not authority.
 

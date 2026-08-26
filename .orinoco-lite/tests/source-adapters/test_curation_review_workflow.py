@@ -53,6 +53,10 @@ class CurationReviewWorkflowTests(unittest.TestCase):
         self.assertNotIn("workflow_run", self.contract["on"])
         self.assertIn("pull_request", self.validation_contract["on"])
         self.assertIn("workflow_dispatch", self.validation_contract["on"])
+        self.assertIn(
+            "startsWith(github.event.comment.body, '/curation submit')",
+            self.text,
+        )
 
     def test_token_created_writes_dispatch_validation_for_the_exact_refs(self) -> None:
         proposal = self.propose_steps[
