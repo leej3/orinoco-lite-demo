@@ -11,10 +11,25 @@ attributed_to:
   roles:
   - marcrel:aut
   schema_type: dlthings:Attribution
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - obo:MS_1002036
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/matteo-visconti-di-oleggio-castello
+  roles:
+  - obo:MS_1002036
+  schema_type: dlthings:Attribution
 attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: 2021-02
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Open Brain Consent 2021
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'The Open Brain Consent: Informing research participants and obtaining consent
+    to share brain imaging data'
 display_label: 'The Open Brain Consent: Informing research participants and obtaining
   consent to share brain imaging data'
 identifiers:

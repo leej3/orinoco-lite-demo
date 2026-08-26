@@ -1,0 +1,18 @@
+assertions:
+- assertion_sha256: sha256:60009e872123b54a13a86ddc6f5efbd043d26faa1b0b28dc2762dddc4198fa36
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZProject.json#record=xyzrins%3Aprojects%2Fsupereeg
+- assertion_sha256: sha256:68126077fad8ca451c4f3a0b0a9f905aa1fe4a5c6f81541e737dc2b104fb0855
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZProject.json#record=xyzrins%3Aprojects%2Fsupereeg
+- assertion_sha256: sha256:735667ee1c7858c97cb65e2159a1f761d43fcbdda6d29137c884835bca2d3900
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZProject.json#record=xyzrins%3Aprojects%2Fsupereeg
+- assertion_sha256: sha256:c28ec55263adbd567ca53c5da13beb7ee65126ba40cd5465d25be5fbe109c4f4
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZProject.json#record=xyzrins%3Aprojects%2Fsupereeg
+record: xyzrins:projects/supereeg

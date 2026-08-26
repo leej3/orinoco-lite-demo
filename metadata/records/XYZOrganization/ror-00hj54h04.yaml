@@ -1,0 +1,11 @@
+attributes:
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: University of Texas at Austin
+- predicate: dlthings:name
+  schema_type: dlthings:AttributeSpecification
+  value: University of Texas at Austin
+display_label: University of Texas at Austin
+name: University of Texas at Austin
+pid: ror:00hj54h04
+schema_type: xyzri:XYZOrganization

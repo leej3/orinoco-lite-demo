@@ -7,6 +7,14 @@ attributed_to:
   roles:
   - marcrel:aut
   schema_type: dlthings:Attribution
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - obo:MS_1002034
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/michael-hanke
+  roles:
+  - obo:MS_1002035
+  schema_type: dlthings:Attribution
 attributes:
 - predicate: bibo:locator
   schema_type: dlthings:AttributeSpecification
@@ -14,6 +22,13 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2012'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Halchenko & Hanke 2012
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'Open is not enough. Let''s take the next step: an integrated, community-driven
+    computing platform for neuroscience'
 display_label: 'Open is not enough. Let''s take the next step: An integrated, community-driven
   computing platform for neuroscience'
 identifiers:
@@ -22,6 +37,8 @@ identifiers:
 - notation: 1662-5196
   schema_type: dlthings:ISSN
 - notation: zotero:group:6197458:item:R9YLFWR2
+  schema_type: dlthings:Identifier
+- notation: https://doi.org/10.3389/fninf.2012.00022
   schema_type: dlthings:Identifier
 kind: bibo:AcademicArticle
 pid: xyzrins:publications/doi-10-3389-fninf-2012-00022

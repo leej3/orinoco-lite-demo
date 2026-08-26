@@ -23,6 +23,20 @@ attributes:
 - predicate: foaf:homepage
   schema_type: dlthings:AttributeSpecification
   value: https://datalad.org
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: A data management platform that adapts open-source software distribution
+    models to address data-sharing limitations. Provides a versatile data management
+    platform using git-annex for large data tracking built on Git.
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: DataLad
+- predicate: dlthings:short_name
+  schema_type: dlthings:AttributeSpecification
+  value: DataLad
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: DataLad
 description: A data management platform that adapts open-source software distribution
   models to address data-sharing limitations. Provides a versatile data management
   platform using git-annex for large data tracking built on Git.

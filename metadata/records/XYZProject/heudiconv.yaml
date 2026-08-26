@@ -15,6 +15,20 @@ attributes:
 - predicate: foaf:homepage
   schema_type: dlthings:AttributeSpecification
   value: https://github.com/nipy/heudiconv
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: Flexible DICOM converter for organizing brain imaging data into structured
+    directory layouts. Includes the ReproIn component for turnkey automatic conversion
+    of MR data to BIDS DataLad datasets.
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: HeuDiConv / ReproIn
+- predicate: dlthings:short_name
+  schema_type: dlthings:AttributeSpecification
+  value: HeuDiConv
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: HeuDiConv
 description: Flexible DICOM converter for organizing brain imaging data into structured
   directory layouts. Includes the ReproIn component for turnkey automatic conversion
   of MR data to BIDS DataLad datasets.

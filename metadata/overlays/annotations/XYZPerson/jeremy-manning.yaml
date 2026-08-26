@@ -1,0 +1,30 @@
+assertions:
+- assertion_sha256: sha256:391364d30649354270faf6d20be1c3f1a1f2895903a8b506a4ae57d4a25e8517
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fjeremy-manning
+- assertion_sha256: sha256:65483aaa41c6d174b56d7264847a1cba7577952631992ae7de0bbddca20b273b
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fjeremy-manning
+- assertion_sha256: sha256:67e256b134915a073a742fbbfc2bfa40f5b8c788cbc69922bc1004d480d7c45e
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fjeremy-manning
+- assertion_sha256: sha256:aa7654298522d5e8795d77bbda73b2146134a4ee4d96f0889cbfa3fb2439fe77
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fjeremy-manning
+- assertion_sha256: sha256:b7ab65e786232dbde98e6825b9cd61ca6d5765b9454468f4f8a427b8d33cc330
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fjeremy-manning
+- assertion_sha256: sha256:c589a88d22e2cbc1c60ab59473e012f6d6d18d6f10276490b6522cddacbca75e
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fjeremy-manning
+- assertion_sha256: sha256:4d903bcc347edd18a9a1d0c1672cc2d27d888240844cd5dd068f84f6e5998c1c
+  path: /identifiers
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fjeremy-manning
+record: xyzrins:persons/jeremy-manning
