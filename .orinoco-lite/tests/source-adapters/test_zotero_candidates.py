@@ -28,6 +28,7 @@ ROOT = Path(__file__).resolve().parents[3]
 AGENT_PID = "https://example.invalid/agents/zotero-adapter-test-v1"
 REVIEWED_ADAPTER_AGENT_PIDS = (
     "xyzrins:source-adapters/dump-research-info/v1",
+    "xyzrins:source-adapters/dump-research-info/v2",
     "xyzrins:source-adapters/zotero/v1",
 )
 METADATA_BASE = "1" * 40
