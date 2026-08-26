@@ -42,12 +42,13 @@ The caller must supply:
 - the source checkout; and
 - a `SchemaView` constructed by the trusted host from the pinned schema in the released runtime;
 - the trusted default checkout containing `metadata_adapter.py`; and
-- a reviewed versioned Thing/PID for this adapter that already exists in the canonical record tree.
+- the reviewed adapter provenance identity from trusted `sources.toml`, with a
+  matching `xyzri:XYZInstrument` record already present in the record tree.
 
-There is intentionally no built-in production adapter PID.
-Because version 2 changes semantic output and source provenance, production
-dispatch must supply a separately reviewed version 2 adapter Thing/PID; a
-version 1 identity must not be reused.
+The trusted site policy maps adapter version 2 to
+`xyzrins:source-adapters/dump-research-info/v2`.
+Because version 2 changes semantic output and source provenance, the workflow
+does not accept an operator override or fall back to a version 1 identity.
 The source revision belongs in the proposal's Git/DataLad provenance, while `pav:importedFrom` uses the stable logical source-record URL.
 Primary assertions identify their `data/con_site` row and selected role
 assertions identify their actual `data/pool_psychoinformatics_de` row.

@@ -28,6 +28,7 @@ from orinoco_lite.enrichment import (
 
 ADAPTER = "dump-research-info"
 ADAPTER_VERSION = "2"
+PROVENANCE_IDENTITY = f"xyzrins:source-adapters/{ADAPTER}/v{ADAPTER_VERSION}"
 SOURCE_NAMESPACE = "https://github.com/con/dump-research-info"
 ROLE_SOURCE_DIRECTORY = "data/pool_psychoinformatics_de"
 DECISION_CACHE = PurePosixPath(
@@ -391,11 +392,22 @@ def build_candidate_plan(
     metadata_adapter = _load_metadata_adapter(
         trusted / "source-adapters/dump-research-info/metadata_adapter.py"
     )
-    canonical = metadata_adapter.load_yaml_records(downstream)
-    if adapter_agent_pid not in canonical:
+    if adapter_agent_pid != PROVENANCE_IDENTITY:
         raise DumpResearchInfoCandidateError(
-            "dump-research-info adapter agent PID must identify a canonical "
-            f"versioned Thing: {adapter_agent_pid}"
+            "dump-research-info adapter provenance identity must equal the "
+            f"reviewed identity for adapter version {ADAPTER_VERSION}: "
+            f"{PROVENANCE_IDENTITY}"
+        )
+    canonical = metadata_adapter.load_yaml_records(downstream)
+    identity = canonical.get(adapter_agent_pid)
+    if (
+        identity is None
+        or identity.get("record", {}).get("schema_type")
+        != "xyzri:XYZInstrument"
+    ):
+        raise DumpResearchInfoCandidateError(
+            "dump-research-info adapter provenance identity must identify a "
+            f"reviewed xyzri:XYZInstrument record: {adapter_agent_pid}"
         )
     targets, source_coordinate = metadata_adapter.build_source_targets(
         source_checkout,

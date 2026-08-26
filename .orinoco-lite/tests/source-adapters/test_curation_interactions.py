@@ -34,14 +34,15 @@ import yaml
 
 
 ROOT = Path(__file__).resolve().parents[3]
-ZOTERO_AGENT = "https://example.invalid/agents/zotero-interaction-test-v1"
-DUMP_AGENT = "https://example.invalid/agents/dump-interaction-test-v2"
+ZOTERO_AGENT = "xyzrins:source-adapters/zotero/v1"
+DUMP_AGENT = "xyzrins:source-adapters/dump-research-info/v2"
 ZOTERO_VERSION = 451
 REVIEWER = "https://github.com/fixture-curator"
 REPOSITORY = "con/test-orinoco-downstream-website"
 REVIEWED_ADAPTER_AGENTS = (
     "xyzrins:source-adapters/dump-research-info/v1",
-    "xyzrins:source-adapters/zotero/v1",
+    DUMP_AGENT,
+    ZOTERO_AGENT,
 )
 
 
@@ -186,28 +187,6 @@ def prepared_repository(destination: Path) -> tuple[Path, str]:
     (root / "build").mkdir()
     (root / "generated").mkdir()
     shutil.copytree(SCHEMA_PATH.parents[1], destination / "runtime/schema")
-    agents = (
-        (
-            "XYZInstrument/zotero-interaction-test-v1.yaml",
-            {
-                "display_label": "Synthetic Zotero interaction adapter v1",
-                "pid": ZOTERO_AGENT,
-                "schema_type": "xyzri:XYZInstrument",
-            },
-        ),
-        (
-            "XYZProject/dump-interaction-test-v2.yaml",
-            {
-                "pid": DUMP_AGENT,
-                "schema_type": "xyzri:XYZProject",
-                "title": "Synthetic Dump interaction adapter v2",
-            },
-        ),
-    )
-    for relative, record in agents:
-        path = root / "metadata/records" / relative
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_bytes(canonical_yaml_bytes(record))
     return root, commit_all(root, "base")
 
 

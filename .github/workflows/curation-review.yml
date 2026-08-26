@@ -8,10 +8,6 @@ on:
         required: true
         type: choice
         options: [dump-research-info, zotero]
-      adapter_agent_pid:
-        description: Existing canonical versioned Thing for this adapter Agent
-        required: true
-        type: string
       source_refspec:
         description: Dump source refspec (resolved to an exact commit)
         required: false
@@ -60,7 +56,6 @@ jobs:
         env:
           ACKNOWLEDGED: ${{ inputs.acknowledge_public_review_data }}
           ADAPTER: ${{ inputs.adapter }}
-          AGENT_PID: ${{ inputs.adapter_agent_pid }}
           EXPECTED_LIBRARY_VERSION: ${{ inputs.expected_library_version }}
           REVIEW_APP_ORIGIN: ${{ vars.CURATION_REVIEW_APP_ORIGIN || 'https://orinoco-curation-review.pages.dev/' }}
           SOURCE_REFSPEC: ${{ inputs.source_refspec }}
@@ -72,8 +67,6 @@ jobs:
 
           if os.environ["ACKNOWLEDGED"] != "true":
               raise SystemExit("public review-data acknowledgment is required")
-          if not os.environ["AGENT_PID"].strip() or "\n" in os.environ["AGENT_PID"]:
-              raise SystemExit("adapter_agent_pid must be one canonical PID")
           origin = urlsplit(os.environ["REVIEW_APP_ORIGIN"])
           try:
               origin.port
@@ -115,6 +108,21 @@ jobs:
           cache: true
           frozen: true
           pixi-version: v0.73.0
+
+      - name: Resolve the reviewed adapter provenance identity
+        id: source_policy
+        env:
+          ADAPTER: ${{ inputs.adapter }}
+        run: |
+          set -euo pipefail
+          identity="$(
+            pixi run python source-adapters/metadata/tools/review.py \
+              resolve-provenance-identity \
+              --adapter "$ADAPTER" \
+              --config source-adapters/metadata/sources.toml
+          )"
+          [[ -n "$identity" && "$identity" != *$'\n'* && "$identity" != *$'\r'* ]]
+          printf 'provenance_identity=%s\n' "$identity" >> "$GITHUB_OUTPUT"
 
       - name: Resolve and verify the released runtime
         id: runtime
@@ -159,8 +167,8 @@ jobs:
         id: plan
         env:
           ADAPTER: ${{ inputs.adapter }}
-          AGENT_PID: ${{ inputs.adapter_agent_pid }}
           EXPECTED_LIBRARY_VERSION: ${{ inputs.expected_library_version }}
+          PROVENANCE_IDENTITY: ${{ steps.source_policy.outputs.provenance_identity }}
           RUNTIME_ROOT: ${{ steps.runtime.outputs.root }}
           SOURCE_REVISION: ${{ steps.source.outputs.revision }}
         run: |
@@ -173,7 +181,7 @@ jobs:
             --trusted-root "$GITHUB_WORKSPACE"
             --runtime-root "$RUNTIME_ROOT"
             --adapter "$ADAPTER"
-            --adapter-agent-pid "$AGENT_PID"
+            --adapter-agent-pid "$PROVENANCE_IDENTITY"
             --metadata-base "$base_sha"
             --scratch "$GITHUB_WORKSPACE/build/curation/${ADAPTER}/${GITHUB_RUN_ID}"
           )
@@ -226,9 +234,9 @@ jobs:
         if: steps.plan.outputs.has_candidates == 'true'
         env:
           ADAPTER: ${{ inputs.adapter }}
-          AGENT_PID: ${{ inputs.adapter_agent_pid }}
           BASE_SHA: ${{ steps.plan.outputs.base_sha }}
           EXPECTED_LIBRARY_VERSION: ${{ inputs.expected_library_version }}
+          PROVENANCE_IDENTITY: ${{ steps.source_policy.outputs.provenance_identity }}
           RUNTIME_ROOT: ${{ steps.runtime.outputs.root }}
           SOURCE_REVISION: ${{ steps.source.outputs.revision }}
         run: |
@@ -252,7 +260,8 @@ jobs:
           message = (
               f"chore(curation): propose {os.environ['ADAPTER']} metadata\n\n"
               f"Curation-Adapter: {os.environ['ADAPTER']}\n"
-              f"Curation-Adapter-Agent: {os.environ['AGENT_PID']}\n"
+              "Curation-Adapter-Agent: "
+              f"{os.environ['PROVENANCE_IDENTITY']}\n"
               f"Curation-Metadata-Base: {os.environ['BASE_SHA']}\n"
               f"Curation-Source: {coordinate}\n"
           )
@@ -265,7 +274,7 @@ jobs:
             --trusted-root "$GITHUB_WORKSPACE"
             --runtime-root "$RUNTIME_ROOT"
             --adapter "$ADAPTER"
-            --adapter-agent-pid "$AGENT_PID"
+            --adapter-agent-pid "$PROVENANCE_IDENTITY"
             --metadata-base "$BASE_SHA"
             --scratch "$GITHUB_WORKSPACE/build/curation/${ADAPTER}/${GITHUB_RUN_ID}"
           )
@@ -368,10 +377,10 @@ jobs:
         if: steps.plan.outputs.has_candidates == 'true'
         env:
           ADAPTER: ${{ inputs.adapter }}
-          AGENT_PID: ${{ inputs.adapter_agent_pid }}
           BASE_SHA: ${{ steps.plan.outputs.base_sha }}
           EXPECTED_LIBRARY_VERSION: ${{ inputs.expected_library_version }}
           NUMBER: ${{ steps.pull.outputs.number }}
+          PROVENANCE_IDENTITY: ${{ steps.source_policy.outputs.provenance_identity }}
           PROPOSAL_SHA: ${{ steps.proposal.outputs.sha }}
           REPOSITORY: ${{ github.repository }}
           RUNTIME_ROOT: ${{ steps.runtime.outputs.root }}
@@ -388,7 +397,7 @@ jobs:
             --trusted-root "$GITHUB_WORKSPACE"
             --runtime-root "$RUNTIME_ROOT"
             --adapter "$ADAPTER"
-            --adapter-agent-pid "$AGENT_PID"
+            --adapter-agent-pid "$PROVENANCE_IDENTITY"
             --metadata-base "$BASE_SHA"
             --proposal-sha "$PROPOSAL_SHA"
             --repository "$REPOSITORY"

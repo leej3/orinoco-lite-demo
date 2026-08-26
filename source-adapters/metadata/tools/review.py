@@ -125,9 +125,36 @@ def load_config(path: Path = CONFIG) -> list[dict[str, object]]:
             raise MetadataReviewError(
                 f"Source {source_id} enabled_by_default must be a Boolean"
             )
+        provenance_identity = source.get("provenance_identity")
+        if provenance_identity is not None and (
+            not isinstance(provenance_identity, str)
+            or not provenance_identity
+            or provenance_identity != provenance_identity.strip()
+            or provenance_identity.splitlines() != [provenance_identity]
+        ):
+            raise MetadataReviewError(
+                f"Source {source_id} provenance_identity must be one nonempty line"
+            )
         seen.add(source_id)
         result.append(source)
     return result
+
+
+def resolve_provenance_identity(
+    source_id: str, path: Path = CONFIG
+) -> str:
+    """Resolve one reviewed adapter identity from the validated manifest."""
+
+    for source in load_config(path):
+        if source["id"] != source_id:
+            continue
+        identity = source.get("provenance_identity")
+        if not isinstance(identity, str):
+            raise MetadataReviewError(
+                f"Source {source_id} has no reviewed provenance_identity"
+            )
+        return identity
+    raise MetadataReviewError(f"Unknown metadata source {source_id!r}")
 
 
 def safe_repo_path(root: Path, value: object, *, label: str) -> Path:
@@ -402,7 +429,16 @@ def run(
 
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("mode", choices=("review", "refresh-evidence"))
+    parser.add_argument(
+        "mode",
+        choices=(
+            "review",
+            "refresh-evidence",
+            "resolve-provenance-identity",
+        ),
+    )
+    parser.add_argument("--adapter", metavar="SOURCE_ID")
+    parser.add_argument("--config", type=Path, default=CONFIG)
     parser.add_argument(
         "--only",
         action="append",
@@ -418,6 +454,20 @@ def main(argv: Sequence[str] | None = None) -> int:
         help="pass a caller-provided input to one source adapter (repeatable)",
     )
     args = parser.parse_args(argv)
+    if args.mode == "resolve-provenance-identity":
+        if args.adapter is None:
+            parser.error("resolve-provenance-identity requires --adapter")
+        if args.only or args.source_input:
+            parser.error(
+                "resolve-provenance-identity does not accept --only or --source-input"
+            )
+        try:
+            print(resolve_provenance_identity(args.adapter, args.config))
+        except MetadataReviewError as error:
+            parser.exit(1, f"metadata-review: {error}\n")
+        return 0
+    if args.adapter is not None:
+        parser.error("--adapter is only valid for resolve-provenance-identity")
     source_inputs: dict[str, str] = {}
     for item in args.source_input:
         source_id, separator, value = item.partition("=")
@@ -429,6 +479,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     try:
         report = run(
             args.mode,
+            config=args.config,
             selected_sources=args.only,
             source_inputs=source_inputs,
         )
