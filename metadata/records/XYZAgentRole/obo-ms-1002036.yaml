@@ -1,0 +1,16 @@
+attributes:
+- predicate: skos:broadMatch
+  schema_type: dlthings:AttributeSpecification
+  value: marcrel:aut
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: One of a set of authors associated with a publication or release.
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Co-author
+broad_mappings:
+- marcrel:aut
+description: One of a set of authors associated with a publication or release.
+display_label: Co-author
+pid: obo:MS_1002036
+schema_type: xyzri:XYZAgentRole

@@ -1,0 +1,15 @@
+attributes:
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Research Centre Jülich
+- predicate: dlthings:name
+  schema_type: dlthings:AttributeSpecification
+  value: Forschungszentrum Jülich
+- predicate: dlthings:short_name
+  schema_type: dlthings:AttributeSpecification
+  value: FZJ
+display_label: Research Centre Jülich
+name: Forschungszentrum Jülich
+pid: ror:02nv7yv05
+schema_type: xyzri:XYZOrganization
+short_name: FZJ

@@ -1,0 +1,26 @@
+assertions:
+- assertion_sha256: sha256:079dc8e87e54b5aed35023754fb36815f7b3e7a9d9007a8d09f9aa47b8ab5116
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fmatteo-visconti-di-oleggio-castello
+- assertion_sha256: sha256:5c647b7f61ad23827a4b45fc1c6b3bafde14abee3574b2418aa474685ec1fc48
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fmatteo-visconti-di-oleggio-castello
+- assertion_sha256: sha256:a18fd4c1699c4ac58cd8a43df201bf1822bb6838d04487b01766c351089455e8
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fmatteo-visconti-di-oleggio-castello
+- assertion_sha256: sha256:a57463436b4b94d2188d6347948467c6a797c6bc36cbaba89c09bd33c390f6ae
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fmatteo-visconti-di-oleggio-castello
+- assertion_sha256: sha256:aef807a5b452b65a91fd73e081c7193681f69034ec40038c3f457da0c6c7d771
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fmatteo-visconti-di-oleggio-castello
+- assertion_sha256: sha256:6238baea39a04223fd62abc5229bc216ebc40b32b2dd43949630967864c0325b
+  path: /identifiers
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fmatteo-visconti-di-oleggio-castello
+record: xyzrins:persons/matteo-visconti-di-oleggio-castello

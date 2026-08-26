@@ -43,6 +43,18 @@ attributed_to:
   roles:
   - marcrel:aut
   schema_type: dlthings:Attribution
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - obo:MS_1002034
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/matteo-visconti-di-oleggio-castello
+  roles:
+  - obo:MS_1002036
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/james-haxby
+  roles:
+  - obo:MS_1002036
+  schema_type: dlthings:Attribution
 attributes:
 - predicate: bibo:locator
   schema_type: dlthings:AttributeSpecification
@@ -53,6 +65,12 @@ attributes:
 - predicate: dcterms:rights
   schema_type: dlthings:AttributeSpecification
   value: http://creativecommons.org/licenses/by/4.0/
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Halchenko et al. 2024 JOSS
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: HeuDiConv - flexible DICOM conversion into structured directory layouts
 display_label: HeuDiConv — flexible DICOM conversion into structureddirectory layouts
 identifiers:
 - notation: 10.21105/joss.05839
@@ -64,6 +82,8 @@ identifiers:
 - notation: zotero:group:6197458:item:W9MC83Q7
   schema_type: dlthings:Identifier
 - notation: zotero:group:6197458:item:XHF43I5N
+  schema_type: dlthings:Identifier
+- notation: https://doi.org/10.21105/joss.05839
   schema_type: dlthings:Identifier
 kind: bibo:AcademicArticle
 pid: xyzrins:publications/doi-10-21105-joss-05839

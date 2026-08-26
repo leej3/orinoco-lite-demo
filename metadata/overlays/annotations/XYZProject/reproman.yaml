@@ -1,0 +1,18 @@
+assertions:
+- assertion_sha256: sha256:0dc5046682caa2c6b082f8afc5487e06036d20960965b9648e19eebfa8ed24f1
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZProject.json#record=xyzrins%3Aprojects%2Freproman
+- assertion_sha256: sha256:6f282c2a4803b148044320f59d3d3b7cd985b8cb64b360991b75391cf62008b8
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZProject.json#record=xyzrins%3Aprojects%2Freproman
+- assertion_sha256: sha256:b6ec0be9e8a01c30aeb79ec8229d5f5d1c5137f1fcf0861db15ad4d607164bb9
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZProject.json#record=xyzrins%3Aprojects%2Freproman
+- assertion_sha256: sha256:c5a57c9b5dff4798e020f6968a24376fd59090298799f5abae77cdc467828fc4
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZProject.json#record=xyzrins%3Aprojects%2Freproman
+record: xyzrins:projects/reproman

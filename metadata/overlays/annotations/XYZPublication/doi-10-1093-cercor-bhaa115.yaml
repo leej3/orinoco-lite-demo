@@ -1,0 +1,22 @@
+assertions:
+- assertion_sha256: sha256:b7ea755ad379c3ab219f2bde51fb62f2738ccca6353c4dd3e1f61b078f8da9e0
+  path: /attributed_to
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPublication.json#record=https%3A%2F%2Fdoi.org%2F10.1093%2Fcercor%2Fbhaa115
+- assertion_sha256: sha256:8826f3c2d46ace427f61c4dc4913e42f402138345dc8edbd1612c8ad5f704ae6
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPublication.json#record=https%3A%2F%2Fdoi.org%2F10.1093%2Fcercor%2Fbhaa115
+- assertion_sha256: sha256:8c687cc493b0a623f7a1256e99edbbe27ccfd2e682aa7474affc7cbdfac7e7bf
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPublication.json#record=https%3A%2F%2Fdoi.org%2F10.1093%2Fcercor%2Fbhaa115
+- assertion_sha256: sha256:0a50fbcafca010b5afada399e8168d0afee729bd06e582919c89c255bba13566
+  path: /identifiers
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPublication.json#record=https%3A%2F%2Fdoi.org%2F10.1093%2Fcercor%2Fbhaa115
+- assertion_sha256: sha256:177eb0fdc63607eb80cd538abdbc87c7be8afb77b31ad22ee7c0c0fa0be9c344
+  path: /identifiers
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPublication.json#record=https%3A%2F%2Fdoi.org%2F10.1093%2Fcercor%2Fbhaa115
+record: xyzrins:publications/doi-10-1093-cercor-bhaa115
