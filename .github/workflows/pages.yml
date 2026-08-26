@@ -6,52 +6,30 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: pages
   cancel-in-progress: false
 
 jobs:
-  build:
+  pages:
     if: >-
-      github.repository != 'con/orinoco-lite-template' &&
-      github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
-    runs-on: ubuntu-24.04
-    steps:
-      - name: Check out the single repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - name: Install the locked Pixi environment
-        uses: prefix-dev/setup-pixi@f00437f565399d418b0acc85936d12c1fb668347 # v0.10.1
-        with:
-          cache: true
-          frozen: true
-          pixi-version: v0.73.0
-      - name: Configure project Pages
-        id: pages
-        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6
-      - name: Validate and build the project-path artifact
-        env:
-          ORINOCO_BASE_URL: ${{ steps.pages.outputs.base_url }}
-        run: |
-          pixi run validate
-          pixi run build-pages
-      - name: Upload the immutable Pages artifact
-        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
-        with:
-          path: build/pages
-
-  deploy:
-    if: >-
-      github.repository != 'con/orinoco-lite-template' &&
-      github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-24.04
-    needs: build
-    steps:
-      - name: Deploy Pages
-        id: deployment
-        uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128 # v5
+      ${{
+        github.repository != 'con/orinoco-lite-template' &&
+        (
+          github.event_name == 'workflow_dispatch' ||
+          github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+        )
+      }}
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    uses: con/orinoco-lite-dev/.github/workflows/orinoco-pages.yml@6bd31daa17293fe7d52966bc1599f66b2ea3420b
+    with:
+      source-ref: >-
+        ${{ github.event_name == 'workflow_dispatch' &&
+        github.event.repository.default_branch || github.sha }}
+      pixi-version: v0.73.0
+      workflow-repository: con/orinoco-lite-dev
+      workflow-sha: 6bd31daa17293fe7d52966bc1599f66b2ea3420b

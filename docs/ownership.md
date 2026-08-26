@@ -17,7 +17,8 @@ Site-specific operating guidance belongs in `site/README.md`, not in this templa
 
 Copier creates initialized and test paths once, then excludes them from later overwrites.
 The updater compares protected site-owned bytes before and after its run.
-Generated projection and detailed updater state are ignored; Git records the reviewable framework and source changes.
+Generated projection and detailed updater state are ignored on the source branch; Git records the reviewable framework and source changes there.
+After Pages deploys successfully, the workflow force-updates `latest-hugo-projection` with the complete projection commit and `gh-pages` with its generated-site child commit.
 
 Source adapters use `source-adapters/`; their site-owned tests use
 `.orinoco-lite/tests/source-adapters/`.

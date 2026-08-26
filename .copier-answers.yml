@@ -16,5 +16,5 @@ runtime_manifest_sha256: d9f7ff716b5b9e883d2a008b94a48270734dab197beb65b4c598245
 template_source: gh:con/orinoco-lite-template
 template_version: v0.2.0rc7
 workflow_repository: con/orinoco-lite-dev
-workflow_sha: 8bd328b17e359bf9594e83381c3efc1c7ab0ecac
-workflow_ref: con/orinoco-lite-dev/.github/workflows/orinoco-consumer-ci.yml@8bd328b17e359bf9594e83381c3efc1c7ab0ecac
+workflow_sha: 6bd31daa17293fe7d52966bc1599f66b2ea3420b
+workflow_ref: con/orinoco-lite-dev/.github/workflows/orinoco-consumer-ci.yml@6bd31daa17293fe7d52966bc1599f66b2ea3420b

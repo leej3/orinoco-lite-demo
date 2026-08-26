@@ -52,6 +52,8 @@ The same files therefore work at both `http://127.0.0.1:8765/` and `http://local
 
 Pages is intentionally separate.
 The Pages workflow obtains the destination's absolute public base URL from GitHub, validates it, and passes it to `pixi run build-pages`, which writes `build/pages`.
+After deployment succeeds, it force-updates one generated commit containing the complete projection at `latest-hugo-projection` and a child commit containing only the deployed site at `gh-pages`.
+Both commits descend from the exact deployed default-branch commit and are retained for debugging, while `main` remains source-only.
 Browser acceptance uses a controlled local project-path URL matching the repository slug.
 Neither target changes the canonical public identity recorded in `orinoco.yaml`.
 
