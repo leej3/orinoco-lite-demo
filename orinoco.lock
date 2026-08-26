@@ -14,5 +14,5 @@ template:
   version: v0.2.0rc7
 workflow:
   repository: con/orinoco-lite-dev
-  sha: 8bd328b17e359bf9594e83381c3efc1c7ab0ecac
-  ref: con/orinoco-lite-dev/.github/workflows/orinoco-consumer-ci.yml@8bd328b17e359bf9594e83381c3efc1c7ab0ecac
+  sha: 5d87c851c5ed76193216d4975d2f81101c65c432
+  ref: con/orinoco-lite-dev/.github/workflows/orinoco-consumer-ci.yml@5d87c851c5ed76193216d4975d2f81101c65c432
