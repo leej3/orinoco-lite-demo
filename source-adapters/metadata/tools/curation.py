@@ -69,7 +69,13 @@ _REVIEW_URL = re.compile(
     r"#issuecomment-[1-9][0-9]*\Z"
 )
 _REVIEWER = re.compile(r"https://github\.com/[A-Za-z0-9_.-]+\Z")
-_COMMENT = re.compile(
+_COLLAPSED_COMMENT = re.compile(
+    r"\A/curation submit\n\n<details>\n\n"
+    r"<summary>Complete curation submission JSON</summary>\n\n"
+    r"```json\n(?P<payload>.+)\n```\n\n</details>\Z",
+    re.DOTALL,
+)
+_LEGACY_COMMENT = re.compile(
     r"\A/curation submit\n\n```json\n(?P<payload>.+)\n```\Z",
     re.DOTALL,
 )
@@ -396,7 +402,10 @@ def parse_submission_comment(body: str) -> Submission:
 
     if not isinstance(body, str) or len(body) > MAX_SUBMISSION_COMMENT_CHARACTERS:
         raise CurationHostError("Submission comment is missing or too large")
-    match = _COMMENT.fullmatch(body.rstrip("\r\n"))
+    normalized = body.rstrip("\r\n")
+    match = _COLLAPSED_COMMENT.fullmatch(normalized)
+    if match is None:
+        match = _LEGACY_COMMENT.fullmatch(normalized)
     if match is None:
         raise CurationHostError("Comment is not an exact /curation submit JSON payload")
     root = _strict_object(
