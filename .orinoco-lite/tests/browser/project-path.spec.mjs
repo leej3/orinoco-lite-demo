@@ -47,14 +47,14 @@ test('project-path graph resources and routes resolve', async ({ page }) => {
       expect(observed.nodes.some((node) => node.id === pid)).toBe(true);
     }
 
-    const personHref = await page
-      .getByRole('link', { name: contract.test_record.page_heading })
-      .first()
-      .getAttribute('href');
-    const personPath = new URL(personHref, fixture.origin).pathname;
-    expect(personPath).toBe(
-      `${contract.projectPath}persons/yaroslav-halchenko/`,
+    const personNode = observed.nodes.find(
+      (node) => node.id === contract.test_record.pid,
     );
+    expect(personNode).toBeDefined();
+    expect(personNode.url).toBe(
+      `${contract.projectPath}persons/yaroslav-halchenko`,
+    );
+    const personPath = `${personNode.url}/`;
     await page.goto(new URL(personPath, fixture.origin).href);
     await expect(page).toHaveURL(
       new RegExp(`${contract.projectPath}persons/yaroslav-halchenko/$`),

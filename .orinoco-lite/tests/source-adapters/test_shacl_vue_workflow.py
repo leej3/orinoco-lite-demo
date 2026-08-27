@@ -18,25 +18,23 @@ class ShaclVueWorkflowTests(unittest.TestCase):
         cls.text = WORKFLOW.read_text(encoding="utf-8")
         cls.contract = yaml.load(cls.text, Loader=yaml.BaseLoader)
         cls.job = cls.contract["jobs"]["validate"]
-        cls.default_job = cls.contract["jobs"]["default-editor"]
         cls.steps = {step["name"]: step for step in cls.job["steps"]}
 
     def test_triggers_and_permissions_keep_execution_on_trusted_code(self) -> None:
         self.assertEqual(
-            {"push", "pull_request_target", "workflow_dispatch"},
+            {"pull_request_target", "workflow_dispatch"},
             set(self.contract["on"]),
         )
         self.assertEqual(
             ["opened", "reopened", "synchronize"],
             self.contract["on"]["pull_request_target"]["types"],
         )
-        self.assertEqual("", self.contract["on"]["push"])
         self.assertEqual({}, self.contract["permissions"])
         self.assertEqual(
             {
                 "actions": "write",
                 "contents": "write",
-                "pull-requests": "write",
+                "pull-requests": "read",
             },
             self.job["permissions"],
         )
@@ -119,82 +117,34 @@ class ShaclVueWorkflowTests(unittest.TestCase):
         self.assertIn("gh workflow run shacl-vue-proposal.yml", retrigger)
         self.assertIn('-f "expected_head=${REPLACEMENT_SHA}"', retrigger)
 
-    def test_canonical_validation_and_service_link_are_exact_and_idempotent(
+    def test_canonical_validation_is_exact_and_does_not_rehost_the_editor(
         self,
     ) -> None:
         validate = self.steps["Validate the exact canonical joined metadata graph"][
             "run"
         ]
-        link = self.steps[
-            "Re-read the canonical head and add the curation-service link"
-        ]
         self.assertIn("git -C proposal rev-parse HEAD)", validate)
         self.assertIn('--root "$GITHUB_WORKSPACE/proposal" projection update', validate)
         self.assertIn('--root "$GITHUB_WORKSPACE/proposal" validate', validate)
-        self.assertEqual(
-            "${{ vars.CURATION_REVIEW_APP_ORIGIN || "
-            "'https://orinoco-curation-review.pages.dev/' }}",
-            link["env"]["REVIEW_APP_ORIGIN"],
-        )
-        run = link["run"]
-        self.assertIn('pull.get("head", {}).get("sha")', run)
-        self.assertIn('--expected-head-sha "$HEAD_SHA"', run)
-        helper = HELPER.read_text(encoding="utf-8")
-        self.assertIn("/edit/?{query}", helper)
-        self.assertIn("--paginate --slurp", run)
-        self.assertIn("orinoco-shacl-vue-proposal", run)
-        self.assertIn("**AI-generated draft — not reviewed by John**", run)
-
-    def test_editor_input_artifacts_contain_only_exact_head_presentation_data(
-        self,
-    ) -> None:
-        build = self.steps["Build exact-head SHACL Vue presentation input"]["run"]
-        upload = self.steps["Upload the expiring exact-head SHACL Vue input"]
-        for path in (
-            "edit/config.json",
-            "edit/records.ttl",
-            "edit/data/record-sources.json",
+        self.assertEqual({"validate"}, set(self.contract["jobs"]))
+        for obsolete in (
+            "actions/upload-artifact@",
+            "shacl-vue-editor-input",
+            "CURATION_REVIEW_APP_ORIGIN",
+            "orinoco-shacl-vue-input-",
+            "review-url",
         ):
-            self.assertIn(path, build)
-        self.assertIn('catalog.get("source_commit") != sys.argv[2]', build)
-        self.assertEqual(
-            "orinoco-shacl-vue-input-${{ steps.coordinates.outputs.head_sha }}",
-            upload["with"]["name"],
-        )
-        self.assertEqual(
-            "${{ runner.temp }}/shacl-vue-editor-input/", upload["with"]["path"]
-        )
-        self.assertNotIn("shacl-vue-review-bundle.json", upload["with"]["path"])
-        self.assertEqual("steps.inspect.outputs.phase == 'canonical'", upload["if"])
-        link = self.steps[
-            "Re-read the canonical head and add the curation-service link"
-        ]["run"]
-        self.assertNotIn("collaborators/${CURATOR}/permission", link)
+            self.assertNotIn(obsolete, self.text)
+        helper = HELPER.read_text(encoding="utf-8")
+        self.assertNotIn("review-url", helper)
+        self.assertNotIn("/edit/?", helper)
 
-        self.assertEqual({"contents": "read"}, self.default_job["permissions"])
-        self.assertIn(
-            "github.ref_name == github.event.repository.default_branch",
-            self.default_job["if"],
-        )
-        default_steps = {step["name"]: step for step in self.default_job["steps"]}
-        checkout = default_steps["Check out exact trusted default head"]
-        self.assertEqual("${{ github.sha }}", checkout["with"]["ref"])
-        self.assertEqual("false", checkout["with"]["persist-credentials"])
-        default_upload = default_steps[
-            "Upload the expiring exact-default SHACL Vue input"
-        ]
-        self.assertEqual(
-            "orinoco-shacl-vue-input-${{ github.sha }}",
-            default_upload["with"]["name"],
-        )
-
-    def test_token_created_curation_heads_dispatch_exact_editor_input(self) -> None:
-        curation = (ROOT / ".github/workflows/curation-review.yml").read_text(
-            encoding="utf-8"
-        )
-        self.assertEqual(2, curation.count("gh workflow run shacl-vue-proposal.yml"))
-        self.assertIn('-f "expected_head=${HEAD_SHA}"', curation)
-        self.assertIn('-f "expected_head=${head_sha}"', curation)
+    def test_profile_and_helper_are_adapter_neutral(self) -> None:
+        combined = self.text + HELPER.read_text(encoding="utf-8")
+        self.assertNotIn("dump-research-info", combined)
+        self.assertNotIn("source-adapters/zotero", combined)
+        self.assertIn("source-adapters", combined)
+        self.assertIn("curation-decisions.yaml", combined)
 
     def test_profile_never_executes_head_or_adds_adapter_decision_behavior(
         self,

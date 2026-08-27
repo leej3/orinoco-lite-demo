@@ -81,12 +81,12 @@ It applies the bundle with the pinned Orinoco Python editor behavior against an 
 It then creates one ordinary commit with that same parent, the authenticated curator as author, and automation as committer.
 An exact `force-with-lease` replaces only the temporary head, so every earlier proposal or human commit survives and the branch retains canonical YAML rather than the RDF transport.
 
-The workflow retriggers itself at the exact replacement SHA, revalidates canonical metadata, and adds a configurable `/edit` curation-service link bound to the repository, pull request, and exact canonical head idempotently.
-For each validated canonical pull-request head it also publishes one expiring `orinoco-shacl-vue-input-<sha>` Actions artifact containing only `edit/config.json`, `edit/records.ttl`, and `edit/data/record-sources.json`.
-A trusted default-branch `push` publishes the same three-file artifact for standalone editing at that exact default SHA.
-These reproducible files are presentation input, not canonical metadata or a retained editor bundle.
+The workflow retriggers itself at the exact replacement SHA and revalidates canonical metadata.
+The downstream Pages build is the only SHACL Vue editor: it publishes the immutable runtime shell and deterministic `edit/config.json`, `edit/records.ttl`, and `edit/data/record-sources.json` inputs for its exact default-branch source commit.
+That static editor offers both credential-free **Download bundle** and explicit **Propose via GitHub** actions for the same unchanged bundle.
+The configured curation service is only the GitHub authentication, confirmation, and bundle-receiver boundary; it does not assemble or host another editor or publish a separate editor-input artifact.
 Failure leaves the draft visibly blocked at the temporary handoff.
-The service and workflow do not retain a second bundle, choose a disposition, add provenance or cache entries, approve, mark ready, merge, deploy, or write to a source.
+The static site never receives a GitHub token, while the service and workflow do not retain a second bundle, choose a disposition, add provenance or cache entries, approve, mark ready, merge, deploy, or write to a source.
 The wrapper warns that a public Git host may retain the otherwise unreachable temporary object, so this path is only for data approved for public repository history.
 
 [profile]: https://github.com/ORINOCO-Lite/orinoco-lite-dev/blob/main/docs/github-curation-review.md

@@ -20,17 +20,16 @@ The updater compares protected site-owned bytes before and after its run.
 Generated projection and detailed updater state are ignored on the source branch; Git records the reviewable framework and source changes there.
 After Pages deploys successfully, the workflow force-updates `latest-hugo-projection` with the complete projection commit and `gh-pages` with its generated-site child commit.
 
-Source adapters use `source-adapters/`; their site-owned tests use
-`.orinoco-lite/tests/source-adapters/`.
-The concrete `.github/workflows/curation-review.yml` follows that site-owned
-adapter policy. The generic `.github/workflows/shacl-vue-proposal.yml` and its
-handoff helper are template-owned because they operate only on the shared
-canonical metadata and exact Git coordinates.
+Source adapters use `source-adapters/`; their site-owned tests use `.orinoco-lite/tests/source-adapters/`.
+The concrete `.github/workflows/curation-review.yml` follows that site-owned adapter policy.
+The generic `.github/workflows/shacl-vue-proposal.yml` and its handoff helper
+are template-owned because they operate only on the fixed-path review bundle,
+shared canonical metadata, and exact Git coordinates. The site's static
+`/edit/` route remains the sole editor; the configured curation service is only
+an authenticated submission boundary.
 
-Both `metadata/records/` and mirrored
-`metadata/overlays/annotations/` companions are protected site-owned semantic
-metadata. A framework update may change support for joining them, but never
-their bytes.
+Both `metadata/records/` and mirrored `metadata/overlays/annotations/` companions are protected site-owned semantic metadata.
+A framework update may change support for joining them, but never their bytes.
 
 `orinoco.lock` is the readable release authority.
 Its diff carries exact engine, runtime, template, and workflow changes.
@@ -45,5 +44,5 @@ The site owns every tracked byte below `.orinoco-lite/tests/browser/`, including
 The template owns only the installer facade; it must leave those tracked inputs unchanged.
 See the checked browser README for the site-owned acceptance surface.
 
-The template contract is maintained in the [template repository](https://github.com/con/orinoco-lite-template).
-Command semantics belong to the [engine repository](https://github.com/con/orinoco-lite-dev).
+The template contract is maintained in the [template repository](https://github.com/ORINOCO-Lite/orinoco-lite-template).
+Command semantics belong to the [engine repository](https://github.com/ORINOCO-Lite/orinoco-lite-dev).

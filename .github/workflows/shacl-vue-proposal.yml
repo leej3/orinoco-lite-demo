@@ -1,7 +1,6 @@
 name: Materialize SHACL Vue proposal
 
 on:
-  push:
   pull_request_target:
     types: [opened, reopened, synchronize]
   workflow_dispatch:
@@ -21,7 +20,7 @@ jobs:
   validate:
     name: Materialize or validate one explicit human edit
     if: >-
-      github.repository != 'con/orinoco-lite-template' &&
+      github.repository != 'ORINOCO-Lite/orinoco-lite-template' &&
       ((github.event_name == 'pull_request_target' &&
         github.event.pull_request.state == 'open' &&
         github.event.pull_request.draft &&
@@ -35,7 +34,7 @@ jobs:
     permissions:
       actions: write
       contents: write
-      pull-requests: write
+      pull-requests: read
     concurrency:
       group: shacl-vue-proposal-${{ github.event.pull_request.number || inputs.pull_request }}
       cancel-in-progress: false
@@ -465,207 +464,3 @@ jobs:
           pixi run --manifest-path trusted/pixi.toml orinoco \
             --root "$GITHUB_WORKSPACE/proposal" validate
           test -z "$(git -C proposal status --porcelain --untracked-files=no)"
-
-      - name: Build exact-head SHACL Vue presentation input
-        if: steps.inspect.outputs.phase == 'canonical'
-        env:
-          HEAD_SHA: ${{ steps.coordinates.outputs.head_sha }}
-        run: |
-          set -euo pipefail
-          unset GH_TOKEN GITHUB_TOKEN
-          site="$GITHUB_WORKSPACE/proposal/build/shacl-vue-exact-head"
-          stage="$RUNNER_TEMP/shacl-vue-editor-input"
-          pixi run --manifest-path trusted/pixi.toml orinoco \
-            --root "$GITHUB_WORKSPACE/proposal" build \
-            --destination "$site" --base-url /
-          for path in \
-            edit/config.json \
-            edit/records.ttl \
-            edit/data/record-sources.json
-          do
-            test -f "$site/$path" && test ! -L "$site/$path"
-            install -D -m 0644 "$site/$path" "$stage/$path"
-          done
-          python - "$stage" "$HEAD_SHA" <<'PY'
-          import json
-          from pathlib import Path
-          import sys
-
-          root = Path(sys.argv[1])
-          expected = {
-              "edit/config.json",
-              "edit/data/record-sources.json",
-              "edit/records.ttl",
-          }
-          actual = {
-              path.relative_to(root).as_posix()
-              for path in root.rglob("*")
-              if path.is_file()
-          }
-          if actual != expected or any(path.is_symlink() for path in root.rglob("*")):
-              raise SystemExit("editor input staging contains unexpected paths")
-          catalog = json.loads(
-              (root / "edit/data/record-sources.json").read_text(encoding="utf-8")
-          )
-          if catalog.get("source_commit") != sys.argv[2]:
-              raise SystemExit("editor input is not bound to the exact PR head")
-          PY
-          test -z "$(git -C proposal status --porcelain --untracked-files=no)"
-
-      - name: Upload the expiring exact-head SHACL Vue input
-        if: steps.inspect.outputs.phase == 'canonical'
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-        with:
-          name: orinoco-shacl-vue-input-${{ steps.coordinates.outputs.head_sha }}
-          path: ${{ runner.temp }}/shacl-vue-editor-input/
-          if-no-files-found: error
-          include-hidden-files: false
-
-      - name: Re-read the canonical head and add the curation-service link
-        if: steps.inspect.outputs.phase == 'canonical'
-        env:
-          GH_TOKEN: ${{ github.token }}
-          HEAD_SHA: ${{ steps.coordinates.outputs.head_sha }}
-          NUMBER: ${{ steps.coordinates.outputs.number }}
-          REPOSITORY: ${{ github.repository }}
-          REVIEW_APP_ORIGIN: ${{ vars.CURATION_REVIEW_APP_ORIGIN || 'https://orinoco-curation-review.pages.dev/' }}
-        run: |
-          set -euo pipefail
-          review_url="$(
-            python trusted/.orinoco-lite/tools/shacl_vue_handoff.py \
-              review-url \
-              --origin "$REVIEW_APP_ORIGIN" \
-              --repository "$REPOSITORY" \
-              --pull-request "$NUMBER" \
-              --expected-head-sha "$HEAD_SHA"
-          )"
-          gh api "repos/${REPOSITORY}/pulls/${NUMBER}" \
-            > "$RUNNER_TEMP/shacl-vue-canonical-current.json"
-          gh api "repos/${REPOSITORY}/issues/${NUMBER}/comments?per_page=100" \
-            --paginate --slurp > "$RUNNER_TEMP/shacl-vue-comments.json"
-          python - "$RUNNER_TEMP/shacl-vue-canonical-current.json" \
-            "$RUNNER_TEMP/shacl-vue-comments.json" \
-            "$RUNNER_TEMP/shacl-vue-comment.md" "$review_url" <<'PY'
-          import json
-          import os
-          from pathlib import Path
-          import sys
-
-          pull = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
-          pages = json.loads(Path(sys.argv[2]).read_text(encoding="utf-8"))
-          if (
-              pull.get("state") != "open"
-              or not pull.get("draft")
-              or pull.get("base", {}).get("ref")
-              != pull.get("base", {}).get("repo", {}).get("default_branch")
-              or pull.get("base", {}).get("repo", {}).get("full_name")
-              != os.environ["REPOSITORY"]
-              or pull.get("head", {}).get("sha") != os.environ["HEAD_SHA"]
-              or pull.get("head", {}).get("repo", {}).get("full_name")
-              != os.environ["REPOSITORY"]
-          ):
-              raise SystemExit("canonical pull-request head changed")
-          comments = [item for page in pages for item in page]
-          body = pull.get("body") or ""
-          already_linked = sys.argv[4] in body or any(
-              sys.argv[4] in str(comment.get("body") or "") for comment in comments
-          )
-          if not already_linked:
-              Path(sys.argv[3]).write_text(
-                  "**AI-generated draft — not reviewed by John**\n\n"
-                  "The trusted workflow validated the joined metadata graph at "
-                  f"`{os.environ['HEAD_SHA']}`.\n\n"
-                  f"[Continue curation in Orinoco]({sys.argv[4]})\n\n"
-                  "<!-- orinoco-shacl-vue-proposal -->\n",
-                  encoding="utf-8",
-              )
-          PY
-          if [[ -f "$RUNNER_TEMP/shacl-vue-comment.md" ]]; then
-            gh api --method POST \
-              "repos/${REPOSITORY}/issues/${NUMBER}/comments" \
-              -F "body=@$RUNNER_TEMP/shacl-vue-comment.md" > /dev/null
-          fi
-
-  default-editor:
-    name: Publish exact default-head SHACL Vue input
-    if: >-
-      github.event_name == 'push' &&
-      github.repository != 'con/orinoco-lite-template' &&
-      github.ref_type == 'branch' &&
-      github.ref_name == github.event.repository.default_branch
-    runs-on: ubuntu-24.04
-    permissions:
-      contents: read
-    concurrency:
-      group: shacl-vue-default-${{ github.sha }}
-      cancel-in-progress: false
-    steps:
-      - name: Check out exact trusted default head
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          fetch-depth: 0
-          persist-credentials: false
-          ref: ${{ github.sha }}
-
-      - name: Install the trusted locked Pixi environment
-        uses: prefix-dev/setup-pixi@f00437f565399d418b0acc85936d12c1fb668347 # v0.10.1
-        with:
-          cache: true
-          frozen: true
-          pixi-version: v0.73.0
-
-      - name: Validate and build exact default-head presentation input
-        env:
-          SOURCE_COMMIT: ${{ github.sha }}
-        run: |
-          set -euo pipefail
-          unset GH_TOKEN GITHUB_TOKEN
-          test "$(git rev-parse HEAD)" = "$SOURCE_COMMIT"
-          test -z "$(git status --porcelain --untracked-files=no)"
-          pixi run orinoco --root . projection update
-          pixi run orinoco --root . validate
-          site="$GITHUB_WORKSPACE/build/shacl-vue-exact-default"
-          stage="$RUNNER_TEMP/shacl-vue-editor-input"
-          pixi run orinoco --root . build \
-            --destination "$site" --base-url /
-          for path in \
-            edit/config.json \
-            edit/records.ttl \
-            edit/data/record-sources.json
-          do
-            test -f "$site/$path" && test ! -L "$site/$path"
-            install -D -m 0644 "$site/$path" "$stage/$path"
-          done
-          python - "$stage" "$SOURCE_COMMIT" <<'PY'
-          import json
-          from pathlib import Path
-          import sys
-
-          root = Path(sys.argv[1])
-          expected = {
-              "edit/config.json",
-              "edit/data/record-sources.json",
-              "edit/records.ttl",
-          }
-          actual = {
-              path.relative_to(root).as_posix()
-              for path in root.rglob("*")
-              if path.is_file()
-          }
-          if actual != expected or any(path.is_symlink() for path in root.rglob("*")):
-              raise SystemExit("editor input staging contains unexpected paths")
-          catalog = json.loads(
-              (root / "edit/data/record-sources.json").read_text(encoding="utf-8")
-          )
-          if catalog.get("source_commit") != sys.argv[2]:
-              raise SystemExit("editor input is not bound to the exact default head")
-          PY
-          test -z "$(git status --porcelain --untracked-files=no)"
-
-      - name: Upload the expiring exact-default SHACL Vue input
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-        with:
-          name: orinoco-shacl-vue-input-${{ github.sha }}
-          path: ${{ runner.temp }}/shacl-vue-editor-input/
-          if-no-files-found: error
-          include-hidden-files: false

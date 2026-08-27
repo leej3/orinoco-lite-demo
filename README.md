@@ -9,8 +9,8 @@ Building, previewing, and updating it requires neither Git submodules nor an eng
 ## Framework and site boundaries
 
 - This repository owns its content, presentation, policy, tests, review, and deployment; if present, `site/README.md` is its site-owned guide for concrete editorial and operating procedures.
-- The [Orinoco Lite template](https://github.com/con/orinoco-lite-template) owns the generic repository facade, file-ownership contract, and content-preserving updater.
-- The [Orinoco Lite engine](https://github.com/con/orinoco-lite-dev) implements the commands, runtime verification, projection, and static build.
+- The [Orinoco Lite template](https://github.com/ORINOCO-Lite/orinoco-lite-template) owns the generic repository facade, file-ownership contract, and content-preserving updater.
+- The [Orinoco Lite engine](https://github.com/ORINOCO-Lite/orinoco-lite-dev) implements the commands, runtime verification, projection, and static build.
 
 `orinoco.lock` is the release authority.
 It records exact engine, runtime, template, and reusable-workflow coordinates; the frozen `pixi.lock` realizes that reviewed environment.
@@ -23,7 +23,7 @@ Start with [creation and configuration](docs/getting-started.md) for the require
 The generic Orinoco Lite facade is MIT licensed and its original documentation is CC BY 4.0.
 Those terms do not license site-owned records, editorial prose, media, branding, presentation, or imported third-party material.
 Document those rights separately and preserve every upstream notice.
-See engine human-review decision [HR-003](https://github.com/con/orinoco-lite-dev/blob/main/docs/human-review-decisions.md#hr-003--establish-authority-and-a-project-license-matrix).
+See engine human-review decision [HR-003](https://github.com/ORINOCO-Lite/orinoco-lite-dev/blob/main/docs/human-review-decisions.md#hr-003--establish-authority-and-a-project-license-matrix).
 
 ## Routine commands after adding a site profile
 
@@ -79,9 +79,12 @@ Do not use `assets-prepare-online` in that denied-network phase; it represents t
 - `source-adapters/` contains optional site-owned importers, enrichers, and scrapers; it is not a deployed runtime dependency.
 - `.github/workflows/shacl-vue-proposal.yml` is the generic trusted human-edit
   boundary; a concrete source-adapter curation workflow remains site-owned.
+- The deployed static `/edit/` route is the sole SHACL Vue editor. It offers
+  **Download bundle** and **Propose via GitHub**; the configured curation
+  service supplies only the authenticated GitHub submission boundary.
 - `extensions/` is the stable downstream customization surface.
 - `generated/` contains ignored projection output recreated by validation and builds.
 
 A newly created repository is a content-neutral facade, not an empty but buildable website.
 Add a reviewed site profile as described in [creation and configuration](docs/getting-started.md) before running validation or build commands.
-A populated profile and source-adapter examples are available in the [downstream test website](https://github.com/con/test-orinoco-downstream-website).
+A populated profile and source-adapter examples are available in the [downstream test website](https://github.com/ORINOCO-Lite/test-orinoco-downstream-website).

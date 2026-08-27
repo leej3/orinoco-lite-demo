@@ -22,7 +22,7 @@ environments:
       linux-64:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/_openmp_mutex-4.5-20_gnu.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/bzip2-1.0.8-hda65f42_10.conda
-      - conda: https://conda.anaconda.org/conda-forge/linux-64/hugo-0.154.5-hecca717_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-64/hugo-0.161.1-hecca717_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/icu-78.3-py310h44b86e0_2.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/ld_impl_linux-64-2.46.1-default_hbd61a6d_102.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/libexpat-2.8.1-hecca717_1.conda
@@ -75,8 +75,8 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/tzdata-2026c-h151e31d_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/wcwidth-0.8.2-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/zipp-4.1.0-pyhcf101f3_0.conda
-      - pypi: direct+https://github.com/con/orinoco-lite-dev/releases/download/v0.2.0rc4/orinoco_lite-0.2.0rc4-py3-none-any.whl#sha256=8801f7fcb6c305a8d1ba4bfe67f9418a70d105e9b4ec3cba5fb38087f8ff8c9a
-      - pypi: git+https://github.com/leej3/things-enrichment-tools.git?rev=2e6a5ddc92928a6165b81fdae24a52c447967c7d#2e6a5ddc92928a6165b81fdae24a52c447967c7d
+      - pypi: direct+https://github.com/ORINOCO-Lite/orinoco-lite-dev/releases/download/v0.2.0rc8/orinoco_lite-0.2.0rc8-py3-none-any.whl#sha256=f2e343698725fba75a6bd1e9de295409b10cc2f8333ff32656346015c6e78e34
+      - pypi: git+https://github.com/ORINOCO-Lite/things-enrichment-tools.git?rev=9f036a4cdfb53f87346152f9cd4620aaef38bce2#9f036a4cdfb53f87346152f9cd4620aaef38bce2
       - pypi: https://files.pythonhosted.org/packages/00/cc/7fbd75d3362e939eb98bcf9bd22f3f7df8c237a85148899ed3d38e5614e5/json_flattener-0.1.9-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/02/10/5da547df7a391dcde17f59520a231527b8571e6f46fc8efb02ccb370ab12/docutils-0.22.4-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/02/36/ecc85bc96c273dc8a11273ed4782272975e6338d4a3e9228621175edf0e3/jaraco_functools-4.6.0-py3-none-any.whl
@@ -250,7 +250,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/wcwidth-0.8.2-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/zipp-4.1.0-pyhcf101f3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/bzip2-1.0.8-h4e30115_10.conda
-      - conda: https://conda.anaconda.org/conda-forge/osx-arm64/hugo-0.154.5-ha4d9615_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/osx-arm64/hugo-0.161.1-ha4d9615_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/icu-78.3-py310h579977c_2.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/libcxx-22.1.8-h55c6f16_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/libexpat-2.8.1-hf6b4638_1.conda
@@ -269,8 +269,8 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/readline-8.3-h46df422_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/tk-8.6.13-hd3d0363_3.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/yaml-0.2.5-h925e9cb_3.conda
-      - pypi: direct+https://github.com/con/orinoco-lite-dev/releases/download/v0.2.0rc4/orinoco_lite-0.2.0rc4-py3-none-any.whl#sha256=8801f7fcb6c305a8d1ba4bfe67f9418a70d105e9b4ec3cba5fb38087f8ff8c9a
-      - pypi: git+https://github.com/leej3/things-enrichment-tools.git?rev=2e6a5ddc92928a6165b81fdae24a52c447967c7d#2e6a5ddc92928a6165b81fdae24a52c447967c7d
+      - pypi: direct+https://github.com/ORINOCO-Lite/orinoco-lite-dev/releases/download/v0.2.0rc8/orinoco_lite-0.2.0rc8-py3-none-any.whl#sha256=f2e343698725fba75a6bd1e9de295409b10cc2f8333ff32656346015c6e78e34
+      - pypi: git+https://github.com/ORINOCO-Lite/things-enrichment-tools.git?rev=9f036a4cdfb53f87346152f9cd4620aaef38bce2#9f036a4cdfb53f87346152f9cd4620aaef38bce2
       - pypi: https://files.pythonhosted.org/packages/00/cc/7fbd75d3362e939eb98bcf9bd22f3f7df8c237a85148899ed3d38e5614e5/json_flattener-0.1.9-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/02/10/5da547df7a391dcde17f59520a231527b8571e6f46fc8efb02ccb370ab12/docutils-0.22.4-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/02/36/ecc85bc96c273dc8a11273ed4782272975e6338d4a3e9228621175edf0e3/jaraco_functools-4.6.0-py3-none-any.whl
@@ -441,9 +441,9 @@ packages:
     - bzip2 >=1.0.8,<2.0a0
   size: 257808
   timestamp: 1785906269155
-- conda: https://conda.anaconda.org/conda-forge/linux-64/hugo-0.154.5-hecca717_0.conda
-  sha256: d0d56f2985803009f5248a76ba33baf272b41b528fe9208a0d7c2885690c51ab
-  md5: ea4d50a3273a01ba462643709d71b9cd
+- conda: https://conda.anaconda.org/conda-forge/linux-64/hugo-0.161.1-hecca717_0.conda
+  sha256: 5693d3a4ae492953c3f092776c9284db6999bbe544bb3f3ce8c7e7f2f853d340
+  md5: 57b864b2d0efbb472be6167788c0df0d
   depends:
   - __glibc >=2.17
   - __glibc >=2.17,<3.0.a0
@@ -453,8 +453,8 @@ packages:
   license_family: APACHE
   purls: []
   run_exports: {}
-  size: 18403168
-  timestamp: 1768298518899
+  size: 18512470
+  timestamp: 1777484322301
 - conda: https://conda.anaconda.org/conda-forge/linux-64/icu-78.3-py310h44b86e0_2.conda
   sha256: 9f07834f0c546ab14d885ce0366285f61f44e326c0edd1fc63b8294e113ae432
   md5: 72a381cbad04f24b1c2a43ef707f45b4
@@ -1218,9 +1218,9 @@ packages:
     - bzip2 >=1.0.8,<2.0a0
   size: 124965
   timestamp: 1785906749812
-- conda: https://conda.anaconda.org/conda-forge/osx-arm64/hugo-0.154.5-ha4d9615_0.conda
-  sha256: a87f25e4890b876cc9b6d3d9cd035290dc4edf11a3f84f5093cc06d064bd5fb3
-  md5: e922799404b96cc8d9529efd335b4ff7
+- conda: https://conda.anaconda.org/conda-forge/osx-arm64/hugo-0.161.1-ha4d9615_0.conda
+  sha256: b9224ef612a666f2339f5fc9847acc5d80a8bb7179eb7c89b960575f16912814
+  md5: 579fd8c53fedbdc707bbee6f8c78237f
   depends:
   - __osx >=12.3
   - libcxx >=19
@@ -1228,8 +1228,8 @@ packages:
   license_family: APACHE
   purls: []
   run_exports: {}
-  size: 16271300
-  timestamp: 1768299292109
+  size: 16324721
+  timestamp: 1777485454580
 - conda: https://conda.anaconda.org/conda-forge/osx-arm64/icu-78.3-py310h579977c_2.conda
   sha256: 6cdb5dee54c72e56ab189fb3ad33cb28533553d42590e7e831160248f4416a43
   md5: a5efc0b42bb8b42e97d0a29ae3e3c187
@@ -1498,9 +1498,9 @@ packages:
     - yaml >=0.2.5,<0.3.0a0
   size: 83386
   timestamp: 1753484079473
-- pypi: direct+https://github.com/con/orinoco-lite-dev/releases/download/v0.2.0rc4/orinoco_lite-0.2.0rc4-py3-none-any.whl#sha256=8801f7fcb6c305a8d1ba4bfe67f9418a70d105e9b4ec3cba5fb38087f8ff8c9a
+- pypi: direct+https://github.com/ORINOCO-Lite/orinoco-lite-dev/releases/download/v0.2.0rc8/orinoco_lite-0.2.0rc8-py3-none-any.whl#sha256=f2e343698725fba75a6bd1e9de295409b10cc2f8333ff32656346015c6e78e34
   name: orinoco-lite
-  version: 0.2.0rc4
+  version: 0.2.0rc8
   requires_dist:
   - dump-things-service==6.3.6
   - jinja2==3.1.6
@@ -1510,11 +1510,11 @@ packages:
   - pydantic==2.13.4
   - pyyaml==6.0.2
   - rdflib==7.6.0
-  - things-enrichment-tools @ git+https://github.com/leej3/things-enrichment-tools.git@2e6a5ddc92928a6165b81fdae24a52c447967c7d
+  - things-enrichment-tools @ git+https://github.com/ORINOCO-Lite/things-enrichment-tools.git@9f036a4cdfb53f87346152f9cd4620aaef38bce2
   requires_python: '>=3.12'
-- pypi: git+https://github.com/leej3/things-enrichment-tools.git?rev=2e6a5ddc92928a6165b81fdae24a52c447967c7d#2e6a5ddc92928a6165b81fdae24a52c447967c7d
+- pypi: git+https://github.com/ORINOCO-Lite/things-enrichment-tools.git?rev=9f036a4cdfb53f87346152f9cd4620aaef38bce2#9f036a4cdfb53f87346152f9cd4620aaef38bce2
   name: things-enrichment-tools
-  version: 0.1.dev56+g2e6a5ddc9
+  version: 0.1.dev72+g9f036a4cd
   requires_python: '>=3.12'
 - pypi: https://files.pythonhosted.org/packages/00/cc/7fbd75d3362e939eb98bcf9bd22f3f7df8c237a85148899ed3d38e5614e5/json_flattener-0.1.9-py3-none-any.whl
   name: json-flattener
