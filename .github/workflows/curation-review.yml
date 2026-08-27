@@ -57,35 +57,14 @@ jobs:
           ACKNOWLEDGED: ${{ inputs.acknowledge_public_review_data }}
           ADAPTER: ${{ inputs.adapter }}
           EXPECTED_LIBRARY_VERSION: ${{ inputs.expected_library_version }}
-          REVIEW_APP_ORIGIN: ${{ vars.CURATION_REVIEW_APP_ORIGIN || 'https://orinoco-curation-review.pages.dev/' }}
           SOURCE_REFSPEC: ${{ inputs.source_refspec }}
         run: |
           python - <<'PY'
           import os
           import re
-          from urllib.parse import urlsplit
 
           if os.environ["ACKNOWLEDGED"] != "true":
               raise SystemExit("public review-data acknowledgment is required")
-          origin = urlsplit(os.environ["REVIEW_APP_ORIGIN"])
-          try:
-              origin.port
-          except ValueError as error:
-              raise SystemExit("CURATION_REVIEW_APP_ORIGIN has an invalid port") from error
-          if (
-              origin.scheme != "https"
-              or origin.hostname is None
-              or origin.username is not None
-              or origin.password is not None
-              or origin.path not in {"", "/"}
-              or origin.query
-              or origin.fragment
-              or re.fullmatch(r"[A-Za-z0-9.-]+", origin.hostname) is None
-              or origin.hostname.startswith(".")
-              or origin.hostname.endswith(".")
-              or ".." in origin.hostname
-          ):
-              raise SystemExit("CURATION_REVIEW_APP_ORIGIN must be an HTTPS origin")
           if os.environ["ADAPTER"] == "dump-research-info":
               ref = os.environ["SOURCE_REFSPEC"]
               if (
@@ -437,13 +416,12 @@ jobs:
         if: steps.plan.outputs.has_candidates == 'true'
         env:
           ARTIFACT_ID: ${{ steps.artifact.outputs.artifact-id }}
-          REVIEW_APP_ORIGIN: ${{ vars.CURATION_REVIEW_APP_ORIGIN || 'https://orinoco-curation-review.pages.dev/' }}
         run: |
           pixi run python source-adapters/metadata/tools/curation.py \
             render-pr-body \
+            --root "$GITHUB_WORKSPACE" \
             --bundle "$RUNNER_TEMP/review-artifact/review-bundle.json" \
             --artifact-id "$ARTIFACT_ID" \
-            --review-application "$REVIEW_APP_ORIGIN" \
             --output "$RUNNER_TEMP/pr-body.md" \
             > "$RUNNER_TEMP/pr-body-report.json"
 
