@@ -1,5 +1,5 @@
 {
-  "name": "test-orinoco-downstream-website-browser-acceptance",
+  "name": "orinoco-lite-demo-browser-acceptance",
   "private": true,
   "type": "module",
   "scripts": {

@@ -294,7 +294,7 @@ class FrozenZoteroCandidateTests(unittest.TestCase):
             reviewer="https://github.com/reviewer",
             reviewed_at="2026-08-24T12:00:00Z",
             review_url=(
-                "https://github.com/con/test-orinoco-downstream-website/"
+                "https://github.com/leej3/orinoco-lite-demo/"
                 "pull/1#issuecomment-123"
             ),
         )
@@ -371,7 +371,7 @@ class FrozenZoteroCandidateTests(unittest.TestCase):
                 reviewer="https://github.com/reviewer",
                 reviewed_at="2026-08-24T12:01:00Z",
                 review_url=(
-                    "https://github.com/con/test-orinoco-downstream-website/"
+                    "https://github.com/leej3/orinoco-lite-demo/"
                     "pull/1#issuecomment-124"
                 ),
             )
@@ -409,7 +409,7 @@ class FrozenZoteroCandidateTests(unittest.TestCase):
                 reviewer="https://github.com/reviewer",
                 reviewed_at="2026-08-24T12:02:00Z",
                 review_url=(
-                    "https://github.com/con/test-orinoco-downstream-website/"
+                    "https://github.com/leej3/orinoco-lite-demo/"
                     "pull/1#issuecomment-125"
                 ),
             )

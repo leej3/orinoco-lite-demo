@@ -89,5 +89,5 @@ Failure leaves the draft visibly blocked at the temporary handoff.
 The service and workflow do not retain a second bundle, choose a disposition, add provenance or cache entries, approve, mark ready, merge, deploy, or write to a source.
 The wrapper warns that a public Git host may retain the otherwise unreachable temporary object, so this path is only for data approved for public repository history.
 
-[profile]: https://github.com/con/orinoco-lite-dev/blob/main/docs/github-curation-review.md
-[human-edit-profile]: https://github.com/con/orinoco-lite-dev/blob/main/docs/github-shacl-vue-edit.md
+[profile]: https://github.com/ORINOCO-Lite/orinoco-lite-dev/blob/main/docs/github-curation-review.md
+[human-edit-profile]: https://github.com/ORINOCO-Lite/orinoco-lite-dev/blob/main/docs/github-shacl-vue-edit.md

@@ -1,11 +1,11 @@
 _commit: v0.2.0rc7
-_src_path: gh:con/orinoco-lite-template
+_src_path: gh:ORINOCO-Lite/orinoco-lite-template
 project_name: Center for Open Neuroscience — Orinoco Test Site
-project_slug: test-orinoco-downstream-website
+project_slug: orinoco-lite-demo
 site_description: Test-only full-content Orinoco Lite downstream for the Center for
   Open Neuroscience.
-repository_slug: con/test-orinoco-downstream-website
-site_base_url: https://con.github.io/test-orinoco-downstream-website/
+repository_slug: leej3/orinoco-lite-demo
+site_base_url: https://leej3.github.io/orinoco-lite-demo/
 engine_version: 0.2.0rc4
 engine_url: https://github.com/con/orinoco-lite-dev/releases/download/v0.2.0rc4/orinoco_lite-0.2.0rc4-py3-none-any.whl
 engine_sha256: 8801f7fcb6c305a8d1ba4bfe67f9418a70d105e9b4ec3cba5fb38087f8ff8c9a
@@ -13,8 +13,8 @@ runtime_version: 0.2.0rc4
 runtime_url: https://github.com/con/orinoco-lite-dev/releases/download/v0.2.0rc4/orinoco-runtime-0.2.0rc4.tar.gz
 runtime_sha256: 22e142a1d5587f2d036a4b216553f264cb41b94398d0f1f13f43b9ac0d8a1d63
 runtime_manifest_sha256: d9f7ff716b5b9e883d2a008b94a48270734dab197beb65b4c598245a3301241e
-template_source: gh:con/orinoco-lite-template
+template_source: gh:ORINOCO-Lite/orinoco-lite-template
 template_version: v0.2.0rc7
-workflow_repository: con/orinoco-lite-dev
+workflow_repository: ORINOCO-Lite/orinoco-lite-dev
 workflow_sha: 6bd31daa17293fe7d52966bc1599f66b2ea3420b
-workflow_ref: con/orinoco-lite-dev/.github/workflows/orinoco-consumer-ci.yml@6bd31daa17293fe7d52966bc1599f66b2ea3420b
+workflow_ref: ORINOCO-Lite/orinoco-lite-dev/.github/workflows/orinoco-consumer-ci.yml@6bd31daa17293fe7d52966bc1599f66b2ea3420b

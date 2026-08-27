@@ -33,7 +33,7 @@
     ]
   },
   "pages_root": "build/pages",
-  "project_path": "/test-orinoco-downstream-website/",
+  "project_path": "/orinoco-lite-demo/",
   "review_bundle": {
     "format": "orinoco-shacl-review-bundle",
     "record_fields": [
