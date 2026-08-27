@@ -25,11 +25,11 @@ jobs:
       contents: write
       pages: write
       id-token: write
-    uses: ORINOCO-Lite/orinoco-lite-dev/.github/workflows/orinoco-pages.yml@b7201b2e3fefe3e30f9145b597aba9e0c64bccb7
+    uses: ORINOCO-Lite/orinoco-lite-dev/.github/workflows/orinoco-pages.yml@0cba471d72c8df6822b7f13a8a5ff9155c01522b
     with:
       source-ref: >-
         ${{ github.event_name == 'workflow_dispatch' &&
         github.event.repository.default_branch || github.sha }}
       pixi-version: v0.73.0
       workflow-repository: ORINOCO-Lite/orinoco-lite-dev
-      workflow-sha: b7201b2e3fefe3e30f9145b597aba9e0c64bccb7
+      workflow-sha: 0cba471d72c8df6822b7f13a8a5ff9155c01522b
