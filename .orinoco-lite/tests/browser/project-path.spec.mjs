@@ -69,3 +69,33 @@ test('project-path graph resources and routes resolve', async ({ page }) => {
     await fixture.close();
   }
 });
+
+test('homepage excludes upstream institutional branding', async ({
+  page,
+  request,
+}) => {
+  const fixture = await startStaticServer(
+    contract.pagesRoot,
+    contract.projectPath,
+  );
+  try {
+    await page.goto(projectURL(fixture.origin));
+    await expect(
+      page.locator(
+        'a[href*="fz-juelich"], a[href*="medizin.hhu"]',
+      ),
+    ).toHaveCount(0);
+    await expect(
+      page.locator('img[src*="fzj"], img[src*="hhu"]'),
+    ).toHaveCount(0);
+
+    for (const asset of ['img/fzj.svg', 'img/hhu.svg']) {
+      const response = await request.get(
+        projectURL(fixture.origin, asset),
+      );
+      expect(response.status()).toBe(404);
+    }
+  } finally {
+    await fixture.close();
+  }
+});

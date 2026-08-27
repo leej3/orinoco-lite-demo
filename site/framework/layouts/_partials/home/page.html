@@ -20,28 +20,6 @@
   <section>{{ .Content | emojify }}</section>
 </article>
 
-<div class="flex flex-col m-12 mb-20 h-32 md:flex-row content-between items-center">
-{{ with resources.Get "img/fzj.svg" }}
-<div class="w-1/2 m-6 object-cover">
-  <a href="https://www.fz-juelich.de/en/inm/inm-7"
-     target="_blank"
-    ><img class="w-full"
-        src="{{ .RelPermalink }}"
-        alt="Jülich Research Center Logo" /></a
-  ></div>
-{{ end }}
-{{ with resources.Get "img/hhu.svg" }}
-<div class="w-1/2 m-6 object-cover">
-  <a href="https://www.medizin.hhu.de/en/"
-     target="_blank"
-    ><img class="w-full"
-        src="{{ .RelPermalink }}"
-        alt="Heinrich Heine University Logo" /></a
-  ></div>
-{{ end }}
-</div>
-
-
 <section>
   {{ partial "recent-articles.html" . }}
 </section>
