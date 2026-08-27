@@ -176,7 +176,7 @@ class ReviewArtifactTests(unittest.TestCase):
         self,
     ) -> None:
         body = HOST.render_pull_request_body(
-            review_application=HOST.REVIEW_APP,
+            site_base_url="https://example.github.io/example/",
             repository="con/example",
             pull_request=17,
             artifact_id=5678,
@@ -185,7 +185,7 @@ class ReviewArtifactTests(unittest.TestCase):
 
         self.assertTrue(body.startswith(HOST.ATTRIBUTION + "\n"))
         self.assertIn(
-            "https://orinoco-curation-review.pages.dev/review/?"
+            "https://example.github.io/example/review/?"
             "repository=con%2Fexample&pull_request=17&artifact_id=5678",
             body,
         )
@@ -197,7 +197,7 @@ class ReviewArtifactTests(unittest.TestCase):
         self.assertNotIn("New first", body)
         self.assertFalse(hasattr(HOST, "parse_summary"))
 
-    def test_review_origin_defaults_centrally_and_allows_https_self_hosting(
+    def test_review_url_stays_under_the_downstream_site_base_url(
         self,
     ) -> None:
         arguments = {
@@ -207,20 +207,27 @@ class ReviewArtifactTests(unittest.TestCase):
             "source_coordinate": plan().source_coordinate,
         }
         self_hosted = HOST.render_pull_request_body(
-            review_application="https://review.example.test:8443",
+            site_base_url="https://site.example.test:8443/project/",
             **arguments,
         )
-        self.assertIn("https://review.example.test:8443/review/?", self_hosted)
+        self.assertIn(
+            "https://site.example.test:8443/project/review/?",
+            self_hosted,
+        )
         for invalid in (
-            "http://review.example.test",
-            "https://user@review.example.test",
-            "https://review.example.test/path",
-            "https://review.example.test/?state=1",
+            "http://site.example.test/project/",
+            "https://user@site.example.test/project/",
+            "https://site.example.test/project",
+            "https://site.example.test/project/?state=1",
+            "https://site.example.test/project/../other/",
         ):
             with self.subTest(invalid=invalid):
-                with self.assertRaisesRegex(HOST.CurationHostError, "HTTPS origin"):
+                with self.assertRaisesRegex(
+                    HOST.CurationHostError,
+                    "absolute HTTPS directory URL",
+                ):
                     HOST.render_pull_request_body(
-                        review_application=invalid,
+                        site_base_url=invalid,
                         **arguments,
                     )
 
