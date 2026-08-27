@@ -17,6 +17,7 @@ classes:
       - docs/ownership.md
       - docs/updating.md
       - docs/getting-started.md
+      - docs/custom-domain.md
       - .orinoco-lite/README.md
       - .orinoco-lite/tools/**
       - .orinoco-lite/source-adapters/**

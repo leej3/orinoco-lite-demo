@@ -23,7 +23,7 @@ import subprocess
 import sys
 import tempfile
 from types import ModuleType
-from urllib.parse import urlencode, urlsplit
+from urllib.parse import unquote, urlencode, urlsplit
 
 from linkml_runtime.utils.schemaview import SchemaView
 from orinoco_lite.candidates import CandidatePlan
@@ -50,7 +50,6 @@ ADAPTERS = ("dump-research-info", "zotero")
 RECORD_ROOT = PurePosixPath("metadata/records")
 ANNOTATION_ROOT = PurePosixPath("metadata/overlays/annotations")
 SCHEMA_PATH = PurePosixPath("schema/demo-research-information/unreleased.yaml")
-REVIEW_APP = "https://orinoco-curation-review.pages.dev/"
 MAX_CANDIDATES = 225
 MAX_REVIEW_BUNDLE_BYTES = 16 * 1024 * 1024
 MAX_SUBMISSION_COMMENT_CHARACTERS = 65_536
@@ -127,21 +126,25 @@ def _visible_text(value: object, label: str) -> str:
     return _line(value, label, backticks=True)
 
 
-def _review_application_origin(value: object) -> str:
-    rendered = _line(value, "Review application origin", backticks=True)
+def _review_site_base_url(value: object) -> str:
+    rendered = _line(value, "Review site base URL", backticks=True)
     parsed = urlsplit(rendered)
     try:
         port = parsed.port
     except ValueError as error:
         raise CurationHostError(
-            "Review application origin has an invalid port"
+            "Review site base URL has an invalid port"
         ) from error
+    decoded_path = unquote(parsed.path)
     if (
         parsed.scheme != "https"
         or not parsed.netloc
         or parsed.username is not None
         or parsed.password is not None
-        or parsed.path not in {"", "/"}
+        or not parsed.path.startswith("/")
+        or not parsed.path.endswith("/")
+        or "\\" in decoded_path
+        or any(part in {".", ".."} for part in decoded_path.split("/"))
         or parsed.query
         or parsed.fragment
         or parsed.hostname is None
@@ -150,11 +153,13 @@ def _review_application_origin(value: object) -> str:
         or parsed.hostname.endswith(".")
         or ".." in parsed.hostname
     ):
-        raise CurationHostError("Review application must be an HTTPS origin")
+        raise CurationHostError(
+            "Review site base URL must be an absolute HTTPS directory URL"
+        )
     authority = parsed.hostname.lower()
     if port is not None:
         authority += f":{port}"
-    return f"https://{authority}/"
+    return f"https://{authority}{parsed.path}"
 
 
 def _exact_sha(value: object, label: str) -> str:
@@ -359,7 +364,7 @@ def review_bundle_bytes(bundle: Mapping[str, object]) -> bytes:
 
 def render_pull_request_body(
     *,
-    review_application: str,
+    site_base_url: str,
     repository: str,
     pull_request: int,
     artifact_id: int,
@@ -367,7 +372,7 @@ def render_pull_request_body(
 ) -> str:
     """Render a concise editable fallback; none of its bytes are authoritative."""
 
-    application = _review_application_origin(review_application)
+    base_url = _review_site_base_url(site_base_url)
     repository = _line(repository, "Repository")
     if _REPOSITORY.fullmatch(repository) is None:
         raise CurationHostError("Repository must be OWNER/REPOSITORY")
@@ -383,14 +388,14 @@ def render_pull_request_body(
             ("artifact_id", str(artifact_id)),
         )
     )
-    review_url = f"{application}review/?{query}"
+    review_url = f"{base_url}review/?{query}"
     visible_coordinate = escape(coordinate, quote=True).replace("`", "&#96;")
     return (
         f"{ATTRIBUTION}\n\n"
         "This draft contains public review data. The review bundle is an ephemeral "
         "GitHub Actions artifact subject to the repository's normal retention; the "
         "proposal and review commits remain in Git history.\n\n"
-        f"[Open the curation review application]({review_url})\n\n"
+        f"[Open this site's curation review]({review_url})\n\n"
         f"Source coordinate: <code>{visible_coordinate}</code>\n\n"
         "Merge this pull request with a merge commit. Squash and rebase merges are "
         "not conforming.\n"
@@ -1114,9 +1119,9 @@ def _parser() -> argparse.ArgumentParser:
     bundle.add_argument("--output", type=Path, required=True)
 
     body = commands.add_parser("render-pr-body")
+    body.add_argument("--root", type=Path, required=True)
     body.add_argument("--bundle", type=Path, required=True)
     body.add_argument("--artifact-id", type=int, required=True)
-    body.add_argument("--review-application", default=REVIEW_APP)
     body.add_argument("--output", type=Path, required=True)
 
     final = commands.add_parser("finalize")
@@ -1178,7 +1183,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             if bundle["format"] != REVIEW_BUNDLE_FORMAT:
                 raise CurationHostError("Review bundle format is unsupported")
             body = render_pull_request_body(
-                review_application=args.review_application,
+                site_base_url=load_workspace(args.root).base_url,
                 repository=bundle["repository"],
                 pull_request=bundle["pull_request"],
                 artifact_id=args.artifact_id,

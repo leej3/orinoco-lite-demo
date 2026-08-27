@@ -16,7 +16,7 @@ Building, previewing, and updating it requires neither Git submodules nor an eng
 It records exact engine, runtime, template, and reusable-workflow coordinates; the frozen `pixi.lock` realizes that reviewed environment.
 PyPI publication is optional and is not required by this repository.
 
-Start with [creation and configuration](docs/getting-started.md) for the required site-profile step, [file ownership](docs/ownership.md) before customizing the facade, and [framework updates](docs/updating.md) before changing release pins.
+Start with [creation and configuration](docs/getting-started.md) for the required site-profile step, [custom-domain and curation setup](docs/custom-domain.md) before enabling hosted editing, [file ownership](docs/ownership.md) before customizing the facade, and [framework updates](docs/updating.md) before changing release pins.
 
 ## Rights and intended use
 
@@ -81,7 +81,13 @@ Do not use `assets-prepare-online` in that denied-network phase; it represents t
   boundary; a concrete source-adapter curation workflow remains site-owned.
 - The deployed static `/edit/` route is the sole SHACL Vue editor. It offers
   **Download bundle** and **Propose via GitHub**; the configured curation
-  service supplies only the authenticated GitHub submission boundary.
+  service supplies only the authenticated GitHub submission boundary. The
+  central service is the default; `site.curation_service` is only a
+  self-hosting override.
+- The deployed static `/review/` route is the sole source-adapter decision
+  interface. Source-adapter workflows link there from the trusted
+  `site.base_url`; the selected curation service supplies only OAuth,
+  verified GitHub reads, confirmation, and authenticated transport.
 - `extensions/` is the stable downstream customization surface.
 - `generated/` contains ignored projection output recreated by validation and builds.
 

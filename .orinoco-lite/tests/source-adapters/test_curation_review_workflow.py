@@ -192,15 +192,7 @@ class CurationReviewWorkflowTests(unittest.TestCase):
         self.assertIn("--draft", pull)
         self.assertIn("**AI-generated draft — not reviewed by John**", pull)
         self.assertIn("render-pr-body", body)
-        self.assertIn(
-            "CURATION_REVIEW_APP_ORIGIN",
-            str(self.propose_steps["Render the concise editable pull-request body"]),
-        )
-        self.assertIn(
-            "https://orinoco-curation-review.pages.dev/",
-            str(self.propose_steps["Render the concise editable pull-request body"]),
-        )
-        self.assertIn('--review-application "$REVIEW_APP_ORIGIN"', body)
+        self.assertIn('--root "$GITHUB_WORKSPACE"', body)
         self.assertIn('--artifact-id "$ARTIFACT_ID"', body)
         self.assertIn('--body-file "$RUNNER_TEMP/pr-body.md"', publish)
         self.assertNotIn("prototype", self.text.lower())
@@ -212,13 +204,8 @@ class CurationReviewWorkflowTests(unittest.TestCase):
         self.assertNotIn("--summary", self.text)
         self.assertNotIn("retention-days", str(upload))
 
-        validation = self.propose_steps["Validate public proposal inputs"]
-        self.assertEqual(
-            "${{ vars.CURATION_REVIEW_APP_ORIGIN || "
-            "'https://orinoco-curation-review.pages.dev/' }}",
-            validation["env"]["REVIEW_APP_ORIGIN"],
-        )
-        self.assertIn("must be an HTTPS origin", validation["run"])
+        self.assertNotIn("CURATION_REVIEW_APP_ORIGIN", self.text)
+        self.assertNotIn("orinoco-curation-review.pages.dev/review", self.text)
 
     def test_submission_uses_trusted_code_and_exact_authenticated_context(self) -> None:
         proposal = self.propose_steps["Create one explicit DataLad proposal commit"][

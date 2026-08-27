@@ -4,9 +4,15 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
+import re
 import subprocess
 import sys
 from urllib.parse import urlsplit
+
+
+GITHUB_REPOSITORY = re.compile(
+    r"[A-Za-z0-9](?:[A-Za-z0-9_.-]{0,38})/[A-Za-z0-9_.-]{1,100}",
+)
 
 
 def _base_url() -> str:
@@ -22,6 +28,18 @@ def _base_url() -> str:
     return value.rstrip("/") + "/"
 
 
+def _github_repository() -> str:
+    """Return the repository identity supplied by the trusted Actions runner."""
+
+    value = os.environ.get("GITHUB_REPOSITORY", "").strip()
+    if GITHUB_REPOSITORY.fullmatch(value) is None or ".." in value:
+        raise SystemExit(
+            "GITHUB_REPOSITORY must use GitHub's OWNER/REPOSITORY form; "
+            "the Pages build derives curation identity from its trusted runner"
+        )
+    return value
+
+
 def main(argv: list[str] | None = None) -> int:
     args = sys.argv[1:] if argv is None else argv
     destination = Path(args[0]) if args else Path("build/pages")
@@ -33,6 +51,8 @@ def main(argv: list[str] | None = None) -> int:
             str(destination),
             "--base-url",
             _base_url(),
+            "--github-repository",
+            _github_repository(),
         ],
         check=True,
     )

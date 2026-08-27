@@ -37,11 +37,14 @@ The producer rejects canonical JSON above 16 MiB.
 The application also rejects an artifact ZIP above 8 MiB.
 `upload-artifact` does not expose its eventual ZIP size before upload, so the producer does not attempt to emulate that archive with a brittle second compressor; the application enforces the compressed download boundary.
 
-The concise pull-request body links to the bundle through the configured review application, gives the source coordinate, explains artifact and Git retention, and states the merge-history rule.
+The concise pull-request body links to the bundle through the deployed
+downstream site's own `/review/` route, gives the source coordinate, explains
+artifact and Git retention, and states the merge-history rule.
 It is an editable accessible fallback, so the Action does not parse or re-render it.
-The central application origin is `https://orinoco-curation-review.pages.dev/`.
-A downstream may set the repository variable `CURATION_REVIEW_APP_ORIGIN` to a self-hosted HTTPS origin with no path, query, fragment, or user information.
-The origin changes only the generated link; it has no decision authority.
+The workflow derives that route from the trusted `site.base_url`; the selected
+curation service supplies only OAuth and verified GitHub transport, not another
+review page.
+The review link has no decision authority.
 
 ## Human review and trusted finalization
 
