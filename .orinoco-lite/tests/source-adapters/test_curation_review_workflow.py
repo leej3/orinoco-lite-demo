@@ -251,6 +251,45 @@ class CurationReviewWorkflowTests(unittest.TestCase):
         for execution in (proposal, rehearsal, metadata, cache):
             self.assertIn("unset GH_TOKEN GITHUB_TOKEN", execution)
 
+    def test_finalization_resolves_the_exact_trusted_parent_runtime(self) -> None:
+        isolate = self.submit_steps[
+            "Isolate the proposal parent and restrict later branch changes"
+        ]["run"]
+        runtime = self.submit_steps[
+            "Resolve the proposal parent's released runtime"
+        ]["run"]
+        self.assertIn(
+            'git -C trusted merge-base --is-ancestor "$parent" HEAD',
+            isolate,
+        )
+        self.assertIn("unset GH_TOKEN GITHUB_TOKEN", runtime)
+        self.assertIn("--frozen --clean-env", runtime)
+        self.assertIn(
+            '--manifest-path "${{ steps.base.outputs.root }}/pixi.toml"',
+            runtime,
+        )
+        self.assertIn("--executable orinoco", runtime)
+        self.assertNotIn("trusted/pixi.toml", runtime)
+        self.assertNotIn("review/pixi.toml", runtime)
+        self.assertEqual(
+            1,
+            self.text.count(
+                '--manifest-path "${{ steps.base.outputs.root }}/pixi.toml"'
+            ),
+        )
+        for name in (
+            "Rebuild and rehearse the complete finalization",
+            "Apply metadata-changing finalization through DataLad",
+            "Apply a decision-cache-only finalization",
+        ):
+            execution = self.submit_steps[name]["run"]
+            self.assertIn("trusted/pixi.toml", execution)
+            self.assertIn(
+                "trusted/source-adapters/metadata/tools/curation.py",
+                execution,
+            )
+            self.assertNotIn("steps.base.outputs.root }}/pixi.toml", execution)
+
     def test_direct_metadata_commits_and_suggestions_remain_branch_data(self) -> None:
         isolate = self.submit_steps[
             "Isolate the proposal parent and restrict later branch changes"
