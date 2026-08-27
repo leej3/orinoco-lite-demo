@@ -706,7 +706,10 @@ jobs:
       - name: Resolve the proposal parent's released runtime
         id: runtime
         run: |
-          pixi run --manifest-path trusted/pixi.toml orinoco \
+          unset GH_TOKEN GITHUB_TOKEN
+          pixi run --frozen --clean-env \
+            --manifest-path "${{ steps.base.outputs.root }}/pixi.toml" \
+            --executable orinoco \
             --root "${{ steps.base.outputs.root }}" runtime verify --json \
             > "$RUNNER_TEMP/runtime.json"
           python - "$RUNNER_TEMP/runtime.json" <<'PY'
