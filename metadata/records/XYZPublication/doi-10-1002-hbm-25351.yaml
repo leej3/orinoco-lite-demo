@@ -30,6 +30,13 @@ attributes:
   schema_type: dlthings:AttributeSpecification
   value: 'The Open Brain Consent: Informing research participants and obtaining consent
     to share brain imaging data'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'The Open Brain Consent: Informing research participants and obtaining consent
+    to share brain imaging data'
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: 'The Open Brain Consent: Informing research participants and obtaining
   consent to share brain imaging data'
 identifiers:

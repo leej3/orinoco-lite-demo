@@ -15,6 +15,17 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2016'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: DataLad – decentralized data distribution for consumption and sharing of
+    scientific datasets
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: DataLad – decentralized data distribution for consumption and sharing of
+    scientific datasets
+characterized_by:
+- object: bibo:Document
+  predicate: dcterms:type
 display_label: DataLad – decentralized data distribution for consumption and sharing
   of scientific datasets
 identifiers:

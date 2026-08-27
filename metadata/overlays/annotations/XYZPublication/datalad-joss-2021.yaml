@@ -1,0 +1,18 @@
+assertions:
+- assertion_sha256: sha256:31a2a545c6a0b6f121ead60b2ff0e5bb04abd5b64737a9186aa51e9a10ebd712
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/H8IFRMC4
+- assertion_sha256: sha256:95987cdff2dfe27f512520ed34ead2ea6be9fb3f10d28a3cfc5d57db9f853936
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/H8IFRMC4
+- assertion_sha256: sha256:bbbcb8109281a7166f93677b6f7f4af6c0d8d1a5ad0152edcdf0d2774d14a414
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/H8IFRMC4
+- assertion_sha256: sha256:daaf525b6f3d3378a5630d6cee38e0b0b19098a51ceab864edf5e50321977190
+  path: /characterized_by
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/H8IFRMC4
+record: xyzrins:publications/datalad-joss-2021

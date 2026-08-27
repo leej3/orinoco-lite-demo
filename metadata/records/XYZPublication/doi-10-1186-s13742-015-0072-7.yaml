@@ -14,6 +14,15 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2015'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Four aspects to make science open "by design" and not as an after-thought
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Four aspects to make science open "by design" and not as an after-thought
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: Four aspects to make science open "by design" and not as an after-thought
 identifiers:
 - notation: 10.1186/s13742-015-0072-7

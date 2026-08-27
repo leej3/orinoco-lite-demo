@@ -11,6 +11,15 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2018'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'NICEMAN: NeuroImaging Computational Environments Manager'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'NICEMAN: NeuroImaging Computational Environments Manager'
+characterized_by:
+- object: bibo:Document
+  predicate: dcterms:type
 display_label: 'NICEMAN: NeuroImaging Computational Environments Manager'
 identifiers:
 - notation: zotero:group:6197458:item:V65L6J8X

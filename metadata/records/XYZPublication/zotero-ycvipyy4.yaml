@@ -11,6 +11,17 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2011'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Scanning parameters for optimal decoding using a 32-channel head coil for
+    fMRI
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Scanning parameters for optimal decoding using a 32-channel head coil for
+    fMRI
+characterized_by:
+- object: bibo:Document
+  predicate: dcterms:type
 display_label: Scanning parameters for optimal decoding using a 32-channel head coil
   for fMRI
 identifiers:

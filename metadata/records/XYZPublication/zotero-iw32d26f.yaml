@@ -19,6 +19,19 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2015'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'Finding cortical patches of shared representations: a comparison of clustering
+    algorithms on representational geometries, and the effect of cross-validation
+    to reduce physiological noise'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'Finding cortical patches of shared representations: a comparison of clustering
+    algorithms on representational geometries, and the effect of cross-validation
+    to reduce physiological noise'
+characterized_by:
+- object: bibo:Document
+  predicate: dcterms:type
 display_label: 'Finding cortical patches of shared representations: a comparison of
   clustering algorithms on representational geometries, and the effect of cross-validation
   to reduce physiological noise'

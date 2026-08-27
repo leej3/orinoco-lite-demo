@@ -10,6 +10,15 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2000'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Method for image coordinate definition on extended laser paths
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Method for image coordinate definition on extended laser paths
+characterized_by:
+- object: bibo:Article
+  predicate: dcterms:type
 display_label: Method for image coordinate definition on extended laser paths
 identifiers:
 - notation: 10.1117/12.388446

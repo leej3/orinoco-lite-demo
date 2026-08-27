@@ -10,6 +10,15 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '1998'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Image Segmentation on the basis of spatial connected features
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Image Segmentation on the basis of spatial connected features
+characterized_by:
+- object: bibo:BookSection
+  predicate: dcterms:type
 display_label: Image Segmentation on the basis of spatial connected features
 identifiers:
 - notation: zotero:group:6197458:item:99YQF7JR

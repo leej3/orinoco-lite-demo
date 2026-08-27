@@ -1,0 +1,22 @@
+assertions:
+- assertion_sha256: sha256:250f967b60334c7f2f0b69707973bcf06ac2d5f78b26f06ad03f041da5579be5
+  path: /attributed_to
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/CWP3HZ39
+- assertion_sha256: sha256:3b96e6a0d93026c8c1d85d927ad10556f55cd855b7e9972b7ca4c638e1666cdb
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/CWP3HZ39
+- assertion_sha256: sha256:7e038ac0fad850eb8b2fb3fb4adc22d9a33053cca8a72ade077ebd648487358b
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/CWP3HZ39
+- assertion_sha256: sha256:e1297ce9552aef94b95efeebdfe6d342fad911d993c2e460769b4d487e62b44e
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/CWP3HZ39
+- assertion_sha256: sha256:daaf525b6f3d3378a5630d6cee38e0b0b19098a51ceab864edf5e50321977190
+  path: /characterized_by
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/CWP3HZ39
+record: xyzrins:publications/doi-10-1038-s41597-023-02614-0

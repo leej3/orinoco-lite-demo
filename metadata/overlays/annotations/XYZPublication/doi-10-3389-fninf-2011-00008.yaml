@@ -1,0 +1,14 @@
+assertions:
+- assertion_sha256: sha256:5a87acb46665e05b839cb4483632b0f5d0a8056d8d6330259c6e8ce759d00488
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/RY6RBBJF
+- assertion_sha256: sha256:b7ce2816af0093a05d63cd6cb19ff949065d853ac8c2c93138f88ecff1f8c2db
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/RY6RBBJF
+- assertion_sha256: sha256:daaf525b6f3d3378a5630d6cee38e0b0b19098a51ceab864edf5e50321977190
+  path: /characterized_by
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/RY6RBBJF
+record: xyzrins:publications/doi-10-3389-fninf-2011-00008

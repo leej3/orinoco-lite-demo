@@ -7,6 +7,17 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2004'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'Structural Equation Modeling of Neuroimaging Data: Exhaustive Search and
+    Markov Chain Monte Carlo'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'Structural Equation Modeling of Neuroimaging Data: Exhaustive Search and
+    Markov Chain Monte Carlo'
+characterized_by:
+- object: bibo:Article
+  predicate: dcterms:type
 display_label: 'Structural Equation Modeling of Neuroimaging Data: Exhaustive Search
   and Markov Chain Monte Carlo'
 identifiers:

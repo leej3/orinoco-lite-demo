@@ -18,6 +18,17 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: 2024-01
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'Neurodesk: an accessible, flexible and portable data analysis environment
+    for reproducible neuroimaging'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'Neurodesk: an accessible, flexible and portable data analysis environment
+    for reproducible neuroimaging'
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: 'Neurodesk: an accessible, flexible and portable data analysis environment
   for reproducible neuroimaging'
 identifiers:

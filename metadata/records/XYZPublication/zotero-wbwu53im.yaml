@@ -23,6 +23,17 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2014'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Attention locally modulates the discriminability of high-level, task-relevant
+    representations
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Attention locally modulates the discriminability of high-level, task-relevant
+    representations
+characterized_by:
+- object: bibo:Document
+  predicate: dcterms:type
 display_label: Attention locally modulates the discriminability of high-level, task-relevant
   representations
 identifiers:

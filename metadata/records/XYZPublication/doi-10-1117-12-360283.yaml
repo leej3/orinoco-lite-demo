@@ -10,6 +10,17 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '1999'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Approach to parallel-hierarchical network learning for real-time image sequence
+    recognition
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Approach to parallel-hierarchical network learning for real-time image sequence
+    recognition
+characterized_by:
+- object: bibo:Article
+  predicate: dcterms:type
 display_label: Approach to parallel-hierarchical network learning for real-time image
   sequence recognition
 identifiers:

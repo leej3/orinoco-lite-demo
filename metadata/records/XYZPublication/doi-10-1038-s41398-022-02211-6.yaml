@@ -10,6 +10,17 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: 2022-10
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'Working memory updating in individuals with bipolar and unipolar depression:
+    fMRI study'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'Working memory updating in individuals with bipolar and unipolar depression:
+    fMRI study'
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: 'Working memory updating in individuals with bipolar and unipolar depression:
   fMRI study'
 identifiers:

@@ -7,6 +7,17 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2013'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'NeuroDebian: from disjoint tools and data to robust turnkey platform for
+    neuroimaging and beyond'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'NeuroDebian: from disjoint tools and data to robust turnkey platform for
+    neuroimaging and beyond'
+characterized_by:
+- object: bibo:Document
+  predicate: dcterms:type
 display_label: 'NeuroDebian: from disjoint tools and data to robust turnkey platform
   for neuroimaging and beyond'
 identifiers:

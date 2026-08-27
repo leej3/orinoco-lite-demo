@@ -18,6 +18,15 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2010'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'Statistical learning analysis in neuroscience: aiming for transparency'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'Statistical learning analysis in neuroscience: aiming for transparency'
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: 'Statistical learning analysis in neuroscience: aiming for transparency'
 identifiers:
 - notation: 10.3389/neuro.01.007.2010

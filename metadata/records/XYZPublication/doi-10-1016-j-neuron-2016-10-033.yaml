@@ -14,6 +14,15 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2016'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: To the Cloud! A Grassroots Proposal to Accelerate Brain Science Discovery
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: To the Cloud! A Grassroots Proposal to Accelerate Brain Science Discovery
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: To the Cloud! A Grassroots Proposal to Accelerate Brain Science Discovery
 identifiers:
 - notation: 10.1016/j.neuron.2016.10.033

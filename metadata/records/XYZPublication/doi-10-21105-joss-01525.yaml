@@ -18,6 +18,15 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2019'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'multimatch-gaze: The MultiMatch algorithm for gaze path comparison in Python'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'multimatch-gaze: The MultiMatch algorithm for gaze path comparison in Python'
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: 'multimatch-gaze: The MultiMatch algorithm for gaze path comparison
   in Python'
 identifiers:

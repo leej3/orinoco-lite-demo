@@ -10,6 +10,17 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: 2021-04
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: White matter abnormalities in adults with bipolar disorder type-II and unipolar
+    depression
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: White matter abnormalities in adults with bipolar disorder type-II and unipolar
+    depression
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: White matter abnormalities in adults with bipolar disorder type-II
   and unipolar depression
 identifiers:
