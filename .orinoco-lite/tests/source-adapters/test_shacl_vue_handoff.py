@@ -453,36 +453,5 @@ class MaterializedCommitTests(unittest.TestCase):
             )
 
 
-class ReviewLinkTests(unittest.TestCase):
-    def test_link_uses_only_configurable_origin_and_git_coordinates(self) -> None:
-        self.assertEqual(
-            "https://review.example.test:8443/edit/?"
-            "repository=con%2Fexample&pull_request=17&expected_head_sha=" + "a" * 40,
-            HANDOFF.review_url(
-                "https://review.example.test:8443/",
-                "con/example",
-                17,
-                "a" * 40,
-            ),
-        )
-
-    def test_link_rejects_non_origin_and_invalid_coordinates(self) -> None:
-        for origin in (
-            "http://review.example.test",
-            "https://user@review.example.test",
-            "https://review.example.test/path",
-            "https://review.example.test/?state=1",
-        ):
-            with self.subTest(origin=origin):
-                with self.assertRaisesRegex(HANDOFF.HandoffError, "HTTPS origin"):
-                    HANDOFF.review_url(origin, "con/example", 17, "a" * 40)
-        with self.assertRaisesRegex(HANDOFF.HandoffError, "owner/name"):
-            HANDOFF.review_url(
-                "https://review.example.test", "not-a-repo", 17, "a" * 40
-            )
-        with self.assertRaisesRegex(HANDOFF.HandoffError, "Expected head SHA"):
-            HANDOFF.review_url("https://review.example.test", "con/example", 17, "main")
-
-
 if __name__ == "__main__":
     unittest.main()

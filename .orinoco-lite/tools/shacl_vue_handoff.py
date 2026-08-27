@@ -10,7 +10,6 @@ import re
 import subprocess
 import sys
 from typing import Sequence
-from urllib.parse import urlencode, urlsplit
 
 
 HANDOFF_PATH = ".orinoco-lite/shacl-vue-review-bundle.json"
@@ -21,7 +20,6 @@ MAX_BUNDLE_RECORDS = 50
 RECORD_ROOT = PurePosixPath("metadata/records")
 ANNOTATION_ROOT = PurePosixPath("metadata/overlays/annotations")
 SHA40 = re.compile(r"[0-9a-f]{40}")
-REPOSITORY = re.compile(r"[A-Za-z0-9](?:[A-Za-z0-9_.-]{0,38})/[A-Za-z0-9_.-]{1,100}")
 
 
 class HandoffError(RuntimeError):
@@ -501,51 +499,6 @@ def verify_materialized_commit(
     }
 
 
-def review_url(
-    origin: str,
-    repository: str,
-    pull_request: int,
-    expected_head_sha: str,
-) -> str:
-    """Build the configurable service link for one GitHub pull request."""
-
-    parsed = urlsplit(origin)
-    try:
-        port = parsed.port
-    except ValueError as error:
-        raise HandoffError("Review application origin has an invalid port") from error
-    if (
-        parsed.scheme != "https"
-        or parsed.hostname is None
-        or parsed.username is not None
-        or parsed.password is not None
-        or parsed.path not in {"", "/"}
-        or parsed.query
-        or parsed.fragment
-        or re.fullmatch(r"[A-Za-z0-9.-]+", parsed.hostname) is None
-        or parsed.hostname.startswith(".")
-        or parsed.hostname.endswith(".")
-        or ".." in parsed.hostname
-    ):
-        raise HandoffError("Review application must be an HTTPS origin")
-    if REPOSITORY.fullmatch(repository) is None:
-        raise HandoffError("Repository must be owner/name")
-    if isinstance(pull_request, bool) or pull_request < 1:
-        raise HandoffError("Pull request must be a positive integer")
-    expected_head_sha = _exact_sha(expected_head_sha, "Expected head SHA")
-    authority = parsed.hostname.lower()
-    if port is not None:
-        authority += f":{port}"
-    query = urlencode(
-        (
-            ("repository", repository),
-            ("pull_request", str(pull_request)),
-            ("expected_head_sha", expected_head_sha),
-        )
-    )
-    return f"https://{authority}/edit/?{query}"
-
-
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest="command", required=True)
@@ -564,11 +517,6 @@ def _parser() -> argparse.ArgumentParser:
     verify.add_argument("--root", type=Path, required=True)
     verify.add_argument("--source-commit", required=True)
     verify.add_argument("--commit", required=True)
-    link = commands.add_parser("review-url")
-    link.add_argument("--origin", required=True)
-    link.add_argument("--repository", required=True)
-    link.add_argument("--pull-request", type=int, required=True)
-    link.add_argument("--expected-head-sha", required=True)
     return parser
 
 
@@ -599,19 +547,11 @@ def main(argv: Sequence[str] | None = None) -> int:
                 commit=args.commit,
             )
         else:
-            value = review_url(
-                args.origin,
-                args.repository,
-                args.pull_request,
-                args.expected_head_sha,
-            )
+            raise AssertionError(f"unhandled command: {args.command}")
     except HandoffError as error:
         print(f"SHACL Vue handoff error: {error}", file=sys.stderr)
         return 2
-    if isinstance(value, str):
-        print(value)
-    else:
-        print(json.dumps(value, ensure_ascii=False, sort_keys=True))
+    print(json.dumps(value, ensure_ascii=False, sort_keys=True))
     return 0
 
 

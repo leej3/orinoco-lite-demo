@@ -26,7 +26,6 @@ from orinoco_lite.decisions import (
     load_decision_cache,
     serialize_decision_cache,
 )
-from orinoco_lite.errors import DriverError
 from orinoco_lite.finalization import finalize_candidate_plan
 from orinoco_lite.projection import validate_semantics
 from orinoco_lite.validation import validate_workspace
@@ -444,7 +443,9 @@ class CrossAdapterInteractionTests(unittest.TestCase):
         self.addCleanup(self.temporary.cleanup)
         self.destination = Path(self.temporary.name)
 
-    def test_rejecting_an_absent_role_dependency_leaves_invalid_primary(self) -> None:
+    def test_rejecting_an_absent_role_dependency_preserves_primary_reference(
+        self,
+    ) -> None:
         root, base = prepared_repository(self.destination)
         role_pid = "xyzrins:roles/required-by-publication"
         publication_pid = "xyzrins:publications/role-dependent"
@@ -492,11 +493,16 @@ class CrossAdapterInteractionTests(unittest.TestCase):
             },
         )
 
-        with self.assertRaisesRegex(
-            DriverError,
-            "dangling attributed_to.roles target",
-        ):
-            validate_semantics(load_workspace(root), root.parent / "runtime")
+        semantic_report = validate_semantics(
+            load_workspace(root),
+            root.parent / "runtime",
+        )
+        self.assertEqual(
+            1,
+            semantic_report["preserved_references_by_field"][
+                "attributed_to.roles"
+            ],
+        )
 
     def test_shared_thing_keeps_independent_pav_caches_and_reopens_material_changes(
         self,

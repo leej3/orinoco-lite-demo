@@ -60,7 +60,7 @@ concurrency:
 
 jobs:
   update:
-    if: github.repository != 'con/orinoco-lite-template'
+    if: github.repository != 'ORINOCO-Lite/orinoco-lite-template'
     runs-on: ubuntu-24.04
     steps:
       - name: Check out complete update history
