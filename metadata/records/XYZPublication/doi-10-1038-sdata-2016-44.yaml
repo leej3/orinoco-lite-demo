@@ -91,8 +91,6 @@ identifiers:
   schema_type: dlthings:Identifier
 - notation: https://www.nature.com/articles/sdata201644
   schema_type: dlthings:Identifier
-- notation: zotero:group:6197458:item:4IBTF6HG
-  schema_type: dlthings:Identifier
 - notation: zotero:group:6197458:item:9KS9CGNB
   schema_type: dlthings:Identifier
 - notation: https://doi.org/10.1038/sdata.2016.44

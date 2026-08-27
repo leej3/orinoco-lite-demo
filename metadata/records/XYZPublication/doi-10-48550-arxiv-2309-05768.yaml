@@ -65,8 +65,6 @@ identifiers:
   schema_type: dlthings:DOI
 - notation: https://arxiv.org/abs/2309.05768
   schema_type: dlthings:Identifier
-- notation: zotero:group:6197458:item:65GF4WEG
-  schema_type: dlthings:Identifier
 - notation: zotero:group:6197458:item:A8MQ2A7G
   schema_type: dlthings:Identifier
 kind: bibo:AcademicArticle

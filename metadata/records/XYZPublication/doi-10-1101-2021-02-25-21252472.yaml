@@ -96,8 +96,6 @@ identifiers:
   schema_type: dlthings:Identifier
 - notation: zotero:group:6197458:item:NTH9GIBW
   schema_type: dlthings:Identifier
-- notation: zotero:group:6197458:item:VWFN4ZUS
-  schema_type: dlthings:Identifier
 kind: bibo:AcademicArticle
 pid: xyzrins:publications/doi-10-1101-2021-02-25-21252472
 schema_type: xyzri:XYZPublication

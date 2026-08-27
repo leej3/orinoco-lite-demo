@@ -90,8 +90,6 @@ identifiers:
   schema_type: dlthings:Identifier
 - notation: zotero:group:6197458:item:W9MC83Q7
   schema_type: dlthings:Identifier
-- notation: zotero:group:6197458:item:XHF43I5N
-  schema_type: dlthings:Identifier
 - notation: https://doi.org/10.21105/joss.05839
   schema_type: dlthings:Identifier
 kind: bibo:AcademicArticle

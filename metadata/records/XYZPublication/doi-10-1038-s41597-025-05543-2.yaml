@@ -50,8 +50,6 @@ identifiers:
   schema_type: dlthings:ISSN
 - notation: https://doi.org/10.1038/s41597-025-05543-2
   schema_type: dlthings:Identifier
-- notation: zotero:group:6197458:item:7PWG497Y
-  schema_type: dlthings:Identifier
 - notation: zotero:group:6197458:item:VYEFN2PE
   schema_type: dlthings:Identifier
 kind: bibo:AcademicArticle
