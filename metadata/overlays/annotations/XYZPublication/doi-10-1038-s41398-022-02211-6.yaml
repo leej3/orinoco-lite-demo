@@ -1,0 +1,14 @@
+assertions:
+- assertion_sha256: sha256:799fb7249ba12e3b2b8d82255badc8be3c8cb539ef51276c28cfb28d3c88233d
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/BL29REW4
+- assertion_sha256: sha256:898aa89f9e1215663b2e389668f96727f62961a27e123cf9d468dd171eeca544
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/BL29REW4
+- assertion_sha256: sha256:daaf525b6f3d3378a5630d6cee38e0b0b19098a51ceab864edf5e50321977190
+  path: /characterized_by
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/BL29REW4
+record: xyzrins:publications/doi-10-1038-s41398-022-02211-6

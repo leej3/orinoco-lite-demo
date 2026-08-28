@@ -14,6 +14,15 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: 2013-06
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Prioritized Detection of Personally Familiar Faces
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Prioritized Detection of Personally Familiar Faces
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: Prioritized Detection of Personally Familiar Faces
 identifiers:
 - notation: 10.1371/journal.pone.0066620

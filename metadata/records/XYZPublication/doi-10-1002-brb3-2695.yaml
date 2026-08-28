@@ -10,6 +10,19 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: 2022-08
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: The interaction between depression diagnosis and BMI is related to altered
+    activation pattern in the right inferior frontal gyrus and anterior cingulate
+    cortex during food anticipation
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: The interaction between depression diagnosis and BMI is related to altered
+    activation pattern in the right inferior frontal gyrus and anterior cingulate
+    cortex during food anticipation
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: The interaction between depression diagnosis and BMI is related to
   altered activation pattern in the right inferior frontal gyrus and anterior cingulate
   cortex during food anticipation

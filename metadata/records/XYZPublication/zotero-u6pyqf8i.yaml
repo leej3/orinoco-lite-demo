@@ -7,10 +7,23 @@ attributed_to:
   roles:
   - marcrel:aut
   schema_type: dlthings:Attribution
+- object: xyzrins:persons/russell-poldrack
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
 attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2015'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'The impact of shared data in neuroimaging: the case of OpenfMRI.org'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'The impact of shared data in neuroimaging: the case of OpenfMRI.org'
+characterized_by:
+- object: bibo:Document
+  predicate: dcterms:type
 display_label: 'The impact of shared data in neuroimaging: the case of OpenfMRI.org'
 identifiers:
 - notation: http://f1000research.com/posters/4-299

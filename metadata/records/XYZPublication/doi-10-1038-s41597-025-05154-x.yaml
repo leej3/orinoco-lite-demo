@@ -14,6 +14,17 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: 2025-08
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'Spacetop: A multimodal fMRI dataset unifying naturalistic processes with
+    a rich array of experimental tasks'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'Spacetop: A multimodal fMRI dataset unifying naturalistic processes with
+    a rich array of experimental tasks'
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: 'Spacetop: A multimodal fMRI dataset unifying naturalistic processes
   with a rich array of experimental tasks'
 identifiers:

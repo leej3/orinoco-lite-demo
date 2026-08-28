@@ -1,0 +1,14 @@
+assertions:
+- assertion_sha256: sha256:b80e47ca140d33e0a8368a53b0c7c5afc1a544b635b82555f5ecbf3c518d1289
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/PPL6EUFK
+- assertion_sha256: sha256:d695e24e059032ced4217a48f9bc3022c6c7ff4df67b6d8f70d50d0611e11f89
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/PPL6EUFK
+- assertion_sha256: sha256:b431012d3bf579da4d487b108ee425bc054cda63b8d0fcf81ec301c02cb71eca
+  path: /characterized_by
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/PPL6EUFK
+record: xyzrins:publications/zotero-ppl6eufk

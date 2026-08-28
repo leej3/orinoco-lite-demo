@@ -1,0 +1,18 @@
+assertions:
+- assertion_sha256: sha256:250f967b60334c7f2f0b69707973bcf06ac2d5f78b26f06ad03f041da5579be5
+  path: /attributed_to
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/BEINDI3Z
+- assertion_sha256: sha256:1aaf69688046946cca6338c40a2a59a1e6a0115b5c7df9356de1f8edf730f88e
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/BEINDI3Z
+- assertion_sha256: sha256:91a686b713def7aaffcd1c9330e04d57455957bd391bc3b2ae34349d1cde9dca
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/BEINDI3Z
+- assertion_sha256: sha256:daaf525b6f3d3378a5630d6cee38e0b0b19098a51ceab864edf5e50321977190
+  path: /characterized_by
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/BEINDI3Z
+record: xyzrins:publications/doi-10-1101-2021-02-10-430678

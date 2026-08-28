@@ -22,6 +22,15 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: 2012-02
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Representation of biological classes in the human brain
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Representation of biological classes in the human brain
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: Representation of biological classes in the human brain
 identifiers:
 - notation: 10.1523/jneurosci.5547-11.2012

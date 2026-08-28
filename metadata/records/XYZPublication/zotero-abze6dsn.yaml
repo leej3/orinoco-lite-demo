@@ -19,6 +19,15 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2015'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Clustering cortical searchlights based on shared representational geometry
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Clustering cortical searchlights based on shared representational geometry
+characterized_by:
+- object: bibo:Document
+  predicate: dcterms:type
 display_label: Clustering cortical searchlights based on shared representational geometry
 identifiers:
 - notation: zotero:group:6197458:item:ABZE6DSN

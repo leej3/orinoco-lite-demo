@@ -1,0 +1,22 @@
+assertions:
+- assertion_sha256: sha256:250f967b60334c7f2f0b69707973bcf06ac2d5f78b26f06ad03f041da5579be5
+  path: /attributed_to
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/NSXTR2GI
+- assertion_sha256: sha256:4850b0ec68ab08b3843597057e8f6502d686d6a4c4a0bc337b30685fce41d4a4
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/NSXTR2GI
+- assertion_sha256: sha256:ab955d646ffa1257dcb546ded3382821c4848387261dd4920e0ea7cffe808776
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/NSXTR2GI
+- assertion_sha256: sha256:f0f99dead91064ad693547b88122cdeb8c9dd11bec1f5a47d7fd179d2076dd4f
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/NSXTR2GI
+- assertion_sha256: sha256:daaf525b6f3d3378a5630d6cee38e0b0b19098a51ceab864edf5e50321977190
+  path: /characterized_by
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/NSXTR2GI
+record: xyzrins:publications/doi-10-1016-j-neuroimage-2009-08-065

@@ -10,6 +10,17 @@ attributes:
 - predicate: dcterms:rights
   schema_type: dlthings:AttributeSpecification
   value: Creative Commons Attribution 4.0 International
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'Go Figure: Transparency in neuroscience images preserves context and clarifies
+    interpretation'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'Go Figure: Transparency in neuroscience images preserves context and clarifies
+    interpretation'
+characterized_by:
+- object: bibo:Document
+  predicate: dcterms:type
 display_label: 'Go Figure: Transparency in neuroscience images preserves context and
   clarifies interpretation'
 identifiers:

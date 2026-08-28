@@ -22,6 +22,15 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: 2021-05
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'IQ in Typical Development: A Mega-Analysis of the Historical Literature'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'IQ in Typical Development: A Mega-Analysis of the Historical Literature'
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: 'IQ in Typical Development: A Mega-Analysis of the Historical Literature'
 identifiers:
 - notation: 10.1016/j.biopsych.2021.02.385

@@ -14,6 +14,17 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2015'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: A communication hub for a decentralized collaboration on studying real-life
+    cognition
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: A communication hub for a decentralized collaboration on studying real-life
+    cognition
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: A communication hub for a decentralized collaboration on studying real-life
   cognition
 identifiers:

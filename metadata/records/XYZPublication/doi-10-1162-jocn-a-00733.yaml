@@ -18,6 +18,15 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: '2015'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: The animacy continuum in the human ventral vision pathway
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: The animacy continuum in the human ventral vision pathway
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: The animacy continuum in the human ventral vision pathway
 identifiers:
 - notation: 10.1162/jocn_a_00733

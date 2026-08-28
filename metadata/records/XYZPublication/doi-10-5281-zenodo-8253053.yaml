@@ -10,6 +10,15 @@ attributes:
 - predicate: dcterms:rights
   schema_type: dlthings:AttributeSpecification
   value: Open Data Commons Public Domain Dedication & License 1.0
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Dartmouth Brain Imaging Center (DBIC) QA data (weekly QA scans etc.)
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Dartmouth Brain Imaging Center (DBIC) QA data (weekly QA scans etc.)
+characterized_by:
+- object: bibo:Document
+  predicate: dcterms:type
 display_label: Dartmouth Brain Imaging Center (DBIC) QA data (weekly QA scans etc.)
 identifiers:
 - notation: 10.5281/zenodo.8253053

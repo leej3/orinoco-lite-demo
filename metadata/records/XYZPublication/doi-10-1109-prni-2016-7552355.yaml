@@ -14,6 +14,17 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: 2016-06
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'Cross-modal searchlight classification: Methodological challenges and recommended
+    solutions'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'Cross-modal searchlight classification: Methodological challenges and recommended
+    solutions'
+characterized_by:
+- object: bibo:Article
+  predicate: dcterms:type
 display_label: 'Cross-modal searchlight classification: Methodological challenges
   and recommended solutions'
 identifiers:

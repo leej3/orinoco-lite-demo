@@ -15,6 +15,15 @@ attributes:
 - predicate: dcterms:issued
   schema_type: dlthings:AttributeSpecification
   value: 2013-07
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Transmodal Analysis of Neural Signals
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Transmodal Analysis of Neural Signals
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: Transmodal Analysis of Neural Signals
 identifiers:
 - notation: http://arxiv.org/abs/1307.2150

@@ -71,6 +71,15 @@ attributes:
 - predicate: dlthings:title
   schema_type: dlthings:AttributeSpecification
   value: HeuDiConv - flexible DICOM conversion into structured directory layouts
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: HeuDiConv — flexible DICOM conversion into structureddirectory layouts
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: HeuDiConv — flexible DICOM conversion into structureddirectory layouts
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
 display_label: HeuDiConv — flexible DICOM conversion into structureddirectory layouts
 identifiers:
 - notation: 10.21105/joss.05839
@@ -80,8 +89,6 @@ identifiers:
 - notation: https://joss.theoj.org/papers/10.21105/joss.05839
   schema_type: dlthings:Identifier
 - notation: zotero:group:6197458:item:W9MC83Q7
-  schema_type: dlthings:Identifier
-- notation: zotero:group:6197458:item:XHF43I5N
   schema_type: dlthings:Identifier
 - notation: https://doi.org/10.21105/joss.05839
   schema_type: dlthings:Identifier
