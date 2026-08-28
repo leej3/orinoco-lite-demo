@@ -1,0 +1,18 @@
+[workspace]
+name = "orinoco-metadata-review"
+channels = ["conda-forge"]
+platforms = [{ platform = "osx-arm64", macos = "14.0" }, "linux-64"]
+requires-pixi = ">=0.73,<0.77"
+
+[dependencies]
+python = ">=3.12,<3.13"
+pyyaml = "==6.0.2"
+git = ">=2.55,<3"
+
+[pypi-dependencies]
+datalad = ">=1.6.2,<2"
+
+[tasks]
+review = "python tools/review.py review"
+refresh-evidence = "python tools/review.py refresh-evidence"
+# Run `pixi run source-adapter-canary` from the repository root for tests.

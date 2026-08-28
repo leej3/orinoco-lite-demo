@@ -99,3 +99,62 @@ test('homepage excludes upstream institutional branding', async ({
     await fixture.close();
   }
 });
+
+test('bare review route links to open curation pull requests', async ({ page }) => {
+  const fixture = await startStaticServer(
+    contract.pagesRoot,
+    contract.projectPath,
+  );
+  try {
+    const configuration = JSON.parse(
+      await readFile(path.join(contract.pagesRoot, 'review', 'config.json'), 'utf8'),
+    );
+    const expected = new URL(
+      `/${configuration.repository}/pulls`,
+      'https://github.com',
+    );
+    expected.searchParams.set('q', 'is:pr is:open label:curation-review');
+
+    const response = await page.goto(
+      projectURL(fixture.origin, 'review/'),
+    );
+    expect(response?.status()).toBe(200);
+    await expect(page.getByRole('link', {
+      name: 'View open curation pull requests on GitHub',
+    })).toHaveAttribute('href', expected.href);
+  } finally {
+    await fixture.close();
+  }
+});
+
+test('structured lists keep filtering, grids, and term metadata', async ({ page }) => {
+  const fixture = await startStaticServer(
+    contract.pagesRoot,
+    contract.projectPath,
+  );
+  try {
+    let response = await page.goto(
+      projectURL(fixture.origin, 'publications/'),
+    );
+    expect(response?.status()).toBe(200);
+    await expect(page.locator('#orinoco-search')).toBeVisible();
+    await expect(page.locator('[data-orinoco-count]')).toContainText('131 results');
+    await page.locator('#orinoco-search').fill('DataLad: distributed system');
+    await expect(page.locator('[data-orinoco-count]')).toContainText('1 result');
+
+    response = await page.goto(projectURL(fixture.origin, 'instruments/'));
+    expect(response?.status()).toBe(200);
+    await expect(page.locator('.orinoco-grid .orinoco-card').first()).toBeVisible();
+
+    response = await page.goto(
+      projectURL(fixture.origin, 'persons/yaroslav-halchenko/'),
+    );
+    expect(response?.status()).toBe(200);
+    await expect(page.locator('.orinoco-term-title')).toContainText(
+      'Yaroslav Halchenko',
+    );
+    await expect(page.locator('#sigma-container')).toBeVisible();
+  } finally {
+    await fixture.close();
+  }
+});

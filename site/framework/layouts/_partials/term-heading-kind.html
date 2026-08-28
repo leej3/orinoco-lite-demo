@@ -1,6 +1,0 @@
-{{ $size := .size}}
-{{ with .term.Params.kind }}
-  <span class="text-{{ $size | default "xl" }} align-middle" style="font-style: italic; border-left: 1px solid grey; padding-left: 0.5em; margin-left: 0.5em;">
-    {{ . | replaceRE "^.*:" "" }}
-  </span>
-{{ end }}

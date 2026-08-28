@@ -50,7 +50,8 @@ Make the same identity changes in these locations:
 
 - the heading and description in `README.md`;
 - the workspace name and three browser-project-path values in `pixi.toml`; and
-- the `site` name, description, and canonical base URL in `orinoco.yaml`.
+- the `site` name, description, and canonical base URL in `orinoco.yaml`; and
+- identity, author, and webmanifest text in `site-specific/site.yaml`.
 
 Do not add the GitHub repository as another site setting.
 The trusted Pages build obtains it from GitHub's `GITHUB_REPOSITORY` context and writes the exact coordinate into the deployed editor and review configuration.
@@ -75,24 +76,34 @@ Do not run `validate` or `build` yet: the content-neutral repository facade is n
 
 ## Add a site profile
 
-Before the normal commands can run, add one reviewed site profile containing:
+The template already supplies a neutral structured site profile, its generic
+framework, projection templates, graph producer, and an empty asset manifest.
+Before the normal commands can run, complete the reviewed site layer with:
 
-- schema-compatible Things YAML under `metadata/records/`;
-- `site/projection.yaml`, its declared templates and graph producer;
-- the site framework/configuration expected by the selected presentation; and
-- a valid asset manifest plus any required editorial and presentation inputs.
+- schema-compatible Things YAML under `site-specific/metadata/records/`;
+- an appropriate homepage record matching `site-specific/projection.yaml`;
+- reviewed identity, navigation, people groups, project categories, and theme
+  values in `site-specific/site.yaml`; and
+- any bespoke editorial pages and declared assets under `site-specific/`.
 
-Every file under `metadata/records/`, apart from the optional root `.dumpthings.yaml` control marker, must be a real Thing.
+Site-only executable Hugo overrides required by retained editorial content
+belong under `extensions/site/layouts/`; reusable behavior should instead be
+proposed to the template-owned framework.
+
+Generic index pages for grouped people, all people, projects, publications, and
+instruments are rendered from `site.yaml`. Keep only genuinely bespoke prose
+under `site-specific/content/pages/`.
+
+Every file under `site-specific/metadata/records/`, apart from the optional root `.dumpthings.yaml` control marker, must be a real Thing.
 The template therefore does not create that otherwise empty directory with a `.gitkeep` placeholder.
 
 The current complete example is the [downstream test website](https://github.com/ORINOCO-Lite/test-orinoco-downstream-website).
-The lightweight architecture roadmap tracks a future neutral starter profile; until one is released, selecting or authoring a profile is an explicit creation step rather than hidden template content.
 
 New site profiles inherit the engine's open-reference defaults.
 Omitting the `references` section preserves well-formed references whose targets are not local, and omitting `graph.missing_external_targets` drops only graph-view edges whose targets cannot materialize locally.
 Validation reports both preserved references and omitted edges without performing network lookup or creating identity records.
 
-An existing site that intentionally requires local closure keeps that policy explicitly in its site-owned `site/projection.yaml`:
+An existing site that intentionally requires local closure keeps that policy explicitly in its site-owned `site-specific/projection.yaml`:
 
 ```yaml
 references:
@@ -142,8 +153,16 @@ A site served from a shared `*.github.io` origin instead explains the shared ori
 That acknowledgment is not a credential and is not stored; reloading the page requires it again.
 See [Custom domain and secure GitHub submission](custom-domain.md) for the setup and verification checklist.
 
-Concrete source-adapter acquisition, candidate policy, and `.github/workflows/curation-review.yml` remain site-owned.
-Adding those pieces does not transfer `source-adapters/`, decision caches, records, or annotation companions to template ownership.
+Generic adapter executables live under `.orinoco-lite/source-adapters/`.
+Concrete acquisition coordinates, captured content, evidence, mapping policy,
+and `.github/workflows/curation-review.yml` remain site-owned under
+`site-specific/sources/`. Compact decisions remain under
+`site-specific/curation-records/`; records and annotation companions remain
+under `site-specific/metadata/`.
+
+Each source uses one version-1 `site-specific/sources/<id>/source.yaml` with an
+ID, adapter executable path, reviewed provenance identity, and explicit default
+enablement. Run `pixi run source-adapter-canary` before networked source review.
 
 The GitHub-template route starts with neutral placeholder identity.
 Do not deploy it unchanged.

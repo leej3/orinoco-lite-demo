@@ -1,0 +1,16 @@
+{% set section = site.navigation.sections.publications -%}
+---
+title: {{ section.title | json_string }}
+layout: orinoco-taxonomy
+url: {{ section.route | json_string }}
+aliases: {{ section.aliases | json_string }}
+params:
+  items: generated
+  list_variant: {{ section.list_variant | json_string }}
+  filter: {{ section.filter | string | lower }}
+  filter_fields: {{ section.filter_fields | json_string }}
+  search_fields: {{ section.search_fields | json_string }}
+  term: {{ section.term | json_string }}
+---
+
+{{ section.introduction }}

@@ -3,13 +3,16 @@
 Test-only full-content Orinoco Lite downstream for the Center for Open Neuroscience.
 
 This is an ordinary single-repository Orinoco Lite consumer.
-Metadata records, editorial content, declared assets, presentation, source adapters, extensions, and site tests are versioned directly here.
+Metadata records, editorial content, declared assets, structured presentation
+data, source configuration, extensions, and site tests are versioned directly
+here.
 Building, previewing, and updating it requires neither Git submodules nor an engineering workspace checkout.
 
 ## Framework and site boundaries
 
-- This repository owns its content, presentation, policy, tests, review, and deployment; if present, `site/README.md` is its site-owned guide for concrete editorial and operating procedures.
-- The [Orinoco Lite template](https://github.com/ORINOCO-Lite/orinoco-lite-template) owns the generic repository facade, file-ownership contract, and content-preserving updater.
+- This repository owns everything under `site-specific/`, plus its policy,
+  tests, extensions, review, and deployment.
+- The [Orinoco Lite template](https://github.com/ORINOCO-Lite/orinoco-lite-template) owns the generic repository facade, static-site framework and retained-source adapter executables under `.orinoco-lite/`, file-ownership contract, and content-preserving updater.
 - The [Orinoco Lite engine](https://github.com/ORINOCO-Lite/orinoco-lite-dev) implements the commands, runtime verification, projection, and static build.
 
 `orinoco.lock` is the release authority.
@@ -29,13 +32,14 @@ See engine human-review decision [HR-003](https://github.com/ORINOCO-Lite/orinoc
 
 ```console
 pixi run validate
-pixi run hugo-projection-update
+pixi run projection-update
 pixi run projection-verify
 pixi run assets-hydrate
 pixi run assets-verify
 pixi run build
 pixi run serve
 pixi run test
+pixi run source-adapter-canary
 pixi run test-all
 pixi run update-check
 ```
@@ -68,15 +72,24 @@ Do not use `assets-prepare-online` in that denied-network phase; it represents t
 
 ## Repository content
 
-- `metadata/records/` contains every human-facing YAML Thing used as projection
-  input; `metadata/overlays/annotations/` contains its mirrored machine PAV
+- `site-specific/metadata/records/` contains every human-facing YAML Thing used as projection
+  input; `site-specific/metadata/overlays/annotations/` contains its mirrored machine PAV
   companions when present.
-- `.orinoco-lite/` contains implementation support behind the checked commands.
-- `custom/editorial/`, `custom/assets/`, and `site/` contain site-owned presentation inputs.
+- `site-specific/site.yaml` is the structured identity, language, theme,
+  navigation, people-group, project-category, and webmanifest authority;
+  `site-specific/projection.yaml` is the site-owned projection policy.
+- `site-specific/content/pages/` and `site-specific/static/` contain bespoke
+  editorial pages and declared asset inputs.
+- `.orinoco-lite/site/` contains the template-owned Congo-based static-site
+  framework, generic structured-data templates, projection templates, and
+  graph producer.
 - `.agents/skills/manage-orinoco-content/` guides agents through focused editorial and asset changes.
 - `.agents/skills/operate-orinoco-metadata-adapters/` guides adapter runs,
   explicit human decisions, provenance, and review pull requests.
-- `source-adapters/` contains optional site-owned importers, enrichers, and scrapers; it is not a deployed runtime dependency.
+- `.orinoco-lite/source-adapters/` contains generic executable review support;
+  `site-specific/sources/` contains source manifests, captured content,
+  evidence, and site policy. Durable dispositions live in
+  `site-specific/curation-records/`.
 - `.github/workflows/shacl-vue-proposal.yml` is the generic trusted human-edit
   boundary; a concrete source-adapter curation workflow remains site-owned.
 - The deployed static `/edit/` route is the sole SHACL Vue editor. It offers
@@ -91,6 +104,9 @@ Do not use `assets-prepare-online` in that denied-network phase; it represents t
 - `extensions/` is the stable downstream customization surface.
 - `generated/` contains ignored projection output recreated by validation and builds.
 
-A newly created repository is a content-neutral facade, not an empty but buildable website.
-Add a reviewed site profile as described in [creation and configuration](docs/getting-started.md) before running validation or build commands.
+A newly created repository includes a neutral structured site profile and the
+generic framework, but no invented Things records. Add reviewed records and
+adjust the site-owned structured data as described in
+[creation and configuration](docs/getting-started.md) before running validation
+or build commands.
 A populated profile and source-adapter examples are available in the [downstream test website](https://github.com/ORINOCO-Lite/test-orinoco-downstream-website).

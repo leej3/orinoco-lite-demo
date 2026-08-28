@@ -11,7 +11,7 @@ nodejs = ">=22,<23"
 pyyaml = "==6.0.2"
 
 [pypi-dependencies]
-orinoco-lite = { url = "https://github.com/ORINOCO-Lite/orinoco-lite-dev/releases/download/v0.2.0rc10/orinoco_lite-0.2.0rc10-py3-none-any.whl#sha256=04c40f95a8e7227d84838887b66596912aeac1bf5fe2f046755b618b2c7baf9b" }
+orinoco-lite = { url = "https://github.com/ORINOCO-Lite/orinoco-lite-dev/releases/download/v0.2.0rc12/orinoco_lite-0.2.0rc12-py3-none-any.whl#sha256=ec39fe7993721881359edd19815b454a52a6d75765a028f4a43e7914ed88de0e" }
 datalad = ">=1.6.2,<2"
 
 [tasks]
@@ -36,6 +36,7 @@ verify-ownership = "python .orinoco-lite/tools/verify_template_ownership.py"
 update-orinoco = "python .orinoco-lite/tools/update_orinoco.py"
 update-check = "python .orinoco-lite/tools/update_orinoco.py --check"
 test-consumer = "python .orinoco-lite/tools/run_consumer_tests.py"
+source-adapter-canary = "python -m unittest discover -s .orinoco-lite/source-adapters/tests -p 'test_*.py' -v"
 install-browser-tests = "python .orinoco-lite/tools/install_browser_tests.py"
 prepare-browser-binaries = { depends-on = ["install-browser-tests"], cmd = "python .orinoco-lite/tools/prepare_browser_runtime.py browsers", env = { PLAYWRIGHT_BROWSERS_PATH = "build/playwright-browsers" } }
 test-browser-chromium = { depends-on = ["build-browser-pages", "prepare-browser-binaries"], cmd = "npm --prefix .orinoco-lite/tests/browser test -- --project=chromium", env = { ORINOCO_PAGES_ROOT = "build/pages", ORINOCO_PROJECT_PATH = "/orinoco-lite-demo/", PLAYWRIGHT_BROWSERS_PATH = "build/playwright-browsers" } }
@@ -43,4 +44,4 @@ prepare-browser-webkit-host = { depends-on = ["test-browser-chromium"], cmd = "p
 test-browser-webkit = { depends-on = ["prepare-browser-webkit-host"], cmd = "npm --prefix .orinoco-lite/tests/browser test -- --project=webkit", env = { ORINOCO_PAGES_ROOT = "build/pages", ORINOCO_PROJECT_PATH = "/orinoco-lite-demo/", PLAYWRIGHT_BROWSERS_PATH = "build/playwright-browsers" } }
 test-browser = { depends-on = ["test-browser-webkit"] }
 test = { depends-on = ["verify-ownership", "test-consumer"] }
-test-all = { depends-on = ["assets-prepare-online", "validate", "projection-verify", "verify-runtime", "verify-hugo", "test", "verify-build", "test-browser"] }
+test-all = { depends-on = ["assets-prepare-online", "source-adapter-canary", "validate", "projection-verify", "verify-runtime", "verify-hugo", "test", "verify-build", "test-browser"] }

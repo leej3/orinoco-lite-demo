@@ -7,7 +7,7 @@ read-only hydration contracts instead of committing their bytes.
 Before network denial, the final regression must install dependencies and the
 runtime, then run `pixi run assets-hydrate`. That command hydrates all sixteen
 payloads into the engine's asset cache and verifies each cached size and
-SHA-256 digest against `custom/assets/manifest.yaml`. This is an explicit setup
+SHA-256 digest against `site-specific/static/manifest.yaml`. This is an explicit setup
 phase,
 not part of the offline claim.
 

@@ -98,10 +98,7 @@ jobs:
         with:
           branch: automation/orinoco-framework-update
           delete-branch: true
-          commit-message: |
-            chore(deps): update Orinoco framework
-
-            Co-Authored-By: Codex CLI 0.143.0 / GPT 5.6-sol <codex@openai.com>
+          commit-message: "chore(deps): update Orinoco framework"
           title: "chore(deps): update Orinoco framework"
           body: |
             **AI-generated draft — not reviewed by John**

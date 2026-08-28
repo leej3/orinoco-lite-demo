@@ -6,12 +6,13 @@ site:
   base_url: "https://leej3.github.io/orinoco-lite-demo/"
 
 paths:
-  records: metadata/records
-  provenance: .orinoco-lite/provenance
-  editorial: custom/editorial
-  assets: custom/assets
-  site: site
-  source_adapters: source-adapters
+  records: site-specific/metadata/records
+  provenance: site-specific/provenance
+  editorial: site-specific/content/pages
+  assets: site-specific/static
+  site: site-specific
+  framework: .orinoco-lite/site
+  source_adapters: .orinoco-lite/source-adapters
   generated: generated
   extensions: extensions
   build: build

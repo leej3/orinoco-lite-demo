@@ -1,0 +1,12 @@
+---
+title: {{ site.people.index.title | json_string }}
+layout: orinoco-taxonomy
+url: {{ site.people.index.route | json_string }}
+aliases: {{ site.people.index.aliases | json_string }}
+params:
+  items: generated
+  list_variant: {{ site.people.index.list_variant | json_string }}
+  term: {{ site.people.index.term | json_string }}
+---
+
+{{ site.people.index.introduction }}

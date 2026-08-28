@@ -1,7 +1,0 @@
-{{ if eq .Kind "term" }}
-  {{ with .Resources.GetMatch "dataset.json" }}
-    <script type="application/ld+json">
-      {{ .Content | safeJS }}
-    </script>
-  {{ end }}
-{{ end }}

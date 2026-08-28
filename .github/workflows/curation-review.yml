@@ -95,10 +95,10 @@ jobs:
         run: |
           set -euo pipefail
           identity="$(
-            pixi run python source-adapters/metadata/tools/review.py \
+            pixi run python .orinoco-lite/source-adapters/metadata/tools/review.py \
               resolve-provenance-identity \
               --adapter "$ADAPTER" \
-              --config source-adapters/metadata/sources.toml
+              --config site-specific/sources
           )"
           [[ -n "$identity" && "$identity" != *$'\n'* && "$identity" != *$'\r'* ]]
           printf 'provenance_identity=%s\n' "$identity" >> "$GITHUB_OUTPUT"
@@ -154,7 +154,7 @@ jobs:
           set -euo pipefail
           base_sha="$(git rev-parse HEAD)"
           command=(
-            pixi run python source-adapters/metadata/tools/curation.py
+            pixi run python .orinoco-lite/source-adapters/metadata/tools/curation.py
             inspect-plan
             --root "$GITHUB_WORKSPACE"
             --trusted-root "$GITHUB_WORKSPACE"
@@ -247,7 +247,7 @@ jobs:
           Path(sys.argv[2]).write_text(message, encoding="utf-8")
           PY
           command=(
-            python source-adapters/metadata/tools/curation.py
+            python .orinoco-lite/source-adapters/metadata/tools/curation.py
             stage-proposal
             --root "$GITHUB_WORKSPACE"
             --trusted-root "$GITHUB_WORKSPACE"
@@ -269,8 +269,8 @@ jobs:
           unset GH_TOKEN GITHUB_TOKEN
           pixi run datalad run --explicit \
             -m "$(<"$RUNNER_TEMP/proposal-message.txt")" \
-            -o metadata/records \
-            -o metadata/overlays/annotations \
+            -o site-specific/metadata/records \
+            -o site-specific/metadata/overlays/annotations \
             -- "${command[@]}"
           test "$(git rev-list --count "${BASE_SHA}..HEAD")" = 1
           test -z "$(git status --porcelain --untracked-files=no)"
@@ -294,9 +294,11 @@ jobs:
               path = PurePosixPath(rendered)
               if status not in {"A", "M", "D"}:
                   raise SystemExit(f"proposal uses unsupported {status} change: {path}")
-              if path.parts[:2] == ("metadata", "records"):
+              if path.parts[:3] == ("site-specific", "metadata", "records"):
                   records += 1
-              elif path.parts[:3] != ("metadata", "overlays", "annotations"):
+              elif path.parts[:4] != (
+                  "site-specific", "metadata", "overlays", "annotations"
+              ):
                   raise SystemExit(f"proposal changed a non-metadata path: {path}")
           if records == 0:
               raise SystemExit("proposal commit changes no canonical record")
@@ -330,6 +332,9 @@ jobs:
           REPOSITORY: ${{ github.repository }}
         run: |
           set -euo pipefail
+          # Keep the job token for this bot-created pull request. GitHub does
+          # not recursively start pull_request workflows for its writes; the
+          # exact proposal receives one explicit full dispatch below.
           if ! gh api "repos/${REPOSITORY}/labels/curation-review" \
             > /dev/null 2>&1; then
             gh label create curation-review \
@@ -370,7 +375,7 @@ jobs:
           git worktree add --detach "$base_root" "$BASE_SHA"
           mkdir -p "$RUNNER_TEMP/review-artifact"
           command=(
-            pixi run python source-adapters/metadata/tools/curation.py
+            pixi run python .orinoco-lite/source-adapters/metadata/tools/curation.py
             render-review-bundle
             --root "$base_root"
             --trusted-root "$GITHUB_WORKSPACE"
@@ -417,7 +422,7 @@ jobs:
         env:
           ARTIFACT_ID: ${{ steps.artifact.outputs.artifact-id }}
         run: |
-          pixi run python source-adapters/metadata/tools/curation.py \
+          pixi run python .orinoco-lite/source-adapters/metadata/tools/curation.py \
             render-pr-body \
             --root "$GITHUB_WORKSPACE" \
             --bundle "$RUNNER_TEMP/review-artifact/review-bundle.json" \
@@ -444,14 +449,17 @@ jobs:
             echo "Review artifact: $ARTIFACT_URL"
           } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Dispatch ordinary validation for the exact proposal ref
+      - name: Dispatch full validation for the exact proposal ref
         if: steps.plan.outputs.has_candidates == 'true'
         env:
           BRANCH: ${{ steps.branch.outputs.name }}
           GH_TOKEN: ${{ github.token }}
           REPOSITORY: ${{ github.repository }}
         run: |
-          gh workflow run validate.yml --repo "$REPOSITORY" --ref "$BRANCH"
+          gh workflow run validate.yml \
+            --repo "$REPOSITORY" \
+            --ref "$BRANCH" \
+            -f "validation=full"
 
       - name: Dispatch exact-head SHACL Vue validation for the proposal
         if: steps.plan.outputs.has_candidates == 'true'
@@ -511,7 +519,7 @@ jobs:
           Path(sys.argv[2]).write_text(event["comment"]["body"], encoding="utf-8")
           PY
           pixi run --manifest-path trusted/pixi.toml python \
-            trusted/source-adapters/metadata/tools/curation.py \
+            trusted/.orinoco-lite/source-adapters/metadata/tools/curation.py \
             inspect-submission \
             --comment "$RUNNER_TEMP/submission-comment.md" \
             > "$RUNNER_TEMP/submission.json"
@@ -646,7 +654,7 @@ jobs:
           git -C review merge-base --is-ancestor "$PROPOSAL_SHA" "$HEAD_SHA"
           git -C trusted merge-base --is-ancestor "$parent" HEAD
           pixi run --manifest-path trusted/pixi.toml python \
-            trusted/source-adapters/metadata/tools/curation.py \
+            trusted/.orinoco-lite/source-adapters/metadata/tools/curation.py \
             validate-review-history \
             --root "$GITHUB_WORKSPACE/review" \
             --proposal-sha "$PROPOSAL_SHA" \
@@ -758,7 +766,7 @@ jobs:
           set -euo pipefail
           command=(
             pixi run --manifest-path trusted/pixi.toml python
-            trusted/source-adapters/metadata/tools/curation.py
+            trusted/.orinoco-lite/source-adapters/metadata/tools/curation.py
             finalize
             --trusted-root "$GITHUB_WORKSPACE/trusted"
             --trusted-head-sha "$TRUSTED_HEAD_SHA"
@@ -834,7 +842,7 @@ jobs:
           git -C review config user.email \
             41898282+github-actions[bot]@users.noreply.github.com
           command=(
-            python "$GITHUB_WORKSPACE/trusted/source-adapters/metadata/tools/curation.py"
+            python "$GITHUB_WORKSPACE/trusted/.orinoco-lite/source-adapters/metadata/tools/curation.py"
             finalize
             --trusted-root "$GITHUB_WORKSPACE/trusted"
             --trusted-head-sha "$TRUSTED_HEAD_SHA"
@@ -874,8 +882,8 @@ jobs:
               pixi run --manifest-path "$GITHUB_WORKSPACE/trusted/pixi.toml" \
               datalad run --explicit \
               -m "$message" \
-              -o metadata/records \
-              -o metadata/overlays/annotations \
+              -o site-specific/metadata/records \
+              -o site-specific/metadata/overlays/annotations \
               -o "$CACHE_PATH" \
               -- "${command[@]}"
           )
@@ -905,7 +913,7 @@ jobs:
           set -euo pipefail
           command=(
             pixi run --manifest-path trusted/pixi.toml python
-            trusted/source-adapters/metadata/tools/curation.py
+            trusted/.orinoco-lite/source-adapters/metadata/tools/curation.py
             finalize
             --trusted-root "$GITHUB_WORKSPACE/trusted"
             --trusted-head-sha "$TRUSTED_HEAD_SHA"
@@ -1071,6 +1079,8 @@ jobs:
           HEAD_REF: ${{ steps.pull.outputs.head_ref }}
           HEAD_SHA: ${{ steps.pull.outputs.head_sha }}
         run: |
+          # The job token also suppresses a recursive synchronize run. The
+          # exact reviewed head receives the selected explicit dispatch next.
           git -C review merge-base --is-ancestor "$HEAD_SHA" HEAD
           test "$(git -C review rev-list --count "${HEAD_SHA}..HEAD")" = 1
           test "$(git -C review show -s --format=%P HEAD)" = "$HEAD_SHA"
@@ -1079,13 +1089,25 @@ jobs:
             --force-with-lease="refs/heads/${HEAD_REF}:${HEAD_SHA}" \
             origin "HEAD:refs/heads/${HEAD_REF}"
 
-      - name: Dispatch ordinary validation for the exact reviewed ref
+      - name: Dispatch selected validation for the exact reviewed ref
         env:
           GH_TOKEN: ${{ github.token }}
           HEAD_REF: ${{ steps.pull.outputs.head_ref }}
+          METADATA_CHANGED: ${{ steps.rehearsal.outputs.metadata_changed }}
           REPOSITORY: ${{ github.repository }}
         run: |
-          gh workflow run validate.yml --repo "$REPOSITORY" --ref "$HEAD_REF"
+          case "$METADATA_CHANGED" in
+            true) validation=full ;;
+            false) validation=joined ;;
+            *)
+              echo "Unexpected metadata_changed value: $METADATA_CHANGED" >&2
+              exit 1
+              ;;
+          esac
+          gh workflow run validate.yml \
+            --repo "$REPOSITORY" \
+            --ref "$HEAD_REF" \
+            -f "validation=${validation}"
 
       - name: Dispatch exact-head SHACL Vue validation for the reviewed proposal
         env:
@@ -1120,8 +1142,7 @@ jobs:
           commit_url = f"https://github.com/{repository}/commit/{commit}"
           body = (
               "Recorded human acceptance decisions in "
-              f"[{commit[:12]}]({commit_url}). Validation has been requested. "
-              "Merge after it passes."
+              f"[{commit[:12]}]({commit_url}). Ready for merging."
           )
           Path(sys.argv[1]).write_text(
               json.dumps({"body": body}, separators=(",", ":")),

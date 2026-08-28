@@ -28,7 +28,7 @@ class Repository:
         self.git("config", "user.name", "Curator")
         self.git("config", "user.email", "curator@example.test")
         self.write(
-            "metadata/records/XYZProject/example.yaml",
+            "site-specific/metadata/records/XYZProject/example.yaml",
             "pid: https://example.test/projects/example\n"
             "schema_type: xyzri:XYZProject\n"
             "title: Before\n",
@@ -70,7 +70,7 @@ class Repository:
                     "pid": "https://example.test/projects/example",
                     "rdf_turtle": "<https://example.test/projects/example> <x:p> <x:o> .\n",
                     "schema_type": "xyzri:XYZProject",
-                    "source_path": "metadata/records/XYZProject/example.yaml",
+                    "source_path": "site-specific/metadata/records/XYZProject/example.yaml",
                     "source_sha256": "0" * 64,
                 }
             ],
@@ -128,14 +128,14 @@ class HandoffHistoryTests(unittest.TestCase):
 
     def test_existing_curation_history_and_human_metadata_are_preserved(self) -> None:
         self.repository.write(
-            "metadata/records/XYZProject/example.yaml",
+            "site-specific/metadata/records/XYZProject/example.yaml",
             "pid: https://example.test/projects/example\n"
             "schema_type: xyzri:XYZProject\n"
             "title: Proposal\n",
         )
         proposal = self.repository.commit("source proposal")
         self.repository.write(
-            "source-adapters/zotero/policy/curation-decisions.yaml",
+            "site-specific/curation-records/zotero.yaml",
             "format: orinoco-lite-curation-decisions-v1\ndecisions: {}\n",
         )
         reviewed = self.repository.commit("review decision")
@@ -152,7 +152,7 @@ class HandoffHistoryTests(unittest.TestCase):
 
     def test_repeated_standalone_edit_uses_the_previous_exact_head(self) -> None:
         self.repository.write(
-            "metadata/records/XYZProject/example.yaml",
+            "site-specific/metadata/records/XYZProject/example.yaml",
             "pid: https://example.test/projects/example\n"
             "schema_type: xyzri:XYZProject\n"
             "title: First standalone edit\n",
@@ -181,7 +181,7 @@ class HandoffHistoryTests(unittest.TestCase):
             HANDOFF.HANDOFF_PATH, json.dumps(self.repository.bundle())
         )
         self.repository.write(
-            "metadata/records/XYZProject/example.yaml",
+            "site-specific/metadata/records/XYZProject/example.yaml",
             "pid: https://example.test/projects/example\n"
             "schema_type: xyzri:XYZProject\n"
             "title: Mixed\n",
@@ -210,7 +210,7 @@ class HandoffHistoryTests(unittest.TestCase):
 
     def test_canonical_head_may_only_change_approved_metadata(self) -> None:
         self.repository.write(
-            "metadata/records/XYZProject/example.yaml",
+            "site-specific/metadata/records/XYZProject/example.yaml",
             "pid: https://example.test/projects/example\n"
             "schema_type: xyzri:XYZProject\n"
             "title: Canonical\n",
@@ -225,7 +225,7 @@ class HandoffHistoryTests(unittest.TestCase):
 
         self.repository.write("README.md", "mixed canonical edit\n")
         self.repository.write(
-            "metadata/records/XYZProject/example.yaml",
+            "site-specific/metadata/records/XYZProject/example.yaml",
             "pid: https://example.test/projects/example\n"
             "schema_type: xyzri:XYZProject\n"
             "title: Mixed canonical\n",
@@ -237,7 +237,7 @@ class HandoffHistoryTests(unittest.TestCase):
     def test_canonical_head_may_merge_the_exact_trusted_base(self) -> None:
         self.repository.git("checkout", "-qb", "proposal")
         self.repository.write(
-            "metadata/records/XYZProject/example.yaml",
+            "site-specific/metadata/records/XYZProject/example.yaml",
             "pid: https://example.test/projects/example\n"
             "schema_type: xyzri:XYZProject\n"
             "title: Canonical proposal\n",
@@ -255,7 +255,7 @@ class HandoffHistoryTests(unittest.TestCase):
         self.assertEqual(base, report["parent_sha"])
         self.assertEqual(2, report["commit_count"])
         self.assertEqual(
-            ["metadata/records/XYZProject/example.yaml"], report["paths"]
+            ["site-specific/metadata/records/XYZProject/example.yaml"], report["paths"]
         )
         self.assertTrue(
             self.repository.git(
@@ -266,7 +266,7 @@ class HandoffHistoryTests(unittest.TestCase):
     def test_one_parent_handoff_may_follow_a_trusted_base_merge(self) -> None:
         self.repository.git("checkout", "-qb", "proposal")
         self.repository.write(
-            "metadata/records/XYZProject/example.yaml",
+            "site-specific/metadata/records/XYZProject/example.yaml",
             "pid: https://example.test/projects/example\n"
             "schema_type: xyzri:XYZProject\n"
             "title: Canonical proposal\n",
@@ -307,7 +307,7 @@ class HandoffHistoryTests(unittest.TestCase):
         (self.repository.root / "untrusted.py").unlink()
         self.repository.commit("remove code")
         self.repository.write(
-            "metadata/records/XYZProject/example.yaml",
+            "site-specific/metadata/records/XYZProject/example.yaml",
             "pid: https://example.test/projects/example\n"
             "schema_type: xyzri:XYZProject\n"
             "title: Canonical proposal\n",
@@ -325,7 +325,7 @@ class HandoffHistoryTests(unittest.TestCase):
     def test_merge_resolution_may_not_add_an_unapproved_path(self) -> None:
         self.repository.git("checkout", "-qb", "proposal")
         self.repository.write(
-            "metadata/records/XYZProject/example.yaml",
+            "site-specific/metadata/records/XYZProject/example.yaml",
             "pid: https://example.test/projects/example\n"
             "schema_type: xyzri:XYZProject\n"
             "title: Canonical proposal\n",
@@ -344,7 +344,7 @@ class HandoffHistoryTests(unittest.TestCase):
 
     def test_cache_only_review_head_can_refresh_exact_editor_input(self) -> None:
         self.repository.write(
-            "source-adapters/dump-research-info/policy/curation-decisions.yaml",
+            "site-specific/curation-records/dump-research-info.yaml",
             "format: orinoco-lite-curation-decisions-v1\ndecisions: {}\n",
         )
         head = self.repository.commit("record all-rejected review")
@@ -363,7 +363,7 @@ class HandoffHistoryTests(unittest.TestCase):
             "41898282+github-actions[bot]@users.noreply.github.com",
         )
         self.repository.write(
-            "metadata/records/XYZProject/example.yaml",
+            "site-specific/metadata/records/XYZProject/example.yaml",
             "pid: https://example.test/projects/example\n"
             "schema_type: xyzri:XYZProject\n"
             "title: Automated source proposal\n",
@@ -395,7 +395,7 @@ class MaterializedCommitTests(unittest.TestCase):
 
     def test_one_metadata_change_can_be_verified_before_and_after_commit(self) -> None:
         self.repository.write(
-            "metadata/records/XYZProject/example.yaml",
+            "site-specific/metadata/records/XYZProject/example.yaml",
             "pid: https://example.test/projects/example\n"
             "schema_type: xyzri:XYZProject\n"
             "title: Materialized\n",
@@ -405,7 +405,7 @@ class MaterializedCommitTests(unittest.TestCase):
             self.repository.root,
             source_commit=self.repository.base,
         )
-        self.assertEqual(["metadata/records/XYZProject/example.yaml"], report["paths"])
+        self.assertEqual(["site-specific/metadata/records/XYZProject/example.yaml"], report["paths"])
         commit = self.repository.commit("materialize exact editor result")
         verified = HANDOFF.verify_materialized_commit(
             self.repository.root,
@@ -414,14 +414,14 @@ class MaterializedCommitTests(unittest.TestCase):
         )
         self.assertEqual(commit, verified["commit"])
         self.assertEqual(
-            ["metadata/records/XYZProject/example.yaml"], verified["paths"]
+            ["site-specific/metadata/records/XYZProject/example.yaml"], verified["paths"]
         )
 
     def test_metadata_root_stages_without_an_annotation_tree(self) -> None:
-        annotation_root = self.repository.root / "metadata/overlays/annotations"
+        annotation_root = self.repository.root / "site-specific/metadata/overlays/annotations"
         self.assertFalse(annotation_root.exists())
         self.repository.write(
-            "metadata/records/XYZProject/example.yaml",
+            "site-specific/metadata/records/XYZProject/example.yaml",
             "pid: https://example.test/projects/example\n"
             "schema_type: xyzri:XYZProject\n"
             "title: Materialized without annotations\n",
@@ -431,12 +431,12 @@ class MaterializedCommitTests(unittest.TestCase):
             self.repository.root,
             source_commit=self.repository.base,
         )
-        self.repository.git("add", "-A", "--", "metadata")
+        self.repository.git("add", "-A", "--", "site-specific/metadata")
 
         staged = self.repository.git(
-            "diff", "--cached", "--name-only", "--", "metadata"
+            "diff", "--cached", "--name-only", "--", "site-specific/metadata"
         ).stdout.splitlines()
-        self.assertEqual(["metadata/records/XYZProject/example.yaml"], staged)
+        self.assertEqual(["site-specific/metadata/records/XYZProject/example.yaml"], staged)
         self.assertFalse(annotation_root.exists())
 
     def test_empty_or_nonmetadata_materialization_is_rejected(self) -> None:

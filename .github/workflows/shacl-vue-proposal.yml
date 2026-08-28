@@ -336,7 +336,7 @@ jobs:
         run: |
           set -euo pipefail
           unset GH_TOKEN GITHUB_TOKEN
-          git -C source add -A -- metadata
+          git -C source add -A -- site-specific/metadata
           python trusted/.orinoco-lite/tools/shacl_vue_handoff.py \
             inspect-materialized \
             --root "$GITHUB_WORKSPACE/source" \
