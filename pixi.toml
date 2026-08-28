@@ -27,7 +27,7 @@ verify-deterministic = { depends-on = ["build", "build-repeat"], cmd = "python .
 verify-local-preview = { depends-on = ["build"], cmd = "python .orinoco-lite/tools/verify_local_preview.py build/site" }
 verify-build = { depends-on = ["verify-deterministic", "verify-local-preview"] }
 build-pages = { depends-on = ["projection-update"], cmd = "python .orinoco-lite/tools/build_pages.py build/pages" }
-build-browser-pages = { depends-on = ["projection-update"], cmd = "orinoco build --destination build/pages --base-url /orinoco-lite-demo/" }
+build-browser-pages = { depends-on = ["projection-update"], cmd = "python .orinoco-lite/tools/build_browser_pages.py build/pages /orinoco-lite-demo/" }
 serve = "orinoco serve --directory build/site --port 8765"
 apply-editor-bundle = "orinoco editor apply"
 verify-runtime = "orinoco runtime verify"

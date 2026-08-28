@@ -91,9 +91,11 @@ export async function startStaticServer(root, mountPath) {
     origin: `http://127.0.0.1:${address.port}`,
     requests,
     async close() {
-      await new Promise((resolve, reject) => {
+      const closing = new Promise((resolve, reject) => {
         server.close((error) => (error ? reject(error) : resolve()));
       });
+      server.closeAllConnections();
+      await closing;
     },
   };
 }
