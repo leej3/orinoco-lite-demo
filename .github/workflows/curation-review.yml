@@ -338,7 +338,7 @@ jobs:
               --description "Human source-metadata curation" || \
               gh api "repos/${REPOSITORY}/labels/curation-review" > /dev/null
           fi
-          initial_body=$'**AI-generated draft — not reviewed by John**\n\nThe trusted workflow is preparing the ephemeral review bundle.'
+          initial_body='The trusted workflow is preparing the curation review link.'
           url="$(gh pr create \
             --repo "$REPOSITORY" \
             --base "$DEFAULT_BRANCH" \
@@ -1102,23 +1102,26 @@ jobs:
             -f "pull_request=${NUMBER}" \
             -f "expected_head=${head_sha}"
 
-      - name: Post an attributed finalization result
+      - name: Post the finalization result
         env:
           GH_TOKEN: ${{ github.token }}
           NUMBER: ${{ github.event.issue.number }}
           REPOSITORY: ${{ github.repository }}
         run: |
           commit="$(git -C review rev-parse HEAD)"
-          python - "$RUNNER_TEMP/result-comment.json" "$commit" <<'PY'
+          python - "$RUNNER_TEMP/result-comment.json" "$commit" \
+            "$REPOSITORY" <<'PY'
           import json
           from pathlib import Path
           import sys
 
+          repository = sys.argv[3]
+          commit = sys.argv[2]
+          commit_url = f"https://github.com/{repository}/commit/{commit}"
           body = (
-              "**AI-generated draft — not reviewed by John**\n\n"
-              f"Applied the complete authenticated decision state in `{sys.argv[2]}`. "
-              "The updated pull-request head is awaiting ordinary validation and "
-              "human approval; no approval or merge was performed."
+              "Recorded human acceptance decisions in "
+              f"[{commit[:12]}]({commit_url}). Validation has been requested. "
+              "Merge after it passes."
           )
           Path(sys.argv[1]).write_text(
               json.dumps({"body": body}, separators=(",", ":")),
