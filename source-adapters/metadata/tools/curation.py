@@ -45,7 +45,6 @@ from orinoco_lite.validation import validate_workspace
 SUBMISSION_FORMAT = "orinoco-lite-curation-submission-v1"
 REVIEW_BUNDLE_FORMAT = "orinoco-lite-curation-review-bundle-v1"
 SUBMIT_COMMAND = "/curation submit"
-ATTRIBUTION = "**AI-generated draft — not reviewed by John**"
 ADAPTERS = ("dump-research-info", "zotero")
 RECORD_ROOT = PurePosixPath("metadata/records")
 ANNOTATION_ROOT = PurePosixPath("metadata/overlays/annotations")
@@ -368,6 +367,7 @@ def render_pull_request_body(
     repository: str,
     pull_request: int,
     artifact_id: int,
+    adapter: str,
     source_coordinate: Mapping[str, object],
 ) -> str:
     """Render a concise editable fallback; none of its bytes are authoritative."""
@@ -378,9 +378,16 @@ def render_pull_request_body(
         raise CurationHostError("Repository must be OWNER/REPOSITORY")
     pull_request = _positive_integer(pull_request, "Pull request")
     artifact_id = _positive_integer(artifact_id, "Artifact ID")
-    coordinate = canonical_json_bytes(
-        _json_object(source_coordinate, "Source coordinate")
-    ).decode("utf-8")
+    adapter = _line(adapter, "Adapter")
+    if adapter not in ADAPTERS:
+        raise CurationHostError(f"Unsupported adapter: {adapter}")
+    coordinate_object = _json_object(source_coordinate, "Source coordinate")
+    display_adapter = adapter
+    if "kind" in coordinate_object:
+        display_adapter = _line(
+            coordinate_object["kind"], "Source coordinate kind"
+        )
+    coordinate = canonical_json_bytes(coordinate_object).decode("utf-8")
     query = urlencode(
         (
             ("repository", repository),
@@ -391,14 +398,16 @@ def render_pull_request_body(
     review_url = f"{base_url}review/?{query}"
     visible_coordinate = escape(coordinate, quote=True).replace("`", "&#96;")
     return (
-        f"{ATTRIBUTION}\n\n"
-        "This draft contains public review data. The review bundle is an ephemeral "
-        "GitHub Actions artifact subject to the repository's normal retention; the "
-        "proposal and review commits remain in Git history.\n\n"
-        f"[Open this site's curation review]({review_url})\n\n"
+        f"Automated submission from source adapter `{display_adapter}`. "
+        "Do not squash or rebase this branch.\n\n"
+        f"[Open the curation review application]({review_url})\n\n"
+        "Note: the review bundle is an ephemeral GitHub Actions artifact subject "
+        "to the repository's normal retention; the proposal and review commits "
+        "remain in Git history.\n\n"
+        "<details>\n"
+        "<summary>Details</summary>\n\n"
         f"Source coordinate: <code>{visible_coordinate}</code>\n\n"
-        "Merge this pull request with a merge commit. Squash and rebase merges are "
-        "not conforming.\n"
+        "</details>\n"
     )
 
 
@@ -1187,6 +1196,7 @@ def main(argv: Sequence[str] | None = None) -> int:
                 repository=bundle["repository"],
                 pull_request=bundle["pull_request"],
                 artifact_id=args.artifact_id,
+                adapter=bundle["adapter"],
                 source_coordinate=_json_object(
                     bundle["source_coordinate"],
                     "Review bundle source coordinate",

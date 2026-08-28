@@ -190,7 +190,11 @@ class CurationReviewWorkflowTests(unittest.TestCase):
         )
         self.assertEqual(1, self.text.count("actions/upload-artifact@"))
         self.assertIn("--draft", pull)
-        self.assertIn("**AI-generated draft — not reviewed by John**", pull)
+        self.assertIn(
+            "The trusted workflow is preparing the curation review link.",
+            pull,
+        )
+        self.assertNotIn("AI-generated draft", self.text)
         self.assertIn("render-pr-body", body)
         self.assertIn('--root "$GITHUB_WORKSPACE"', body)
         self.assertIn('--artifact-id "$ARTIFACT_ID"', body)
@@ -206,6 +210,15 @@ class CurationReviewWorkflowTests(unittest.TestCase):
 
         self.assertNotIn("CURATION_REVIEW_APP_ORIGIN", self.text)
         self.assertNotIn("orinoco-curation-review.pages.dev/review", self.text)
+
+    def test_bot_finalization_copy_links_the_commit_and_reports_validation(self) -> None:
+        final = self.submit_steps["Post the finalization result"]["run"]
+        self.assertIn("https://github.com/{repository}/commit/{commit}", final)
+        self.assertIn("Recorded human acceptance decisions", final)
+        self.assertIn("Validation has been requested.", final)
+        self.assertIn("Merge after it passes.", final)
+        self.assertNotIn("no approval or merge was performed", final)
+        self.assertNotIn("awaiting ordinary validation", final)
 
     def test_submission_uses_trusted_code_and_exact_authenticated_context(self) -> None:
         proposal = self.propose_steps["Create one explicit DataLad proposal commit"][

@@ -175,27 +175,66 @@ class ReviewArtifactTests(unittest.TestCase):
     def test_body_is_a_concise_editable_fallback_link_not_candidate_authority(
         self,
     ) -> None:
+        dump_coordinate = {
+            "commit": "d" * 40,
+            "repository": "https://github.com/con/dump-research-info",
+            "source_roots": {
+                "data/con_site": "e" * 40,
+                "data/pool_psychoinformatics_de": "f" * 40,
+            },
+        }
         body = HOST.render_pull_request_body(
             site_base_url="https://example.github.io/example/",
             repository="con/example",
             pull_request=17,
             artifact_id=5678,
-            source_coordinate=plan().source_coordinate,
+            adapter=plan().adapter,
+            source_coordinate=dump_coordinate,
         )
 
-        self.assertTrue(body.startswith(HOST.ATTRIBUTION + "\n"))
+        self.assertTrue(
+            body.startswith(
+                "Automated submission from source adapter "
+                "`dump-research-info`. Do not squash or rebase this branch.\n"
+            )
+        )
         self.assertIn(
             "https://example.github.io/example/review/?"
             "repository=con%2Fexample&pull_request=17&artifact_id=5678",
             body,
         )
+        self.assertIn("Open the curation review application", body)
         self.assertIn("ephemeral GitHub Actions artifact", body)
         self.assertIn("normal retention", body)
-        self.assertIn("merge commit", body)
         self.assertIn("Source coordinate", body)
+        self.assertEqual(1, body.count("<details>"))
+        self.assertEqual(1, body.count("<summary>Details</summary>"))
+        self.assertEqual(1, body.count("</details>"))
+        self.assertNotIn("<details open", body)
+        self.assertNotIn("AI-generated draft", body)
         self.assertNotIn("Review artifact ID", body)
         self.assertNotIn("New first", body)
         self.assertFalse(hasattr(HOST, "parse_summary"))
+
+        zotero_body = HOST.render_pull_request_body(
+            site_base_url="https://example.github.io/example/",
+            repository="con/example",
+            pull_request=17,
+            artifact_id=5678,
+            adapter="zotero",
+            source_coordinate={
+                "content_sha256": f"sha256:{'0' * 64}",
+                "group_id": 6197458,
+                "kind": "zotero-public-library",
+                "library_version": 668,
+            },
+        )
+        self.assertTrue(
+            zotero_body.startswith(
+                "Automated submission from source adapter "
+                "`zotero-public-library`. Do not squash or rebase this branch.\n"
+            )
+        )
 
     def test_review_url_stays_under_the_downstream_site_base_url(
         self,
@@ -204,6 +243,7 @@ class ReviewArtifactTests(unittest.TestCase):
             "repository": "con/example",
             "pull_request": 17,
             "artifact_id": 5678,
+            "adapter": plan().adapter,
             "source_coordinate": plan().source_coordinate,
         }
         self_hosted = HOST.render_pull_request_body(
