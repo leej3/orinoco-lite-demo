@@ -1,0 +1,37 @@
+{% macro taxonomy_terms(taxonomy, type, objects, typeattr='object.schema_type', pidattr='object.pid') -%}
+{%- set matching = objects|selectattr(typeattr, 'eq', type)|map(attribute=pidattr)|map('replace', 'xyzrins:' ~ taxonomy ~ '/', '')|sort -%}
+{% if matching|length -%}
+{{ taxonomy }}:
+{% for pid in matching -%}
+- {{ pid }}
+{% endfor -%}
+{%- endif -%}
+{%- endmacro -%}
+{% macro assoc_period(ass, pre="") -%}
+{% if ass.started is defined and ass.started.at_time is defined and ass.ended is defined and ass.ended.at_time is defined %}{{ pre ~ ass.started.at_time }} -- {{ ass.ended.at_time }}{% elif ass.started is defined and ass.started.at_time is defined %}{{ pre ~ "since"}} {{ass.started.at_time }}{% elif ass.ended is defined and ass.ended.at_time is defined %}{{pre ~ "until"}} {{ ass.ended.at_time }}{% endif %}
+{%- endmacro -%}
+{% macro url_overrides(tags) -%}
+{% if annotations is defined -%}
+{% if annotations["xyzrins:annotation-tags/psyinf-ns-id"] is defined -%}
+url: {{ annotations["xyzrins:annotation-tags/psyinf-ns-id"] }}
+{% endif -%}
+{% endif -%}
+{%- endmacro -%}
+---
+{% block frontmatter_wrapper -%}
+{% block layout -%}layout: orinoco-term
+{% endblock layout -%}
+{{ url_overrides() -}}
+{% block frontmatter -%}
+{% endblock frontmatter -%}
+params:
+  graphRootNodePID: {{ pid }}
+{%- block frontmatter_params -%}
+{% endblock frontmatter_params -%}
+{% endblock frontmatter_wrapper %}
+---
+
+{% block content_wrapper -%}
+{% block content -%}
+{% endblock content -%}
+{% endblock content_wrapper -%}

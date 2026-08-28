@@ -23,11 +23,11 @@ def load_module(name: str, path: Path) -> ModuleType:
 
 
 review = load_module(
-    "orinoco_metadata_review", ROOT / "source-adapters/metadata/tools/review.py"
+    "orinoco_metadata_review", ROOT / ".orinoco-lite/source-adapters/metadata/tools/review.py"
 )
 zotero = load_module(
     "orinoco_zotero_metadata_adapter",
-    ROOT / "source-adapters/zotero/metadata_adapter.py",
+    ROOT / ".orinoco-lite/source-adapters/zotero/metadata_adapter.py",
 )
 
 
@@ -58,36 +58,33 @@ class MetadataReviewHostTests(unittest.TestCase):
 
         cases = (
             (
-                "contract_version = 2\n",
+                "contract_version: 2\nid: fake\nadapter: fake.py\n",
                 "contract_version is unsupported",
             ),
             (
-                "contract_version = 1\n"
-                "[[sources]]\n"
-                'id = "fake"\n'
-                'adapter = "fake.py"\n',
+                "contract_version: 1\n"
+                "id: fake\n"
+                "adapter: fake.py\n",
                 "has no reviewed provenance_identity",
             ),
             (
-                "contract_version = 1\n"
-                "[[sources]]\n"
-                'id = "fake"\n'
-                'adapter = "fake.py"\n'
-                'provenance_identity = " first "\n',
+                "contract_version: 1\n"
+                "id: fake\n"
+                "adapter: fake.py\n"
+                'provenance_identity: " first "\n',
                 "must be one nonempty line",
             ),
             (
-                "contract_version = 1\n"
-                "[[sources]]\n"
-                'id = "other"\n'
-                'adapter = "other.py"\n'
-                'provenance_identity = "example:other/v1"\n',
+                "contract_version: 1\n"
+                "id: other\n"
+                "adapter: other.py\n"
+                "provenance_identity: example:other/v1\n",
                 "Unknown metadata source",
             ),
         )
         for manifest, message in cases:
             with self.subTest(message=message), tempfile.TemporaryDirectory() as name:
-                path = Path(name) / "sources.toml"
+                path = Path(name) / "source.yaml"
                 path.write_text(manifest, encoding="utf-8")
                 with self.assertRaisesRegex(review.MetadataReviewError, message):
                     review.resolve_provenance_identity("fake", path)
@@ -126,7 +123,7 @@ class MetadataReviewHostTests(unittest.TestCase):
     def test_review_is_read_only_and_refresh_replaces_only_evidence(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
-            adapter = root / "source-adapters" / "fake" / "adapter.py"
+            adapter = root / "extensions/source-adapters/fake/adapter.py"
             adapter.parent.mkdir(parents=True)
             adapter.write_text(
                 textwrap.dedent(
@@ -150,21 +147,22 @@ class MetadataReviewHostTests(unittest.TestCase):
                             "evidence_updates": [{
                                 "operation": "replace",
                                 "staged": staged.relative_to(root).as_posix(),
-                                "destination": "source-adapters/fake/source/snapshot.json",
+                                "destination": "site-specific/sources/fake/content/snapshot.json",
                             }],
                         }
                     """
                 ).replace("{empty}", repr(EMPTY_DIFF)),
                 encoding="utf-8",
             )
-            config = root / "sources.toml"
+            config = root / "site-specific/sources/fake/source.yaml"
+            config.parent.mkdir(parents=True)
             config.write_text(
-                'contract_version = 1\n[[sources]]\nid = "fake"\n'
-                'adapter = "source-adapters/fake/adapter.py"\n',
+                "contract_version: 1\nid: fake\n"
+                "adapter: extensions/source-adapters/fake/adapter.py\n",
                 encoding="utf-8",
             )
             build = root / "build" / "metadata-review"
-            destination = root / "source-adapters/fake/source/snapshot.json"
+            destination = root / "site-specific/sources/fake/content/snapshot.json"
 
             report = review.run("review", root=root, config=config, build=build)
             self.assertFalse(destination.exists())
@@ -172,20 +170,20 @@ class MetadataReviewHostTests(unittest.TestCase):
 
             review.run("refresh-evidence", root=root, config=config, build=build)
             self.assertEqual(json.loads(destination.read_text()), {"version": 2})
-            self.assertFalse((root / ".orinoco-lite/provenance").exists())
+            self.assertFalse((root / "site-specific/provenance").exists())
 
     def test_evidence_destination_cannot_target_canonical_metadata(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             with self.assertRaisesRegex(review.MetadataReviewError, "outside"):
                 review.allowed_destination(
-                    root, "fake", "metadata/records/XYZPerson/person.yaml"
+                    root, "fake", "site-specific/metadata/records/XYZPerson/person.yaml"
                 )
 
     def test_refresh_is_blocked_before_mutation_when_review_has_blockers(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
-            adapter = root / "source-adapters/fake/adapter.py"
+            adapter = root / "extensions/source-adapters/fake/adapter.py"
             adapter.parent.mkdir(parents=True)
             adapter.write_text(
                 textwrap.dedent(
@@ -210,20 +208,21 @@ class MetadataReviewHostTests(unittest.TestCase):
                             "evidence_updates": [{
                                 "operation": "replace",
                                 "staged": staged.relative_to(root).as_posix(),
-                                "destination": "source-adapters/fake/source/snapshot.json",
+                                "destination": "site-specific/sources/fake/content/snapshot.json",
                             }],
                         }
                     """
                 ).replace("{empty}", repr(EMPTY_DIFF)),
                 encoding="utf-8",
             )
-            config = root / "sources.toml"
+            config = root / "site-specific/sources/fake/source.yaml"
+            config.parent.mkdir(parents=True)
             config.write_text(
-                'contract_version = 1\n[[sources]]\nid = "fake"\n'
-                'adapter = "source-adapters/fake/adapter.py"\n',
+                "contract_version: 1\nid: fake\n"
+                "adapter: extensions/source-adapters/fake/adapter.py\n",
                 encoding="utf-8",
             )
-            destination = root / "source-adapters/fake/source/snapshot.json"
+            destination = root / "site-specific/sources/fake/content/snapshot.json"
 
             with self.assertRaisesRegex(review.MetadataReviewError, "policy changed"):
                 review.run(
@@ -238,7 +237,7 @@ class MetadataReviewHostTests(unittest.TestCase):
     def test_optional_source_runs_only_when_selected_and_receives_input(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
-            adapter = root / "source-adapters/optional/adapter.py"
+            adapter = root / "extensions/source-adapters/optional/adapter.py"
             adapter.parent.mkdir(parents=True)
             adapter.write_text(
                 textwrap.dedent(
@@ -266,11 +265,12 @@ class MetadataReviewHostTests(unittest.TestCase):
                 ),
                 encoding="utf-8",
             )
-            config = root / "sources.toml"
+            config = root / "site-specific/sources/optional/source.yaml"
+            config.parent.mkdir(parents=True)
             config.write_text(
-                "contract_version = 1\n[[sources]]\nid = \"optional\"\n"
-                "adapter = \"source-adapters/optional/adapter.py\"\n"
-                "enabled_by_default = false\n",
+                "contract_version: 1\nid: optional\n"
+                "adapter: extensions/source-adapters/optional/adapter.py\n"
+                "enabled_by_default: false\n",
                 encoding="utf-8",
             )
 
@@ -375,7 +375,7 @@ class ZoteroAdapterContractTests(unittest.TestCase):
     def test_canonical_export_skips_only_the_record_root_control_file(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
-            records = root / "metadata/records"
+            records = root / "site-specific/metadata/records"
             (records / "XYZPerson").mkdir(parents=True)
             (records / ".dumpthings.yaml").write_text("type: file\n", encoding="utf-8")
             (records / "XYZPerson/person.yaml").write_text(
@@ -426,7 +426,7 @@ class ZoteroAdapterContractTests(unittest.TestCase):
                     {"display_label": "Source Alias", "pid": "xyzrins:persons/source-only"},
                 ],
             )
-            self.assertFalse((root / "metadata/records").exists())
+            self.assertFalse((root / "site-specific/metadata/records").exists())
 
 
 if __name__ == "__main__":

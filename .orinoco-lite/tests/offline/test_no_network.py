@@ -90,7 +90,7 @@ class OfflineAcceptanceTests(unittest.TestCase):
     def test_editor_fixture_is_bound_to_head_path_and_digest(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
-            source_path = "metadata/records/XYZPerson/person.yaml"
+            source_path = "site-specific/metadata/records/XYZPerson/person.yaml"
             source = root / source_path
             source.parent.mkdir(parents=True)
             source.write_text(

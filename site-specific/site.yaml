@@ -1,0 +1,256 @@
+version: 1
+record_prefix: 'xyzrins:'
+identity:
+  title: Center for Open Neuroscience
+  description: Open software frameworks, platforms, data, and methodologies for neuroscience and
+    beyond.
+  copyright: CON website content is available under CC BY 3.0 unless otherwise noted.
+language:
+  code: en
+  name: English
+  direction: ltr
+  weight: 1
+  date_format: 2 January 2006
+author:
+  name: Center for Open Neuroscience
+  headline: Open neuroscience infrastructure, software, data, and methods.
+  links:
+  - name: github
+    url: https://github.com/con
+theme:
+  color_scheme: con
+  default_appearance: light
+  auto_switch_appearance: true
+  header:
+    layout: hybrid
+    logo: img/con-logo.png
+    logo_dark: img/con-logo.png
+    show_title: true
+  homepage:
+    layout: custom
+    show_recent: false
+  article:
+    show_date: false
+    show_date_updated: false
+    show_author: false
+    show_breadcrumbs: true
+    show_heading_anchors: true
+    show_pagination: true
+    show_reading_time: false
+    show_table_of_contents: false
+    show_taxonomies: false
+navigation:
+  main:
+  - name: About
+    page_ref: about
+    weight: 10
+    icon: circle-info
+    show_name: true
+    url: /about/
+  - name: Projects
+    page_ref: projects
+    weight: 20
+    icon: human-dolly
+    show_name: true
+    url: /projects/
+  - name: People
+    page_ref: people
+    weight: 30
+    icon: account-group
+    show_name: true
+    url: /whoweare/
+  - name: Publications
+    page_ref: publications
+    weight: 50
+    icon: cast-education
+    show_name: true
+    url: /publications/
+  - name: Outputs
+    page_ref: instruments
+    weight: 60
+    icon: mdi-microscope
+    show_name: true
+    url: /instruments/
+  - name: Explore
+    page_ref: explore
+    weight: 70
+    icon: globe
+    show_name: true
+    url: /explore/
+  - name: Engage
+    page_ref: engage
+    weight: 80
+    url: /engage/
+    icon: null
+    show_name: false
+  - name: Support
+    page_ref: support
+    weight: 90
+    url: /support/
+    icon: null
+    show_name: false
+  footer:
+  - name: Contact
+    page_ref: contact
+    weight: 100
+    url: /contact/
+    icon: null
+    show_name: false
+  sections:
+    publications:
+      title: Publications
+      route: /publications/
+      aliases: []
+      introduction: Publications connected to CON projects, outputs, and people.
+      list_variant: vertical
+      filter: true
+      filter_fields:
+      - kind
+      - year
+      search_fields:
+      - title
+      - kind
+      - year
+      - author
+      term:
+        person_display: Authors
+        show_relations: expandable
+    instruments:
+      title: Outputs
+      route: /instruments/
+      aliases: []
+      introduction: Software and other research outputs represented by the metadata collection.
+      list_variant: grid
+      term:
+        depiction_type: logo
+        person_display: Contributors
+        show_relations: expandable
+people:
+  route: /whoweare/
+  title: Who we are
+  aliases:
+  - /whoweare.html
+  introduction: |-
+    The grouping and order below preserve CON's public team roster.
+    Each link opens the person's metadata-driven page.
+    The [all-people index]({{< ref "/persons" >}}) provides an additional generated view.
+    The legacy source provides this grouping but no transition dates; none are inferred here.
+  groups:
+  - title: Centroids
+    members:
+    - xyzrins:persons/yaroslav-halchenko
+    - xyzrins:persons/james-haxby
+    - xyzrins:persons/isaac-to
+    - xyzrins:persons/austin-macdonald
+    - xyzrins:persons/vadim-melnik
+    - xyzrins:persons/cody-baker
+    - xyzrins:persons/john-lee
+  - title: Collaborators
+    members:
+    - xyzrins:persons/adina-wagner
+    - xyzrins:persons/chris-markiewicz
+    - xyzrins:persons/david-kennedy
+    - xyzrins:persons/jean-baptiste-poline
+    - xyzrins:persons/joey-hess
+    - xyzrins:persons/franco-pestilli
+    - xyzrins:persons/michael-hanke
+    - xyzrins:persons/satrajit-ghosh
+  - title: Affiliated Faculty
+    members:
+    - xyzrins:persons/jeremy-manning
+    - xyzrins:persons/luke-chang
+    - xyzrins:persons/matthijs-van-der-meer
+    - xyzrins:persons/tor-wager
+  - title: Emeritus
+    members:
+    - xyzrins:persons/jason-gors
+    - xyzrins:persons/gergana-alteva
+    - xyzrins:persons/oliver-contier
+    - xyzrins:persons/matteo-visconti-di-oleggio-castello
+    - xyzrins:persons/samuel-nastase
+    - xyzrins:persons/nikolaas-oosterhof
+    - xyzrins:persons/matthew-brett
+    - xyzrins:persons/kyle-meyer
+    - xyzrins:persons/chris-cheng
+    - xyzrins:persons/soichi-hayashi
+    - xyzrins:persons/vanessa-sochat
+    - xyzrins:persons/benjamin-poldrack
+    - xyzrins:persons/horea-ioanas
+    - xyzrins:persons/john-wodder
+  index:
+    title: People
+    route: /persons/
+    aliases: []
+    introduction: |-
+      Browse the complete set of metadata-driven CON person pages.
+      The [Who we are page]({{< ref "/people" >}}) preserves the legacy public groups and their published order.
+    list_variant: grid
+    term:
+      depiction_type: portrait
+      person_display: Collaborators
+      show_relations: expandable
+projects:
+  route: /projects/
+  title: Projects
+  aliases:
+  - /projects.html
+  introduction: |-
+    CON develops and supports open tools, platforms, standards, training, and research infrastructure.
+    The categories and order below preserve the public legacy catalogue; each link opens a metadata-driven project page.
+  list_variant: grid
+  term:
+    depiction_type: logo
+    person_display: People
+    show_relations: expandable
+  categories:
+  - title: Software
+    projects:
+    - xyzrins:projects/datalad
+    - xyzrins:projects/dandi
+    - xyzrins:projects/ember
+    - xyzrins:projects/openneuro
+    - xyzrins:projects/datalad-registry
+    - xyzrins:projects/duecredit
+    - xyzrins:projects/heudiconv
+    - xyzrins:projects/neurodebian
+    - xyzrins:projects/pymvpa
+    - xyzrins:projects/reproman
+    - xyzrins:projects/con-duct
+    - xyzrins:projects/con-tinuous
+    - xyzrins:projects/pyout
+    - xyzrins:projects/quail
+    - xyzrins:projects/hypertools
+    - xyzrins:projects/supereeg
+  - title: Initiatives
+    projects:
+    - xyzrins:projects/open-brain-consent
+  - title: Meetings
+    projects:
+    - xyzrins:projects/distribits
+  - title: Standards
+    projects:
+    - xyzrins:projects/bids
+    - xyzrins:projects/nwb
+    - xyzrins:projects/yoda
+  - title: Education
+    projects:
+    - xyzrins:projects/repronim-reproducible-basics
+  - title: Infrastructure
+    projects:
+    - xyzrins:projects/singularityhub-afterlife
+webmanifest:
+  name: Center for Open Neuroscience
+  short_name: CON
+  description: Open software frameworks, platforms, data, and methodologies for neuroscience and
+    beyond.
+  start_url: .
+  icons:
+  - src: favicon-32x32.png
+    sizes: any
+    type: image/png
+  - src: apple-touch-icon.png
+    sizes: any
+    type: image/png
+  theme_color: '#245a8d'
+  background_color: '#ffffff'
+  display: standalone

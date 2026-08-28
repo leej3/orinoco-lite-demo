@@ -11,6 +11,7 @@ import sys
 import tempfile
 from types import ModuleType
 import unittest
+from unittest.mock import patch
 
 from linkml_runtime.utils.schemaview import SchemaView
 import orinoco_lite
@@ -77,25 +78,37 @@ neutralize_reviewed_adapter_state = (
 )
 provider = load_module(
     "orinoco_zotero_candidates_tests",
-    ROOT / "source-adapters/zotero/candidates.py",
+    ROOT / ".orinoco-lite/source-adapters/zotero/candidates.py",
 )
+
+
+def copy_zotero_fixture(source: Path, destination: Path) -> None:
+    shutil.copytree(
+        source / ".orinoco-lite/source-adapters/zotero",
+        destination / ".orinoco-lite/source-adapters/zotero",
+    )
+    shutil.copytree(
+        source / "site-specific/sources/zotero",
+        destination / "site-specific/sources/zotero",
+    )
 
 
 def prepared_root(destination: Path) -> Path:
     root = destination / "consumer"
-    shutil.copytree(ROOT / "source-adapters/zotero", root / "source-adapters/zotero")
-    shutil.copytree(ROOT / "metadata/records", root / "metadata/records")
-    annotations = ROOT / "metadata/overlays/annotations"
+    copy_zotero_fixture(ROOT, root)
+    shutil.copytree(ROOT / "site-specific/metadata/records", root / "site-specific/metadata/records")
+    annotations = ROOT / "site-specific/metadata/overlays/annotations"
     if annotations.is_dir():
-        shutil.copytree(annotations, root / "metadata/overlays/annotations")
+        shutil.copytree(annotations, root / "site-specific/metadata/overlays/annotations")
     neutralize_reviewed_adapter_state(
         root,
         adapter_agent_pids=REVIEWED_ADAPTER_AGENT_PIDS,
         decision_caches=(
-            Path("source-adapters/zotero/policy/curation-decisions.yaml"),
+            Path("site-specific/curation-records/zotero.yaml"),
         ),
     )
-    for path in sorted((root / "metadata/records").rglob("*.yaml")):
+    (root / "site-specific/curation-records").mkdir(parents=True, exist_ok=True)
+    for path in sorted((root / "site-specific/metadata/records").rglob("*.yaml")):
         if path.name == ".dumpthings.yaml":
             continue
         value = yaml.safe_load(path.read_text(encoding="utf-8"))
@@ -105,7 +118,7 @@ def prepared_root(destination: Path) -> Path:
 
 
 def metadata_snapshot(root: Path) -> dict[Path, bytes]:
-    metadata = root / "metadata"
+    metadata = root / "site-specific/metadata"
     return {
         path.relative_to(metadata): path.read_bytes()
         for path in sorted(metadata.rglob("*.yaml"))
@@ -116,17 +129,28 @@ def build(
     root: Path,
     name: str = "proposal",
     *,
+    adapter_agent_pid: str = AGENT_PID,
+    metadata_base: str = METADATA_BASE,
     trusted_root: Path | None = None,
 ) -> CandidatePlan:
-    return provider.build_candidate_plan(
-        root,
-        root / f"build/{name}",
-        metadata_base=METADATA_BASE,
-        expected_library_version=668,
-        adapter_agent_pid=AGENT_PID,
-        schema=SCHEMA,
-        trusted_root=trusted_root,
-    )
+    with patch.dict(
+        os.environ,
+        {
+            "ORINOCO_ROOT": str(root.resolve()),
+            "ORINOCO_RECORDS_ROOT": str(
+                (root / "site-specific/metadata/records").resolve()
+            ),
+        },
+    ):
+        return provider.build_candidate_plan(
+            root,
+            root / f"build/{name}",
+            metadata_base=metadata_base,
+            expected_library_version=668,
+            adapter_agent_pid=adapter_agent_pid,
+            schema=SCHEMA,
+            trusted_root=trusted_root,
+        )
 
 
 def assert_no_machine_pav(test: unittest.TestCase, value: object) -> None:
@@ -173,7 +197,12 @@ class FrozenZoteroCandidateTests(unittest.TestCase):
         self.assertEqual(metadata_snapshot(self.root), self.before)
         self.assertEqual(self.plan.adapter, "zotero")
         self.assertEqual(self.plan.adapter_version, "1")
-        self.assertEqual(provider.PROVENANCE_IDENTITY, AGENT_PID)
+        source_config = yaml.safe_load(
+            (
+                self.root / "site-specific/sources/zotero/source.yaml"
+            ).read_text(encoding="utf-8")
+        )
+        self.assertEqual(source_config["provenance_identity"], AGENT_PID)
         self.assertEqual(self.plan.adapter_agent_pid, AGENT_PID)
         self.assertEqual(self.plan.metadata_base, METADATA_BASE)
         self.assertEqual(
@@ -247,24 +276,22 @@ class FrozenZoteroCandidateTests(unittest.TestCase):
             temporary = Path(directory)
             root = prepared_root(temporary / "metadata-base")
             trusted = temporary / "trusted"
-            shutil.copytree(
-                ROOT / "source-adapters/zotero",
-                trusted / "source-adapters/zotero",
-            )
-            adapter_root = root / "source-adapters/zotero"
+            copy_zotero_fixture(ROOT, trusted)
+            adapter_root = root / ".orinoco-lite/source-adapters/zotero"
             (adapter_root / "metadata_adapter.py").write_text(
                 "raise RuntimeError('untrusted adapter executed')\n",
                 encoding="utf-8",
             )
-            (adapter_root / "source/snapshot.json").write_text(
+            source_root = root / "site-specific/sources/zotero"
+            (source_root / "content/snapshot.json").write_text(
                 "{}\n",
                 encoding="utf-8",
             )
-            (adapter_root / "source/candidates/XYZPublication.json").write_text(
+            (source_root / "evidence/candidates/XYZPublication.json").write_text(
                 "[]\n",
                 encoding="utf-8",
             )
-            (adapter_root / "policy/site-policy.yaml").write_text(
+            (source_root / "policy/site-policy.yaml").write_text(
                 "invalid: untrusted policy\n",
                 encoding="utf-8",
             )
@@ -348,14 +375,7 @@ class FrozenZoteroCandidateTests(unittest.TestCase):
                 self.assertIsNotNone(change.proposed)
                 path.parent.mkdir(parents=True, exist_ok=True)
                 path.write_bytes(change.proposed)
-            second = provider.build_candidate_plan(
-                root,
-                root / "build/rerun",
-                metadata_base="2" * 40,
-                expected_library_version=668,
-                adapter_agent_pid=AGENT_PID,
-                schema=SCHEMA,
-            )
+            second = build(root, "rerun", metadata_base="2" * 40)
             self.assertEqual(second.candidates, ())
             self.assertEqual(second.file_changes(), ())
 
@@ -375,7 +395,7 @@ class FrozenZoteroCandidateTests(unittest.TestCase):
                     "pull/1#issuecomment-124"
                 ),
             )
-            cache_path = root / "source-adapters/zotero/policy/curation-decisions.yaml"
+            cache_path = root / "site-specific/curation-records/zotero.yaml"
             cache_path.write_bytes(serialize_decision_cache(cache))
 
             filtered = build(root, "filtered")
@@ -387,10 +407,7 @@ class FrozenZoteroCandidateTests(unittest.TestCase):
             temporary = Path(directory)
             root = prepared_root(temporary / "metadata-base")
             trusted = temporary / "trusted"
-            shutil.copytree(
-                ROOT / "source-adapters/zotero",
-                trusted / "source-adapters/zotero",
-            )
+            copy_zotero_fixture(ROOT, trusted)
             initial = build(root, "transport-initial", trusted_root=trusted)
             dispositions = {
                 candidate.pid: (
@@ -414,7 +431,7 @@ class FrozenZoteroCandidateTests(unittest.TestCase):
                 ),
             )
 
-            snapshot_path = trusted / "source-adapters/zotero/source/snapshot.json"
+            snapshot_path = trusted / "site-specific/sources/zotero/content/snapshot.json"
             snapshot = json.loads(snapshot_path.read_text(encoding="utf-8"))
             source = snapshot.get("source")
             self.assertIsInstance(source, dict)
@@ -439,7 +456,7 @@ class FrozenZoteroCandidateTests(unittest.TestCase):
                 self.assertEqual(candidate.source_claim, updated.source_claim)
                 self.assertEqual(candidate.claim_sha256, updated.claim_sha256)
 
-            cache_path = root / "source-adapters/zotero/policy/curation-decisions.yaml"
+            cache_path = root / "site-specific/curation-records/zotero.yaml"
             cache_path.write_bytes(serialize_decision_cache(cache))
             filtered = build(root, "transport-filtered", trusted_root=trusted)
             self.assertEqual(filtered.candidates, ())
@@ -449,9 +466,9 @@ class FrozenZoteroCandidateTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             root = prepared_root(Path(directory))
             restored = self.plan.candidates[0]
-            (root / "metadata/records" / restored.record_path).unlink()
+            (root / "site-specific/metadata/records" / restored.record_path).unlink()
             human_only_pid = "xyzrins:publications/human-only"
-            human_only = root / "metadata/records/XYZPublication/human-only.yaml"
+            human_only = root / "site-specific/metadata/records/XYZPublication/human-only.yaml"
             human_only.write_bytes(
                 canonical_yaml_bytes(
                     {
@@ -482,18 +499,15 @@ class FrozenZoteroCandidateTests(unittest.TestCase):
                 )
             )
 
-    def test_provenance_identity_must_match_the_current_adapter_version(self) -> None:
+    def test_unreviewed_external_provenance_identity_is_rejected(self) -> None:
         with self.assertRaisesRegex(
             provider.ZoteroCandidateError,
-            "must equal the reviewed identity for adapter version 1",
+            "must identify a reviewed xyzri:XYZInstrument record",
         ):
-            provider.build_candidate_plan(
+            build(
                 self.root,
-                self.root / "build/missing-agent",
-                metadata_base=METADATA_BASE,
-                expected_library_version=668,
+                "missing-agent",
                 adapter_agent_pid="https://example.invalid/agents/missing-v1",
-                schema=SCHEMA,
             )
 
     def test_provenance_identity_must_name_a_reviewed_instrument(self) -> None:
@@ -501,7 +515,7 @@ class FrozenZoteroCandidateTests(unittest.TestCase):
             root = prepared_root(Path(directory))
             identity_path = (
                 root
-                / "metadata/records/XYZInstrument/source-adapter-zotero-v1.yaml"
+                / "site-specific/metadata/records/XYZInstrument/source-adapter-zotero-v1.yaml"
             )
             identity = yaml.safe_load(identity_path.read_text(encoding="utf-8"))
             self.assertIsInstance(identity, dict)
@@ -518,7 +532,7 @@ class FrozenZoteroCandidateTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             root = prepared_root(Path(directory))
             candidate = self.plan.candidates[0]
-            path = root / "metadata/records" / candidate.record_path
+            path = root / "site-specific/metadata/records" / candidate.record_path
             semantic_record = yaml.safe_load(path.read_text(encoding="utf-8"))
             self.assertIsInstance(semantic_record, dict)
             path.write_bytes(b"---\n" + path.read_bytes())

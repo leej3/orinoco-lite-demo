@@ -19,20 +19,16 @@ classes:
       - docs/getting-started.md
       - docs/custom-domain.md
       - .orinoco-lite/README.md
+      - .orinoco-lite/THIRD_PARTY_NOTICES.md
       - .orinoco-lite/tools/**
+      - .orinoco-lite/site/**
       - .orinoco-lite/source-adapters/**
   initialized_site_owned:
     behavior: create-once-never-overwrite
     paths:
       - orinoco.yaml
-      - .orinoco-lite/provenance/**
       - .github/workflows/curation-review.yml
-      - metadata/records/**
-      - metadata/overlays/annotations/**
-      - custom/editorial/**
-      - custom/assets/**
-      - site/**
-      - source-adapters/**
+      - site-specific/**
   engine_lock:
     behavior: updater-structured-merge
     paths:

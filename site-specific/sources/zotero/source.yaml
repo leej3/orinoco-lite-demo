@@ -1,0 +1,25 @@
+contract_version: 1
+id: zotero
+adapter: .orinoco-lite/source-adapters/zotero/metadata_adapter.py
+candidate_provider: .orinoco-lite/source-adapters/zotero/candidates.py
+provenance_identity: xyzrins:source-adapters/zotero/v1
+enabled_by_default: true
+snapshot: site-specific/sources/zotero/content/snapshot.json
+candidates: site-specific/sources/zotero/evidence/candidates
+creator_map: site-specific/sources/zotero/policy/creator-mappings.yaml
+review_identities: site-specific/sources/zotero/evidence/review-identities.yaml
+site_policy: site-specific/sources/zotero/policy/site-policy.yaml
+decision_cache: site-specific/curation-records/zotero.yaml
+group_id: 6197458
+included_collections:
+- articles
+- articles & posters
+- datasets
+- software
+- zenodo/osf dois
+document_collection_classes:
+  articles: publication
+  articles & posters: publication
+  datasets: dataset
+  software: instrument
+  zenodo/osf dois: registry

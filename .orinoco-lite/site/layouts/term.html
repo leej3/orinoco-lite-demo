@@ -1,0 +1,92 @@
+{{ define "main" }}
+  {{ $taxonomyPage := site.GetPage .Section }}
+  {{ $depictionType := "depiction" }}
+  {{ $personDisplay := "Contributors" }}
+  {{ $relationsDisplay := "none" }}
+  {{ with $taxonomyPage }}
+    {{ with .Params.term }}
+      {{ $depictionType = .depiction_type | default $depictionType }}
+      {{ $personDisplay = .person_display | default $personDisplay }}
+      {{ $relationsDisplay = .show_relations | default $relationsDisplay }}
+    {{ end }}
+  {{ end }}
+  {{ $depictions := .Resources.Match (printf "%s.*" $depictionType) }}
+  <article class="orinoco-term">
+    <header>
+      {{ if .Params.showBreadcrumbs | default (.Site.Params.list.showBreadcrumbs | default false) }}
+        {{ partial "breadcrumbs.html" . }}
+      {{ end }}
+      <h1 class="orinoco-term-title">
+        {{ .Title }}
+        {{ with .Params.date }}<small>({{ substr (printf "%v" .) 0 4 }})</small>{{ end }}
+        {{ with .Params.kind }}<span class="orinoco-kind">{{ replaceRE "^.*:" "" . }}</span>{{ end }}
+      </h1>
+    </header>
+
+    <div class="orinoco-term-meta">
+      {{ with .Params.source_code_url }}<a href="{{ . }}" rel="external">Source code</a>{{ end }}
+      {{ with .Params.documentation_url }}<a href="{{ . }}" rel="external">Documentation</a>{{ end }}
+      {{ with .Params.doi }}<a href="https://doi.org/{{ . }}" rel="external">DOI {{ . }}</a>{{ end }}
+      {{ range .Params.identifiers }}
+        {{ $creator := .creator }}
+        {{ if reflect.IsMap $creator }}{{ $creator = index $creator "name" }}{{ end }}
+        {{ $notation := .notation }}
+        {{ if and (eq $creator "ORCID") $notation }}
+          <a href="https://orcid.org/{{ $notation }}" rel="external">ORCID {{ $notation }}</a>
+        {{ else if and (eq $creator "GitHub") $notation }}
+          <a href="https://github.com/{{ $notation }}" rel="external">GitHub {{ $notation }}</a>
+        {{ else if $notation }}
+          <span>{{ with $creator }}{{ . }} {{ end }}{{ $notation }}</span>
+        {{ end }}
+      {{ end }}
+    </div>
+
+    {{ with .GetTerms "persons" }}
+      <div class="orinoco-term-meta"><strong>{{ $personDisplay }}:</strong>{{ range . }} <a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}</div>
+    {{ end }}
+    {{ with .GetTerms "topics" }}
+      <div class="orinoco-term-meta"><strong>Topics:</strong>{{ range . }} <a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}</div>
+    {{ end }}
+    {{ with .Params.license }}
+      <div class="orinoco-term-meta"><strong>License:</strong>{{ range . }} <a href="{{ .url }}" rel="external">{{ .label }}</a>{{ end }}</div>
+    {{ end }}
+
+    <div class="orinoco-term-summary">
+      {{ with index $depictions 0 }}<img class="orinoco-term-depiction" src="{{ .RelPermalink }}" alt="">{{ end }}
+      <div class="prose max-w-full dark:prose-invert">
+        {{ with .Params.description }}<p>{{ . | markdownify }}</p>{{ end }}
+        {{ .Content | emojify }}
+      </div>
+    </div>
+
+    {{ with .Params.graphRootNodePID }}
+      <section class="orinoco-graph">
+        <script>const limitGraphRootNodeId = '{{ . }}';</script>
+        <script type="module" src="{{ "graph.js" | relURL }}"></script>
+        <div id="sigma-node-type-controls"><div id="sigma-controls-list"></div></div>
+        <div id="sigma-container" aria-label="Related records graph"></div>
+      </section>
+    {{ end }}
+
+    {{ with .Params.distributions }}
+      <section class="orinoco-distributions">
+        <h2>Distributions</h2>
+        {{ range . }}
+          <details><summary>{{ .display_label | default .commit }}</summary><code>{{ .commit }}</code></details>
+        {{ end }}
+      </section>
+    {{ end }}
+
+    {{ if and .Data.Pages (ne $relationsDisplay "none") }}
+      <section class="orinoco-relations">
+        <h2>Contributions</h2>
+        {{ range .Data.Pages.GroupBy "Section" }}
+          {{ if eq $relationsDisplay "expandable" }}<details><summary>{{ .Key | humanize }}</summary>{{ end }}
+          <ul>{{ range .Pages.ByTitle }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}</ul>
+          {{ if eq $relationsDisplay "expandable" }}</details>{{ end }}
+        {{ end }}
+      </section>
+    {{ end }}
+  </article>
+  <link rel="stylesheet" href="{{ "orinoco-list.css" | relURL }}">
+{{ end }}

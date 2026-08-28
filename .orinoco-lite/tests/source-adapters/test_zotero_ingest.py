@@ -13,15 +13,25 @@ import unittest
 from unittest.mock import patch
 from urllib.error import HTTPError
 
+import yaml
+
 
 ROOT = Path(__file__).resolve().parents[3]
 SPEC = importlib.util.spec_from_file_location(
-    "zotero_ingest", ROOT / "source-adapters/zotero/tools/zotero_ingest.py"
+    "zotero_ingest", ROOT / ".orinoco-lite/source-adapters/zotero/tools/zotero_ingest.py"
 )
 assert SPEC is not None and SPEC.loader is not None
 ZOTERO = importlib.util.module_from_spec(SPEC)
 sys.modules[SPEC.name] = ZOTERO
 SPEC.loader.exec_module(ZOTERO)
+
+SOURCE_CONFIG = yaml.safe_load(
+    (ROOT / "site-specific/sources/zotero/source.yaml").read_text(encoding="utf-8")
+)
+INCLUDED_COLLECTIONS = set(SOURCE_CONFIG["included_collections"])
+DOCUMENT_COLLECTION_CLASSES = dict(
+    SOURCE_CONFIG["document_collection_classes"]
+)
 
 
 def record(key: str) -> dict[str, object]:
@@ -55,10 +65,10 @@ class ZoteroAcquisitionTests(unittest.TestCase):
                     }
                 ],
             }
-            item = ZOTERO.source_items(snapshot)[0]
+            item = ZOTERO.source_items(snapshot, INCLUDED_COLLECTIONS)[0]
             self.assertTrue(item.selected)
             self.assertEqual(
-                ZOTERO.classify(item),
+                ZOTERO.classify(item, DOCUMENT_COLLECTION_CLASSES),
                 ("XYZPublication", "bibo:Document", None),
             )
 
@@ -361,7 +371,12 @@ class ZoteroAcquisitionTests(unittest.TestCase):
             report = root / "report.json"
             args = argparse.Namespace(
                 creator_map=None,
+                document_collection=[
+                    f"{name}={kind}"
+                    for name, kind in sorted(DOCUMENT_COLLECTION_CLASSES.items())
+                ],
                 existing_data_root=None,
+                include_collection=sorted(INCLUDED_COLLECTIONS),
                 input=snapshot_path,
                 organizations=[],
                 output_dir=output,

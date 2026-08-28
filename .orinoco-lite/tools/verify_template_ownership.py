@@ -57,13 +57,33 @@ def verify_engine_environment(
     if not isinstance(engine, dict):
         return
     expected_version = engine.get("version")
-    try:
-        installed = metadata.distribution("orinoco-lite")
-    except metadata.PackageNotFoundError:
+    installed_distributions = list(metadata.distributions(name="orinoco-lite"))
+    if not installed_distributions:
         # Ownership checks may run outside the locked Pixi environment while a
         # repository is being initialized. CI's frozen Pixi install and
         # `orinoco runtime verify` exercise the installed environment.
         installed = None
+        direct_url = None
+    else:
+        installed = installed_distributions[0]
+        direct_url = None
+        for candidate in installed_distributions:
+            try:
+                candidate_url = json.loads(
+                    candidate.read_text("direct_url.json") or "null"
+                )
+            except json.JSONDecodeError:
+                continue
+            if (
+                candidate.version == expected_version
+                and isinstance(candidate_url, dict)
+                and normalize_artifact_url(candidate_url.get("url"))
+                == normalize_artifact_url(engine.get("url"))
+            ):
+                installed = candidate
+                direct_url = candidate_url
+                break
+
     installed_version = installed.version if installed is not None else None
     if installed_version is not None and installed_version != expected_version:
         failures.append(
@@ -73,20 +93,17 @@ def verify_engine_environment(
 
     if installed is not None:
         direct_url_text = installed.read_text("direct_url.json")
-        if direct_url_text is None:
+        if direct_url is None and direct_url_text is None:
             failures.append("installed orinoco-lite lacks direct URL provenance")
-        else:
+        elif direct_url is None:
             try:
                 direct_url = json.loads(direct_url_text)
             except json.JSONDecodeError:
                 failures.append("installed orinoco-lite direct_url.json is invalid")
-            else:
-                if normalize_artifact_url(direct_url.get("url")) != normalize_artifact_url(
-                    engine.get("url")
-                ):
-                    failures.append(
-                        "installed orinoco-lite direct URL differs from engine.url"
-                    )
+        if isinstance(direct_url, dict) and normalize_artifact_url(
+            direct_url.get("url")
+        ) != normalize_artifact_url(engine.get("url")):
+            failures.append("installed orinoco-lite direct URL differs from engine.url")
 
     failures.extend(pixi_engine_pin_failures(root, engine))
 

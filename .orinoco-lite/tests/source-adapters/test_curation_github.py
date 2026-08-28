@@ -4,6 +4,7 @@ from contextlib import ExitStack, redirect_stderr, redirect_stdout
 import importlib.util
 from io import StringIO
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -19,7 +20,7 @@ from orinoco_lite.decisions import Disposition
 ROOT = Path(__file__).resolve().parents[3]
 SPEC = importlib.util.spec_from_file_location(
     "orinoco_curation_github_host_test",
-    ROOT / "source-adapters/metadata/tools/curation.py",
+    ROOT / ".orinoco-lite/source-adapters/metadata/tools/curation.py",
 )
 assert SPEC is not None and SPEC.loader is not None
 HOST = importlib.util.module_from_spec(SPEC)
@@ -29,6 +30,8 @@ SPEC.loader.exec_module(HOST)
 PROPOSAL = "b" * 40
 HEAD = "c" * 40
 BASE = "a" * 40
+TEST_RECORD_ROOT = "site-specific/metadata/records"
+TEST_ANNOTATION_ROOT = "site-specific/metadata/overlays/annotations"
 
 
 def record(pid: str, title: str) -> dict[str, object]:
@@ -60,6 +63,8 @@ def plan() -> CandidatePlan:
                 baseline_companion=None,
                 proposed_companion=None,
                 source_claim={"title": "New first"},
+                record_root=TEST_RECORD_ROOT,
+                annotation_root=TEST_ANNOTATION_ROOT,
             ),
             Candidate(
                 source_namespace="https://example.test/source",
@@ -72,6 +77,8 @@ def plan() -> CandidatePlan:
                 proposed_companion=None,
                 source_claim={"title": "Second"},
                 blockers=("needs a reviewed relation",),
+                record_root=TEST_RECORD_ROOT,
+                annotation_root=TEST_ANNOTATION_ROOT,
             ),
         ),
     )
@@ -159,7 +166,7 @@ class ReviewArtifactTests(unittest.TestCase):
             set(candidate),
         )
         self.assertEqual("first", candidate["friendly_id"])
-        self.assertEqual(["metadata/records/XYZProject/first.yaml"], candidate["paths"])
+        self.assertEqual(["site-specific/metadata/records/XYZProject/first.yaml"], candidate["paths"])
         self.assertNotIn("before", candidate)
         self.assertNotIn("after", candidate)
         encoded = HOST.review_bundle_bytes(bundle)
@@ -437,10 +444,93 @@ class TextEnvelopeTests(unittest.TestCase):
 
 
 class TrustedProviderBoundaryTests(unittest.TestCase):
+    def test_host_binds_candidate_paths_to_configured_record_root(self) -> None:
+        with tempfile.TemporaryDirectory() as name:
+            metadata_root = Path(name)
+            (metadata_root / "orinoco.yaml").write_text(
+                """contract_version: 2
+site:
+  name: Configured candidate path test
+paths:
+  records: site-specific/metadata/records
+""",
+                encoding="utf-8",
+            )
+            captured: dict[str, str | None] = {}
+
+            class Provider:
+                @staticmethod
+                def build_candidate_plan(_root, _output, **kwargs):
+                    captured["root"] = os.environ.get("ORINOCO_ROOT")
+                    captured["records"] = os.environ.get("ORINOCO_RECORDS_ROOT")
+                    pid = "https://example.test/things/configured"
+                    candidate = Candidate(
+                        source_namespace="https://example.test/source",
+                        source_record_id="project:configured",
+                        pid=pid,
+                        record_path="XYZProject/configured.yaml",
+                        baseline_record=None,
+                        proposed_record=record(pid, "Configured"),
+                        baseline_companion=None,
+                        proposed_companion=None,
+                        source_claim={"title": "Configured"},
+                    )
+                    return CandidatePlan(
+                        adapter="dump-research-info",
+                        adapter_version="1",
+                        adapter_agent_pid=kwargs["adapter_agent_pid"],
+                        source_namespace="https://example.test/source",
+                        source_coordinate={"commit": "d" * 40, "kind": "git"},
+                        metadata_base=kwargs["metadata_base"],
+                        candidates=(candidate,),
+                    )
+
+            inherited = {
+                "ORINOCO_ROOT": "/tmp/forged-root",
+                "ORINOCO_RECORDS_ROOT": "/tmp/forged-root/metadata/records",
+            }
+            with (
+                mock.patch.dict(os.environ, inherited, clear=False),
+                mock.patch.object(HOST, "_head", return_value=BASE),
+                mock.patch.object(HOST, "_load_provider", return_value=Provider),
+                mock.patch.object(HOST, "_schema", return_value=object()),
+            ):
+                result = HOST.build_plan(
+                    metadata_root,
+                    metadata_root,
+                    adapter="dump-research-info",
+                    metadata_base=BASE,
+                    adapter_agent_pid="https://example.test/agents/dump-v1",
+                    runtime_root=Path("/tmp/runtime"),
+                    scratch=metadata_root / "build/curation",
+                    source_checkout=Path("/tmp/source"),
+                    source_revision="d" * 40,
+                )
+                self.assertEqual(inherited["ORINOCO_ROOT"], os.environ["ORINOCO_ROOT"])
+                self.assertEqual(
+                    inherited["ORINOCO_RECORDS_ROOT"],
+                    os.environ["ORINOCO_RECORDS_ROOT"],
+                )
+
+            self.assertEqual(str(metadata_root.resolve()), captured["root"])
+            self.assertEqual(
+                str((metadata_root / "site-specific/metadata/records").resolve()),
+                captured["records"],
+            )
+            self.assertEqual(
+                "site-specific/metadata/records/XYZProject/configured.yaml",
+                result.candidates[0].record_repository_path,
+            )
+
     def test_provider_progress_cannot_contaminate_machine_readable_stdout(
         self,
     ) -> None:
         value = plan()
+        metadata_root = Path("/tmp/metadata-root")
+        workspace = mock.Mock(root=metadata_root.resolve())
+        workspace.path.return_value = (
+            metadata_root / "site-specific/metadata/records"
+        ).resolve()
 
         class Provider:
             @staticmethod
@@ -454,11 +544,12 @@ class TrustedProviderBoundaryTests(unittest.TestCase):
             mock.patch.object(HOST, "_head", return_value=BASE),
             mock.patch.object(HOST, "_load_provider", return_value=Provider),
             mock.patch.object(HOST, "_schema", return_value=object()),
+            mock.patch.object(HOST, "load_workspace", return_value=workspace),
             redirect_stdout(stdout),
             redirect_stderr(stderr),
         ):
             result = HOST.build_plan(
-                Path("/tmp/metadata-root"),
+                metadata_root,
                 Path("/tmp/trusted-root"),
                 adapter="dump-research-info",
                 metadata_base=BASE,
@@ -479,6 +570,10 @@ class TrustedProviderBoundaryTests(unittest.TestCase):
         trusted_root = Path("/tmp/trusted-root")
         scratch = metadata_root / "build/curation"
         captured: dict[str, object] = {}
+        workspace = mock.Mock(root=metadata_root.resolve())
+        workspace.path.return_value = (
+            metadata_root / "site-specific/metadata/records"
+        ).resolve()
 
         class Provider:
             @staticmethod
@@ -490,6 +585,7 @@ class TrustedProviderBoundaryTests(unittest.TestCase):
             mock.patch.object(HOST, "_head", return_value=BASE),
             mock.patch.object(HOST, "_load_provider", return_value=Provider),
             mock.patch.object(HOST, "_schema", return_value=object()),
+            mock.patch.object(HOST, "load_workspace", return_value=workspace),
         ):
             result = HOST.build_plan(
                 metadata_root,
@@ -617,7 +713,7 @@ class FinalizationValidationBoundaryTests(unittest.TestCase):
         def validate(review_root, runtime_root):
             cache = (
                 review_root
-                / "source-adapters/dump-research-info/policy/curation-decisions.yaml"
+                / "site-specific/curation-records/dump-research-info.yaml"
             )
             self.assertEqual(b"validated cache bytes", cache.read_bytes())
             events.append("validate")
@@ -736,6 +832,8 @@ class ProposalCommitTests(unittest.TestCase):
             baseline_companion=companion(old_assertion),
             proposed_companion=companion(new_assertion),
             source_claim={"attributes": [new_assertion]},
+            record_root=TEST_RECORD_ROOT,
+            annotation_root=TEST_ANNOTATION_ROOT,
         )
         added_pid = "https://example.test/things/added"
         added = Candidate(
@@ -748,6 +846,8 @@ class ProposalCommitTests(unittest.TestCase):
             baseline_companion=None,
             proposed_companion=None,
             source_claim={"title": "Added"},
+            record_root=TEST_RECORD_ROOT,
+            annotation_root=TEST_ANNOTATION_ROOT,
         )
         deleted_pid = "https://example.test/things/deleted"
         deleted = Candidate(
@@ -760,6 +860,8 @@ class ProposalCommitTests(unittest.TestCase):
             baseline_companion=None,
             proposed_companion=None,
             source_claim={},
+            record_root=TEST_RECORD_ROOT,
+            annotation_root=TEST_ANNOTATION_ROOT,
         )
 
         with tempfile.TemporaryDirectory() as name:
@@ -774,7 +876,7 @@ class ProposalCommitTests(unittest.TestCase):
                     path = root / change.path
                     path.parent.mkdir(parents=True, exist_ok=True)
                     path.write_bytes(change.baseline)
-            self.git(root, "add", "metadata")
+            self.git(root, "add", "site-specific/metadata")
             self.git(root, "commit", "-m", "test: create metadata base")
             base = self.git(root, "rev-parse", "HEAD")
             value = CandidatePlan(
@@ -798,25 +900,25 @@ class ProposalCommitTests(unittest.TestCase):
             )
             self.assertEqual(
                 [
-                    "metadata/overlays/annotations/XYZProject/modified.yaml",
-                    "metadata/records/XYZProject/modified.yaml",
+                    "site-specific/metadata/overlays/annotations/XYZProject/modified.yaml",
+                    "site-specific/metadata/records/XYZProject/modified.yaml",
                 ],
                 modified_bundle["paths"],
             )
 
             changed = HOST.stage_plan(root, value)
-            self.assertIn("metadata/records/XYZProject/added.yaml", changed)
-            self.assertIn("metadata/records/XYZProject/deleted.yaml", changed)
+            self.assertIn("site-specific/metadata/records/XYZProject/added.yaml", changed)
+            self.assertIn("site-specific/metadata/records/XYZProject/deleted.yaml", changed)
             self.assertIn(
-                "metadata/overlays/annotations/XYZProject/modified.yaml", changed
+                "site-specific/metadata/overlays/annotations/XYZProject/modified.yaml", changed
             )
             self.assertFalse(
                 (
                     root
-                    / "source-adapters/dump-research-info/policy/curation-decisions.yaml"
+                    / "site-specific/curation-records/dump-research-info.yaml"
                 ).exists()
             )
-            self.git(root, "add", "-A", "metadata")
+            self.git(root, "add", "-A", "site-specific/metadata")
             self.git(root, "commit", "-m", "test: capture metadata proposal")
             proposal = self.git(root, "rev-parse", "HEAD")
 
@@ -824,7 +926,7 @@ class ProposalCommitTests(unittest.TestCase):
             record_operations = {
                 path: {"A": "add", "M": "modify", "D": "delete"}[status]
                 for status, path in HOST._diff_entries(root, base, proposal)
-                if path.startswith("metadata/records/")
+                if path.startswith("site-specific/metadata/records/")
             }
             self.assertEqual(
                 {
@@ -833,7 +935,7 @@ class ProposalCommitTests(unittest.TestCase):
                 },
                 record_operations,
             )
-            forged_path = root / "source-adapters/forged.py"
+            forged_path = root / ".orinoco-lite/source-adapters/forged.py"
             forged_path.parent.mkdir(parents=True)
             forged_path.write_text("raise SystemExit('forged')\n", encoding="utf-8")
             self.git(root, "add", forged_path.relative_to(root).as_posix())
@@ -858,11 +960,11 @@ class ReviewHistoryTests(unittest.TestCase):
         self.git(root, "config", "user.name", "Fixture")
         self.git(root, "config", "user.email", "fixture@example.test")
         files = {
-            "source-adapters/tool.py": "print('trusted')\n",
-            "source-adapters/dump-research-info/policy/curation-decisions.yaml": (
+            ".orinoco-lite/source-adapters/tool.py": "print('trusted')\n",
+            "site-specific/curation-records/dump-research-info.yaml": (
                 "format: orinoco-lite-curation-decisions-v1\n"
             ),
-            "metadata/records/Thing/one.yaml": "pid: https://example.test/one\n",
+            "site-specific/metadata/records/Thing/one.yaml": "pid: https://example.test/one\n",
         }
         for relative, content in files.items():
             path = root / relative
@@ -870,12 +972,12 @@ class ReviewHistoryTests(unittest.TestCase):
             path.write_text(content, encoding="utf-8")
         self.git(root, "add", ".")
         self.git(root, "commit", "-m", "test: create base")
-        record_path = root / "metadata/records/Thing/one.yaml"
+        record_path = root / "site-specific/metadata/records/Thing/one.yaml"
         record_path.write_text(
             "pid: https://example.test/one\ntitle: Proposed\n",
             encoding="utf-8",
         )
-        self.git(root, "add", "metadata/records/Thing/one.yaml")
+        self.git(root, "add", "site-specific/metadata/records/Thing/one.yaml")
         self.git(root, "commit", "-m", "test: propose metadata")
         return self.git(root, "rev-parse", "HEAD")
 
@@ -883,8 +985,8 @@ class ReviewHistoryTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as name:
             root = Path(name)
             proposal = self.create_repository(root)
-            destination = "metadata/records/Thing/copied-code.yaml"
-            self.git(root, "mv", "source-adapters/tool.py", destination)
+            destination = "site-specific/metadata/records/Thing/copied-code.yaml"
+            self.git(root, "mv", ".orinoco-lite/source-adapters/tool.py", destination)
             self.git(root, "commit", "-m", "test: disguise code rename")
 
             with self.assertRaisesRegex(
@@ -900,8 +1002,8 @@ class ReviewHistoryTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as name:
             root = Path(name)
             proposal = self.create_repository(root)
-            cache = "source-adapters/dump-research-info/policy/curation-decisions.yaml"
-            destination = "metadata/overlays/annotations/Thing/cache.yaml"
+            cache = "site-specific/curation-records/dump-research-info.yaml"
+            destination = "site-specific/metadata/overlays/annotations/Thing/cache.yaml"
             (root / destination).parent.mkdir(parents=True, exist_ok=True)
             self.git(root, "mv", cache, destination)
             self.git(root, "commit", "-m", "test: disguise cache rename")

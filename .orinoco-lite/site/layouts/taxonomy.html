@@ -1,0 +1,43 @@
+{{ define "main" }}
+  {{ $variant := .Params.list_variant | default "grid" }}
+  {{ $filterFields := .Params.filter_fields | default (slice "kind" "year" "topic") }}
+  {{ $searchFields := .Params.search_fields | default (slice "title" "kind" "year" "topic" "author") }}
+  <header>
+    {{ if .Params.showBreadcrumbs | default (.Site.Params.list.showBreadcrumbs | default false) }}
+      {{ partial "breadcrumbs.html" . }}
+    {{ end }}
+    <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">{{ .Title }}</h1>
+  </header>
+  {{ with .Content }}
+    <section class="prose max-w-full dark:prose-invert">{{ . | emojify }}</section>
+  {{ end }}
+  <section
+    class="orinoco-taxonomy"
+    data-orinoco-taxonomy
+    data-filter-fields='{{ $filterFields | jsonify }}'
+    data-search-fields='{{ $searchFields | jsonify }}'
+  >
+    {{ if .Params.filter }}
+      <div class="orinoco-list-tools">
+        <label class="orinoco-search-label" for="orinoco-search">Search {{ lower .Title }}</label>
+        <input id="orinoco-search" class="orinoco-search" type="search" autocomplete="off">
+        <button type="button" class="orinoco-clear" data-orinoco-clear>Clear filters</button>
+        <span class="orinoco-result-count" data-orinoco-count aria-live="polite"></span>
+      </div>
+      <div class="orinoco-filter-layout">
+        <aside class="orinoco-filters" data-orinoco-filters aria-label="Filters"></aside>
+        <div class="orinoco-results">
+          {{ partial "taxonomy-list-vertical.html" (dict "page" . "fields" (union $filterFields $searchFields)) }}
+        </div>
+      </div>
+    {{ else if eq $variant "vertical" }}
+      {{ partial "taxonomy-list-vertical.html" (dict "page" . "fields" $searchFields) }}
+    {{ else }}
+      {{ partial "taxonomy-list-grid.html" (dict "page" . "fields" $searchFields) }}
+    {{ end }}
+  </section>
+  <link rel="stylesheet" href="{{ "orinoco-list.css" | relURL }}">
+  {{ if .Params.filter }}
+    <script src="{{ "orinoco-list.js" | relURL }}" defer></script>
+  {{ end }}
+{{ end }}

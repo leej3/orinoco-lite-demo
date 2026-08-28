@@ -1,0 +1,19 @@
+[{{ site.language.code }}]
+languageCode = {{ site.language.code | json_string }}
+languageName = {{ site.language.name | json_string }}
+languageDirection = {{ site.language.direction | json_string }}
+weight = {{ site.language.weight }}
+title = {{ site.identity.title | json_string }}
+copyright = {{ site.identity.copyright | json_string }}
+
+[{{ site.language.code }}.params]
+dateFormat = {{ site.language.date_format | json_string }}
+mainSections = ["projects"]
+description = {{ site.identity.description | json_string }}
+
+[{{ site.language.code }}.params.author]
+name = {{ site.author.name | json_string }}
+headline = {{ site.author.headline | json_string }}
+links = [
+{% for link in site.author.links %}  { {{ link.name | json_string }} = {{ link.url | json_string }} },
+{% endfor %}]

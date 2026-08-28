@@ -1,0 +1,4 @@
+interface:
+  display_name: "Maintain Orinoco Site"
+  short_description: "Update and validate a downstream safely"
+  default_prompt: "Use $maintain-orinoco-site to inspect, update, and validate this Orinoco Lite downstream while preserving its site-owned data."

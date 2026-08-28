@@ -17,9 +17,10 @@ BUNDLE_FORMAT = "orinoco-shacl-review-bundle"
 BUNDLE_VERSION = 2
 MAX_BUNDLE_BYTES = 10 * 1024 * 1024
 MAX_BUNDLE_RECORDS = 50
-RECORD_ROOT = PurePosixPath("metadata/records")
-ANNOTATION_ROOT = PurePosixPath("metadata/overlays/annotations")
+RECORD_ROOT = PurePosixPath("site-specific/metadata/records")
+ANNOTATION_ROOT = PurePosixPath("site-specific/metadata/overlays/annotations")
 SHA40 = re.compile(r"[0-9a-f]{40}")
+SOURCE_ID = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]*")
 
 
 class HandoffError(RuntimeError):
@@ -115,9 +116,9 @@ def _metadata_path(value: str) -> str | None:
         or any(part in {"", ".", ".."} or part.startswith(".") for part in path.parts)
     ):
         return None
-    if path.parts[:2] == RECORD_ROOT.parts and len(path.parts) >= 3:
+    if path.parts[:3] == RECORD_ROOT.parts and len(path.parts) >= 4:
         return value
-    if path.parts[:3] == ANNOTATION_ROOT.parts and len(path.parts) >= 4:
+    if path.parts[:4] == ANNOTATION_ROOT.parts and len(path.parts) >= 5:
         return value
     return None
 
@@ -128,11 +129,10 @@ def _decision_cache_path(value: str) -> str | None:
         any(character in value for character in "\\\r\n\0")
         or path.is_absolute()
         or path.as_posix() != value
-        or len(path.parts) != 4
-        or path.parts[0] != "source-adapters"
-        or path.parts[2:] != ("policy", "curation-decisions.yaml")
-        or path.parts[1] in {"", ".", ".."}
-        or path.parts[1].startswith(".")
+        or len(path.parts) != 3
+        or path.parts[:2] != ("site-specific", "curation-records")
+        or path.suffix.lower() not in {".yaml", ".yml"}
+        or SOURCE_ID.fullmatch(path.stem) is None
     ):
         return None
     return value

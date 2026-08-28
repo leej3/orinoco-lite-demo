@@ -1,6 +1,6 @@
 ---
 name: operate-orinoco-metadata-adapters
-description: Run and review site-owned Orinoco Lite metadata adapters with explicit human decisions. Use in a downstream or template repository when capturing source snapshots, generating candidate changes, reviewing accept/reject/link/defer/supersede choices, updating durable decision memory, applying decisions, opening adapter pull requests, checking provenance, or determining whether local locks or newer upstream behavior governs. Do not use for ordinary editorial or asset work.
+description: Run template-owned Orinoco Lite metadata adapter executables against site-owned source manifests and evidence with explicit human decisions. Use in a downstream or template repository when capturing source snapshots, generating candidate changes, reviewing accept/reject/link/defer/supersede choices, updating durable decision memory, applying decisions, opening adapter pull requests, checking provenance, or determining whether local locks or newer upstream behavior governs. Do not use for ordinary editorial or asset work.
 ---
 
 # Operate Orinoco metadata adapters
@@ -12,8 +12,9 @@ metadata.
 ## Resolve the site's contract
 
 1. Read every applicable `AGENTS.md`, the site README, ownership manifest,
-   `orinoco.lock` or equivalent release evidence, configuration, adapter README,
-   tests, and site-owned policy or decision registers.
+   `orinoco.lock` or equivalent release evidence, the applicable
+   `site-specific/sources/<id>/source.yaml`, adapter README, tests, and
+   site-owned policy or decision registers.
 2. Confirm whether the checkout is Copier source, a staged template render, a
    released downstream consumer, or a source-data checkout.
 3. For ordinary site work, follow the consumer's locked release and the
@@ -33,8 +34,10 @@ shared machinery as an Orinoco Lite engineering change.
 
 - Store accepted Things and supported assertion provenance in the site's
   canonical metadata records.
-- Store durable human dispositions in tracked, site-owned adapter or curation
-  policy. This is decision memory, not an evictable cache.
+- Store captured source content, evidence, and mapping policy under
+  `site-specific/sources/<id>/`. Store durable human dispositions under
+  `site-specific/curation-records/`. This is decision memory, not an evictable
+  cache.
 - Keep source-response caches, lookup indexes, temporary reports, browser output,
   generated projections, and builds ignored.
 - Use Git or DataLad to record execution and content history. Do not expect a Git
@@ -50,8 +53,9 @@ decisions, applying a review bundle, or preparing an adapter pull request.
 
 1. Start from a clean, current review branch in the downstream repository.
 2. Capture or select the declared source snapshot and run the exact adapter
-   command from the adapter README. Keep literal project-relative arguments in
-   the execution record.
+   command from `.orinoco-lite/source-adapters/`. Keep literal
+   project-relative arguments in the execution record. Run
+   `pixi run source-adapter-canary` before a network-backed refresh.
 3. Review candidate identities, assertions, provenance, collisions, unresolved
    items, and the effect of prior decisions. Do not auto-create or fuzzy-link an
    ambiguous entity.

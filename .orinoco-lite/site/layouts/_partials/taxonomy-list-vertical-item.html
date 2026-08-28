@@ -1,0 +1,29 @@
+{{ $term := .term }}
+{{ $taxonomy := .taxonomy }}
+{{ $fields := .fields | default (slice "title") }}
+{{ $depictionType := "depiction" }}
+{{ with $taxonomy.Params.term }}
+  {{ $depictionType = .depiction_type | default $depictionType }}
+{{ end }}
+{{ $depictions := $term.Resources.Match (printf "%s.*" $depictionType) }}
+{{ $data := dict "title" $term.Title }}
+{{ range $fields }}
+  {{ $data = merge $data (dict . (index $term.Params .)) }}
+{{ end }}
+<article
+  class="orinoco-list-item"
+  data-orinoco-item
+  data-orinoco='{{ $data | jsonify }}'
+>
+  <div class="orinoco-list-copy">
+    <h2><a href="{{ $term.RelPermalink }}">{{ $term.Title }}</a></h2>
+    <div class="orinoco-list-meta">
+      {{ with $term.Params.date }}<span>{{ substr (printf "%v" .) 0 4 }}</span>{{ end }}
+      {{ with $term.Params.kind }}<span>{{ replaceRE "^.*:" "" . }}</span>{{ end }}
+    </div>
+    {{ with $term.Params.description }}<p>{{ . | markdownify }}</p>{{ end }}
+  </div>
+  {{ with index $depictions 0 }}
+    <img class="orinoco-list-image" src="{{ .RelPermalink }}" alt="" loading="lazy">
+  {{ end }}
+</article>

@@ -27,8 +27,8 @@ from orinoco_lite.decisions import (
 
 
 ROOT = Path(__file__).resolve().parents[3]
-ADAPTER_PATH = ROOT / "source-adapters/dump-research-info/metadata_adapter.py"
-CANDIDATES_PATH = ROOT / "source-adapters/dump-research-info/candidates.py"
+ADAPTER_PATH = ROOT / "extensions/source-adapters/dump-research-info/metadata_adapter.py"
+CANDIDATES_PATH = ROOT / "extensions/source-adapters/dump-research-info/candidates.py"
 AGENT_PID = "xyzrins:source-adapters/dump-research-info/v2"
 FIRST_AUTHOR_ROLE = {
     "broad_mappings": ["marcrel:aut"],
@@ -139,7 +139,7 @@ def create_downstream(
     include_adapter_agent: bool = True,
 ) -> str:
     init_repository(root)
-    destination = root / "source-adapters/dump-research-info/metadata_adapter.py"
+    destination = root / "extensions/source-adapters/dump-research-info/metadata_adapter.py"
     destination.parent.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(ADAPTER_PATH, destination)
     canonical_records = list(records)
@@ -155,11 +155,11 @@ def create_downstream(
             )
         )
     for relative, record in canonical_records:
-        write_yaml(root / "metadata/records" / relative, record)
+        write_yaml(root / "site-specific/metadata/records" / relative, record)
     if not canonical_records:
-        (root / "metadata/records").mkdir(parents=True)
+        (root / "site-specific/metadata/records").mkdir(parents=True)
     for relative, companion in companions or []:
-        write_yaml(root / "metadata/overlays/annotations" / relative, companion)
+        write_yaml(root / "site-specific/metadata/overlays/annotations" / relative, companion)
     return commit_all(root, "base")
 
 
@@ -182,15 +182,24 @@ def build(
     schema: SchemaView = SCHEMA,
     trusted_root: Path | None = None,
 ):
-    return CANDIDATES.build_candidate_plan(
-        downstream,
-        source,
-        metadata_base=metadata_base,
-        expected_source_commit=source_commit,
-        adapter_agent_pid=AGENT_PID,
-        schema=schema,
-        trusted_root=trusted_root,
-    )
+    with patch.dict(
+        os.environ,
+        {
+            "ORINOCO_ROOT": str(downstream.resolve()),
+            "ORINOCO_RECORDS_ROOT": str(
+                (downstream / "site-specific/metadata/records").resolve()
+            ),
+        },
+    ):
+        return CANDIDATES.build_candidate_plan(
+            downstream,
+            source,
+            metadata_base=metadata_base,
+            expected_source_commit=source_commit,
+            adapter_agent_pid=AGENT_PID,
+            schema=schema,
+            trusted_root=trusted_root,
+        )
 
 
 def pav_entry(
@@ -792,12 +801,12 @@ class CandidatePlanTests(unittest.TestCase):
             )
             trusted = root / "trusted"
             trusted_adapter = (
-                trusted / "source-adapters/dump-research-info/metadata_adapter.py"
+                trusted / "extensions/source-adapters/dump-research-info/metadata_adapter.py"
             )
             trusted_adapter.parent.mkdir(parents=True)
             shutil.copyfile(ADAPTER_PATH, trusted_adapter)
             untrusted_adapter = (
-                downstream / "source-adapters/dump-research-info/metadata_adapter.py"
+                downstream / "extensions/source-adapters/dump-research-info/metadata_adapter.py"
             )
             untrusted_adapter.write_text(
                 "raise RuntimeError('untrusted adapter executed')\n",
@@ -890,7 +899,7 @@ class CandidatePlanTests(unittest.TestCase):
                 include_adapter_agent=False,
             )
             write_yaml(
-                downstream / "metadata/records/XYZProject/wrong-agent.yaml",
+                downstream / "site-specific/metadata/records/XYZProject/wrong-agent.yaml",
                 {
                     "pid": AGENT_PID,
                     "schema_type": "xyzri:XYZProject",
@@ -1009,8 +1018,8 @@ class CandidatePlanTests(unittest.TestCase):
             )
             self.assertEqual(
                 {
-                    "metadata/records/XYZProject/new.yaml",
-                    "metadata/overlays/annotations/XYZProject/new.yaml",
+                    "site-specific/metadata/records/XYZProject/new.yaml",
+                    "site-specific/metadata/overlays/annotations/XYZProject/new.yaml",
                 },
                 {change.path for change in candidate.file_changes()},
             )

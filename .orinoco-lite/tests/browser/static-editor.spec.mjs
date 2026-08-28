@@ -37,7 +37,7 @@ async function assertCatalog(catalog) {
   );
   for (const record of catalog.records) {
     expect(Object.keys(record).sort()).toEqual(contract.catalog.record_fields);
-    expect(record.path).toMatch(/^metadata\/records\/.+\.ya?ml$/);
+    expect(record.path).toMatch(/^site-specific\/metadata\/records\/.+\.ya?ml$/);
     const content = await readFile(path.join(ROOT, record.path));
     expect(record.sha256).toBe(sha256(content));
     expect(record.rdf_turtle).toEqual(expect.any(String));

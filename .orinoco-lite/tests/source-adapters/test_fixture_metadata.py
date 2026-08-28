@@ -52,11 +52,11 @@ class AdapterFixtureTests(unittest.TestCase):
 
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
-            record_path = root / "metadata/records/Thing/example.yaml"
+            record_path = root / "site-specific/metadata/records/Thing/example.yaml"
             companion_path = (
-                root / "metadata/overlays/annotations/Thing/example.yaml"
+                root / "site-specific/metadata/overlays/annotations/Thing/example.yaml"
             )
-            cache = Path("source-adapters/zotero/policy/curation-decisions.yaml")
+            cache = Path("site-specific/curation-records/zotero.yaml")
             record_path.parent.mkdir(parents=True)
             companion_path.parent.mkdir(parents=True)
             (root / cache).parent.mkdir(parents=True)

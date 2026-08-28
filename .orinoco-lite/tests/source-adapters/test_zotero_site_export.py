@@ -16,7 +16,7 @@ import yaml
 
 
 ROOT = Path(__file__).resolve().parents[3]
-SCRIPTS = ROOT / "source-adapters/zotero/tools"
+SCRIPTS = ROOT / ".orinoco-lite/source-adapters/zotero/tools"
 if str(SCRIPTS) not in sys.path:
     sys.path.insert(0, str(SCRIPTS))
 SPEC = importlib.util.spec_from_file_location(
@@ -47,14 +47,14 @@ class ZoteroSiteExportTests(unittest.TestCase):
         EXPORT.command_export(
             argparse.Namespace(
                 publications=(
-                    ROOT / "source-adapters/zotero/source/candidates/XYZPublication.json"
+                    ROOT / "site-specific/sources/zotero/evidence/candidates/XYZPublication.json"
                 ),
                 snapshot=(
-                    ROOT / "source-adapters/zotero/source/snapshot.json"
+                    ROOT / "site-specific/sources/zotero/content/snapshot.json"
                 ),
                 policy=policy
                 or ROOT
-                / "source-adapters/zotero/policy/site-policy.yaml",
+                / "site-specific/sources/zotero/policy/site-policy.yaml",
                 output_dir=output,
                 report=report,
             ),
@@ -118,12 +118,12 @@ class ZoteroSiteExportTests(unittest.TestCase):
                 )
         canonical = {
             path.name
-            for path in (ROOT / "metadata/records/XYZPublication").glob("*.yaml")
+            for path in (ROOT / "site-specific/metadata/records/XYZPublication").glob("*.yaml")
         }
         self.assertLessEqual(set(first_files), canonical)
         canonical_people = {
             yaml.safe_load(path.read_text(encoding="utf-8"))["pid"]
-            for path in (ROOT / "metadata/records/XYZPerson").glob("*.yaml")
+            for path in (ROOT / "site-specific/metadata/records/XYZPerson").glob("*.yaml")
         }
         self.assertLessEqual(
             {
@@ -166,7 +166,7 @@ class ZoteroSiteExportTests(unittest.TestCase):
 
     def test_export_fails_closed_on_an_unreviewed_relationship_target(self) -> None:
         policy = EXPORT.load_policy(
-            ROOT / "source-adapters/zotero/policy/site-policy.yaml"
+            ROOT / "site-specific/sources/zotero/policy/site-policy.yaml"
         )
         record = {
             "pid": "https://doi.org/10.1234/example",
@@ -248,7 +248,7 @@ class ZoteroSiteExportTests(unittest.TestCase):
             policy.write_bytes(
                 (
                     ROOT
-                    / "source-adapters/zotero/policy/site-policy.yaml"
+                    / "site-specific/sources/zotero/policy/site-policy.yaml"
                 ).read_bytes()
             )
             (root / EXPORT.REPORT_RELATIVE_PATH).write_text(
@@ -393,7 +393,7 @@ class ZoteroSiteExportTests(unittest.TestCase):
 
     def test_export_rejects_every_unused_policy_category(self) -> None:
         policy_path = (
-            ROOT / "source-adapters/zotero/policy/site-policy.yaml"
+            ROOT / "site-specific/sources/zotero/policy/site-policy.yaml"
         )
         base_policy = EXPORT.load_policy(policy_path)
 
@@ -467,7 +467,7 @@ class ZoteroSiteExportTests(unittest.TestCase):
 
     def test_curated_generation_entry_usage_is_checked_independently(self) -> None:
         policy = EXPORT.load_policy(
-            ROOT / "source-adapters/zotero/policy/site-policy.yaml"
+            ROOT / "site-specific/sources/zotero/policy/site-policy.yaml"
         )
         usage = {
             field: set(values)
@@ -479,7 +479,7 @@ class ZoteroSiteExportTests(unittest.TestCase):
 
     def test_policy_rejects_unknown_duplicate_and_conflicting_entries(self) -> None:
         source = (
-            ROOT / "source-adapters/zotero/policy/site-policy.yaml"
+            ROOT / "site-specific/sources/zotero/policy/site-policy.yaml"
         ).read_text(encoding="utf-8")
         with self.build_temporary_directory() as directory:
             root = Path(directory)
@@ -499,7 +499,7 @@ class ZoteroSiteExportTests(unittest.TestCase):
             conflicting = deepcopy(
                 EXPORT.load_policy(
                     ROOT
-                    / "source-adapters/zotero/policy/site-policy.yaml"
+                    / "site-specific/sources/zotero/policy/site-policy.yaml"
                 )
             )
             conflicting["omitted_attribution_targets"][
@@ -516,7 +516,7 @@ class ZoteroSiteExportTests(unittest.TestCase):
             empty_curated = deepcopy(
                 EXPORT.load_policy(
                     ROOT
-                    / "source-adapters/zotero/policy/site-policy.yaml"
+                    / "site-specific/sources/zotero/policy/site-policy.yaml"
                 )
             )
             source_pid = next(iter(empty_curated["curated_generations"]))
@@ -532,7 +532,7 @@ class ZoteroSiteExportTests(unittest.TestCase):
             duplicate_curated = deepcopy(
                 EXPORT.load_policy(
                     ROOT
-                    / "source-adapters/zotero/policy/site-policy.yaml"
+                    / "site-specific/sources/zotero/policy/site-policy.yaml"
                 )
             )
             source_pid = next(iter(duplicate_curated["curated_generations"]))

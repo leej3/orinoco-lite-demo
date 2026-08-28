@@ -75,7 +75,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/tzdata-2026c-h151e31d_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/wcwidth-0.8.2-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/zipp-4.1.0-pyhcf101f3_0.conda
-      - pypi: direct+https://github.com/ORINOCO-Lite/orinoco-lite-dev/releases/download/v0.2.0rc10/orinoco_lite-0.2.0rc10-py3-none-any.whl#sha256=04c40f95a8e7227d84838887b66596912aeac1bf5fe2f046755b618b2c7baf9b
+      - pypi: direct+https://github.com/ORINOCO-Lite/orinoco-lite-dev/releases/download/v0.2.0rc12/orinoco_lite-0.2.0rc12-py3-none-any.whl#sha256=ec39fe7993721881359edd19815b454a52a6d75765a028f4a43e7914ed88de0e
       - pypi: git+https://github.com/ORINOCO-Lite/things-enrichment-tools.git?rev=9f036a4cdfb53f87346152f9cd4620aaef38bce2#9f036a4cdfb53f87346152f9cd4620aaef38bce2
       - pypi: https://files.pythonhosted.org/packages/00/cc/7fbd75d3362e939eb98bcf9bd22f3f7df8c237a85148899ed3d38e5614e5/json_flattener-0.1.9-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/02/10/5da547df7a391dcde17f59520a231527b8571e6f46fc8efb02ccb370ab12/docutils-0.22.4-py3-none-any.whl
@@ -269,7 +269,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/readline-8.3-h46df422_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/tk-8.6.13-hd3d0363_3.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/yaml-0.2.5-h925e9cb_3.conda
-      - pypi: direct+https://github.com/ORINOCO-Lite/orinoco-lite-dev/releases/download/v0.2.0rc10/orinoco_lite-0.2.0rc10-py3-none-any.whl#sha256=04c40f95a8e7227d84838887b66596912aeac1bf5fe2f046755b618b2c7baf9b
+      - pypi: direct+https://github.com/ORINOCO-Lite/orinoco-lite-dev/releases/download/v0.2.0rc12/orinoco_lite-0.2.0rc12-py3-none-any.whl#sha256=ec39fe7993721881359edd19815b454a52a6d75765a028f4a43e7914ed88de0e
       - pypi: git+https://github.com/ORINOCO-Lite/things-enrichment-tools.git?rev=9f036a4cdfb53f87346152f9cd4620aaef38bce2#9f036a4cdfb53f87346152f9cd4620aaef38bce2
       - pypi: https://files.pythonhosted.org/packages/00/cc/7fbd75d3362e939eb98bcf9bd22f3f7df8c237a85148899ed3d38e5614e5/json_flattener-0.1.9-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/02/10/5da547df7a391dcde17f59520a231527b8571e6f46fc8efb02ccb370ab12/docutils-0.22.4-py3-none-any.whl
@@ -1498,9 +1498,9 @@ packages:
     - yaml >=0.2.5,<0.3.0a0
   size: 83386
   timestamp: 1753484079473
-- pypi: direct+https://github.com/ORINOCO-Lite/orinoco-lite-dev/releases/download/v0.2.0rc10/orinoco_lite-0.2.0rc10-py3-none-any.whl#sha256=04c40f95a8e7227d84838887b66596912aeac1bf5fe2f046755b618b2c7baf9b
+- pypi: direct+https://github.com/ORINOCO-Lite/orinoco-lite-dev/releases/download/v0.2.0rc12/orinoco_lite-0.2.0rc12-py3-none-any.whl#sha256=ec39fe7993721881359edd19815b454a52a6d75765a028f4a43e7914ed88de0e
   name: orinoco-lite
-  version: 0.2.0rc10
+  version: 0.2.0rc12
   requires_dist:
   - dump-things-service==6.3.6
   - jinja2==3.1.6

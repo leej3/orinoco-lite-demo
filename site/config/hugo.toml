@@ -1,8 +1,0 @@
-# CON environment overrides. The upstream `_default` configuration remains
-# the shared base and is merged by `hugo --environment con`.
-baseURL = "https://leej3.github.io/orinoco-lite-demo/"
-summaryLength = 30
-disableKinds = ["RSS"]
-
-[outputs]
-  home = ["HTML"]

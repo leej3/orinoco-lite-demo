@@ -1,0 +1,12 @@
+---
+title: {{ site.people.title | json_string }}
+url: {{ site.people.route | json_string }}
+aliases: {{ site.people.aliases | json_string }}
+---
+
+{{ site.people.introduction }}
+{% for group in site.people.groups %}
+## {{ group.title }}
+
+{% for pid in group.members %}- [{{ record_label(pid) }}]({{ record_ref(pid) }})
+{% endfor %}{% endfor %}

@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from pathlib import Path
 import re
-import tomllib
 import unittest
 
 import yaml
@@ -11,7 +10,7 @@ import yaml
 ROOT = Path(__file__).resolve().parents[3]
 WORKFLOW = ROOT / ".github/workflows/curation-review.yml"
 VALIDATE_WORKFLOW = ROOT / ".github/workflows/validate.yml"
-SOURCES = ROOT / "source-adapters/metadata/sources.toml"
+SOURCES = ROOT / "site-specific/sources"
 
 
 class CurationReviewWorkflowTests(unittest.TestCase):
@@ -62,10 +61,13 @@ class CurationReviewWorkflowTests(unittest.TestCase):
     def test_proposal_derives_one_reviewed_provenance_identity_from_policy(
         self,
     ) -> None:
-        configured = tomllib.loads(SOURCES.read_text(encoding="utf-8"))
         identities = {
             source["id"]: source["provenance_identity"]
-            for source in configured["sources"]
+            for path in sorted(SOURCES.glob("*/source.yaml"))
+            if isinstance(
+                (source := yaml.safe_load(path.read_text(encoding="utf-8"))),
+                dict,
+            )
         }
         self.assertEqual(
             {
@@ -82,7 +84,7 @@ class CurationReviewWorkflowTests(unittest.TestCase):
         ]
         self.assertEqual("source_policy", resolution["id"])
         self.assertEqual("${{ inputs.adapter }}", resolution["env"]["ADAPTER"])
-        self.assertIn("source-adapters/metadata/sources.toml", resolution["run"])
+        self.assertIn("site-specific/sources", resolution["run"])
         self.assertIn("metadata/tools/review.py", resolution["run"])
         self.assertIn("resolve-provenance-identity", resolution["run"])
         self.assertIn("pixi run python", resolution["run"])
@@ -106,16 +108,47 @@ class CurationReviewWorkflowTests(unittest.TestCase):
             )
         self.assertNotIn("${{ inputs.adapter_agent_pid }}", self.text)
 
-    def test_token_created_writes_dispatch_validation_for_the_exact_refs(self) -> None:
+    def test_token_created_writes_dispatch_nonduplicated_validation_modes(
+        self,
+    ) -> None:
         proposal = self.propose_steps[
-            "Dispatch ordinary validation for the exact proposal ref"
+            "Dispatch full validation for the exact proposal ref"
         ]["run"]
-        reviewed = self.submit_steps[
-            "Dispatch ordinary validation for the exact reviewed ref"
-        ]["run"]
+        reviewed_step = self.submit_steps[
+            "Dispatch selected validation for the exact reviewed ref"
+        ]
+        reviewed = reviewed_step["run"]
+        pull = self.propose_steps["Open one draft pull request"]
+        push = self.submit_steps["Push with an exact observed-head lease"]
+
         self.assertEqual(2, self.text.count("gh workflow run validate.yml"))
         self.assertIn('--ref "$BRANCH"', proposal)
+        self.assertIn('-f "validation=full"', proposal)
+        self.assertNotIn("metadata_changed", proposal)
         self.assertIn('--ref "$HEAD_REF"', reviewed)
+        self.assertEqual(
+            "${{ steps.rehearsal.outputs.metadata_changed }}",
+            reviewed_step["env"]["METADATA_CHANGED"],
+        )
+        self.assertIn('case "$METADATA_CHANGED" in', reviewed)
+        self.assertIn("true) validation=full", reviewed)
+        self.assertIn("false) validation=joined", reviewed)
+        self.assertIn('-f "validation=${validation}"', reviewed)
+        self.assertEqual("${{ github.token }}", pull["env"]["GH_TOKEN"])
+        self.assertEqual("${{ github.token }}", push["env"]["GH_TOKEN"])
+        self.assertNotIn("secrets.", str(pull))
+        self.assertNotIn("secrets.", str(push))
+
+        self.assertEqual(
+            "false", self.propose["concurrency"]["cancel-in-progress"]
+        )
+        self.assertEqual(
+            "false", self.submit["concurrency"]["cancel-in-progress"]
+        )
+        self.assertNotIn("cancel-in-progress: true", self.text)
+        self.assertEqual(
+            2, self.text.count("gh workflow run shacl-vue-proposal.yml")
+        )
 
     def test_actions_are_pinned_and_checkout_never_persists_credentials(self) -> None:
         references = re.findall(r"^\s*uses:\s*([^\s#]+)", self.text, re.MULTILINE)
@@ -134,8 +167,8 @@ class CurationReviewWorkflowTests(unittest.TestCase):
         step = self.propose_steps["Create one explicit DataLad proposal commit"]["run"]
         self.assertEqual(1, step.count("datalad run --explicit"))
         self.assertEqual(1, step.count('-m "'))
-        self.assertIn("-o metadata/records", step)
-        self.assertIn("-o metadata/overlays/annotations", step)
+        self.assertIn("-o site-specific/metadata/records", step)
+        self.assertIn("-o site-specific/metadata/overlays/annotations", step)
         self.assertIn("stage-proposal", step)
         self.assertIn("--adapter-agent-pid", step)
         self.assertIn("--metadata-base", step)
@@ -148,8 +181,12 @@ class CurationReviewWorkflowTests(unittest.TestCase):
         self.assertIn("Curation-Adapter-Agent", step)
         self.assertIn("--no-renames", step)
         self.assertIn('{"A", "M", "D"}', step)
-        self.assertIn('("metadata", "records")', step)
-        self.assertIn('("metadata", "overlays", "annotations")', step)
+        self.assertIn(
+            '("site-specific", "metadata", "records")', step
+        )
+        self.assertIn(
+            '"site-specific", "metadata", "overlays", "annotations"', step
+        )
 
     def test_single_untracked_review_bundle_and_concise_fallback_are_published(
         self,
@@ -211,12 +248,15 @@ class CurationReviewWorkflowTests(unittest.TestCase):
         self.assertNotIn("CURATION_REVIEW_APP_ORIGIN", self.text)
         self.assertNotIn("orinoco-curation-review.pages.dev/review", self.text)
 
-    def test_bot_finalization_copy_links_the_commit_and_reports_validation(self) -> None:
+    def test_bot_finalization_copy_links_commit_and_reports_merge_readiness(
+        self,
+    ) -> None:
         final = self.submit_steps["Post the finalization result"]["run"]
         self.assertIn("https://github.com/{repository}/commit/{commit}", final)
         self.assertIn("Recorded human acceptance decisions", final)
-        self.assertIn("Validation has been requested.", final)
-        self.assertIn("Merge after it passes.", final)
+        self.assertIn("Ready for merging.", final)
+        self.assertNotIn("Validation has been requested.", final)
+        self.assertNotIn("Merge after it passes.", final)
         self.assertNotIn("no approval or merge was performed", final)
         self.assertNotIn("awaiting ordinary validation", final)
 
@@ -243,7 +283,7 @@ class CurationReviewWorkflowTests(unittest.TestCase):
             "Apply metadata-changing finalization through DataLad"
         ]["run"]
         cache = self.submit_steps["Apply a decision-cache-only finalization"]["run"]
-        self.assertIn("trusted/source-adapters/metadata/tools/curation.py", parse)
+        self.assertIn("trusted/.orinoco-lite/source-adapters/metadata/tools/curation.py", parse)
         self.assertIn("inspect-submission", parse)
         self.assertIn('{"write", "admin"}', authority)
         self.assertIn('event["comment"]["user"]', authority)
@@ -329,7 +369,7 @@ class CurationReviewWorkflowTests(unittest.TestCase):
             execution = self.submit_steps[name]["run"]
             self.assertIn("trusted/pixi.toml", execution)
             self.assertIn(
-                "trusted/source-adapters/metadata/tools/curation.py",
+                "trusted/.orinoco-lite/source-adapters/metadata/tools/curation.py",
                 execution,
             )
             self.assertNotIn("steps.base.outputs.root }}/pixi.toml", execution)
@@ -361,8 +401,8 @@ class CurationReviewWorkflowTests(unittest.TestCase):
         ]["run"]
         cache = self.submit_steps["Apply a decision-cache-only finalization"]["run"]
         self.assertIn("datalad run --explicit", metadata)
-        self.assertIn("-o metadata/records", metadata)
-        self.assertIn("-o metadata/overlays/annotations", metadata)
+        self.assertIn("-o site-specific/metadata/records", metadata)
+        self.assertIn("-o site-specific/metadata/overlays/annotations", metadata)
         self.assertIn('-o "$CACHE_PATH"', metadata)
         self.assertNotIn("datalad", cache)
         self.assertIn('git -C review add -- "$CACHE_PATH"', cache)

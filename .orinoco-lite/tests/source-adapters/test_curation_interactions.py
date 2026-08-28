@@ -12,6 +12,7 @@ import sys
 import tempfile
 from types import ModuleType
 import unittest
+from unittest.mock import patch
 from urllib.parse import quote
 
 from linkml.validator import Validator
@@ -89,11 +90,11 @@ neutralize_reviewed_adapter_state = (
 )
 ZOTERO = load_module(
     "orinoco_zotero_interaction_candidates",
-    ROOT / "source-adapters/zotero/candidates.py",
+    ROOT / ".orinoco-lite/source-adapters/zotero/candidates.py",
 )
 DUMP = load_module(
     "orinoco_dump_interaction_candidates",
-    ROOT / "source-adapters/dump-research-info/candidates.py",
+    ROOT / "extensions/source-adapters/dump-research-info/candidates.py",
 )
 
 
@@ -148,7 +149,7 @@ def write_json(path: Path, value: object) -> None:
 
 
 def metadata_snapshot(root: Path) -> dict[str, bytes]:
-    metadata = root / "metadata"
+    metadata = root / "site-specific/metadata"
     return {
         path.relative_to(metadata).as_posix(): path.read_bytes()
         for path in sorted(metadata.rglob("*"))
@@ -159,27 +160,22 @@ def metadata_snapshot(root: Path) -> dict[str, bytes]:
 def prepared_repository(destination: Path) -> tuple[Path, str]:
     root = destination / "consumer"
     init_repository(root)
-    shutil.copytree(ROOT / "metadata", root / "metadata")
-    for adapter in ("zotero", "dump-research-info"):
-        shutil.copytree(
-            ROOT / "source-adapters" / adapter,
-            root / "source-adapters" / adapter,
-            ignore=shutil.ignore_patterns("__pycache__", "*.pyc"),
-        )
+    shutil.copytree(ROOT / "site-specific", root / "site-specific")
+    shutil.copytree(
+        ROOT / ".orinoco-lite/source-adapters",
+        root / ".orinoco-lite/source-adapters",
+        ignore=shutil.ignore_patterns("__pycache__", "*.pyc"),
+    )
     neutralize_reviewed_adapter_state(
         root,
         adapter_agent_pids=REVIEWED_ADAPTER_AGENTS,
         decision_caches=tuple(
-            Path(f"source-adapters/{adapter}/policy/curation-decisions.yaml")
+            Path(f"site-specific/curation-records/{adapter}.yaml")
             for adapter in ("zotero", "dump-research-info")
         ),
     )
-    for relative in ("custom", "extensions", "site"):
+    for relative in ("extensions", ".orinoco-lite/site"):
         shutil.copytree(ROOT / relative, root / relative)
-    shutil.copytree(
-        ROOT / ".orinoco-lite/provenance",
-        root / ".orinoco-lite/provenance",
-    )
     for relative in ("orinoco.lock", "orinoco.yaml"):
         shutil.copyfile(ROOT / relative, root / relative)
     shutil.copyfile(ROOT / ".gitignore", root / ".gitignore")
@@ -228,14 +224,23 @@ def build_zotero(
     *,
     library_version: int = ZOTERO_VERSION,
 ) -> CandidatePlan:
-    return ZOTERO.build_candidate_plan(
-        root,
-        root / "build" / name,
-        metadata_base=metadata_base,
-        expected_library_version=library_version,
-        adapter_agent_pid=ZOTERO_AGENT,
-        schema=SCHEMA,
-    )
+    with patch.dict(
+        os.environ,
+        {
+            "ORINOCO_ROOT": str(root.resolve()),
+            "ORINOCO_RECORDS_ROOT": str(
+                (root / "site-specific/metadata/records").resolve()
+            ),
+        },
+    ):
+        return ZOTERO.build_candidate_plan(
+            root,
+            root / "build" / name,
+            metadata_base=metadata_base,
+            expected_library_version=library_version,
+            adapter_agent_pid=ZOTERO_AGENT,
+            schema=SCHEMA,
+        )
 
 
 def build_dump(
@@ -244,14 +249,23 @@ def build_dump(
     metadata_base: str,
     source_commit: str,
 ) -> CandidatePlan:
-    return DUMP.build_candidate_plan(
-        root,
-        source,
-        metadata_base=metadata_base,
-        expected_source_commit=source_commit,
-        adapter_agent_pid=DUMP_AGENT,
-        schema=SCHEMA,
-    )
+    with patch.dict(
+        os.environ,
+        {
+            "ORINOCO_ROOT": str(root.resolve()),
+            "ORINOCO_RECORDS_ROOT": str(
+                (root / "site-specific/metadata/records").resolve()
+            ),
+        },
+    ):
+        return DUMP.build_candidate_plan(
+            root,
+            source,
+            metadata_base=metadata_base,
+            expected_source_commit=source_commit,
+            adapter_agent_pid=DUMP_AGENT,
+            schema=SCHEMA,
+        )
 
 
 def apply_plan(root: Path, plan: CandidatePlan, message: str) -> str:
@@ -266,7 +280,7 @@ def apply_plan(root: Path, plan: CandidatePlan, message: str) -> str:
 
 
 def cache_path(root: Path, adapter: str) -> Path:
-    return root / f"source-adapters/{adapter}/policy/curation-decisions.yaml"
+    return root / f"site-specific/curation-records/{adapter}.yaml"
 
 
 def write_decisions(
@@ -329,8 +343,8 @@ def dump_attribute_record(pid: str, value: str) -> dict[str, object]:
 
 def validate_joined_metadata(test: unittest.TestCase, root: Path) -> None:
     validator = Validator(SCHEMA_PATH)
-    records_root = root / "metadata/records"
-    annotations_root = root / "metadata/overlays/annotations"
+    records_root = root / "site-specific/metadata/records"
+    annotations_root = root / "site-specific/metadata/overlays/annotations"
     count = 0
     for record_path in sorted(records_root.rglob("*.yaml")):
         if record_path.name == ".dumpthings.yaml":
@@ -396,7 +410,7 @@ def revise_zotero_source(root: Path, source_record_id: str) -> int:
         raise AssertionError("The material-change fixture requires one Zotero item")
     key = source_record_id[len(prefix) :]
     publications_path = (
-        root / "source-adapters/zotero/source/candidates/XYZPublication.json"
+        root / "site-specific/sources/zotero/evidence/candidates/XYZPublication.json"
     )
     publications = json.loads(publications_path.read_text(encoding="utf-8"))
     matches = [
@@ -415,7 +429,7 @@ def revise_zotero_source(root: Path, source_record_id: str) -> int:
     publication["display_label"] = publication["title"]
     write_json(publications_path, publications)
 
-    snapshot_path = root / "source-adapters/zotero/source/snapshot.json"
+    snapshot_path = root / "site-specific/sources/zotero/content/snapshot.json"
     snapshot = json.loads(snapshot_path.read_text(encoding="utf-8"))
     items = [item for item in snapshot["items"] if item.get("key") == key]
     if len(items) != 1:
