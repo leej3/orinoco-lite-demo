@@ -288,14 +288,26 @@ class CurationReviewWorkflowTests(unittest.TestCase):
             ),
         )
         self.assertEqual(2, validation.count("run_parent_orinoco --root"))
+        self.assertIn("system_git=/usr/bin/git", validation)
+        self.assertIn('test -f "$system_git"', validation)
         self.assertIn('ln -s "$system_git" "$git_bin/git"', validation)
+        self.assertNotIn("command -v git", validation)
         self.assertIn('export PATH="$1:$PATH"', validation)
         self.assertIn("export GIT_CONFIG_GLOBAL=/dev/null", validation)
         self.assertIn("export GIT_CONFIG_NOSYSTEM=1", validation)
+        self.assertIn("export GIT_NO_REPLACE_OBJECTS=1", validation)
         self.assertIn("export GIT_TERMINAL_PROMPT=0", validation)
         self.assertIn('exec orinoco "$@"', validation)
         self.assertNotIn("trusted/pixi.toml", validation)
         self.assertNotIn("review/pixi.toml", validation)
+        step_names = [step["name"] for step in self.submit["steps"]]
+        validation_index = step_names.index("Validate the complete joined graph")
+        for name in (
+            "Rebuild and rehearse the complete finalization",
+            "Apply metadata-changing finalization through DataLad",
+            "Apply a decision-cache-only finalization",
+        ):
+            self.assertLess(step_names.index(name), validation_index)
         for name in (
             "Rebuild and rehearse the complete finalization",
             "Apply metadata-changing finalization through DataLad",

@@ -956,7 +956,8 @@ jobs:
           unset GH_TOKEN GITHUB_TOKEN
           git_bin="$RUNNER_TEMP/curation-system-bin"
           mkdir "$git_bin"
-          system_git="$(command -v git)"
+          system_git=/usr/bin/git
+          test -f "$system_git"
           test -x "$system_git"
           ln -s "$system_git" "$git_bin/git"
           run_parent_orinoco() {
@@ -966,6 +967,7 @@ jobs:
                 export PATH="$1:$PATH"
                 export GIT_CONFIG_GLOBAL=/dev/null
                 export GIT_CONFIG_NOSYSTEM=1
+                export GIT_NO_REPLACE_OBJECTS=1
                 export GIT_TERMINAL_PROMPT=0
                 shift
                 exec orinoco "$@"
