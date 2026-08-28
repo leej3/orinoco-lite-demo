@@ -793,6 +793,17 @@ class ProposalCommitTests(unittest.TestCase):
                 },
                 record_operations,
             )
+            forged_path = root / "source-adapters/forged.py"
+            forged_path.parent.mkdir(parents=True)
+            forged_path.write_text("raise SystemExit('forged')\n", encoding="utf-8")
+            self.git(root, "add", forged_path.relative_to(root).as_posix())
+            self.git(root, "commit", "--amend", "--no-edit")
+            forged = self.git(root, "rev-parse", "HEAD")
+            with self.assertRaisesRegex(
+                HOST.CurationHostError,
+                "Proposal commit paths do not match the candidate plan",
+            ):
+                HOST.verify_proposal_commit(root, value, forged)
 
 
 class ReviewHistoryTests(unittest.TestCase):

@@ -258,6 +258,7 @@ class CurationReviewWorkflowTests(unittest.TestCase):
         runtime = self.submit_steps[
             "Resolve the proposal parent's released runtime"
         ]["run"]
+        validation = self.submit_steps["Validate the complete joined graph"]["run"]
         self.assertIn(
             'git -C trusted merge-base --is-ancestor "$parent" HEAD',
             isolate,
@@ -272,11 +273,41 @@ class CurationReviewWorkflowTests(unittest.TestCase):
         self.assertNotIn("trusted/pixi.toml", runtime)
         self.assertNotIn("review/pixi.toml", runtime)
         self.assertEqual(
-            1,
+            2,
             self.text.count(
                 '--manifest-path "${{ steps.base.outputs.root }}/pixi.toml"'
             ),
         )
+        self.assertIn("unset GH_TOKEN GITHUB_TOKEN", validation)
+        self.assertEqual(1, validation.count("--frozen --clean-env"))
+        self.assertEqual(1, validation.count("--executable /bin/sh"))
+        self.assertEqual(
+            1,
+            validation.count(
+                '--manifest-path "${{ steps.base.outputs.root }}/pixi.toml"'
+            ),
+        )
+        self.assertEqual(2, validation.count("run_parent_orinoco --root"))
+        self.assertIn("system_git=/usr/bin/git", validation)
+        self.assertIn('test -f "$system_git"', validation)
+        self.assertIn('ln -s "$system_git" "$git_bin/git"', validation)
+        self.assertNotIn("command -v git", validation)
+        self.assertIn('export PATH="$1:$PATH"', validation)
+        self.assertIn("export GIT_CONFIG_GLOBAL=/dev/null", validation)
+        self.assertIn("export GIT_CONFIG_NOSYSTEM=1", validation)
+        self.assertIn("export GIT_NO_REPLACE_OBJECTS=1", validation)
+        self.assertIn("export GIT_TERMINAL_PROMPT=0", validation)
+        self.assertIn('exec orinoco "$@"', validation)
+        self.assertNotIn("trusted/pixi.toml", validation)
+        self.assertNotIn("review/pixi.toml", validation)
+        step_names = [step["name"] for step in self.submit["steps"]]
+        validation_index = step_names.index("Validate the complete joined graph")
+        for name in (
+            "Rebuild and rehearse the complete finalization",
+            "Apply metadata-changing finalization through DataLad",
+            "Apply a decision-cache-only finalization",
+        ):
+            self.assertLess(step_names.index(name), validation_index)
         for name in (
             "Rebuild and rehearse the complete finalization",
             "Apply metadata-changing finalization through DataLad",

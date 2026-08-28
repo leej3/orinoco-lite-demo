@@ -953,10 +953,28 @@ jobs:
           set -euo pipefail
           test -z "$(git -C review status --porcelain --untracked-files=no)"
           git -C review diff --check HEAD^
-          pixi run --manifest-path trusted/pixi.toml orinoco \
-            --root "$GITHUB_WORKSPACE/review" projection update
-          pixi run --manifest-path trusted/pixi.toml orinoco \
-            --root "$GITHUB_WORKSPACE/review" validate
+          unset GH_TOKEN GITHUB_TOKEN
+          git_bin="$RUNNER_TEMP/curation-system-bin"
+          mkdir "$git_bin"
+          system_git=/usr/bin/git
+          test -f "$system_git"
+          test -x "$system_git"
+          ln -s "$system_git" "$git_bin/git"
+          run_parent_orinoco() {
+            pixi run --frozen --clean-env \
+              --manifest-path "${{ steps.base.outputs.root }}/pixi.toml" \
+              --executable /bin/sh -c '
+                export PATH="$1:$PATH"
+                export GIT_CONFIG_GLOBAL=/dev/null
+                export GIT_CONFIG_NOSYSTEM=1
+                export GIT_NO_REPLACE_OBJECTS=1
+                export GIT_TERMINAL_PROMPT=0
+                shift
+                exec orinoco "$@"
+              ' orinoco "$git_bin" "$@"
+          }
+          run_parent_orinoco --root "$GITHUB_WORKSPACE/review" projection update
+          run_parent_orinoco --root "$GITHUB_WORKSPACE/review" validate
           git -C review show --name-only --format= HEAD | python -c '
           import os, sys
           from pathlib import PurePosixPath
