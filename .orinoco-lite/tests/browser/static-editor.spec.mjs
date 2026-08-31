@@ -92,13 +92,34 @@ test('project-path editor changes a record and downloads without a backend write
     await givenName.fill(contract.test_record.edited_given_name);
     await page.getByRole('button', { name: 'Save', exact: true }).click();
 
-    await page.locator('button:has(.mdi-download)').first().click();
+    const submitChanges = page.locator('button:has(.mdi-send)').first();
+    await expect(submitChanges).toBeVisible();
+    await submitChanges.click();
     const submission = page.locator('#submitcomp');
     await expect(
       submission.getByRole('checkbox', {
         name: new RegExp(escapedRegExp(contract.test_record.pid)),
       }),
     ).toBeChecked();
+    await expect(
+      submission.getByText(
+        'This project shares one browser origin across the organization. This can be improved.',
+        { exact: true },
+      ),
+    ).toBeVisible();
+    await expect(
+      submission.getByLabel('About shared GitHub Pages security'),
+    ).toBeVisible();
+    await expect(
+      submission.getByRole('link', { name: 'Improve this with a custom domain' }),
+    ).toHaveAttribute(
+      'href',
+      'https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site',
+    );
+    await expect(
+      submission.getByRole('button', { name: 'Propose via GitHub', exact: true }),
+    ).toBeEnabled();
+    await expect(submission.getByRole('checkbox')).toHaveCount(1);
     const downloadPromise = page.waitForEvent('download');
     await submission
       .getByRole('button', { name: 'Download review bundle', exact: true })
