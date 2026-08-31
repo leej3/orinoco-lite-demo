@@ -34,7 +34,7 @@ jobs:
     permissions:
       actions: write
       contents: write
-      pull-requests: read
+      pull-requests: write
     concurrency:
       group: shacl-vue-proposal-${{ github.event.pull_request.number || inputs.pull_request }}
       cancel-in-progress: false
@@ -245,6 +245,37 @@ jobs:
           [[ "$PHASE" == "handoff" ]]
           [[ "$EVENT_NAME" == "pull_request_target" ]]
           [[ "$EVENT_AUTHOR_MATCH" == "true" ]]
+
+      - name: Announce metadata materialization
+        if: steps.inspect.outputs.phase == 'handoff'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NUMBER: ${{ steps.coordinates.outputs.number }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          export COMMENT_BODY=$'Metadata update from SHACL Vue.\n\nPlease wait for the workflow to create the corresponding edit to the metadata records.'
+          gh api "repos/${REPOSITORY}/issues/${NUMBER}/comments?per_page=100" \
+            > "$RUNNER_TEMP/shacl-vue-comments.json"
+          if python - "$RUNNER_TEMP/shacl-vue-comments.json" <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          import sys
+
+          comments = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+          found = any(
+              comment.get("body") == os.environ["COMMENT_BODY"]
+              and comment.get("user", {}).get("login") == "github-actions[bot]"
+              for comment in comments
+          )
+          raise SystemExit(0 if found else 1)
+          PY
+          then
+            exit 0
+          fi
+          gh api "repos/${REPOSITORY}/issues/${NUMBER}/comments" \
+            --field body="$COMMENT_BODY" > /dev/null
 
       - name: Install the trusted locked Pixi environment
         if: steps.inspect.outputs.phase != 'irrelevant'
