@@ -51,6 +51,66 @@ test('project-path editor changes a record and downloads without a backend write
 }) => {
   await context.addInitScript(() => {
     sessionStorage.setItem('serviceToken', 'inherited-static-token');
+    window.__orinocoTestTransport = null;
+    window.open = (url, name, features) => {
+      const transportOrigin = new URL(url).origin;
+      const popup = {
+        closed: false,
+        close() {
+          this.closed = true;
+        },
+        postMessage(message, targetOrigin) {
+          const cloned = structuredClone(message);
+          window.__orinocoTestTransport.message = cloned;
+          window.__orinocoTestTransport.targetOrigin = targetOrigin;
+          queueMicrotask(() => {
+            emit({
+              format: 'orinoco-lite-shacl-proposal-started-v1',
+              handoff_nonce: cloned.handoff_nonce,
+              repository: cloned.repository,
+            });
+            emit({
+              error: null,
+              format: 'orinoco-lite-shacl-proposal-result-v1',
+              handoff_nonce: cloned.handoff_nonce,
+              repository: cloned.repository,
+              result: {
+                commit_sha: 'c'.repeat(40),
+                commit_url: `https://github.com/${cloned.repository}/commit/${'c'.repeat(40)}`,
+                pull_request: 4242,
+                pull_request_url: `https://github.com/${cloned.repository}/pull/4242`,
+              },
+              retry_safe: false,
+            });
+          });
+        },
+      };
+      function emit(data) {
+        const event = new MessageEvent('message', {
+          data,
+          origin: transportOrigin,
+        });
+        Object.defineProperty(event, 'source', { value: popup });
+        window.dispatchEvent(event);
+      }
+      window.__orinocoTestTransport = {
+        features,
+        message: null,
+        name,
+        popup,
+        ready() {
+          const search = new URL(url).searchParams;
+          emit({
+            format: 'orinoco-lite-shacl-proposal-ready-v1',
+            handoff_nonce: search.get('handoff_nonce'),
+            repository: search.get('repository'),
+          });
+        },
+        targetOrigin: null,
+        url,
+      };
+      return popup;
+    };
   });
   const fixture = await startStaticServer(
     contract.pagesRoot,
@@ -67,6 +127,13 @@ test('project-path editor changes a record and downloads without a backend write
     expect(catalogResponse.ok()).toBe(true);
     const catalog = await catalogResponse.json();
     await assertCatalog(catalog);
+    const editorConfig = JSON.parse(
+      await readFile(
+        path.join(contract.pagesRoot, 'edit', 'config.json'),
+        'utf8',
+      ),
+    );
+    const proposalConfig = editorConfig.review_bundle_proposal;
 
     await page.goto(
       projectURL(fixture.origin, 'persons/yaroslav-halchenko/'),
@@ -165,6 +232,50 @@ test('project-path editor changes a record and downloads without a backend write
     });
     expect(report.diff).toContain(`b/${contract.test_record.source_path}`);
     expect(report.diff).toContain(contract.test_record.edited_given_name);
+
+    await submission
+      .getByRole('button', { name: 'Propose via GitHub', exact: true })
+      .click();
+    await submission
+      .getByRole('button', {
+        name: 'Confirm and create draft pull request',
+        exact: true,
+      })
+      .click();
+    await page.evaluate(() => window.__orinocoTestTransport.ready());
+    await expect(submission).toContainText(
+      'GitHub created the attributed bundle commit and draft pull request.',
+    );
+    await expect(
+      submission.getByRole('link', { name: 'Open draft pull request' }),
+    ).toHaveAttribute(
+      'href',
+      `https://github.com/${proposalConfig.repository}/pull/4242`,
+    );
+    const transport = await page.evaluate(() => ({
+      features: window.__orinocoTestTransport.features,
+      message: window.__orinocoTestTransport.message,
+      popupClosed: window.__orinocoTestTransport.popup.closed,
+      targetOrigin: window.__orinocoTestTransport.targetOrigin,
+    }));
+    expect(transport).toMatchObject({
+      features: 'popup,width=720,height=760,resizable=yes,scrollbars=yes',
+      message: {
+        format: 'orinoco-lite-shacl-proposal-message-v1',
+        proposal: {
+          bundle: {
+            format: contract.review_bundle.format,
+            records: [{ source_path: contract.test_record.source_path }],
+          },
+          format: 'orinoco-lite-shacl-proposal-v1',
+          repository: proposalConfig.repository,
+          target: { kind: 'standalone' },
+        },
+        repository: proposalConfig.repository,
+      },
+      popupClosed: true,
+      targetOrigin: proposalConfig.service_origin,
+    });
 
     expect(mutationRequests).toEqual([]);
     expect(
