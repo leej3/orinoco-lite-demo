@@ -34,7 +34,7 @@ class ShaclVueWorkflowTests(unittest.TestCase):
             {
                 "actions": "write",
                 "contents": "write",
-                "pull-requests": "read",
+                "pull-requests": "write",
             },
             self.job["permissions"],
         )

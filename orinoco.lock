@@ -1,18 +1,18 @@
 lock_version: 1
 engine:
   distribution: orinoco-lite
-  version: 0.2.0rc15
-  url: https://github.com/ORINOCO-Lite/orinoco-lite-dev/releases/download/v0.2.0rc15/orinoco_lite-0.2.0rc15-py3-none-any.whl
-  sha256: 3b697f48c7940b5b8890fd8b38e63e36dce11333d45356c1c6317ba92ace2856
+  version: 0.2.0rc17
+  url: https://github.com/ORINOCO-Lite/orinoco-lite-dev/releases/download/v0.2.0rc17/orinoco_lite-0.2.0rc17-py3-none-any.whl
+  sha256: 1a33d75a59201769347ffbeba8eaec1f8077731fc4714e2ef2093bca44d968dd
 runtime:
-  version: 0.2.0rc15
-  url: https://github.com/ORINOCO-Lite/orinoco-lite-dev/releases/download/v0.2.0rc15/orinoco-runtime-0.2.0rc15.tar.gz
-  sha256: 3041dee57876db8a0be8be6dcde422cede13426806ee1f11287a03072f179659
-  manifest_sha256: 2e221afe7d03397c612f3b33c50349e0beaca72dc289a8f75b2ff12463882041
+  version: 0.2.0rc17
+  url: https://github.com/ORINOCO-Lite/orinoco-lite-dev/releases/download/v0.2.0rc17/orinoco-runtime-0.2.0rc17.tar.gz
+  sha256: f74819b98fe878162416d11429bb52858eb98f1239922392430727b97d28ad54
+  manifest_sha256: 849a0e8b28b7b5f273514416b98f3d1d0d6a9f8802c5e6626bd8410a93746561
 template:
   source: gh:ORINOCO-Lite/orinoco-lite-template
-  version: v0.2.0rc18
+  version: v0.2.0rc19
 workflow:
   repository: ORINOCO-Lite/orinoco-lite-dev
-  sha: 9807d0ec842d757d0b6617445bdb5004f24b5c6e
-  ref: ORINOCO-Lite/orinoco-lite-dev/.github/workflows/orinoco-consumer-ci.yml@9807d0ec842d757d0b6617445bdb5004f24b5c6e
+  sha: d5ce90cb6219717acffdd10809eadecc5834a4dc
+  ref: ORINOCO-Lite/orinoco-lite-dev/.github/workflows/orinoco-consumer-ci.yml@d5ce90cb6219717acffdd10809eadecc5834a4dc

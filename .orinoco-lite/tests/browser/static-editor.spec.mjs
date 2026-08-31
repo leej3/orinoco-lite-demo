@@ -186,6 +186,9 @@ test('project-path editor changes a record and downloads without a backend write
     await expect(
       submission.getByRole('button', { name: 'Propose via GitHub', exact: true }),
     ).toBeEnabled();
+    await expect(submission).toContainText(
+      `GitHub repository: ${proposalConfig.repository}`,
+    );
     await expect(submission.getByRole('checkbox')).toHaveCount(1);
     const downloadPromise = page.waitForEvent('download');
     await submission
@@ -236,15 +239,9 @@ test('project-path editor changes a record and downloads without a backend write
     await submission
       .getByRole('button', { name: 'Propose via GitHub', exact: true })
       .click();
-    await submission
-      .getByRole('button', {
-        name: 'Confirm and create draft pull request',
-        exact: true,
-      })
-      .click();
     await page.evaluate(() => window.__orinocoTestTransport.ready());
     await expect(submission).toContainText(
-      'GitHub created the attributed bundle commit and draft pull request.',
+      'GitHub created the draft pull request.',
     );
     await expect(
       submission.getByRole('link', { name: 'Open draft pull request' }),
