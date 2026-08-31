@@ -6,16 +6,17 @@ The central curation service supplies only the GitHub App authentication and sub
 ## Choose the browser origin
 
 A dedicated custom domain is the normal, low-friction configuration.
-On that origin, `/edit/` and `/review/` can offer **Propose via GitHub** without an additional shared-origin acknowledgment.
+On that origin, `/edit/` and `/review/` can offer **Propose via GitHub** without a shared-origin warning.
 **Download bundle** always remains available without GitHub authentication or a curation-service request.
 
 GitHub project sites at `OWNER.github.io/REPOSITORY/` share the browser origin `https://OWNER.github.io` with every other path published on that host.
 Browsers isolate origins, not URL paths, so `/REPOSITORY/edit/` cannot prove that another same-origin page is a different application.
-Orinoco Lite therefore shows a clear warning on a shared `*.github.io` host and keeps direct GitHub submission disabled until the curator explicitly acknowledges that boundary.
-The acknowledgment is in memory for the current page only; it is neither a credential nor a permanent site setting.
+Orinoco Lite therefore shows a clear warning on a shared `*.github.io` host.
+The SHACL `/edit/` route does not require a checkbox or acknowledgment before **Propose via GitHub**.
+The source-adapter `/review/` route retains its separate acknowledgment before posting curation decisions.
 
 The curation service still revalidates the repository, installation, user permission, pull request, commits, and allowed paths.
-The acknowledgment addresses the remaining browser-origin limitation rather than replacing those server-side checks.
+The warning explains the remaining browser-origin limitation rather than replacing those server-side checks.
 
 ## Add and verify a GitHub Pages custom domain
 
@@ -44,7 +45,7 @@ After the Pages workflow succeeds:
 4. Open `/review/` from a real source-review link and confirm it remains on the same custom origin throughout review and submission.
 
 If the page is still served from `*.github.io`, do not suppress the warning in site configuration.
-Either use **Download bundle**, or read and acknowledge the explanation before starting direct GitHub submission.
+**Download bundle** remains the credential-free alternative to direct GitHub submission.
 
 ## Use a self-hosted curation service
 
