@@ -114,6 +114,8 @@ class ShaclVueWorkflowTests(unittest.TestCase):
             '--force-with-lease="refs/heads/${HEAD_REF}:${HANDOFF_SHA}"', push
         )
         self.assertIn('"${REPLACEMENT_SHA}:refs/heads/${HEAD_REF}"', push)
+        self.assertIn("for attempt in 1 2 3 4 5", retrigger)
+        self.assertIn('test "$observed" = "$REPLACEMENT_SHA"', retrigger)
         self.assertIn("gh workflow run shacl-vue-proposal.yml", retrigger)
         self.assertIn('-f "expected_head=${REPLACEMENT_SHA}"', retrigger)
 

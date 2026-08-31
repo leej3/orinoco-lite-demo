@@ -473,8 +473,16 @@ jobs:
           REPOSITORY: ${{ github.repository }}
         run: |
           set -euo pipefail
-          gh api "repos/${REPOSITORY}/pulls/${NUMBER}" \
-            --jq '.head.sha' | grep -Fx "$REPLACEMENT_SHA"
+          observed=""
+          for attempt in 1 2 3 4 5; do
+            observed="$(gh api "repos/${REPOSITORY}/pulls/${NUMBER}" \
+              --jq '.head.sha')"
+            if [[ "$observed" == "$REPLACEMENT_SHA" ]]; then
+              break
+            fi
+            sleep 2
+          done
+          test "$observed" = "$REPLACEMENT_SHA"
           gh workflow run shacl-vue-proposal.yml \
             --repo "$REPOSITORY" \
             --ref "$DEFAULT_BRANCH" \
