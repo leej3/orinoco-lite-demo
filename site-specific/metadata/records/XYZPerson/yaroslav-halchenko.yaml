@@ -37,7 +37,7 @@ description: Founding Director of the Center for Open Neuroscience. Research Pro
 display_label: Yaroslav O. Halchenko
 family_name: Halchenko
 formatted_name: Yaroslav O. Halchenko
-given_name: Yaroslav
+given_name: Yaroslav test
 identifiers:
 - notation: yarikoptic
   schema_type: dlthings:Identifier
