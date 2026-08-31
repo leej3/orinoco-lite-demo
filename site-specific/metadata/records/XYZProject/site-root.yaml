@@ -1,27 +1,5 @@
 associated_with:
-- object: ror:04tfhh831
-  schema_type: dlthings:Association
-- object: xyzrins:persons/yaroslav-halchenko
-  roles:
-  - marcrel:led
-  schema_type: dlthings:Association
-- object: xyzrins:persons/james-haxby
-  roles:
-  - marcrel:led
-  schema_type: dlthings:Association
-- object: xyzrins:persons/isaac-to
-  roles:
-  - marcrel:ctb
-  schema_type: dlthings:Association
-- object: xyzrins:persons/austin-macdonald
-  roles:
-  - marcrel:ctb
-  schema_type: dlthings:Association
-- object: xyzrins:persons/vadim-melnik
-  roles:
-  - marcrel:ctb
-  schema_type: dlthings:Association
-- object: xyzrins:persons/cody-baker
+- object: xyzrins:persons/franco-pestilli
   roles:
   - marcrel:ctb
   schema_type: dlthings:Association
@@ -29,27 +7,7 @@ associated_with:
   roles:
   - marcrel:ctb
   schema_type: dlthings:Association
-- object: xyzrins:persons/adina-wagner
-  roles:
-  - marcrel:ctb
-  schema_type: dlthings:Association
-- object: xyzrins:persons/chris-markiewicz
-  roles:
-  - marcrel:ctb
-  schema_type: dlthings:Association
-- object: xyzrins:persons/david-kennedy
-  roles:
-  - marcrel:ctb
-  schema_type: dlthings:Association
-- object: xyzrins:persons/jean-baptiste-poline
-  roles:
-  - marcrel:ctb
-  schema_type: dlthings:Association
 - object: xyzrins:persons/joey-hess
-  roles:
-  - marcrel:ctb
-  schema_type: dlthings:Association
-- object: xyzrins:persons/franco-pestilli
   roles:
   - marcrel:ctb
   schema_type: dlthings:Association
@@ -57,31 +15,7 @@ associated_with:
   roles:
   - marcrel:ctb
   schema_type: dlthings:Association
-- object: xyzrins:persons/satrajit-ghosh
-  roles:
-  - marcrel:ctb
-  schema_type: dlthings:Association
-- object: xyzrins:persons/jeremy-manning
-  roles:
-  - marcrel:ctb
-  schema_type: dlthings:Association
-- object: xyzrins:persons/luke-chang
-  roles:
-  - marcrel:ctb
-  schema_type: dlthings:Association
-- object: xyzrins:persons/matthijs-van-der-meer
-  roles:
-  - marcrel:ctb
-  schema_type: dlthings:Association
-- object: xyzrins:persons/tor-wager
-  roles:
-  - marcrel:ctb
-  schema_type: dlthings:Association
-- object: xyzrins:persons/jason-gors
-  roles:
-  - marcrel:ctb
-  schema_type: dlthings:Association
-- object: xyzrins:persons/gergana-alteva
+- object: xyzrins:persons/adina-wagner
   roles:
   - marcrel:ctb
   schema_type: dlthings:Association
@@ -89,15 +23,11 @@ associated_with:
   roles:
   - marcrel:ctb
   schema_type: dlthings:Association
-- object: xyzrins:persons/matteo-visconti-di-oleggio-castello
+- object: xyzrins:persons/john-wodder
   roles:
   - marcrel:ctb
   schema_type: dlthings:Association
-- object: xyzrins:persons/samuel-nastase
-  roles:
-  - marcrel:ctb
-  schema_type: dlthings:Association
-- object: xyzrins:persons/nikolaas-oosterhof
+- object: xyzrins:persons/vadim-melnik
   roles:
   - marcrel:ctb
   schema_type: dlthings:Association
@@ -105,11 +35,65 @@ associated_with:
   roles:
   - marcrel:ctb
   schema_type: dlthings:Association
+- object: xyzrins:persons/austin-macdonald
+  roles:
+  - marcrel:ctb
+  schema_type: dlthings:Association
+- object: xyzrins:persons/tor-wager
+  roles:
+  - marcrel:ctb
+  schema_type: dlthings:Association
+- object: xyzrins:persons/nikolaas-oosterhof
+  roles:
+  - marcrel:ctb
+  schema_type: dlthings:Association
+- object: xyzrins:persons/james-haxby
+  roles:
+  - marcrel:led
+  schema_type: dlthings:Association
 - object: xyzrins:persons/kyle-meyer
   roles:
   - marcrel:ctb
   schema_type: dlthings:Association
-- object: xyzrins:persons/chris-cheng
+- object: xyzrins:persons/david-kennedy
+  roles:
+  - marcrel:ctb
+  schema_type: dlthings:Association
+- object: xyzrins:persons/jeremy-manning
+  roles:
+  - marcrel:ctb
+  schema_type: dlthings:Association
+- object: xyzrins:persons/cody-baker
+  roles:
+  - marcrel:ctb
+  schema_type: dlthings:Association
+- object: xyzrins:persons/matthijs-van-der-meer
+  roles:
+  - marcrel:ctb
+  schema_type: dlthings:Association
+- object: xyzrins:persons/samuel-nastase
+  roles:
+  - marcrel:ctb
+  schema_type: dlthings:Association
+- object: xyzrins:persons/matteo-visconti-di-oleggio-castello
+  roles:
+  - marcrel:ctb
+  schema_type: dlthings:Association
+- object: xyzrins:persons/jean-baptiste-poline
+  roles:
+  - marcrel:ctb
+  schema_type: dlthings:Association
+- object: ror:04tfhh831
+  schema_type: dlthings:Association
+- object: xyzrins:persons/vanessa-sochat
+  roles:
+  - marcrel:ctb
+  schema_type: dlthings:Association
+- object: xyzrins:persons/jason-gors
+  roles:
+  - marcrel:ctb
+  schema_type: dlthings:Association
+- object: xyzrins:persons/chris-markiewicz
   roles:
   - marcrel:ctb
   schema_type: dlthings:Association
@@ -117,19 +101,35 @@ associated_with:
   roles:
   - marcrel:ctb
   schema_type: dlthings:Association
-- object: xyzrins:persons/vanessa-sochat
+- object: xyzrins:persons/yaroslav-halchenko
   roles:
-  - marcrel:ctb
-  schema_type: dlthings:Association
-- object: xyzrins:persons/benjamin-poldrack
-  roles:
-  - marcrel:ctb
+  - marcrel:led
   schema_type: dlthings:Association
 - object: xyzrins:persons/horea-ioanas
   roles:
   - marcrel:ctb
   schema_type: dlthings:Association
-- object: xyzrins:persons/john-wodder
+- object: xyzrins:persons/gergana-alteva
+  roles:
+  - marcrel:ctb
+  schema_type: dlthings:Association
+- object: xyzrins:persons/isaac-to
+  roles:
+  - marcrel:ctb
+  schema_type: dlthings:Association
+- object: xyzrins:persons/satrajit-ghosh
+  roles:
+  - marcrel:ctb
+  schema_type: dlthings:Association
+- object: xyzrins:persons/chris-cheng
+  roles:
+  - marcrel:ctb
+  schema_type: dlthings:Association
+- object: xyzrins:persons/luke-chang
+  roles:
+  - marcrel:ctb
+  schema_type: dlthings:Association
+- object: xyzrins:persons/benjamin-poldrack
   roles:
   - marcrel:ctb
   schema_type: dlthings:Association
@@ -138,7 +138,7 @@ attributes:
   schema_type: dlthings:AttributeSpecification
   value: https://centerforopenneuroscience.org/
 description: Provides open software frameworks, platforms, data and methodologies
-  for neuroscience and beyond.
+  for neuroscience and beyond. test
 display_label: Center for Open Neuroscience (CON)
 pid: xyzrins:.
 schema_type: xyzri:XYZProject
