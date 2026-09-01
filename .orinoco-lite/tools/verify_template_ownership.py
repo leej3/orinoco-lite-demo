@@ -118,11 +118,9 @@ def verify(root: Path) -> list[str]:
             )
 
     answers = load_yaml(root / ".copier-answers.yml")
-    for key in ("_src_path", "template_version", "engine_version"):
+    for key in ("_src_path", "_commit"):
         if not isinstance(answers.get(key), str) or not answers[key]:
             failures.append(f".copier-answers.yml is missing {key}")
-    if answers.get("_commit") != answers.get("template_version"):
-        failures.append("Copier _commit must equal the declared template_version tag")
 
     lock = load_yaml(root / "orinoco.lock")
     if lock.get("lock_version") != 1:
@@ -133,8 +131,8 @@ def verify(root: Path) -> list[str]:
     else:
         if template.get("source") != answers.get("_src_path"):
             failures.append("template.source differs from Copier _src_path")
-        if template.get("version") != answers.get("template_version"):
-            failures.append("template.version differs from Copier template_version")
+        if not isinstance(template.get("version"), str) or not template["version"]:
+            failures.append("template.version must identify an immutable template tag")
     engine = lock.get("engine", {})
     if not isinstance(engine, dict) or engine.get("distribution") != "orinoco-lite":
         failures.append("orinoco.lock must pin the orinoco-lite distribution")

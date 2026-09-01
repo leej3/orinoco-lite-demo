@@ -1,1 +1,0 @@
-"""Consumer acceptance tests."""
