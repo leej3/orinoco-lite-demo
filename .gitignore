@@ -12,4 +12,4 @@ __pycache__/
 *.rej
 
 # Tracked Orinoco support files live under .orinoco-lite/. Generated projection,
-# update state, downloads, installed runtimes, and caches remain ignored.
+# downloads, installed runtimes, and caches remain ignored.
