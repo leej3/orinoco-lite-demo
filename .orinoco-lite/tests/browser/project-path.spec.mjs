@@ -1,160 +1,109 @@
+import { expect, test } from '@playwright/test';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-import { expect, test } from '@playwright/test';
-
-import { contract, projectURL, ROOT } from './consumer-contract.mjs';
 import { startStaticServer } from './static-server.mjs';
 
-const COMMITTED_GRAPH = path.join(
+const HERE = path.dirname(fileURLToPath(import.meta.url));
+const ROOT = path.resolve(HERE, '../../..');
+const pagesRoot = path.resolve(
   ROOT,
-  'generated/projection/static/graph.json',
+  process.env.ORINOCO_PAGES_ROOT ?? 'build/pages',
 );
+const projectPath = process.env.ORINOCO_PROJECT_PATH ?? '/orinoco-site/';
 
-function edgePairs(graph) {
-  return graph.edges.map((edge) => `${edge.source}\0${edge.target}`).sort();
-}
+let fixture;
 
-function graphResponse(page) {
-  return page.waitForResponse((response) => {
-    const url = new URL(response.url());
-    return url.pathname === `${contract.projectPath}${contract.graph.path}`;
-  });
-}
-
-test('project-path graph resources and routes resolve', async ({ page }) => {
-  const fixture = await startStaticServer(
-    contract.pagesRoot,
-    contract.projectPath,
-  );
-  try {
-    const expected = JSON.parse(await readFile(COMMITTED_GRAPH, 'utf8'));
-    const pendingGraph = graphResponse(page);
-    await page.goto(projectURL(fixture.origin));
-    const response = await pendingGraph;
-    const responseURL = new URL(response.url());
-    expect(responseURL.pathname).toBe(
-      `${contract.projectPath}${contract.graph.path}`,
-    );
-    expect(responseURL.searchParams.get('v')).toMatch(/^[0-9a-f]{64}$/);
-
-    const observed = await response.json();
-    expect(new Set(observed.nodes.map((node) => node.id))).toEqual(
-      new Set(expected.nodes.map((node) => node.id)),
-    );
-    expect(edgePairs(observed)).toEqual(edgePairs(expected));
-    for (const pid of contract.graph.representative_pids) {
-      expect(observed.nodes.some((node) => node.id === pid)).toBe(true);
-    }
-
-    const personNode = observed.nodes.find(
-      (node) => node.id === contract.test_record.pid,
-    );
-    expect(personNode).toBeDefined();
-    expect(personNode.url).toBe(
-      `${contract.projectPath}persons/yaroslav-halchenko`,
-    );
-    const personPath = `${personNode.url}/`;
-    await page.goto(new URL(personPath, fixture.origin).href);
-    await expect(page).toHaveURL(
-      new RegExp(`${contract.projectPath}persons/yaroslav-halchenko/$`),
-    );
-    await expect(
-      page.getByRole('heading', { name: contract.test_record.page_heading }),
-    ).toBeVisible();
-    expect(
-      fixture.requests.every(({ method }) => ['GET', 'HEAD'].includes(method)),
-    ).toBe(true);
-  } finally {
-    await fixture.close();
-  }
+test.beforeAll(async () => {
+  fixture = await startStaticServer(pagesRoot, projectPath);
 });
 
-test('homepage excludes upstream institutional branding', async ({
-  page,
-  request,
-}) => {
-  const fixture = await startStaticServer(
-    contract.pagesRoot,
-    contract.projectPath,
-  );
-  try {
-    await page.goto(projectURL(fixture.origin));
-    await expect(
-      page.locator(
-        'a[href*="fz-juelich"], a[href*="medizin.hhu"]',
-      ),
-    ).toHaveCount(0);
-    await expect(
-      page.locator('img[src*="fzj"], img[src*="hhu"]'),
-    ).toHaveCount(0);
+test.afterAll(async () => {
+  await fixture.close();
+});
 
-    for (const asset of ['img/fzj.svg', 'img/hhu.svg']) {
-      const response = await request.get(
-        projectURL(fixture.origin, asset),
-      );
-      expect(response.status()).toBe(404);
-    }
-  } finally {
-    await fixture.close();
+test('project-path root is a navigable static page', async ({ page }) => {
+  const response = await page.goto(new URL(fixture.mount, fixture.origin).href);
+  expect(response?.status()).toBe(200);
+  await expect(page.locator('html')).toBeVisible();
+  await expect(page.locator('body')).not.toBeEmpty();
+  expect(new URL(page.url()).pathname.startsWith(fixture.mount)).toBeTruthy();
+});
+
+test('root-relative assets remain under the project path', async ({ page }) => {
+  await page.goto(new URL(fixture.mount, fixture.origin).href);
+  const localResources = await page.locator('[href], [src]').evaluateAll(
+    (elements, origin) => elements
+      .map((element) => element.getAttribute('href') ?? element.getAttribute('src'))
+      .filter((value) => value !== null)
+      .map((value) => new URL(value, window.location.href))
+      .filter((url) => url.origin === origin)
+      .map((url) => url.pathname),
+    fixture.origin,
+  );
+  for (const resource of localResources) {
+    expect(resource.startsWith(fixture.mount), resource).toBeTruthy();
   }
 });
 
 test('bare review route links to open curation pull requests', async ({ page }) => {
-  const fixture = await startStaticServer(
-    contract.pagesRoot,
-    contract.projectPath,
+  const configuration = JSON.parse(
+    await readFile(path.join(pagesRoot, 'review', 'config.json'), 'utf8'),
   );
-  try {
-    const configuration = JSON.parse(
-      await readFile(path.join(contract.pagesRoot, 'review', 'config.json'), 'utf8'),
-    );
-    const expected = new URL(
-      `/${configuration.repository}/pulls`,
-      'https://github.com',
-    );
-    expected.searchParams.set('q', 'is:pr is:open label:curation-review');
+  const expected = new URL(
+    `/${configuration.repository}/pulls`,
+    'https://github.com',
+  );
+  expected.searchParams.set('q', 'is:pr is:open label:curation-review');
 
-    const response = await page.goto(
-      projectURL(fixture.origin, 'review/'),
-    );
-    expect(response?.status()).toBe(200);
-    await expect(page.getByRole('link', {
-      name: 'View open curation pull requests on GitHub',
-    })).toHaveAttribute('href', expected.href);
-  } finally {
-    await fixture.close();
-  }
+  const response = await page.goto(
+    new URL(`${fixture.mount}review/`, fixture.origin).href,
+  );
+  expect(response?.status()).toBe(200);
+  await expect(page.getByRole('link', {
+    name: 'View open curation pull requests on GitHub',
+  })).toHaveAttribute('href', expected.href);
 });
 
-test('structured lists keep filtering, grids, and term metadata', async ({ page }) => {
-  const fixture = await startStaticServer(
-    contract.pagesRoot,
-    contract.projectPath,
+test('upstream taxonomy presentation keeps filters and list variants', async ({ page }) => {
+  let response = await page.goto(
+    new URL(`${fixture.mount}publications/`, fixture.origin).href,
   );
-  try {
-    let response = await page.goto(
-      projectURL(fixture.origin, 'publications/'),
-    );
-    expect(response?.status()).toBe(200);
-    await expect(page.locator('#orinoco-search')).toBeVisible();
-    await expect(page.locator('[data-orinoco-count]')).toContainText('131 results');
-    await page.locator('#orinoco-search').fill('DataLad: distributed system');
-    await expect(page.locator('[data-orinoco-count]')).toContainText('1 result');
+  expect(response?.status()).toBe(200);
+  await expect(page.locator('.list-layout')).toBeVisible();
+  await expect(page.locator('#search')).toBeVisible();
+  await expect(page.locator('#publications-count')).toHaveText(/^\d+$/);
 
-    response = await page.goto(projectURL(fixture.origin, 'instruments/'));
-    expect(response?.status()).toBe(200);
-    await expect(page.locator('.orinoco-grid .orinoco-card').first()).toBeVisible();
+  response = await page.goto(
+    new URL(`${fixture.mount}projects/`, fixture.origin).href,
+  );
+  expect(response?.status()).toBe(200);
+  await expect(page.locator('.items-grid')).toBeVisible();
+});
 
-    response = await page.goto(
-      projectURL(fixture.origin, 'persons/yaroslav-halchenko/'),
-    );
-    expect(response?.status()).toBe(200);
-    await expect(page.locator('.orinoco-term-title')).toContainText(
-      'Yaroslav Halchenko',
-    );
-    await expect(page.locator('#sigma-container')).toBeVisible();
-  } finally {
-    await fixture.close();
-  }
+test('site identity and record editing stay downstream-owned', async ({ page }) => {
+  let response = await page.goto(new URL(fixture.mount, fixture.origin).href);
+  expect(response?.status()).toBe(200);
+  await expect(page.locator('body')).not.toContainText('Psychoinformatics');
+  await expect(page.locator('body')).not.toContainText('knowledge pool');
+  await expect(page.locator('a[href*="psychoinformatics.de"]')).toHaveCount(0);
+
+  response = await page.goto(
+    new URL(`${fixture.mount}projects/`, fixture.origin).href,
+  );
+  expect(response?.status()).toBe(200);
+  const recordHref = await page.locator('.items-grid a[href]').first()
+    .getAttribute('href');
+  expect(recordHref).not.toBeNull();
+  response = await page.goto(new URL(recordHref, page.url()).href);
+  expect(response?.status()).toBe(200);
+  const editor = page.getByRole('link', { name: 'Edit this record' });
+  await expect(editor).toHaveCount(1);
+  const href = new URL(await editor.getAttribute('href'), page.url());
+  expect(href.origin).toBe(fixture.origin);
+  expect(href.pathname).toBe(`${fixture.mount}edit/`);
+  expect(href.searchParams.get('sh:NodeShape')).toBe('dlthings:Thing');
+  expect(href.searchParams.get('pid')).toBeTruthy();
+  expect(href.searchParams.get('edit')).toBe('true');
 });

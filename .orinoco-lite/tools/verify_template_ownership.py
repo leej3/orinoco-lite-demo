@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 import sys
 from importlib import metadata
@@ -31,17 +32,19 @@ REQUIRED_TEMPLATE_FILES = {
     ".github/workflows/validate.yml",
     ".github/workflows/pages.yml",
     ".github/workflows/shacl-vue-proposal.yml",
-    ".github/workflows/update-orinoco.yml",
     ".orinoco-lite/README.md",
+    ".orinoco-lite/THIRD_PARTY_NOTICES.md",
+    ".orinoco-lite/materialized-presentation/LICENSE",
+    ".orinoco-lite/presentation/config-templates/hugo.toml.j2",
+    ".orinoco-lite/presentation/static-templates/site.webmanifest.j2",
     ".orinoco-lite/tools/template_contract.py",
-    ".orinoco-lite/tools/update_orinoco.py",
     ".orinoco-lite/tools/verify_template_ownership.py",
-    ".orinoco-lite/tools/finalize_update_ledger.py",
     ".orinoco-lite/tools/verify_deterministic_build.py",
     ".orinoco-lite/tools/verify_local_preview.py",
     ".orinoco-lite/tools/verify_hugo.py",
     ".orinoco-lite/tools/install_browser_tests.py",
     ".orinoco-lite/tools/shacl_vue_handoff.py",
+    "site-specific/site.yaml",
 }
 ACTION_REFERENCE = re.compile(r"^\s*-?\s*uses:\s*([^\s#]+)", re.MULTILINE)
 FULL_SHA_ACTION = re.compile(
@@ -57,33 +60,13 @@ def verify_engine_environment(
     if not isinstance(engine, dict):
         return
     expected_version = engine.get("version")
-    installed_distributions = list(metadata.distributions(name="orinoco-lite"))
-    if not installed_distributions:
+    try:
+        installed = metadata.distribution("orinoco-lite")
+    except metadata.PackageNotFoundError:
         # Ownership checks may run outside the locked Pixi environment while a
         # repository is being initialized. CI's frozen Pixi install and
         # `orinoco runtime verify` exercise the installed environment.
         installed = None
-        direct_url = None
-    else:
-        installed = installed_distributions[0]
-        direct_url = None
-        for candidate in installed_distributions:
-            try:
-                candidate_url = json.loads(
-                    candidate.read_text("direct_url.json") or "null"
-                )
-            except json.JSONDecodeError:
-                continue
-            if (
-                candidate.version == expected_version
-                and isinstance(candidate_url, dict)
-                and normalize_artifact_url(candidate_url.get("url"))
-                == normalize_artifact_url(engine.get("url"))
-            ):
-                installed = candidate
-                direct_url = candidate_url
-                break
-
     installed_version = installed.version if installed is not None else None
     if installed_version is not None and installed_version != expected_version:
         failures.append(
@@ -93,17 +76,20 @@ def verify_engine_environment(
 
     if installed is not None:
         direct_url_text = installed.read_text("direct_url.json")
-        if direct_url is None and direct_url_text is None:
+        if direct_url_text is None:
             failures.append("installed orinoco-lite lacks direct URL provenance")
-        elif direct_url is None:
+        else:
             try:
                 direct_url = json.loads(direct_url_text)
             except json.JSONDecodeError:
                 failures.append("installed orinoco-lite direct_url.json is invalid")
-        if isinstance(direct_url, dict) and normalize_artifact_url(
-            direct_url.get("url")
-        ) != normalize_artifact_url(engine.get("url")):
-            failures.append("installed orinoco-lite direct URL differs from engine.url")
+            else:
+                if normalize_artifact_url(direct_url.get("url")) != normalize_artifact_url(
+                    engine.get("url")
+                ):
+                    failures.append(
+                        "installed orinoco-lite direct URL differs from engine.url"
+                    )
 
     failures.extend(pixi_engine_pin_failures(root, engine))
 
@@ -132,11 +118,9 @@ def verify(root: Path) -> list[str]:
             )
 
     answers = load_yaml(root / ".copier-answers.yml")
-    for key in ("_src_path", "template_version", "engine_version"):
+    for key in ("_src_path", "_commit"):
         if not isinstance(answers.get(key), str) or not answers[key]:
             failures.append(f".copier-answers.yml is missing {key}")
-    if answers.get("_commit") != answers.get("template_version"):
-        failures.append("Copier _commit must equal the declared template_version tag")
 
     lock = load_yaml(root / "orinoco.lock")
     if lock.get("lock_version") != 1:
@@ -147,8 +131,8 @@ def verify(root: Path) -> list[str]:
     else:
         if template.get("source") != answers.get("_src_path"):
             failures.append("template.source differs from Copier _src_path")
-        if template.get("version") != answers.get("template_version"):
-            failures.append("template.version differs from Copier template_version")
+        if not isinstance(template.get("version"), str) or not template["version"]:
+            failures.append("template.version must identify an immutable template tag")
     engine = lock.get("engine", {})
     if not isinstance(engine, dict) or engine.get("distribution") != "orinoco-lite":
         failures.append("orinoco.lock must pin the orinoco-lite distribution")
@@ -182,7 +166,8 @@ def verify(root: Path) -> list[str]:
         and valid_hex(engine.get("sha256"), 64)
         and set(engine["sha256"]) != {"0"}
     ):
-        verify_engine_environment(root, lock, failures)
+        if os.environ.get("ORINOCO_UNSAFE_DEVELOPMENT_RUNTIME") != "1":
+            verify_engine_environment(root, lock, failures)
 
     for workflow_path in sorted((root / ".github" / "workflows").glob("*.yml")):
         text = workflow_path.read_text(encoding="utf-8")

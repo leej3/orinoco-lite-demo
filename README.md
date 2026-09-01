@@ -1,112 +1,33 @@
-# Center for Open Neuroscience — Orinoco Test Site
+# Orinoco Lite site
 
-Test-only full-content Orinoco Lite downstream for the Center for Open Neuroscience.
-
-This is an ordinary single-repository Orinoco Lite consumer.
-Metadata records, editorial content, declared assets, structured presentation
-data, source configuration, extensions, and site tests are versioned directly
-here.
-Building, previewing, and updating it requires neither Git submodules nor an engineering workspace checkout.
-
-## Framework and site boundaries
-
-- This repository owns everything under `site-specific/`, plus its policy,
-  tests, extensions, review, and deployment.
-- The [Orinoco Lite template](https://github.com/ORINOCO-Lite/orinoco-lite-template) owns the generic repository facade, static-site framework and retained-source adapter executables under `.orinoco-lite/`, file-ownership contract, and content-preserving updater.
-- The [Orinoco Lite engine](https://github.com/ORINOCO-Lite/orinoco-lite-dev) implements the commands, runtime verification, projection, and static build.
-
-`orinoco.lock` is the release authority.
-It records exact engine, runtime, template, and reusable-workflow coordinates; the frozen `pixi.lock` realizes that reviewed environment.
-PyPI publication is optional and is not required by this repository.
-
-Start with [creation and configuration](docs/getting-started.md) for the required site-profile step, [custom-domain and curation setup](docs/custom-domain.md) before enabling hosted editing, [file ownership](docs/ownership.md) before customizing the facade, and [framework updates](docs/updating.md) before changing release pins.
-
-## Rights and intended use
-
-The generic Orinoco Lite facade is MIT licensed and its original documentation is CC BY 4.0.
-Those terms do not license site-owned records, editorial prose, media, branding, presentation, or imported third-party material.
-Document those rights separately and preserve every upstream notice.
-See engine human-review decision [HR-003](https://github.com/ORINOCO-Lite/orinoco-lite-dev/blob/main/docs/human-review-decisions.md#hr-003--establish-authority-and-a-project-license-matrix).
-
-## Routine commands after adding a site profile
+This is an Orinoco Lite metadata-driven website. Set its public identity in
+`site-specific/site.yaml`. The engine resolves its pinned upstream presentation
+and composes it with this scaffold's small `.orinoco-lite/presentation/`
+adapter, its bounded `.orinoco-lite/materialized-presentation/upstream/` asset
+overlay, and the repository's declarative `site-specific/` inputs.
 
 ```console
 pixi run validate
-pixi run projection-update
-pixi run projection-verify
-pixi run assets-hydrate
-pixi run assets-verify
 pixi run build
 pixi run serve
-pixi run test
-pixi run source-adapter-canary
 pixi run test-all
-pixi run update-check
 ```
 
-After editing metadata records, `validate` regenerates the ignored projection and checks it.
-`build` does the same before rendering, so the source commit shows the metadata change rather than a duplicate generated tree.
-`assets-hydrate` is the explicit networked retrieval step for declared remote assets; `assets-verify` checks already-local payloads without fetching.
+The source boundary is:
 
-## Build targets
+- `site-specific/metadata/` — semantic records and curation annotations;
+- `site-specific/content/` — editorial Markdown;
+- `site-specific/assets/` and `site-specific/static/` — declared website data;
+- `site-specific/site.yaml` — identity, navigation, and supported presentation
+  choices;
+- `site-specific/overrides/` — explicit declarative config, layout, or static
+  overrides; and
+- `extensions/` — optional metadata acquisition and curation executables that
+  never ship with or execute during the website build.
 
-`pixi run build` writes `build/site` with root-relative links.
-`pixi run serve` serves that existing artifact on port 8765; it does not rebuild it.
-The same files therefore work at both `http://127.0.0.1:8765/` and `http://localhost:8765/`.
+See [getting started](docs/getting-started.md),
+[ownership](docs/ownership.md), and [custom-domain setup](docs/custom-domain.md).
 
-Pages is intentionally separate.
-The Pages workflow obtains the destination's absolute public base URL from GitHub, validates it, and passes it to `pixi run build-pages`, which writes `build/pages`.
-After deployment succeeds, it force-updates one generated commit containing the complete projection at `latest-hugo-projection` and a child commit containing only the deployed site at `gh-pages`.
-Both commits descend from the exact deployed default-branch commit and are retained for debugging, while `main` remains source-only.
-Browser acceptance uses a controlled local project-path URL matching the repository slug.
-Neither target changes the canonical public identity recorded in `orinoco.yaml`.
-
-`pixi run test-all` is the complete acceptance gate: asset preparation, configuration and runtime validation, projection verification, the pinned Hugo Extended version, consumer tests, byte-compared repeat builds, dual-loopback local-link checks, and the checked Chromium/WebKit scenarios.
-Its browser preparation makes both engines available before testing; on Linux, the post-Chromium WebKit host-library step and browser downloads are separate, logged, bounded phases.
-
-## Network boundary
-
-Hydration is the only asset command authorized to retrieve declared read-only payload URLs.
-For a warmed-cache offline proof, run `assets-hydrate` while online, deny network access at the operating-system boundary, then run `assets-verify` before offline validation, projection, build, and editor checks.
-Do not use `assets-prepare-online` in that denied-network phase; it represents the normal cold-clone preparation path.
-
-## Repository content
-
-- `site-specific/metadata/records/` contains every human-facing YAML Thing used as projection
-  input; `site-specific/metadata/overlays/annotations/` contains its mirrored machine PAV
-  companions when present.
-- `site-specific/site.yaml` is the structured identity, language, theme,
-  navigation, people-group, project-category, and webmanifest authority;
-  `site-specific/projection.yaml` is the site-owned projection policy.
-- `site-specific/content/pages/` and `site-specific/static/` contain bespoke
-  editorial pages and declared asset inputs.
-- `.orinoco-lite/site/` contains the template-owned Congo-based static-site
-  framework, generic structured-data templates, projection templates, and
-  graph producer.
-- `.agents/skills/manage-orinoco-content/` guides agents through focused editorial and asset changes.
-- `.agents/skills/operate-orinoco-metadata-adapters/` guides adapter runs,
-  explicit human decisions, provenance, and review pull requests.
-- `.orinoco-lite/source-adapters/` contains generic executable review support;
-  `site-specific/sources/` contains source manifests, captured content,
-  evidence, and site policy. Durable dispositions live in
-  `site-specific/curation-records/`.
-- `.github/workflows/shacl-vue-proposal.yml` is the generic trusted human-edit
-  boundary; a concrete source-adapter curation workflow remains site-owned.
-- The deployed static `/edit/` route is the sole SHACL Vue editor. It offers
-  **Download bundle** and **Propose via GitHub**; the configured curation
-  service supplies only the authenticated GitHub submission boundary. The
-  central service is the default; `site.curation_service` is only a
-  self-hosting override.
-- The deployed static `/review/` route is the sole source-adapter decision
-  interface. Source-adapter workflows link there from the trusted
-  `site.base_url`; the selected curation service supplies only OAuth,
-  verified GitHub reads, confirmation, and authenticated transport.
-- `extensions/` is the stable downstream customization surface.
-- `generated/` contains ignored projection output recreated by validation and builds.
-
-A newly created repository includes a neutral structured site profile and the
-generic framework, but no invented Things records. Add reviewed records and
-adjust the site-owned structured data as described in
-[creation and configuration](docs/getting-started.md) before running validation
-or build commands.
-A populated profile and source-adapter examples are available in the [downstream test website](https://github.com/ORINOCO-Lite/test-orinoco-downstream-website).
+The engine runtime is the single authority for the upstream website and theme
+pins. The downstream selects its engine, runtime, template, and workflow
+releases exactly in `orinoco.lock` and `.copier-answers.yml`.

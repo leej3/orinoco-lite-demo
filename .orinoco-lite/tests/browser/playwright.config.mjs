@@ -25,7 +25,7 @@ export default defineConfig({
   ],
   retries: 0,
   testDir: HERE,
-  testMatch: ['project-path.spec.mjs', 'static-editor.spec.mjs'],
+  testMatch: ['project-path.spec.mjs'],
   timeout: 90_000,
   use: {
     headless: true,

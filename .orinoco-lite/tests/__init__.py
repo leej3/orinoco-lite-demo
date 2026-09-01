@@ -1,1 +1,1 @@
-"""Consumer acceptance tests."""
+"""Site-owned downstream acceptance tests."""

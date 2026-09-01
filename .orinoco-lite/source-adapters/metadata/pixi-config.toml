@@ -1,4 +1,0 @@
-# Keep this source adapter's isolated environment out of site-owned paths.
-# Pixi keys it by the workspace path in its normal cache and the wrapper below
-# makes this configuration mandatory for every supported invocation.
-detached-environments = true

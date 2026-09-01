@@ -1,15 +1,12 @@
-# Reusable component notices
+# Presentation notices
 
-The generic Orinoco layouts, shortcodes, projection templates, projection
-tooling, and metadata-adapter foundations under `.orinoco-lite/` were adapted
-from `leej3/orinoco-lite-demo`. They remain covered by the template
-repository's MIT license; no demo records, evidence, decisions, branding, site
-configuration, or presentation snapshot is included.
+Maintainers copy the presentation assets required at downstream runtime into
+`materialized-presentation/upstream/` at their original upstream-relative
+paths. The adjacent `materialized-presentation/LICENSE` applies to that bounded
+ordinary-file overlay. Applicable notices are preserved in the overlay when it
+is populated.
 
-The vendored Congo theme under `.orinoco-lite/site/themes/congo/` is derived
-from `leej3/congo` commit
-`3623fa505ee42fee899844d94a4ff7f5a1ae9096` and is distributed under its
-preserved [MIT license](site/themes/congo/LICENSE). Embedded notices for the
-theme's bundled open-source libraries and free icon assets are preserved in
-their distributed files. The Font Awesome Pro `line.svg` asset and its
-optional sharing configuration are intentionally excluded.
+The complete reusable website, its projection templates, and its theme are not
+copied into this scaffold. The verified engine runtime resolves them at build
+time and preserves notices supplied by their dependency closure, including
+Congo's MIT notice.

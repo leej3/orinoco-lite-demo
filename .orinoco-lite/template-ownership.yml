@@ -1,54 +1,47 @@
-contract_version: 1
+contract_version: 2
 
 classes:
   template_owned:
-    behavior: copier-three-way-update
+    behavior: materialized-scaffold
     paths:
       - README.md
       - .gitignore
       - .copier-answers.yml
       - pixi.toml
-      - .orinoco-lite/template-ownership.yml
-      - .agents/skills/**
-      - .github/workflows/pages.yml
-      - .github/workflows/shacl-vue-proposal.yml
-      - .github/workflows/update-orinoco.yml
-      - .github/workflows/validate.yml
-      - docs/ownership.md
-      - docs/updating.md
-      - docs/getting-started.md
-      - docs/custom-domain.md
+      - .agents/**
       - .orinoco-lite/README.md
       - .orinoco-lite/THIRD_PARTY_NOTICES.md
+      - .orinoco-lite/template-ownership.yml
+      - .orinoco-lite/materialized-presentation/**
+      - .orinoco-lite/presentation/**
       - .orinoco-lite/tools/**
-      - .orinoco-lite/site/**
-      - .orinoco-lite/source-adapters/**
-  initialized_site_owned:
-    behavior: create-once-never-overwrite
+      - .github/workflows/pages.yml
+      - .github/workflows/shacl-vue-proposal.yml
+      - .github/workflows/validate.yml
+      - docs/**
+  site_specific:
+    behavior: site-owned-input
     paths:
       - orinoco.yaml
-      - .github/workflows/curation-review.yml
       - site-specific/**
-  engine_lock:
-    behavior: updater-structured-merge
-    paths:
-      - orinoco.lock
-      - pixi.lock
+      - .orinoco-lite/provenance/**
   extensions:
     behavior: site-owned-stable-hook
     paths:
       - extensions/**
-  consumer_tests:
+  site_acceptance:
     behavior: site-owned-acceptance
     paths:
-      - .orinoco-lite/tests/__init__.py
-      - .orinoco-lite/tests/contract/**
-      - .orinoco-lite/tests/browser/**
-      - .orinoco-lite/tests/source-adapters/**
-      - .orinoco-lite/tests/offline/**
-      - package.json
-      - package-lock.json
-      - playwright.config.*
+      - .orinoco-lite/tests/**
+  workflow_extensions:
+    behavior: site-owned-stable-hook
+    paths:
+      - .github/workflows/curation-review.yml
+  release_lock:
+    behavior: exact-version-selection
+    paths:
+      - orinoco.lock
+      - pixi.lock
   site_policy:
     behavior: site-owned-policy
     paths:
@@ -60,7 +53,4 @@ classes:
     behavior: ignored-runtime-output
     paths:
       - generated/**
-
-semantic_migrations:
-  policy: explicit-ledger-and-human-review
-  default: forbidden
+      - build/**

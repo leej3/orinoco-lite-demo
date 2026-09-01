@@ -1,9 +1,0 @@
-{{ if .Params.graphrootnodepid }}
-<div class="text-xs">
-<a class="text-primary-500" target="_blank" href="https://pool.psychoinformatics.de/ui/?sh%3ANodeShape=dlthings%3AThing&pid={{ .Params.graphrootnodepid | urlquery }}&edit=true">
-{{ partial "icon.html" "edit" }}
-Edit this record
-</a>
-in the knowledge pool.
-</div>
-{{ end }}

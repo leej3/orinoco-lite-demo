@@ -1,0 +1,42 @@
+colorScheme = {{ site.presentation.color_scheme | default('fire') | json_string }}
+defaultAppearance = {{ site.presentation.default_appearance | default('light') | json_string }}
+autoSwitchAppearance = true
+enableSearch = true
+enableCodeCopy = true
+enableImageLazyLoading = true
+enableImageWebp = true
+enableQuicklink = true
+fingerprintAlgorithm = "sha256"
+
+[header]
+  layout = {{ site.presentation.header_layout | default('hybrid') | json_string }}
+  logo = ""
+  logoDark = ""
+  showTitle = true
+
+[footer]
+  showCopyright = true
+  showThemeAttribution = true
+  showAppearanceSwitcher = true
+  showScrollToTop = true
+
+[homepage]
+  layout = "custom"
+  showRecent = false
+
+[article]
+  showDate = false
+  showAuthor = false
+  showBreadcrumbs = true
+  showHeadingAnchors = true
+  showPagination = true
+
+[list]
+  showBreadcrumbs = true
+  showSummary = false
+  showTableOfContents = true
+  showTaxonomies = true
+  groupByYear = false
+
+[taxonomy]
+  showTermCount = true

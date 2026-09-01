@@ -1,6 +1,6 @@
 ---
 name: operate-orinoco-metadata-adapters
-description: Run template-owned Orinoco Lite metadata adapter executables against site-owned source manifests and evidence with explicit human decisions. Use in a downstream or template repository when capturing source snapshots, generating candidate changes, reviewing accept/reject/link/defer/supersede choices, updating durable decision memory, applying decisions, opening adapter pull requests, checking provenance, or determining whether local locks or newer upstream behavior governs. Do not use for ordinary editorial or asset work.
+description: Run a downstream's site-owned Orinoco Lite metadata adapter executables against site-owned source configuration and evidence with explicit human decisions. Use when capturing source snapshots, generating candidate changes, reviewing accept/reject/defer choices, updating compact durable decision state, applying decisions, opening adapter pull requests, checking provenance, or determining whether local locks or newer upstream behavior governs. Do not use for ordinary editorial or asset work.
 ---
 
 # Operate Orinoco metadata adapters
@@ -15,9 +15,10 @@ metadata.
    `orinoco.lock` or equivalent release evidence, the applicable
    `site-specific/sources/<id>/source.yaml`, adapter README, tests, and
    site-owned policy or decision registers.
-2. Confirm whether the checkout is Copier source, a staged template render, a
-   released downstream consumer, or a source-data checkout.
-3. For ordinary site work, follow the consumer's locked release and the
+2. Confirm that the checkout is a released downstream and the adapter lives
+   under `extensions/source-adapters/<adapter>/`. The thin template does not
+   include generic adapter executables.
+3. Follow the consumer's locked release and the
    adapter's local contract. Remote latest is advisory until a reviewed framework
    update changes the lock.
 4. If the task asks about new upstream behavior, verify the authoritative remote
@@ -52,10 +53,10 @@ decisions, applying a review bundle, or preparing an adapter pull request.
 ## Run the review transaction
 
 1. Start from a clean, current review branch in the downstream repository.
-2. Capture or select the declared source snapshot and run the exact adapter
-   command from `.orinoco-lite/source-adapters/`. Keep literal
-   project-relative arguments in the execution record. Run
-   `pixi run source-adapter-canary` before a network-backed refresh.
+2. Capture or select the declared source snapshot and run the adapter's exact
+   documented command from `extensions/source-adapters/<adapter>/`. Keep
+   literal project-relative arguments in the execution record and run that
+   extension's own tests before a network-backed refresh.
 3. Review candidate identities, assertions, provenance, collisions, unresolved
    items, and the effect of prior decisions. Do not auto-create or fuzzy-link an
    ambiguous entity.

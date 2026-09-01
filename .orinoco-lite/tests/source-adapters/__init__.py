@@ -1,1 +1,0 @@
-"""Downstream source-adapter tests."""

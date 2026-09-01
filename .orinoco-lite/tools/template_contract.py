@@ -23,13 +23,12 @@ IGNORED_PARTS = {
     "test-results",
 }
 SITE_OWNED_CLASSES = {
-    "initialized_site_owned",
+    "site_specific",
     "extensions",
-    "consumer_tests",
+    "site_acceptance",
     "site_policy",
+    "workflow_extensions",
 }
-PROTECTED_UPDATE_CLASSES = SITE_OWNED_CLASSES
-UPDATE_MUTABLE_PATHS: set[str] = set()
 
 
 class ContractError(RuntimeError):
@@ -83,8 +82,8 @@ def path_matches(path: str, pattern: str) -> bool:
 def ownership_classes(contract: dict[str, Any]) -> dict[str, list[str]]:
     """Return validated class-to-pattern mappings."""
 
-    if contract.get("contract_version") != 1:
-        raise ContractError("template-ownership.yml must use contract_version 1")
+    if contract.get("contract_version") != 2:
+        raise ContractError("template-ownership.yml must use contract_version 2")
     classes = contract.get("classes")
     if not isinstance(classes, dict):
         raise ContractError("template-ownership.yml classes must be a mapping")

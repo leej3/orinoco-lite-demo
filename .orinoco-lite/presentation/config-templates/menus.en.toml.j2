@@ -1,0 +1,14 @@
+footer = []
+
+{% for item in site.navigation | default([]) -%}
+[[main]]
+  name = {{ item.name | json_string }}
+  pageRef = {{ item.page_ref | json_string }}
+  weight = {{ item.weight | default(loop.index * 10) }}
+{% endfor %}
+
+[[main]]
+  identifier = "search"
+  weight = 99
+  [main.params]
+    action = "search"
