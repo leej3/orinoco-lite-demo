@@ -1,5 +1,6 @@
 ---
 title: Contact
+url: /contact/
 ---
 
 The Center for Open Neuroscience is based in Psychological and Brain Sciences at 3 Maynard Street, Hanover, New Hampshire 03755, USA.

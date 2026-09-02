@@ -1,5 +1,6 @@
 ---
 title: About CON
+url: /about/
 ---
 
 {{< figure src="img/editorial/homepage/hero.png" alt="Center for Open Neuroscience" class="mx-auto max-w-3xl" >}}

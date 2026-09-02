@@ -1,5 +1,6 @@
 ---
 title: Engage
+url: /engage/
 aliases:
   - /engage.html
 ---
@@ -9,7 +10,7 @@ aliases:
 CON is an open community.
 You are welcome to build, document, test, teach, or use any of our [projects]({{< ref "/projects" >}}), whether or not you are looking for a formal position.
 
-Start with the [DataLad project]({{< ref "/projects/datalad" >}}), browse the full catalogue, or [contact the team]({{< ref "/contact" >}}) to discuss where your experience could help.
+Start with the [DataLad project]({{< ref "/projects/datalad" >}}), browse the full catalogue, or [contact the team]({{< ref "/pages/contact" >}}) to discuss where your experience could help.
 
 ## Promote
 

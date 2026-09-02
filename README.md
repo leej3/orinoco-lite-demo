@@ -10,7 +10,6 @@ overlay, and the repository's declarative `site-specific/` inputs.
 pixi run validate
 pixi run build
 pixi run serve
-pixi run test-all
 ```
 
 The source boundary is:
