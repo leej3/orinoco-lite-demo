@@ -1,5 +1,6 @@
 ---
 title: Explore CON
+url: /explore/
 ---
 
 Use the interactive network below to explore CON metadata.

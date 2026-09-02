@@ -9,12 +9,7 @@ classes:
       - .copier-answers.yml
       - pixi.toml
       - .agents/**
-      - .orinoco-lite/README.md
-      - .orinoco-lite/THIRD_PARTY_NOTICES.md
-      - .orinoco-lite/template-ownership.yml
-      - .orinoco-lite/materialized-presentation/**
-      - .orinoco-lite/presentation/**
-      - .orinoco-lite/tools/**
+      - .orinoco-lite/**
       - .github/workflows/pages.yml
       - .github/workflows/shacl-vue-proposal.yml
       - .github/workflows/validate.yml
@@ -24,7 +19,6 @@ classes:
     paths:
       - orinoco.yaml
       - site-specific/**
-      - .orinoco-lite/provenance/**
   extensions:
     behavior: site-owned-stable-hook
     paths:
@@ -32,7 +26,7 @@ classes:
   site_acceptance:
     behavior: site-owned-acceptance
     paths:
-      - .orinoco-lite/tests/**
+      - tests/**
   workflow_extensions:
     behavior: site-owned-stable-hook
     paths:

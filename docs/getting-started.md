@@ -5,7 +5,7 @@
 2. Add reviewed site metadata under `site-specific/metadata/records/`.
 3. Add editorial pages, assets, and static inputs only under their
    `site-specific/` directories.
-4. Run `pixi run validate`, `pixi run build`, and `pixi run test-all`.
+4. Run `pixi run validate` and `pixi run build`.
 5. Configure repository Pages and curation settings before enabling hosted
    editing.
 

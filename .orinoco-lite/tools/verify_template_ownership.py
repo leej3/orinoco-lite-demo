@@ -42,7 +42,6 @@ REQUIRED_TEMPLATE_FILES = {
     ".orinoco-lite/tools/verify_deterministic_build.py",
     ".orinoco-lite/tools/verify_local_preview.py",
     ".orinoco-lite/tools/verify_hugo.py",
-    ".orinoco-lite/tools/install_browser_tests.py",
     ".orinoco-lite/tools/shacl_vue_handoff.py",
     "site-specific/site.yaml",
 }
@@ -98,6 +97,17 @@ def verify(root: Path) -> list[str]:
     failures: list[str] = []
     ownership = load_yaml(root / ".orinoco-lite/template-ownership.yml")
     classes = ownership_classes(ownership)
+
+    if ".orinoco-lite/**" not in classes.get("template_owned", []):
+        failures.append("template_owned must own the complete .orinoco-lite namespace")
+    for name, patterns in classes.items():
+        if name == "template_owned":
+            continue
+        for pattern in patterns:
+            if pattern.strip("/").startswith(".orinoco-lite/"):
+                failures.append(
+                    f"{name} cannot own a path under .orinoco-lite: {pattern}"
+                )
 
     missing = sorted(path for path in REQUIRED_TEMPLATE_FILES if not (root / path).is_file())
     failures.extend(f"missing required template file: {path}" for path in missing)
