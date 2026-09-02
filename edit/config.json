@@ -1,0 +1,29 @@
+{
+  "app_name": "Center for Open Neuroscience — Orinoco Test Site metadata review",
+  "class_url": "dlschemas_owl.ttl",
+  "data_url": "records.ttl",
+  "external_config_url": "config_default_xyzri.yaml",
+  "front_page_content": "Edit a public record, validate it, then download a review bundle. You may also explicitly propose the same bundle through GitHub. This static editor receives no authentication credential.",
+  "page_title": "Center for Open Neuroscience — Orinoco Test Site metadata review",
+  "priority_classes": [
+    {
+      "class": "dlthings:Thing",
+      "icon": "mdi-view-list",
+      "include_subclasses": true,
+      "title": "All"
+    }
+  ],
+  "review_bundle_catalog": "data/record-sources.json",
+  "review_bundle_mode": "patch-download",
+  "review_bundle_proposal": {
+    "repository": "leej3/orinoco-lite-demo",
+    "service_origin": "https://orinoco-curation-review.pages.dev",
+    "shared_github_pages_origin": true
+  },
+  "shapes_url": "dlschemas_shacl.ttl",
+  "use_default_classes": false,
+  "use_default_data": false,
+  "use_default_shapes": false,
+  "use_service": false,
+  "use_token": false
+}

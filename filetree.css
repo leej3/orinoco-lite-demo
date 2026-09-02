@@ -1,0 +1,92 @@
+#filetree {
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+    font-size: small;
+}
+
+#filetree ul {
+    list-style: none;
+}
+
+#filetree li {
+    list-style: none;
+}
+
+#filetree > li > .tree-directory {
+    margin-left: 0;
+}
+
+.tree-directory {
+    margin-left: 16px;
+}
+
+.tree-directory summary {
+    list-style: none;
+    cursor: pointer;
+}
+.tree-directory summary::-webkit-details-marker {
+    display: none;
+}
+.tree-directory summary::marker {
+    display: none;
+}
+
+.tree-directory summary {
+    font-weight: bold;
+    user-select: none;
+}
+
+
+.tree-directory > summary .icon-open {
+    display: none;
+}
+
+.tree-directory > summary .icon-closed {
+    display: inline;
+}
+
+.tree-directory[open] > summary .icon-open {
+    display: inline;
+}
+
+.tree-directory[open] > summary .icon-closed {
+    display: none;
+}
+
+.file-node {
+    margin-left: 16px;
+}
+
+
+.file-size {
+    color: #777;
+    font-size: 0.9em;
+    margin-left: 0.3em;
+}
+
+.tab-content {
+    margin-top: 1rem;
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 1.5em;
+    font-size:small;
+}
+
+.tab-pane {
+    display: none;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.distribution-selector {
+    margin-bottom: 1rem;
+}
+
+#distribution-select {
+    padding: 4px 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: medium;
+    background-color: inherit;
+}

@@ -1,9 +1,0 @@
-contract_version: 2
-
-paths:
-  records: site-specific/metadata/records
-  editorial: site-specific/content
-  site: site-specific
-  generated: generated
-  extensions: extensions
-  build: build

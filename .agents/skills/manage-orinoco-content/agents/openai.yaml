@@ -1,4 +1,0 @@
-interface:
-  display_name: "Manage Orinoco Content"
-  short_description: "Edit editorial content and declared assets"
-  default_prompt: "Use $manage-orinoco-content to update this site's editorial content or declared assets safely."

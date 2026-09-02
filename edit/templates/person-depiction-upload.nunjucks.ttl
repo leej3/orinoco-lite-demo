@@ -1,0 +1,30 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dldi: <https://pid.datalad.org/distributions/> .
+@prefix dlthings: <https://concepts.datalad.org/s/things/v2/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
+@prefix xyzri: <https://concepts.datalad.org/s/demo-research-information/unreleased/> .
+@prefix xyzrins: <https://concepts.datalad.org/s/demo-research-information/ns/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+{% set depictionId = _randomUUID() -%}
+{% set depictionURI = "https://concepts.datalad.org/s/demo-research-information/ns/depictions/" + depictionId -%}
+dldi:{{ file.annexKey }} a xyzri:XYZFile;
+    skos:prefLabel {{ file.name | ttl }}^^xsd:string;
+    dlthings:distribution_of <{{ depictionURI }}>;
+    dlthings:byte_size {{ file.size | ttl }}^^xsd:nonNegativeInteger;
+    dlthings:characterized_by _:n0-1.
+_:n0-1 a dlthings:Statement;
+    rdf:object <{{ file.downloadUrl }}>;
+    rdf:predicate dcat:downloadUrl.
+dldi:{{ file.annexKey }} dlthings:checksums _:n0-2.
+_:n0-2 a dlthings:Checksum;
+    skos:notation {{ file.hash | ttl }}^^xsd:hexBinary;
+    dcterms:creator spdx:checksumAlgorithm_sha256.
+<{{ depictionURI }}> a xyzri:XYZDepiction;
+    dcterms:subject <{{ pid }}>;
+    dcterms:type <https://concepts.datalad.org/s/demo-research-information/ns/depiction-types/e9a34f7d-d05e-4591-bb45-f8a0c499e07b>;
+    dlthings:distributions dldi:{{ file.annexKey }}.
+<{{ pid }}> dlthings:depiction <{{ depictionURI }}>.

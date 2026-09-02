@@ -1,0 +1,23 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dldi: <https://pid.datalad.org/distributions/> .
+@prefix dlthings: <https://concepts.datalad.org/s/things/v2/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
+@prefix xyzri: <https://concepts.datalad.org/s/demo-research-information/unreleased/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dldi:{file.annexKey} a xyzri:XYZFile;
+    skos:prefLabel "{file.name}";
+    dlthings:distribution_of <{pid}>;
+    dlthings:byte_size "{file.size}"^^xsd:nonNegativeInteger;
+    dlthings:characterized_by _:n0-1.
+_:n0-1 a dlthings:Statement;
+    rdf:object <{file.downloadUrl}>;
+    rdf:predicate dcat:downloadUrl.
+dldi:{file.annexKey} dlthings:checksums _:n0-2.
+_:n0-2 a dlthings:Checksum;
+    skos:notation "{file.hash}";
+    dcterms:creator spdx:checksumAlgorithm_sha256.
+<{pid}> dlthings:distributions dldi:{file.annexKey}.
