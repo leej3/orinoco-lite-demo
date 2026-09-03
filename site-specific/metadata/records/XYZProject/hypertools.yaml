@@ -1,0 +1,33 @@
+associated_with:
+- object: xyzrins:persons/jeremy-manning
+  roles:
+  - marcrel:led
+  schema_type: dlthings:Association
+attributes:
+- predicate: foaf:homepage
+  schema_type: dlthings:AttributeSpecification
+  value: https://hypertools.readthedocs.io/en/latest/
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: Python toolbox for gaining geometric insights into high dimensional data.
+    Supports 2D/3D static and animated visualizations, data manipulation including
+    hyperalignment and k-means clustering.
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: HyperTools
+- predicate: dlthings:short_name
+  schema_type: dlthings:AttributeSpecification
+  value: HyperTools
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: HyperTools
+description: Python toolbox for gaining geometric insights into high dimensional data.
+  Supports 2D/3D static and animated visualizations, data manipulation including hyperalignment
+  and k-means clustering.
+display_label: HyperTools
+part_of:
+- xyzrins:.
+pid: xyzrins:projects/hypertools
+schema_type: xyzri:XYZProject
+short_name: HyperTools
+title: HyperTools

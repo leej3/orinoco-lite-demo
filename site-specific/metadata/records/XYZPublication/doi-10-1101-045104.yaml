@@ -1,0 +1,39 @@
+attributed_to:
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/michael-hanke
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/jean-baptiste-poline
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+attributes:
+- predicate: dcterms:issued
+  schema_type: dlthings:AttributeSpecification
+  value: '2016'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Towards standard practices for sharing computer code and programs in neuroscience
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Towards standard practices for sharing computer code and programs in neuroscience
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
+display_label: Towards standard practices for sharing computer code and programs in
+  neuroscience
+identifiers:
+- notation: 10.1101/045104
+  schema_type: dlthings:DOI
+- notation: http://biorxiv.org/content/early/2016/03/24/045104
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:7NJBVY9C
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/doi-10-1101-045104
+schema_type: xyzri:XYZPublication
+title: Towards standard practices for sharing computer code and programs in neuroscience

@@ -1,0 +1,42 @@
+attributed_to:
+- object: xyzrins:persons/adina-wagner
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/michael-hanke
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+attributes:
+- predicate: bibo:locator
+  schema_type: dlthings:AttributeSpecification
+  value: 4, 40, 1525
+- predicate: dcterms:issued
+  schema_type: dlthings:AttributeSpecification
+  value: '2019'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'multimatch-gaze: The MultiMatch algorithm for gaze path comparison in Python'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'multimatch-gaze: The MultiMatch algorithm for gaze path comparison in Python'
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
+display_label: 'multimatch-gaze: The MultiMatch algorithm for gaze path comparison
+  in Python'
+identifiers:
+- notation: 10.21105/joss.01525
+  schema_type: dlthings:DOI
+- notation: https://doi.org/10.21105/joss.01525
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:SFAGW82E
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/doi-10-21105-joss-01525
+schema_type: xyzri:XYZPublication
+title: 'multimatch-gaze: The MultiMatch algorithm for gaze path comparison in Python'

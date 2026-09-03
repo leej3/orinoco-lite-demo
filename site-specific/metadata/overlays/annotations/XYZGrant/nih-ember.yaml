@@ -1,0 +1,34 @@
+assertions:
+- assertion_sha256: sha256:8d082c2ca451c13044a57cd99864ad0c8618dc68d7d532220a0e9456e10f1ce3
+  path: /attributed_to
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZGrant.json#record=xyzrins%3Agrants%2Fnih-ember
+- assertion_sha256: sha256:bfbbc35fa16a2b18927de3d8dd5bb401ddaaea96f7587ca273222bc8a2a4349b
+  path: /attributed_to
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZGrant.json#record=xyzrins%3Agrants%2Fnih-ember
+- assertion_sha256: sha256:25b862b0de947beb583a2a21418dc8ff74c41cf410f31e1a16c30831b4c4a703
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZGrant.json#record=xyzrins%3Agrants%2Fnih-ember
+- assertion_sha256: sha256:7b6c9110ec7ddeee1e8debec93c877ef98d6299a56b5ebc5e5813ce7b97d3ab5
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZGrant.json#record=xyzrins%3Agrants%2Fnih-ember
+- assertion_sha256: sha256:9718440239c53fd6480828352ce8c9bb01855c3d2f4f7b2f9f02f3f152041a13
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZGrant.json#record=xyzrins%3Agrants%2Fnih-ember
+- assertion_sha256: sha256:a6f122fb3a8c74afade8c96120cb4610ccbef29a0d9d8ca8edca5ed30dd246b3
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZGrant.json#record=xyzrins%3Agrants%2Fnih-ember
+- assertion_sha256: sha256:e5da3e4157a882955e7974c79a44242a4c6c18566d6f3ddb63be690298d3cc57
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZGrant.json#record=xyzrins%3Agrants%2Fnih-ember
+- assertion_sha256: sha256:edb6e8a36d9199ae7a7185d32b541aacbe9795630b59f67d8f85c952d6a0203f
+  path: /identifiers
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZGrant.json#record=xyzrins%3Agrants%2Fnih-ember
+record: xyzrins:grants/nih-ember

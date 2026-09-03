@@ -1,0 +1,18 @@
+assertions:
+- assertion_sha256: sha256:b7ea755ad379c3ab219f2bde51fb62f2738ccca6353c4dd3e1f61b078f8da9e0
+  path: /attributed_to
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPublication.json#record=http%3A%2F%2Fjmlr.org%2Fpapers%2Fv18%2F17-434.html
+- assertion_sha256: sha256:abf2461f2a384b3eae17fb81488f99407c8e970a744afd15391d51235d3febdf
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPublication.json#record=http%3A%2F%2Fjmlr.org%2Fpapers%2Fv18%2F17-434.html
+- assertion_sha256: sha256:cfcfe5239249e1fa07c181f7502e48f961b270ac3fa04cb31ed34b8d871cb43c
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPublication.json#record=http%3A%2F%2Fjmlr.org%2Fpapers%2Fv18%2F17-434.html
+- assertion_sha256: sha256:19f5953d22a167ea0b1416d019c6c60c2eca95a336337a35078232fb6a3e0bf1
+  path: /identifiers
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPublication.json#record=http%3A%2F%2Fjmlr.org%2Fpapers%2Fv18%2F17-434.html
+record: xyzrins:publications/http-jmlr-org-papers-v18-17-434-html

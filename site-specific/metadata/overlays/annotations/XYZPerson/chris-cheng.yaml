@@ -1,0 +1,26 @@
+assertions:
+- assertion_sha256: sha256:66a1c3696e24967843448191513c43689aab6e4c7dce97adb01a9239b9acda4c
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fchris-cheng
+- assertion_sha256: sha256:8028f96fcbaa6a0148c4d54a3d8fe8768f707760bd400868875291187d096a10
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fchris-cheng
+- assertion_sha256: sha256:ac37f9834c508ec89b5163418974b9b04ae84d491d92408d5854f61e7f3ebe98
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fchris-cheng
+- assertion_sha256: sha256:bdb6c8ff8e59c3780cda405d2d8c459b9e764ca74d017ce12e13639a1eda03f2
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fchris-cheng
+- assertion_sha256: sha256:cb2ea99a8a9018b0849165f77c44689ae57a806ebc4c1b3ffde6ac9cd02ad209
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fchris-cheng
+- assertion_sha256: sha256:4f9e4cf43283c2d3e4518c8bc234e224f166622cef875f57ea4cd0830ccb5346
+  path: /identifiers
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPerson.json#record=xyzrins%3Apersons%2Fchris-cheng
+record: xyzrins:persons/chris-cheng

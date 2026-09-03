@@ -1,0 +1,29 @@
+associated_with:
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:ctb
+  schema_type: dlthings:Association
+attributes:
+- predicate: foaf:homepage
+  schema_type: dlthings:AttributeSpecification
+  value: http://www.reproducibleimaging.org/module-reproducible-basics
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: Training module presenting daily core tools (shell, version control, etc)
+    and demonstrating research reproducibility improvement. Part of the ReproNim training
+    curriculum.
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'ReproNim: Reproducible Basics'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'ReproNim: Reproducible Basics'
+description: Training module presenting daily core tools (shell, version control,
+  etc) and demonstrating research reproducibility improvement. Part of the ReproNim
+  training curriculum.
+display_label: 'ReproNim: Reproducible Basics'
+part_of:
+- xyzrins:.
+pid: xyzrins:projects/repronim-reproducible-basics
+schema_type: xyzri:XYZProject
+title: 'ReproNim: Reproducible Basics'

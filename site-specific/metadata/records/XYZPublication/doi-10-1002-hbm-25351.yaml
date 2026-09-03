@@ -1,0 +1,53 @@
+attributed_to:
+- object: xyzrins:persons/satrajit-ghosh
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/matteo-visconti-di-oleggio-castello
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - obo:MS_1002036
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/matteo-visconti-di-oleggio-castello
+  roles:
+  - obo:MS_1002036
+  schema_type: dlthings:Attribution
+attributes:
+- predicate: dcterms:issued
+  schema_type: dlthings:AttributeSpecification
+  value: 2021-02
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Open Brain Consent 2021
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'The Open Brain Consent: Informing research participants and obtaining consent
+    to share brain imaging data'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'The Open Brain Consent: Informing research participants and obtaining consent
+    to share brain imaging data'
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
+display_label: 'The Open Brain Consent: Informing research participants and obtaining
+  consent to share brain imaging data'
+identifiers:
+- notation: 10.1002/hbm.25351
+  schema_type: dlthings:DOI
+- notation: https://doi.org/10.1002/hbm.25351
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:245NKVXU
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/doi-10-1002-hbm-25351
+schema_type: xyzri:XYZPublication
+title: 'The Open Brain Consent: Informing research participants and obtaining consent
+  to share brain imaging data'

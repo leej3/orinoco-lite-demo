@@ -1,0 +1,39 @@
+attributed_to:
+- object: xyzrins:persons/michael-hanke
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/james-haxby
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+attributes:
+- predicate: bibo:locator
+  schema_type: dlthings:AttributeSpecification
+  value: 4, 38-43
+- predicate: dcterms:issued
+  schema_type: dlthings:AttributeSpecification
+  value: '2010'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'Statistical learning analysis in neuroscience: aiming for transparency'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'Statistical learning analysis in neuroscience: aiming for transparency'
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
+display_label: 'Statistical learning analysis in neuroscience: aiming for transparency'
+identifiers:
+- notation: 10.3389/neuro.01.007.2010
+  schema_type: dlthings:DOI
+- notation: zotero:group:6197458:item:73HMRZB4
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/doi-10-3389-neuro-01-007-2010
+schema_type: xyzri:XYZPublication
+title: 'Statistical learning analysis in neuroscience: aiming for transparency'

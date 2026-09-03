@@ -1,0 +1,5 @@
+description: A person or organization responsible for the intellectual or artistic
+  content of a resource
+display_label: Creator
+pid: marcrel:cre
+schema_type: xyzri:XYZAgentRole

@@ -1,0 +1,40 @@
+attributes:
+- predicate: vcard:Email
+  schema_type: dlthings:AttributeSpecification
+  value: mvdm@dartmouth.edu
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: Associate Professor of Psychological and Brain Sciences at Dartmouth College.
+    Studies how neural ensembles across brain areas organize experience for adaptive
+    behavior.
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Matt van der Meer
+- predicate: dlthings:family_name
+  schema_type: dlthings:AttributeSpecification
+  value: van der Meer
+- predicate: dlthings:formatted_name
+  schema_type: dlthings:AttributeSpecification
+  value: Matthijs van der Meer
+- predicate: dlthings:given_name
+  schema_type: dlthings:AttributeSpecification
+  value: Matthijs
+- predicate: dlthings:nickname
+  schema_type: dlthings:AttributeSpecification
+  value: Matt
+description: Associate Professor of Psychological and Brain Sciences at Dartmouth
+  College. Studies how neural ensembles across brain areas organize experience for
+  adaptive behavior.
+display_label: Matt van der Meer
+family_name: van der Meer
+formatted_name: Matthijs van der Meer
+given_name: Matthijs
+identifiers:
+- notation: vandermeerlab
+  schema_type: dlthings:Identifier
+- creator: rrid:SCR_002630
+  notation: vandermeerlab
+  schema_type: dlthings:Identifier
+nickname: Matt
+pid: xyzrins:persons/matthijs-van-der-meer
+schema_type: xyzri:XYZPerson

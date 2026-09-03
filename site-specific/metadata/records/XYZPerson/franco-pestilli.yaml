@@ -1,0 +1,31 @@
+attributes:
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: Collaborator at the Center for Open Neuroscience. Affiliated with University
+    of Texas, Austin. Director and founder of brainlife.io cloud computing platform.
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Franco Pestilli
+- predicate: dlthings:family_name
+  schema_type: dlthings:AttributeSpecification
+  value: Pestilli
+- predicate: dlthings:formatted_name
+  schema_type: dlthings:AttributeSpecification
+  value: Franco Pestilli
+- predicate: dlthings:given_name
+  schema_type: dlthings:AttributeSpecification
+  value: Franco
+description: Collaborator at the Center for Open Neuroscience. Affiliated with University
+  of Texas, Austin. Director and founder of brainlife.io cloud computing platform.
+display_label: Franco Pestilli
+family_name: Pestilli
+formatted_name: Franco Pestilli
+given_name: Franco
+identifiers:
+- notation: francopestilli
+  schema_type: dlthings:Identifier
+- creator: rrid:SCR_002630
+  notation: francopestilli
+  schema_type: dlthings:Identifier
+pid: xyzrins:persons/franco-pestilli
+schema_type: xyzri:XYZPerson

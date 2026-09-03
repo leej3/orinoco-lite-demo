@@ -1,0 +1,37 @@
+attributed_to:
+- object: xyzrins:persons/jason-gors
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+attributes:
+- predicate: bibo:locator
+  schema_type: dlthings:AttributeSpecification
+  value: 8, 6
+- predicate: dcterms:issued
+  schema_type: dlthings:AttributeSpecification
+  value: 2013-06
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Prioritized Detection of Personally Familiar Faces
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Prioritized Detection of Personally Familiar Faces
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
+display_label: Prioritized Detection of Personally Familiar Faces
+identifiers:
+- notation: 10.1371/journal.pone.0066620
+  schema_type: dlthings:DOI
+- notation: 1932-6203
+  schema_type: dlthings:ISSN
+- notation: zotero:group:6197458:item:Z3AQGPJK
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/doi-10-1371-journal-pone-0066620
+schema_type: xyzri:XYZPublication
+title: Prioritized Detection of Personally Familiar Faces

@@ -1,0 +1,34 @@
+attributes:
+- predicate: vcard:Email
+  schema_type: dlthings:AttributeSpecification
+  value: vmelnik@docsultant.com
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: Software Engineer and Consultant at the Center for Open Neuroscience. Working
+    on ReproStim, ReproMon, con/noisseur, and event collection/timing projects.
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Vadim Melnik
+- predicate: dlthings:family_name
+  schema_type: dlthings:AttributeSpecification
+  value: Melnik
+- predicate: dlthings:formatted_name
+  schema_type: dlthings:AttributeSpecification
+  value: Vadim Melnik
+- predicate: dlthings:given_name
+  schema_type: dlthings:AttributeSpecification
+  value: Vadim
+description: Software Engineer and Consultant at the Center for Open Neuroscience.
+  Working on ReproStim, ReproMon, con/noisseur, and event collection/timing projects.
+display_label: Vadim Melnik
+family_name: Melnik
+formatted_name: Vadim Melnik
+given_name: Vadim
+identifiers:
+- notation: vmdocua
+  schema_type: dlthings:Identifier
+- creator: rrid:SCR_002630
+  notation: vmdocua
+  schema_type: dlthings:Identifier
+pid: xyzrins:persons/vadim-melnik
+schema_type: xyzri:XYZPerson

@@ -1,0 +1,37 @@
+associated_with:
+- object: xyzrins:persons/kyle-meyer
+  roles:
+  - marcrel:ctb
+  schema_type: dlthings:Association
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:led
+  schema_type: dlthings:Association
+attributes:
+- predicate: foaf:homepage
+  schema_type: dlthings:AttributeSpecification
+  value: http://reproman.repronim.org
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: Aims to facilitate reproducible computation via collection of detailed information
+    about origin of used components including Debian/Conda packages and VCS repositories.
+    Part of the NIH-supported ReproNim effort.
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: ReproMan
+- predicate: dlthings:short_name
+  schema_type: dlthings:AttributeSpecification
+  value: ReproMan
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: ReproMan - Reproducible Computational Environments Manager
+description: Aims to facilitate reproducible computation via collection of detailed
+  information about origin of used components including Debian/Conda packages and
+  VCS repositories. Part of the NIH-supported ReproNim effort.
+display_label: ReproMan
+part_of:
+- xyzrins:.
+pid: xyzrins:projects/reproman
+schema_type: xyzri:XYZProject
+short_name: ReproMan
+title: ReproMan - Reproducible Computational Environments Manager

@@ -1,0 +1,33 @@
+associated_with:
+- object: xyzrins:persons/jeremy-manning
+  roles:
+  - marcrel:led
+  schema_type: dlthings:Association
+attributes:
+- predicate: foaf:homepage
+  schema_type: dlthings:AttributeSpecification
+  value: https://supereeg.readthedocs.io/en/latest/
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: Python toolbox for inferring whole-brain activity from sparse ECoG recordings.
+    Leverages multi-patient brain data to learn correlation models and uses Gaussian
+    process regression for activity inference.
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: SuperEEG
+- predicate: dlthings:short_name
+  schema_type: dlthings:AttributeSpecification
+  value: SuperEEG
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: SuperEEG
+description: Python toolbox for inferring whole-brain activity from sparse ECoG recordings.
+  Leverages multi-patient brain data to learn correlation models and uses Gaussian
+  process regression for activity inference.
+display_label: SuperEEG
+part_of:
+- xyzrins:.
+pid: xyzrins:projects/supereeg
+schema_type: xyzri:XYZProject
+short_name: SuperEEG
+title: SuperEEG

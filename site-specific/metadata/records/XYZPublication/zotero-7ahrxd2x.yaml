@@ -1,0 +1,40 @@
+attributed_to:
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/benjamin-poldrack
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/michael-hanke
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+attributes:
+- predicate: dcterms:issued
+  schema_type: dlthings:AttributeSpecification
+  value: '2016'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: DataLad – decentralized data distribution for consumption and sharing of
+    scientific datasets
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: DataLad – decentralized data distribution for consumption and sharing of
+    scientific datasets
+characterized_by:
+- object: bibo:Document
+  predicate: dcterms:type
+display_label: DataLad – decentralized data distribution for consumption and sharing
+  of scientific datasets
+identifiers:
+- notation: http://www.pymvpa.org/files/OHBM2016_Halchenko_datalad.pdf
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:7AHRXD2X
+  schema_type: dlthings:Identifier
+kind: bibo:Document
+pid: xyzrins:publications/zotero-7ahrxd2x
+schema_type: xyzri:XYZPublication
+title: DataLad – decentralized data distribution for consumption and sharing of scientific
+  datasets

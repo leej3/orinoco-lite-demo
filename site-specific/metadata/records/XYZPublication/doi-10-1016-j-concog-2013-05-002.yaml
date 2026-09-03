@@ -1,0 +1,62 @@
+attributed_to:
+- object: xyzrins:persons/jason-gors
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+attributes:
+- predicate: bibo:locator
+  schema_type: dlthings:AttributeSpecification
+  value: 22, 3, 765-770
+- predicate: dcterms:issued
+  schema_type: dlthings:AttributeSpecification
+  value: '2013'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Processing of invisible social cues
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Processing of invisible social cues
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: Abstract Successful interactions between people are dependent on rapid recognition
+    of social cues. We investigated whether head direction – a powerful social signal
+    – is processed in the absence of conscious awareness. We used continuous flash
+    interocular suppression to render stimuli invisible and compared the reaction
+    time for face detection when faces were turned towards the viewer and turned slightly
+    away. We found that faces turned towards the viewer break through suppression
+    faster than faces that are turned away, regardless of eye direction. Our results
+    suggest that detection of a face with attention directed at the viewer occurs
+    even in the absence of awareness of that face. While previous work has demonstrated
+    that stimuli that signal threat are processed without awareness, our data suggest
+    that the social relevance of a face, defined more broadly, is evaluated in the
+    absence of awareness.
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
+description: Abstract Successful interactions between people are dependent on rapid
+  recognition of social cues. We investigated whether head direction – a powerful
+  social signal – is processed in the absence of conscious awareness. We used continuous
+  flash interocular suppression to render stimuli invisible and compared the reaction
+  time for face detection when faces were turned towards the viewer and turned slightly
+  away. We found that faces turned towards the viewer break through suppression faster
+  than faces that are turned away, regardless of eye direction. Our results suggest
+  that detection of a face with attention directed at the viewer occurs even in the
+  absence of awareness of that face. While previous work has demonstrated that stimuli
+  that signal threat are processed without awareness, our data suggest that the social
+  relevance of a face, defined more broadly, is evaluated in the absence of awareness.
+display_label: Processing of invisible social cues
+identifiers:
+- notation: 10.1016/j.concog.2013.05.002
+  schema_type: dlthings:DOI
+- notation: 1053-8100
+  schema_type: dlthings:ISSN
+- notation: zotero:group:6197458:item:LUY3F93F
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/doi-10-1016-j-concog-2013-05-002
+schema_type: xyzri:XYZPublication
+title: Processing of invisible social cues

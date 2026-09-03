@@ -1,0 +1,34 @@
+attributed_to:
+- object: xyzrins:persons/michael-hanke
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+attributes:
+- predicate: dcterms:issued
+  schema_type: dlthings:AttributeSpecification
+  value: '2011'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'Debian Med: Integrated software environment for all medical purposes based
+    on Debian GNU/Linux'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'Debian Med: Integrated software environment for all medical purposes based
+    on Debian GNU/Linux'
+characterized_by:
+- object: bibo:Article
+  predicate: dcterms:type
+display_label: 'Debian Med: Integrated software environment for all medical purposes
+  based on Debian GNU/Linux'
+identifiers:
+- notation: zotero:group:6197458:item:3ZVYRXU7
+  schema_type: dlthings:Identifier
+kind: bibo:Article
+pid: xyzrins:publications/zotero-3zvyrxu7
+schema_type: xyzri:XYZPublication
+title: 'Debian Med: Integrated software environment for all medical purposes based
+  on Debian GNU/Linux'

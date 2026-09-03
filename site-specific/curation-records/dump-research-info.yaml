@@ -1,0 +1,424 @@
+adapter: dump-research-info
+decisions:
+  obo:MS_1002034:
+    claim_sha256: sha256:fea0608c1e62f2e31841027c38aa7da761a89e682d10b11bb067a34c23754a3b
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: data/pool_psychoinformatics_de:XYZAgentRole:obo:MS_1002034
+  obo:MS_1002035:
+    claim_sha256: sha256:126d749a209c667c812f5c3728b7d4187f4b88cb77915bfed28cc7fc27b3b6da
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: data/pool_psychoinformatics_de:XYZAgentRole:obo:MS_1002035
+  obo:MS_1002036:
+    claim_sha256: sha256:f3d6b3857e5be530ad01eba663e6dc7e0f18c22f96707322d041c31bbd443732
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: data/pool_psychoinformatics_de:XYZAgentRole:obo:MS_1002036
+  ror:00hj54h04:
+    claim_sha256: sha256:c9963a03476aeeaad44156f74e0faf476086e26d41e3ba0201e0b13271d0ff72
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZOrganization:ror:00hj54h04
+  ror:01pxwe438:
+    claim_sha256: sha256:13cd7079216c3ac2f5a2afc0dc36e3bb7c483440faaa040f4964242f71f3dce3
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZOrganization:ror:01pxwe438
+  ror:02nv7yv05:
+    claim_sha256: sha256:9adbdb2513ff1b10a5c8bb07aba23768aa2d0359072828c322b8d8c3c4145511
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZOrganization:ror:02nv7yv05
+  ror:042nb2s44:
+    claim_sha256: sha256:67b05d20752c3d0356a376b02cb3b21260db014dc8d07ab5687b04bc10ffd052
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZOrganization:ror:042nb2s44
+  ror:0464eyp60:
+    claim_sha256: sha256:affce5ecafffc7d8462522d4e3e0b29b46a213738712235317c59a6183067d7e
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZOrganization:ror:0464eyp60
+  ror:049s0rh22:
+    claim_sha256: sha256:8e49c6d5480262b56f56b7327805e8ad6b77c3c32f0ab4853c721bd5b94ab1bb
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZOrganization:ror:049s0rh22
+  ror:04tfhh831:
+    claim_sha256: sha256:86eb1235b9b83aa2d6817f75f597b9f0093b05f4124406ef04a6eca744872cd9
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZOrganization:ror:04tfhh831
+  xyzrins:grants/nih-dandi:
+    claim_sha256: sha256:b3c36581db13f48545bd143d322438cee2ddce771b9fe111d23b1c9a6778df86
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZGrant:xyzrins:grants/nih-dandi
+  xyzrins:grants/nih-ember:
+    claim_sha256: sha256:4c9d08dcfb12f23cb30ab46cb72a64149d688126179ea6d798dda235879c9be8
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZGrant:xyzrins:grants/nih-ember
+  xyzrins:grants/nih-openneuro:
+    claim_sha256: sha256:cd3ff80f7f1c3257a473203a346bfdacfe02c8a534fb9226ec6537adc0286a2f
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZGrant:xyzrins:grants/nih-openneuro
+  xyzrins:organizations/hms:
+    claim_sha256: sha256:6bd2f91f01ecd803faf77ba608ec3b7647170224d948630fb62454c207d69f1d
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZOrganization:xyzrins:organizations/hms
+  xyzrins:persons/adina-wagner:
+    claim_sha256: sha256:f675ad0afde35a2cdf5ca8ae9775ff7bd025f1380f942dd91d04ed42f2416b8a
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPerson:xyzrins:persons/adina-wagner
+  xyzrins:persons/austin-macdonald:
+    claim_sha256: sha256:dae56e84d1bb070184787aba4bf69f830615ae341f3af2d45cf0467507a7d49d
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPerson:xyzrins:persons/austin-macdonald
+  xyzrins:persons/benjamin-poldrack:
+    claim_sha256: sha256:25f7e144e3632cb0609a1658f25c691628269d9feb896cedaca74f925d48de3c
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPerson:xyzrins:persons/benjamin-poldrack
+  xyzrins:persons/brock-wester:
+    claim_sha256: sha256:2c579404f4d5c83ba24c6eca2594efbdaf12c89f3a69e9aeb2357cd385816954
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPerson:xyzrins:persons/brock-wester
+  xyzrins:persons/chris-cheng:
+    claim_sha256: sha256:332cd54f656425deee47f61d9047aa5777a446c84d5b59fcba241962edda6247
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPerson:xyzrins:persons/chris-cheng
+  xyzrins:persons/cody-baker:
+    claim_sha256: sha256:cc7001f6d04dc46507ba73e96ae9fa6db80ae8477520503affe39c018da449f0
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPerson:xyzrins:persons/cody-baker
+  xyzrins:persons/david-kennedy:
+    claim_sha256: sha256:4571e6ad30f043d4bd24f9c268e1c4842e029e955018cde8447abe095450f7e5
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPerson:xyzrins:persons/david-kennedy
+  xyzrins:persons/franco-pestilli:
+    claim_sha256: sha256:597259887630ef02a7197fcd370dc0a03186c934795766dd53ec90b72b33837e
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPerson:xyzrins:persons/franco-pestilli
+  xyzrins:persons/gergana-alteva:
+    claim_sha256: sha256:fb366040f0f1e914721c3b9df13367effab2c1a0b7b944658db7b2d5432a1ca0
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPerson:xyzrins:persons/gergana-alteva
+  xyzrins:persons/horea-ioanas:
+    claim_sha256: sha256:0c5a1210c60fb0d7e26f00a93bfe6a81ec101e383372abaf082ad3dc980eec73
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPerson:xyzrins:persons/horea-ioanas
+  xyzrins:persons/isaac-to:
+    claim_sha256: sha256:cec770b81aa36328127c4cad528331cf0b69eecb09daa182c51b2ff71c98e387
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPerson:xyzrins:persons/isaac-to
+  xyzrins:persons/james-haxby:
+    claim_sha256: sha256:d07ffe615d38c2c8c5e65d493f5675818a302330ff3c61306250848ac068bd64
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPerson:xyzrins:persons/james-haxby
+  xyzrins:persons/jason-gors:
+    claim_sha256: sha256:9198593a239cacc0f9b1109a845d27337a4870f376fecddeff5d0337884284fe
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPerson:xyzrins:persons/jason-gors
+  xyzrins:persons/jean-baptiste-poline:
+    claim_sha256: sha256:fab2f0711a5dd89caab3d01915071c113725c468051ed2bd782ffe3389ed0fa5
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPerson:xyzrins:persons/jean-baptiste-poline
+  xyzrins:persons/jeremy-manning:
+    claim_sha256: sha256:e16d21471232ea2e57266395ca18ede9be5188398c2360b929898029faca099b
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPerson:xyzrins:persons/jeremy-manning
+  xyzrins:persons/joey-hess:
+    claim_sha256: sha256:3fa384ba1cd414c8dce385e9ede92db78be494d54f6a6304b60829007e0c6cfe
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPerson:xyzrins:persons/joey-hess
+  xyzrins:persons/john-wodder:
+    claim_sha256: sha256:774814e9c64bee39402a6e51ff951012e5f6418558008f5a1e6c1015fd93b5a7
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPerson:xyzrins:persons/john-wodder
+  xyzrins:persons/kyle-meyer:
+    claim_sha256: sha256:de5ee4e99f23472a621455eb5e605ad3d0adcf766a421c37271dfa8b74cd9d05
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPerson:xyzrins:persons/kyle-meyer
+  xyzrins:persons/luke-chang:
+    claim_sha256: sha256:31c9d677871f5bd7a0a761556990e8c3cd1f020416cdfb1c8ae26810a6d3623e
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPerson:xyzrins:persons/luke-chang
+  xyzrins:persons/matteo-visconti-di-oleggio-castello:
+    claim_sha256: sha256:c9c78b01a4d1ac00b3366a15c9ce84702c61c78afa8f050c18a77f1ccdcc91cd
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPerson:xyzrins:persons/matteo-visconti-di-oleggio-castello
+  xyzrins:persons/matthew-brett:
+    claim_sha256: sha256:31fe8c0cf9e22739257324331130b691dcefeb14f531ba194d1c0ee61d4229d4
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPerson:xyzrins:persons/matthew-brett
+  xyzrins:persons/matthijs-van-der-meer:
+    claim_sha256: sha256:0932bab1cfb85b99380fc18ad4b28d3e51e2e5336d70c6cdaee8939d016ff706
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPerson:xyzrins:persons/matthijs-van-der-meer
+  xyzrins:persons/michael-hanke:
+    claim_sha256: sha256:a84ab2ada99be7ad430997dbdb6ec46bb203b9beae9578c9995885e2cb94923d
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPerson:xyzrins:persons/michael-hanke
+  xyzrins:persons/nikolaas-oosterhof:
+    claim_sha256: sha256:1265da04ce1434b2e06860152181e601fae4bd78f3495ad4d5e24bd7bb66936a
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPerson:xyzrins:persons/nikolaas-oosterhof
+  xyzrins:persons/oliver-contier:
+    claim_sha256: sha256:88e1dca4111c7bb979319e44b363b0b34fde3bd4b056bfb8516bf37b452409bc
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPerson:xyzrins:persons/oliver-contier
+  xyzrins:persons/russell-poldrack:
+    claim_sha256: sha256:c37f086d260b7d3b9c9f10ecf75461d354c7ba50426f8ddd94d0cbb34f2b598f
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPerson:xyzrins:persons/russell-poldrack
+  xyzrins:persons/samuel-nastase:
+    claim_sha256: sha256:430aac59346e11e893b43ea299326fb31519841698ba173146d3ae2a95d18e8f
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPerson:xyzrins:persons/samuel-nastase
+  xyzrins:persons/satrajit-ghosh:
+    claim_sha256: sha256:54b40bd3b70ff6c8b8a1b2321827ab9804a881eed30cb901776f2999b28de79b
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPerson:xyzrins:persons/satrajit-ghosh
+  xyzrins:persons/soichi-hayashi:
+    claim_sha256: sha256:b3f6f8cc71a2761afee0522b8f7910a4bf54bc81218ce7bfce7b4844e7b7d525
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPerson:xyzrins:persons/soichi-hayashi
+  xyzrins:persons/tor-wager:
+    claim_sha256: sha256:b41d5ec5e4d45b9de2b9276d630a3cbc2333a0ad4f8f2fa233e1b83d24b1a69f
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPerson:xyzrins:persons/tor-wager
+  xyzrins:persons/vadim-melnik:
+    claim_sha256: sha256:9518bf5549f8eb8b31a4b8aa502bf4d7ec1370f684bb021b0dca5e688a5db2d5
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPerson:xyzrins:persons/vadim-melnik
+  xyzrins:persons/vanessa-sochat:
+    claim_sha256: sha256:b1198fa9b278555bdf3dcef56b30e027e69acc115218661bebd906f2a88c369a
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPerson:xyzrins:persons/vanessa-sochat
+  xyzrins:persons/yaroslav-halchenko:
+    claim_sha256: sha256:4c8db17e234ab5692fc47f8df6f28292d2ca168cc59fb91beae3a1504ed6fd3d
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPerson:xyzrins:persons/yaroslav-halchenko
+  xyzrins:projects/bids:
+    claim_sha256: sha256:00eff9f5b4da108659834412d53f76b4f74584b114cc11966ff46e9b3558f62e
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZProject:xyzrins:projects/bids
+  xyzrins:projects/con-duct:
+    claim_sha256: sha256:7d1b4301a335757a92e45f10aeadd9f9bc5e0576b03e792704cf2fa97f31397a
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZProject:xyzrins:projects/con-duct
+  xyzrins:projects/con-tinuous:
+    claim_sha256: sha256:c6278bf8c51395b3040484ef9bca1b55b344c2bc72b4a7d6f08a05e4046d4a13
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZProject:xyzrins:projects/con-tinuous
+  xyzrins:projects/dandi:
+    claim_sha256: sha256:4d970a60c0c372ab2de8a447d2d7928bc065ef0c2551060679c68a1fb4fd28d2
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZProject:xyzrins:projects/dandi
+  xyzrins:projects/datalad:
+    claim_sha256: sha256:7b5dd51be1b25b65fe7eab56a7fe126c01d78bc85e82756acf6d8ff2c689a15c
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZProject:xyzrins:projects/datalad
+  xyzrins:projects/datalad-registry:
+    claim_sha256: sha256:8f376550025fe59318ebd4058dd65d774abf1ea4be932c66532f411c8ffcd969
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZProject:xyzrins:projects/datalad-registry
+  xyzrins:projects/distribits:
+    claim_sha256: sha256:c9e9ad09b3ab8e0ba915bd040b16cb6d25c4ae6ba7468ebf03b07e7313a97304
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZProject:xyzrins:projects/distribits
+  xyzrins:projects/duecredit:
+    claim_sha256: sha256:e7d997bbd845f7727e4554736a5109d93357e2ffe50918c96174a0f263ee850f
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZProject:xyzrins:projects/duecredit
+  xyzrins:projects/ember:
+    claim_sha256: sha256:6f01a30673d443a3118e8bf548f72a60e711cbec7297e7a7a82d66c2853fa5b1
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZProject:xyzrins:projects/ember
+  xyzrins:projects/heudiconv:
+    claim_sha256: sha256:77691e9d28abf562db1d44362171c0a71f407110291264b7950a085a7111dc78
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZProject:xyzrins:projects/heudiconv
+  xyzrins:projects/hypertools:
+    claim_sha256: sha256:33dfa51b7a76395519f7d0f0b5c37c9629217c26f18e05dd46b9d720d83b55e6
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZProject:xyzrins:projects/hypertools
+  xyzrins:projects/neurodebian:
+    claim_sha256: sha256:7c94aebb62ca77cef7d59980d6c359ba15e37fd22d8c5bb34eef739f3494fcb1
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZProject:xyzrins:projects/neurodebian
+  xyzrins:projects/nwb:
+    claim_sha256: sha256:87ea3f6885867ee90187077d5f74ee01d5aaa16c5afbbc0502cc207aefa7028b
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZProject:xyzrins:projects/nwb
+  xyzrins:projects/open-brain-consent:
+    claim_sha256: sha256:5b79bd34cad999666470c07edfd5df9d9c60bb76ef28c5183a55f8ad6dbd79bf
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZProject:xyzrins:projects/open-brain-consent
+  xyzrins:projects/openneuro:
+    claim_sha256: sha256:247f53eef2c0b3e685e115c14db7354c057c91310a8389e41b83f791acd7fe6f
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZProject:xyzrins:projects/openneuro
+  xyzrins:projects/pymvpa:
+    claim_sha256: sha256:98af9bb8ef394c9a5b31450739f07e90410febbc235e3824053c4e8bb16ad89b
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZProject:xyzrins:projects/pymvpa
+  xyzrins:projects/pyout:
+    claim_sha256: sha256:f41628e0b73599bb0b9cf31e3252123c49f7abc75881d10faca4c095b7d7f2e4
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZProject:xyzrins:projects/pyout
+  xyzrins:projects/quail:
+    claim_sha256: sha256:321381376cd0f4cfe844f92bd9f97e8bf5b0d4677070641a88674b61c659f82f
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZProject:xyzrins:projects/quail
+  xyzrins:projects/reproman:
+    claim_sha256: sha256:cc5378b9d8940bb50859ef8e3fa42623881dbedfafd6e8d4e204253a35b0a246
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZProject:xyzrins:projects/reproman
+  xyzrins:projects/repronim-reproducible-basics:
+    claim_sha256: sha256:061f8800b56afbaca7818d788f406f7ad800500e1a91447df55c7d942ae4baac
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZProject:xyzrins:projects/repronim-reproducible-basics
+  xyzrins:projects/supereeg:
+    claim_sha256: sha256:f01394cee1ba6b6efd5748fe864e589764db90b291b7a209f88c42ee53e353e5
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZProject:xyzrins:projects/supereeg
+  xyzrins:projects/yoda:
+    claim_sha256: sha256:c654c71270dbf6f38eb917b84a73073ab8e6cd0e2ca4dc5a12c4830d95afd4ff
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZProject:xyzrins:projects/yoda
+  xyzrins:publication-venues/issn-0147-006x:
+    claim_sha256: sha256:4012a6fe3ce16827a215141d02a309cfb9fd273432ab343088ec7b8c752a0cb9
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPublicationVenue:ISSN:0147-006X
+  xyzrins:publication-venues/issn-1532-4435:
+    claim_sha256: sha256:1d787111f5d2a61a40f0574286d177538bd1dd556641a6425829e9e465fdd4c0
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPublicationVenue:ISSN:1532-4435
+  xyzrins:publications/doi-10-1002-hbm-25351:
+    claim_sha256: sha256:b22a32346949d0bc8432ba452729ef705ecd5182c982178b18c32c631c67d002
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPublication:https://doi.org/10.1002/hbm.25351
+  xyzrins:publications/doi-10-1007-s12021-008-9041-y:
+    claim_sha256: sha256:80f1229ac944bbc3a0f3cd5f6031661cf3ec7c954172665d7608533f1c173116
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPublication:https://doi.org/10.1007/s12021-008-9041-y
+  xyzrins:publications/doi-10-1038-sdata-2016-44:
+    claim_sha256: sha256:a20babd134a0e4be4f1a8cc057a481d593479d7452b35d31f2ada0029e11386a
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPublication:https://doi.org/10.1038/sdata.2016.44
+  xyzrins:publications/doi-10-1093-cercor-bhaa115:
+    claim_sha256: sha256:32380acef3b3f14e207add4b14da14283661a4b938d727e5b716e657144fac23
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPublication:https://doi.org/10.1093/cercor/bhaa115
+  xyzrins:publications/doi-10-1146-annurev-neuro-100119-110036:
+    claim_sha256: sha256:d4a5baadf0298eddbea80b4b53a439dfd3e6b374fadb3cf1d645c9ecc56ca70b
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPublication:https://doi.org/10.1146/annurev-neuro-100119-110036
+  xyzrins:publications/doi-10-12688-f1000research-7628-1:
+    claim_sha256: sha256:be3f3b850029d419509ef80a3e4bfc74cfcd5990d213f35767f2d9fad41756a0
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPublication:https://doi.org/10.12688/f1000research.7628.1
+  xyzrins:publications/doi-10-21105-joss-00424:
+    claim_sha256: sha256:73a907288f02dc7b43c5473c1311c26ef711435d3af7f2b98715b9b76896ddc3
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPublication:https://doi.org/10.21105/joss.00424
+  xyzrins:publications/doi-10-21105-joss-05839:
+    claim_sha256: sha256:1b3d0fea4140d48d7037ea7608675b849703bd6ff01cc7d5a2f870432ee39de8
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPublication:https://doi.org/10.21105/joss.05839
+  xyzrins:publications/doi-10-3389-fninf-2012-00022:
+    claim_sha256: sha256:a54bd3a5c2f8b0ff2ccab6b1c6dc285e4e7985683f645574775ff6f2f7f82ad0
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPublication:https://doi.org/10.3389/fninf.2012.00022
+  xyzrins:publications/doi-10-7490-f1000research-1116363-1:
+    claim_sha256: sha256:7e207af38ee7bd4feac50c513ec132d4d95b3b63cb45a0e0775cf4955ebcb1bc
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPublication:https://doi.org/10.7490/f1000research.1116363.1
+  xyzrins:publications/http-jmlr-org-papers-v18-17-434-html:
+    claim_sha256: sha256:3b3ab4f96e2bad7310b0dd9daf52fd82356a7cd64d4eedf4659f63964d3e16ef
+    disposition: accept
+    review: github-comment:5420263058
+    source_record_id: XYZPublication:http://jmlr.org/papers/v18/17-434.html
+format: orinoco-lite-curation-decisions-v1
+reviews:
+  github-comment:5420263058:
+    review_url: https://github.com/leej3/orinoco-lite-demo/pull/19#issuecomment-5420263058
+    reviewed_at: '2026-08-26T03:41:54Z'
+    reviewer: https://github.com/leej3
+    source_coordinate:
+      commit: d498f20b494529d8a082dd3e8221fac2e818716e
+      repository: https://github.com/con/dump-research-info
+      source_roots:
+        data/con_site: f54c559b9abd69e595b4afb2cabc7bf47ee7d250
+        data/pool_psychoinformatics_de: 5f062298459f2aeca4c78c29a51923775a555520

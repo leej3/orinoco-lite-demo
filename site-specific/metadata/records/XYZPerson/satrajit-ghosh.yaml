@@ -1,0 +1,31 @@
+attributes:
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: Collaborator at the Center for Open Neuroscience. Affiliated with MIT and
+    Harvard Medical School. Lead of DANDI, NiPype, and other projects.
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Satrajit Ghosh
+- predicate: dlthings:family_name
+  schema_type: dlthings:AttributeSpecification
+  value: Ghosh
+- predicate: dlthings:formatted_name
+  schema_type: dlthings:AttributeSpecification
+  value: Satrajit Ghosh
+- predicate: dlthings:given_name
+  schema_type: dlthings:AttributeSpecification
+  value: Satrajit
+description: Collaborator at the Center for Open Neuroscience. Affiliated with MIT
+  and Harvard Medical School. Lead of DANDI, NiPype, and other projects.
+display_label: Satrajit Ghosh
+family_name: Ghosh
+formatted_name: Satrajit Ghosh
+given_name: Satrajit
+identifiers:
+- notation: satra
+  schema_type: dlthings:Identifier
+- creator: rrid:SCR_002630
+  notation: satra
+  schema_type: dlthings:Identifier
+pid: xyzrins:persons/satrajit-ghosh
+schema_type: xyzri:XYZPerson

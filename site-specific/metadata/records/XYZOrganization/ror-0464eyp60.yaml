@@ -1,0 +1,15 @@
+attributes:
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: UMass Chan Medical School
+- predicate: dlthings:name
+  schema_type: dlthings:AttributeSpecification
+  value: University of Massachusetts Chan Medical School
+- predicate: dlthings:short_name
+  schema_type: dlthings:AttributeSpecification
+  value: UMass Chan
+display_label: UMass Chan Medical School
+name: University of Massachusetts Chan Medical School
+pid: ror:0464eyp60
+schema_type: xyzri:XYZOrganization
+short_name: UMass Chan

@@ -1,0 +1,18 @@
+assertions:
+- assertion_sha256: sha256:1a6b1b1c567c0de89dcf375e493da4225a3ec86de35f267a5335828492284601
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPublicationVenue.json#record=ISSN%3A0147-006X
+- assertion_sha256: sha256:a6f9a9f8c1c5ad417049c97f51db55262aadc36bc392fb3e8c936dce9f40628c
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPublicationVenue.json#record=ISSN%3A0147-006X
+- assertion_sha256: sha256:78630b933332eacf6e72d007a25a1901ea9e8f99916d52f3df67b2104f646d92
+  path: /identifiers
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPublicationVenue.json#record=ISSN%3A0147-006X
+- assertion_sha256: sha256:da111a0650a2b67b879fae0367cd0a24021b051605b6cba88aabc5e1da00e407
+  path: /identifiers
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPublicationVenue.json#record=ISSN%3A0147-006X
+record: xyzrins:publication-venues/issn-0147-006x

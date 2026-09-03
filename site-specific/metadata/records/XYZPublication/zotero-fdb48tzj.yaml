@@ -1,0 +1,38 @@
+attributed_to:
+- object: xyzrins:persons/oliver-contier
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/matteo-visconti-di-oleggio-castello
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+attributes:
+- predicate: dcterms:issued
+  schema_type: dlthings:AttributeSpecification
+  value: '2018'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Temporal dynamics and effective connectivity in the distributed system of
+    familiar face processing
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Temporal dynamics and effective connectivity in the distributed system of
+    familiar face processing
+characterized_by:
+- object: bibo:Document
+  predicate: dcterms:type
+display_label: Temporal dynamics and effective connectivity in the distributed system
+  of familiar face processing
+identifiers:
+- notation: zotero:group:6197458:item:FDB48TZJ
+  schema_type: dlthings:Identifier
+kind: bibo:Document
+pid: xyzrins:publications/zotero-fdb48tzj
+schema_type: xyzri:XYZPublication
+title: Temporal dynamics and effective connectivity in the distributed system of familiar
+  face processing

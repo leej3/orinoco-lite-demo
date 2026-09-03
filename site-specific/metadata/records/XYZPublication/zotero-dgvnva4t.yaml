@@ -1,0 +1,42 @@
+attributed_to:
+- object: xyzrins:persons/satrajit-ghosh
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/jean-baptiste-poline
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/michael-hanke
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+attributes:
+- predicate: dcterms:issued
+  schema_type: dlthings:AttributeSpecification
+  value: '2019'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'The best of both worlds: using semantic web with JSON-LD. An example with
+    NIDM-Results & DataLad'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'The best of both worlds: using semantic web with JSON-LD. An example with
+    NIDM-Results & DataLad'
+characterized_by:
+- object: bibo:Document
+  predicate: dcterms:type
+display_label: 'The best of both worlds: using semantic web with JSON-LD. An example
+  with NIDM-Results & DataLad'
+identifiers:
+- notation: zotero:group:6197458:item:DGVNVA4T
+  schema_type: dlthings:Identifier
+kind: bibo:Document
+pid: xyzrins:publications/zotero-dgvnva4t
+schema_type: xyzri:XYZPublication
+title: 'The best of both worlds: using semantic web with JSON-LD. An example with
+  NIDM-Results & DataLad'

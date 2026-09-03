@@ -1,0 +1,25 @@
+attributed_to:
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - obo:MS_1002034
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/michael-hanke
+  roles:
+  - obo:MS_1002035
+  schema_type: dlthings:Attribution
+attributes:
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Halchenko, Poldrack, Hanke 2022
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Open Neuroscience
+display_label: Halchenko, Poldrack, Hanke 2022
+identifiers:
+- notation: 10.1146/annurev-neuro-100119-110036
+  schema_type: dlthings:DOI
+- notation: https://doi.org/10.1146/annurev-neuro-100119-110036
+  schema_type: dlthings:Identifier
+pid: xyzrins:publications/doi-10-1146-annurev-neuro-100119-110036
+schema_type: xyzri:XYZPublication
+title: Open Neuroscience

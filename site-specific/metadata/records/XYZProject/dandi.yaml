@@ -1,0 +1,37 @@
+associated_with:
+- object: xyzrins:persons/satrajit-ghosh
+  roles:
+  - obo:NCIT_C19924
+  schema_type: dlthings:Association
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - obo:NCIT_C19924
+  schema_type: dlthings:Association
+attributes:
+- predicate: foaf:homepage
+  schema_type: dlthings:AttributeSpecification
+  value: https://dandiarchive.org
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: Platform for publishing, sharing, and processing neurophysiology data supported
+    by the BRAIN Initiative. Provides data upload and distribution with supplementary
+    client tools for data introspection and organization. Compliant with NWB standards.
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: DANDI
+- predicate: dlthings:short_name
+  schema_type: dlthings:AttributeSpecification
+  value: DANDI
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Distributed Archives for Neurophysiology Data Integration
+description: Platform for publishing, sharing, and processing neurophysiology data
+  supported by the BRAIN Initiative. Provides data upload and distribution with supplementary
+  client tools for data introspection and organization. Compliant with NWB standards.
+display_label: DANDI
+part_of:
+- xyzrins:.
+pid: xyzrins:projects/dandi
+schema_type: xyzri:XYZProject
+short_name: DANDI
+title: Distributed Archives for Neurophysiology Data Integration

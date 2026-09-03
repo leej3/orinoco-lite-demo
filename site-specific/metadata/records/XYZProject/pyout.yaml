@@ -1,0 +1,26 @@
+attributes:
+- predicate: foaf:homepage
+  schema_type: dlthings:AttributeSpecification
+  value: https://github.com/pyout/pyout
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: Python package that defines an interface for writing structured records as
+    a table in a terminal.
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: pyout
+- predicate: dlthings:short_name
+  schema_type: dlthings:AttributeSpecification
+  value: pyout
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: pyout
+description: Python package that defines an interface for writing structured records
+  as a table in a terminal.
+display_label: pyout
+part_of:
+- xyzrins:.
+pid: xyzrins:projects/pyout
+schema_type: xyzri:XYZProject
+short_name: pyout
+title: pyout

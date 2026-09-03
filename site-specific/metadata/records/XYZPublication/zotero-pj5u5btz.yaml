@@ -1,0 +1,27 @@
+attributed_to:
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+attributes:
+- predicate: dcterms:issued
+  schema_type: dlthings:AttributeSpecification
+  value: '2004'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Fusion of Functional Brain Imaging Modalities using L-Norms Signal Reconstruction
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Fusion of Functional Brain Imaging Modalities using L-Norms Signal Reconstruction
+characterized_by:
+- object: bibo:Article
+  predicate: dcterms:type
+display_label: Fusion of Functional Brain Imaging Modalities using L-Norms Signal
+  Reconstruction
+identifiers:
+- notation: zotero:group:6197458:item:PJ5U5BTZ
+  schema_type: dlthings:Identifier
+kind: bibo:Article
+pid: xyzrins:publications/zotero-pj5u5btz
+schema_type: xyzri:XYZPublication
+title: Fusion of Functional Brain Imaging Modalities using L-Norms Signal Reconstruction

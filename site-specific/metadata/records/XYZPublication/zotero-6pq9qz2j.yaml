@@ -1,0 +1,30 @@
+attributed_to:
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+attributes:
+- predicate: dcterms:issued
+  schema_type: dlthings:AttributeSpecification
+  value: '2004'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'Structural Equation Modeling of Neuroimaging Data: Exhaustive Search and
+    Markov Chain Monte Carlo'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'Structural Equation Modeling of Neuroimaging Data: Exhaustive Search and
+    Markov Chain Monte Carlo'
+characterized_by:
+- object: bibo:Article
+  predicate: dcterms:type
+display_label: 'Structural Equation Modeling of Neuroimaging Data: Exhaustive Search
+  and Markov Chain Monte Carlo'
+identifiers:
+- notation: zotero:group:6197458:item:6PQ9QZ2J
+  schema_type: dlthings:Identifier
+kind: bibo:Article
+pid: xyzrins:publications/zotero-6pq9qz2j
+schema_type: xyzri:XYZPublication
+title: 'Structural Equation Modeling of Neuroimaging Data: Exhaustive Search and Markov
+  Chain Monte Carlo'

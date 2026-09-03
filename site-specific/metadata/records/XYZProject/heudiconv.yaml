@@ -1,0 +1,41 @@
+associated_with:
+- object: xyzrins:persons/matteo-visconti-di-oleggio-castello
+  roles:
+  - marcrel:ctb
+  schema_type: dlthings:Association
+- object: xyzrins:persons/james-haxby
+  roles:
+  - marcrel:ctb
+  schema_type: dlthings:Association
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:led
+  schema_type: dlthings:Association
+attributes:
+- predicate: foaf:homepage
+  schema_type: dlthings:AttributeSpecification
+  value: https://github.com/nipy/heudiconv
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: Flexible DICOM converter for organizing brain imaging data into structured
+    directory layouts. Includes the ReproIn component for turnkey automatic conversion
+    of MR data to BIDS DataLad datasets.
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: HeuDiConv / ReproIn
+- predicate: dlthings:short_name
+  schema_type: dlthings:AttributeSpecification
+  value: HeuDiConv
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: HeuDiConv
+description: Flexible DICOM converter for organizing brain imaging data into structured
+  directory layouts. Includes the ReproIn component for turnkey automatic conversion
+  of MR data to BIDS DataLad datasets.
+display_label: HeuDiConv / ReproIn
+part_of:
+- xyzrins:.
+pid: xyzrins:projects/heudiconv
+schema_type: xyzri:XYZProject
+short_name: HeuDiConv
+title: HeuDiConv

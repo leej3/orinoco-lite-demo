@@ -1,0 +1,41 @@
+attributed_to:
+- object: xyzrins:persons/michael-hanke
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/james-haxby
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+attributes:
+- predicate: bibo:locator
+  schema_type: dlthings:AttributeSpecification
+  value: 3, 3
+- predicate: dcterms:issued
+  schema_type: dlthings:AttributeSpecification
+  value: '2009'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'PyMVPA: A Unifying Approach to the Analysis of Neuroscientific Data'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'PyMVPA: A Unifying Approach to the Analysis of Neuroscientific Data'
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
+display_label: 'PyMVPA: A Unifying Approach to the Analysis of Neuroscientific Data'
+identifiers:
+- notation: 10.3389/neuro.11.003.2009
+  schema_type: dlthings:DOI
+- notation: 1662-5196
+  schema_type: dlthings:ISSN
+- notation: zotero:group:6197458:item:GT4IQW3U
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/doi-10-3389-neuro-11-003-2009
+schema_type: xyzri:XYZPublication
+title: 'PyMVPA: A Unifying Approach to the Analysis of Neuroscientific Data'

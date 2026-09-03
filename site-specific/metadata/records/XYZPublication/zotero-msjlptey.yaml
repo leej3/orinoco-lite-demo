@@ -1,0 +1,37 @@
+attributed_to:
+- object: xyzrins:persons/samuel-nastase
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/james-haxby
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+attributes:
+- predicate: dcterms:issued
+  schema_type: dlthings:AttributeSpecification
+  value: '2018'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Decoding the neural representation of observed social and nonsocial human
+    actions
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Decoding the neural representation of observed social and nonsocial human
+    actions
+characterized_by:
+- object: bibo:Document
+  predicate: dcterms:type
+display_label: Decoding the neural representation of observed social and nonsocial
+  human actions
+identifiers:
+- notation: zotero:group:6197458:item:MSJLPTEY
+  schema_type: dlthings:Identifier
+kind: bibo:Document
+pid: xyzrins:publications/zotero-msjlptey
+schema_type: xyzri:XYZPublication
+title: Decoding the neural representation of observed social and nonsocial human actions

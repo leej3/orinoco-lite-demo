@@ -1,0 +1,14 @@
+assertions:
+- assertion_sha256: sha256:471cc96cb1915e4e7c3a55df3b08617a98baef6336edf9fbc81c2adb8886894d
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/pool_psychoinformatics_de/XYZAgentRole.json#record=obo%3AMS_1002034
+- assertion_sha256: sha256:5777d0757036f4f87e686555fb04cf67613544d78a659c7daf51190628543d02
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/pool_psychoinformatics_de/XYZAgentRole.json#record=obo%3AMS_1002034
+- assertion_sha256: sha256:a4623dab838bf091eb19eead5dd40aad91c00bd4ca5e322811db78f352c23ace
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/pool_psychoinformatics_de/XYZAgentRole.json#record=obo%3AMS_1002034
+record: obo:MS_1002034

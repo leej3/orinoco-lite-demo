@@ -1,0 +1,31 @@
+associated_with:
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:ctb
+  schema_type: dlthings:Association
+attributes:
+- predicate: foaf:homepage
+  schema_type: dlthings:AttributeSpecification
+  value: http://bids.neuroimaging.io
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: A standard providing a simple and intuitive way to organize and describe
+    neuroimaging and behavioral data. Governed by a community-elected steering group.
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: BIDS
+- predicate: dlthings:short_name
+  schema_type: dlthings:AttributeSpecification
+  value: BIDS
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Brain Imaging Data Structure
+description: A standard providing a simple and intuitive way to organize and describe
+  neuroimaging and behavioral data. Governed by a community-elected steering group.
+display_label: BIDS
+part_of:
+- xyzrins:.
+pid: xyzrins:projects/bids
+schema_type: xyzri:XYZProject
+short_name: BIDS
+title: Brain Imaging Data Structure
