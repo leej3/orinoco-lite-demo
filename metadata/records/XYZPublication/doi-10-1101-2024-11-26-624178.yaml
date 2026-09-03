@@ -1,0 +1,42 @@
+attributed_to:
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/james-haxby
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/samuel-nastase
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+attributes:
+- predicate: dcterms:issued
+  schema_type: dlthings:AttributeSpecification
+  value: 2024-11
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Behaviorally-relevant features of observed actions dominate cortical representational
+    geometry in natural vision
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Behaviorally-relevant features of observed actions dominate cortical representational
+    geometry in natural vision
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
+display_label: Behaviorally-relevant features of observed actions dominate cortical
+  representational geometry in natural vision
+identifiers:
+- notation: 10.1101/2024.11.26.624178
+  schema_type: dlthings:DOI
+- notation: http://dx.doi.org/10.1101/2024.11.26.624178
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:5B6WRNBX
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/doi-10-1101-2024-11-26-624178
+schema_type: xyzri:XYZPublication
+title: Behaviorally-relevant features of observed actions dominate cortical representational
+  geometry in natural vision

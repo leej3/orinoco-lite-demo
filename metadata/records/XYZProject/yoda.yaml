@@ -1,0 +1,47 @@
+associated_with:
+- object: xyzrins:persons/michael-hanke
+  roles:
+  - marcrel:led
+  schema_type: dlthings:Association
+- object: xyzrins:persons/kyle-meyer
+  roles:
+  - marcrel:ctb
+  schema_type: dlthings:Association
+- object: xyzrins:persons/matteo-visconti-di-oleggio-castello
+  roles:
+  - marcrel:ctb
+  schema_type: dlthings:Association
+- object: xyzrins:persons/benjamin-poldrack
+  roles:
+  - marcrel:ctb
+  schema_type: dlthings:Association
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:ctb
+  schema_type: dlthings:Association
+attributes:
+- predicate: foaf:homepage
+  schema_type: dlthings:AttributeSpecification
+  value: https://github.com/myyoda/myyoda
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: Collection of best practices for organizing and managing digital objects
+    of science.
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: YODA
+- predicate: dlthings:short_name
+  schema_type: dlthings:AttributeSpecification
+  value: YODA
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: YODA's Organigram on Data Analysis
+description: Collection of best practices for organizing and managing digital objects
+  of science.
+display_label: YODA
+part_of:
+- xyzrins:.
+pid: xyzrins:projects/yoda
+schema_type: xyzri:XYZProject
+short_name: YODA
+title: YODA's Organigram on Data Analysis

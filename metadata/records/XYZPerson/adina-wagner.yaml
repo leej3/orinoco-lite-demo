@@ -1,0 +1,35 @@
+attributes:
+- predicate: vcard:Email
+  schema_type: dlthings:AttributeSpecification
+  value: adina.wagner@t-online.de
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: Ph.D. Student at INM-7, Research Centre Jülich, Germany. Lead of the DataLad
+    Handbook. Clinical Psychology background pursuing open science and open software.
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Adina Wagner
+- predicate: dlthings:family_name
+  schema_type: dlthings:AttributeSpecification
+  value: Wagner
+- predicate: dlthings:formatted_name
+  schema_type: dlthings:AttributeSpecification
+  value: Adina Wagner
+- predicate: dlthings:given_name
+  schema_type: dlthings:AttributeSpecification
+  value: Adina
+description: Ph.D. Student at INM-7, Research Centre Jülich, Germany. Lead of the
+  DataLad Handbook. Clinical Psychology background pursuing open science and open
+  software.
+display_label: Adina Wagner
+family_name: Wagner
+formatted_name: Adina Wagner
+given_name: Adina
+identifiers:
+- notation: adswa
+  schema_type: dlthings:Identifier
+- creator: rrid:SCR_002630
+  notation: adswa
+  schema_type: dlthings:Identifier
+pid: xyzrins:persons/adina-wagner
+schema_type: xyzri:XYZPerson

@@ -1,0 +1,54 @@
+attributed_to:
+- object: xyzrins:persons/satrajit-ghosh
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/michael-hanke
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/jean-baptiste-poline
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/vanessa-sochat
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/russell-poldrack
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+attributes:
+- predicate: dcterms:issued
+  schema_type: dlthings:AttributeSpecification
+  value: '2016'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'The Brain Imaging Data Structure: a standard for organizing and describing
+    outputs of neuroimaging experiments'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'The Brain Imaging Data Structure: a standard for organizing and describing
+    outputs of neuroimaging experiments'
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
+display_label: 'The Brain Imaging Data Structure: a standard for organizing and describing
+  outputs of neuroimaging experiments'
+identifiers:
+- notation: 10.1101/034561
+  schema_type: dlthings:DOI
+- notation: http://biorxiv.org/content/early/2016/02/05/034561
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:ER3GRXMK
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/doi-10-1101-034561
+schema_type: xyzri:XYZPublication
+title: 'The Brain Imaging Data Structure: a standard for organizing and describing
+  outputs of neuroimaging experiments'

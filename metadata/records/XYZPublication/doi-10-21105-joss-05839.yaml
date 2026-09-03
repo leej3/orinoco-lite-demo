@@ -1,0 +1,98 @@
+attributed_to:
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/satrajit-ghosh
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/matteo-visconti-di-oleggio-castello
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/john-wodder
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/michael-hanke
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/horea-ioanas
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/john-lee
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/isaac-to
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/chris-markiewicz
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/austin-macdonald
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/david-kennedy
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - obo:MS_1002034
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/matteo-visconti-di-oleggio-castello
+  roles:
+  - obo:MS_1002036
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/james-haxby
+  roles:
+  - obo:MS_1002036
+  schema_type: dlthings:Attribution
+attributes:
+- predicate: bibo:locator
+  schema_type: dlthings:AttributeSpecification
+  value: 9, 99, 5839
+- predicate: dcterms:issued
+  schema_type: dlthings:AttributeSpecification
+  value: '2024-07-03'
+- predicate: dcterms:rights
+  schema_type: dlthings:AttributeSpecification
+  value: http://creativecommons.org/licenses/by/4.0/
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Halchenko et al. 2024 JOSS
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: HeuDiConv - flexible DICOM conversion into structured directory layouts
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: HeuDiConv — flexible DICOM conversion into structureddirectory layouts
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: HeuDiConv — flexible DICOM conversion into structureddirectory layouts
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
+display_label: HeuDiConv — flexible DICOM conversion into structureddirectory layouts
+identifiers:
+- notation: 10.21105/joss.05839
+  schema_type: dlthings:DOI
+- notation: 2475-9066
+  schema_type: dlthings:ISSN
+- notation: https://joss.theoj.org/papers/10.21105/joss.05839
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:W9MC83Q7
+  schema_type: dlthings:Identifier
+- notation: https://doi.org/10.21105/joss.05839
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/doi-10-21105-joss-05839
+schema_type: xyzri:XYZPublication
+title: HeuDiConv — flexible DICOM conversion into structureddirectory layouts

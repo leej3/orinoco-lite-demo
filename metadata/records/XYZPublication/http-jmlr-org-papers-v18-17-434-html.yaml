@@ -1,0 +1,21 @@
+attributed_to:
+- object: xyzrins:persons/jeremy-manning
+  roles:
+  - obo:MS_1002035
+  schema_type: dlthings:Attribution
+attributes:
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Heusser et al. 2018 JMLR
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'HyperTools: a Python Toolbox for Gaining Geometric Insights into High-Dimensional
+    Data'
+display_label: Heusser et al. 2018 JMLR
+identifiers:
+- notation: http://jmlr.org/papers/v18/17-434.html
+  schema_type: dlthings:Identifier
+pid: xyzrins:publications/http-jmlr-org-papers-v18-17-434-html
+schema_type: xyzri:XYZPublication
+title: 'HyperTools: a Python Toolbox for Gaining Geometric Insights into High-Dimensional
+  Data'

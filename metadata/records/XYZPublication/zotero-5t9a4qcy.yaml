@@ -1,0 +1,28 @@
+attributed_to:
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+attributes:
+- predicate: dcterms:issued
+  schema_type: dlthings:AttributeSpecification
+  value: '2012'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Incorrect probabilities in Harvard-Oxford-sub Left hemisphere
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Incorrect probabilities in Harvard-Oxford-sub Left hemisphere
+characterized_by:
+- object: bibo:Document
+  predicate: dcterms:type
+display_label: Incorrect probabilities in Harvard-Oxford-sub Left hemisphere
+identifiers:
+- notation: https://www.jiscmail.ac.uk/cgi-bin/webadmin?A2=fsl;e46ecc4c.1210
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:5T9A4QCY
+  schema_type: dlthings:Identifier
+kind: bibo:Document
+pid: xyzrins:publications/zotero-5t9a4qcy
+schema_type: xyzri:XYZPublication
+title: Incorrect probabilities in Harvard-Oxford-sub Left hemisphere

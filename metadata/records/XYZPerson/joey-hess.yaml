@@ -1,0 +1,36 @@
+attributes:
+- predicate: vcard:Email
+  schema_type: dlthings:AttributeSpecification
+  value: id@joeyh.name
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: Independent collaborator at the Center for Open Neuroscience. Core Debian
+    distribution contributor (debhelper, debian-installer, debconf, pristine-tar).
+    Developer of git-annex used in DataLad.
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Joey Hess
+- predicate: dlthings:family_name
+  schema_type: dlthings:AttributeSpecification
+  value: Hess
+- predicate: dlthings:formatted_name
+  schema_type: dlthings:AttributeSpecification
+  value: Joey Hess
+- predicate: dlthings:given_name
+  schema_type: dlthings:AttributeSpecification
+  value: Joey
+description: Independent collaborator at the Center for Open Neuroscience. Core Debian
+  distribution contributor (debhelper, debian-installer, debconf, pristine-tar). Developer
+  of git-annex used in DataLad.
+display_label: Joey Hess
+family_name: Hess
+formatted_name: Joey Hess
+given_name: Joey
+identifiers:
+- notation: joeyh
+  schema_type: dlthings:Identifier
+- creator: rrid:SCR_002630
+  notation: joeyh
+  schema_type: dlthings:Identifier
+pid: xyzrins:persons/joey-hess
+schema_type: xyzri:XYZPerson

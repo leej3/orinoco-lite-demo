@@ -1,0 +1,39 @@
+associated_with:
+- object: xyzrins:persons/michael-hanke
+  roles:
+  - marcrel:led
+  schema_type: dlthings:Association
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:led
+  schema_type: dlthings:Association
+attributes:
+- predicate: foaf:homepage
+  schema_type: dlthings:AttributeSpecification
+  value: http://pymvpa.org
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: Python-based framework for neural decoding using multivariate pattern analysis.
+    Supports volume and surface-based analyses, supervised/unsupervised learning,
+    representational similarity analyses, searchlight analyses, hyperalignment, and
+    model-based decoding/encoding.
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: PyMVPA
+- predicate: dlthings:short_name
+  schema_type: dlthings:AttributeSpecification
+  value: PyMVPA
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: PyMVPA
+description: Python-based framework for neural decoding using multivariate pattern
+  analysis. Supports volume and surface-based analyses, supervised/unsupervised learning,
+  representational similarity analyses, searchlight analyses, hyperalignment, and
+  model-based decoding/encoding.
+display_label: PyMVPA
+part_of:
+- xyzrins:.
+pid: xyzrins:projects/pymvpa
+schema_type: xyzri:XYZProject
+short_name: PyMVPA
+title: PyMVPA

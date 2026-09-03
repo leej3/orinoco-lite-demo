@@ -1,0 +1,10 @@
+assertions:
+- assertion_sha256: sha256:e5eec62a010d2d39665ffe91b6933ad80aa647f183d1c992e1fca0eb67f603e7
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZOrganization.json#record=ror%3A00hj54h04
+- assertion_sha256: sha256:f7bcb83d31c5f99166a983d81f197b57fd08933e435fe552ab133df8ac47770f
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZOrganization.json#record=ror%3A00hj54h04
+record: ror:00hj54h04

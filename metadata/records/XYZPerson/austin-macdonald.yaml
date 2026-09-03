@@ -1,0 +1,36 @@
+attributes:
+- predicate: vcard:Email
+  schema_type: dlthings:AttributeSpecification
+  value: austin@dartmouth.edu
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: Software Engineer at the Center for Open Neuroscience, Dartmouth College.
+    Passionate about open source values and developing inclusive, transparent open
+    science tools.
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Austin Macdonald
+- predicate: dlthings:family_name
+  schema_type: dlthings:AttributeSpecification
+  value: Macdonald
+- predicate: dlthings:formatted_name
+  schema_type: dlthings:AttributeSpecification
+  value: Austin Macdonald
+- predicate: dlthings:given_name
+  schema_type: dlthings:AttributeSpecification
+  value: Austin
+description: Software Engineer at the Center for Open Neuroscience, Dartmouth College.
+  Passionate about open source values and developing inclusive, transparent open science
+  tools.
+display_label: Austin Macdonald
+family_name: Macdonald
+formatted_name: Austin Macdonald
+given_name: Austin
+identifiers:
+- notation: asmacdo
+  schema_type: dlthings:Identifier
+- creator: rrid:SCR_002630
+  notation: asmacdo
+  schema_type: dlthings:Identifier
+pid: xyzrins:persons/austin-macdonald
+schema_type: xyzri:XYZPerson

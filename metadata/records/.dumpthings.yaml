@@ -1,0 +1,5 @@
+type: records
+version: 1
+schema: https://concepts.datalad.org/s/demo-research-information/unreleased.yaml
+format: yaml
+idfx: after-last-colon

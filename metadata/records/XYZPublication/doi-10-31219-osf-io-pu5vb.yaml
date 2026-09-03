@@ -1,0 +1,42 @@
+attributed_to:
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/chris-markiewicz
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/franco-pestilli
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/adina-wagner
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+attributes:
+- predicate: dcterms:issued
+  schema_type: dlthings:AttributeSpecification
+  value: 2022-04
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'Open and reproducible neuroimaging: from study inception to publication'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'Open and reproducible neuroimaging: from study inception to publication'
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
+display_label: 'Open and reproducible neuroimaging: from study inception to publication'
+identifiers:
+- notation: 10.31219/osf.io/pu5vb
+  schema_type: dlthings:DOI
+- notation: https://doi.org/10.31219/osf.io/pu5vb
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:M6CYXQC2
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/doi-10-31219-osf-io-pu5vb
+schema_type: xyzri:XYZPublication
+title: 'Open and reproducible neuroimaging: from study inception to publication'

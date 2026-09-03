@@ -1,0 +1,38 @@
+attributed_to:
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/tor-wager
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+attributes:
+- predicate: dcterms:issued
+  schema_type: dlthings:AttributeSpecification
+  value: 2024-06
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: A multimodal fMRI dataset unifying naturalistic processes with a rich array
+    of experimental tasks
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: A multimodal fMRI dataset unifying naturalistic processes with a rich array
+    of experimental tasks
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
+display_label: A multimodal fMRI dataset unifying naturalistic processes with a rich
+  array of experimental tasks
+identifiers:
+- notation: 10.1101/2024.06.21.599974
+  schema_type: dlthings:DOI
+- notation: http://dx.doi.org/10.1101/2024.06.21.599974
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:IKDDSUSK
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/doi-10-1101-2024-06-21-599974
+schema_type: xyzri:XYZPublication
+title: A multimodal fMRI dataset unifying naturalistic processes with a rich array
+  of experimental tasks

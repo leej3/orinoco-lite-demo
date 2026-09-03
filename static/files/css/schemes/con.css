@@ -1,0 +1,37 @@
+/* CON scheme derived from the deployed legacy palette. */
+:root {
+  --color-neutral: 255, 255, 255;
+  --color-neutral-50: 250, 250, 250;
+  --color-neutral-100: 245, 249, 255;
+  --color-neutral-200: 229, 233, 239;
+  --color-neutral-300: 196, 200, 205;
+  --color-neutral-400: 148, 155, 163;
+  --color-neutral-500: 103, 113, 122;
+  --color-neutral-600: 76, 88, 99;
+  --color-neutral-700: 56, 67, 76;
+  --color-neutral-800: 42, 50, 57;
+  --color-neutral-900: 29, 35, 40;
+  --color-neutral-950: 16, 20, 24;
+  --color-primary-50: 245, 249, 255;
+  --color-primary-100: 229, 239, 252;
+  --color-primary-200: 202, 220, 244;
+  --color-primary-300: 169, 198, 235;
+  --color-primary-400: 135, 170, 222;
+  --color-primary-500: 100, 143, 207;
+  --color-primary-600: 76, 113, 177;
+  --color-primary-700: 61, 89, 139;
+  --color-primary-800: 50, 72, 110;
+  --color-primary-900: 43, 61, 91;
+  --color-primary-950: 27, 38, 57;
+  --color-secondary-50: 244, 250, 250;
+  --color-secondary-100: 222, 242, 242;
+  --color-secondary-200: 191, 226, 227;
+  --color-secondary-300: 146, 205, 208;
+  --color-secondary-400: 91, 177, 182;
+  --color-secondary-500: 53, 148, 154;
+  --color-secondary-600: 42, 119, 126;
+  --color-secondary-700: 37, 95, 101;
+  --color-secondary-800: 34, 77, 82;
+  --color-secondary-900: 31, 64, 69;
+  --color-secondary-950: 14, 38, 42;
+}

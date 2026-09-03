@@ -1,0 +1,61 @@
+attributed_to:
+- object: xyzrins:persons/chris-markiewicz
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/jean-baptiste-poline
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/adina-wagner
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/michael-hanke
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/john-lee
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/matteo-visconti-di-oleggio-castello
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/russell-poldrack
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+attributes:
+- predicate: bibo:locator
+  schema_type: dlthings:AttributeSpecification
+  value: 4, 40, 1294
+- predicate: dcterms:issued
+  schema_type: dlthings:AttributeSpecification
+  value: '2019'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'PyBIDS: Python tools for BIDS datasets'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'PyBIDS: Python tools for BIDS datasets'
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
+display_label: 'PyBIDS: Python tools for BIDS datasets'
+identifiers:
+- notation: 10.21105/joss.01294
+  schema_type: dlthings:DOI
+- notation: https://doi.org/10.21105/joss.01294
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:GRBB676I
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/doi-10-21105-joss-01294
+schema_type: xyzri:XYZPublication
+title: 'PyBIDS: Python tools for BIDS datasets'

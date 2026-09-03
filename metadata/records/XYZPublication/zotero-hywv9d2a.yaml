@@ -1,0 +1,34 @@
+attributed_to:
+- object: xyzrins:persons/michael-hanke
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/james-haxby
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+attributes:
+- predicate: dcterms:issued
+  schema_type: dlthings:AttributeSpecification
+  value: '2010'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Improving efficiency in cognitive neuroscience research with NeuroDebian
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Improving efficiency in cognitive neuroscience research with NeuroDebian
+characterized_by:
+- object: bibo:Document
+  predicate: dcterms:type
+display_label: Improving efficiency in cognitive neuroscience research with NeuroDebian
+identifiers:
+- notation: zotero:group:6197458:item:HYWV9D2A
+  schema_type: dlthings:Identifier
+kind: bibo:Document
+pid: xyzrins:publications/zotero-hywv9d2a
+schema_type: xyzri:XYZPublication
+title: Improving efficiency in cognitive neuroscience research with NeuroDebian

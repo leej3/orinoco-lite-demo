@@ -1,0 +1,18 @@
+assertions:
+- assertion_sha256: sha256:0737e04e9dbc6b0f338dfe06801752604c6057293cafb36949c472c7f4adc9d3
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZProject.json#record=xyzrins%3Aprojects%2Fpyout
+- assertion_sha256: sha256:151571d842112d767e6175134a64bb2777d16c8c4eca732ec72606e9bd874fca
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZProject.json#record=xyzrins%3Aprojects%2Fpyout
+- assertion_sha256: sha256:9a0a800625a09fa56724848b3debea6d1b18614ce952982dcb5e4081849c6299
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZProject.json#record=xyzrins%3Aprojects%2Fpyout
+- assertion_sha256: sha256:c92bb9a9e521dd498f2f9ad0422930d42e901ede6fc252951caa154289113cb2
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZProject.json#record=xyzrins%3Aprojects%2Fpyout
+record: xyzrins:projects/pyout

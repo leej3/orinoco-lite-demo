@@ -1,0 +1,31 @@
+attributes:
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: Emeritus member of the Center for Open Neuroscience. Research Software Engineer
+    at Stanford University. Singularity Hub developer.
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Vanessa Sochat
+- predicate: dlthings:family_name
+  schema_type: dlthings:AttributeSpecification
+  value: Sochat
+- predicate: dlthings:formatted_name
+  schema_type: dlthings:AttributeSpecification
+  value: Vanessa Sochat
+- predicate: dlthings:given_name
+  schema_type: dlthings:AttributeSpecification
+  value: Vanessa
+description: Emeritus member of the Center for Open Neuroscience. Research Software
+  Engineer at Stanford University. Singularity Hub developer.
+display_label: Vanessa Sochat
+family_name: Sochat
+formatted_name: Vanessa Sochat
+given_name: Vanessa
+identifiers:
+- notation: vsoch
+  schema_type: dlthings:Identifier
+- creator: rrid:SCR_002630
+  notation: vsoch
+  schema_type: dlthings:Identifier
+pid: xyzrins:persons/vanessa-sochat
+schema_type: xyzri:XYZPerson

@@ -1,0 +1,54 @@
+attributed_to:
+- object: xyzrins:persons/nikolaas-oosterhof
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/samuel-nastase
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/matteo-visconti-di-oleggio-castello
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/james-haxby
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+attributes:
+- predicate: bibo:locator
+  schema_type: dlthings:AttributeSpecification
+  value: 36, 19, 5373–5384
+- predicate: dcterms:issued
+  schema_type: dlthings:AttributeSpecification
+  value: 2016-05
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: How the human brain represents perceived dangerousness or "predacity" of
+    animals
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: How the human brain represents perceived dangerousness or "predacity" of
+    animals
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
+display_label: How the human brain represents perceived dangerousness or "predacity"
+  of animals
+identifiers:
+- notation: 10.1523/jneurosci.3395-15.2016
+  schema_type: dlthings:DOI
+- notation: 1529-2401
+  schema_type: dlthings:ISSN
+- notation: http://dx.doi.org/10.1523/JNEUROSCI.3395-15.2016
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:UN8ND95X
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/doi-10-1523-jneurosci-3395-15-2016
+schema_type: xyzri:XYZPublication
+title: How the human brain represents perceived dangerousness or "predacity" of animals

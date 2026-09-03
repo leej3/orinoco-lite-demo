@@ -1,0 +1,30 @@
+assertions:
+- assertion_sha256: sha256:538ffafad7890db6d1b30ff9f192b9938a3b6f74c2dad948a11ae87cfd96ef34
+  path: /attributed_to
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPublication.json#record=https%3A%2F%2Fdoi.org%2F10.1007%2Fs12021-008-9041-y
+- assertion_sha256: sha256:65f770d0ee6e28eb08aab90001abfe045babd1b892cd3d4f737945a88d542652
+  path: /attributed_to
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPublication.json#record=https%3A%2F%2Fdoi.org%2F10.1007%2Fs12021-008-9041-y
+- assertion_sha256: sha256:9284fa8c160f66c18593ac6b7f185665c454386a3d792a8bcf382165b6353833
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPublication.json#record=https%3A%2F%2Fdoi.org%2F10.1007%2Fs12021-008-9041-y
+- assertion_sha256: sha256:99f76f65bd44fd7206e7e395137aff1ec5136ac30e9aad57092ff8fe347ddc7b
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPublication.json#record=https%3A%2F%2Fdoi.org%2F10.1007%2Fs12021-008-9041-y
+- assertion_sha256: sha256:ea443f10f46ba63721d3016bf3fd9949df412c19409e07fd5e94f7bcd4b2ad6f
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/TH5UEY9U
+- assertion_sha256: sha256:daaf525b6f3d3378a5630d6cee38e0b0b19098a51ceab864edf5e50321977190
+  path: /characterized_by
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/TH5UEY9U
+- assertion_sha256: sha256:4d4379210f4981fea49b47a2a8c4fc2445cfa1954a117f19a5e0f9240d4bb601
+  path: /identifiers
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPublication.json#record=https%3A%2F%2Fdoi.org%2F10.1007%2Fs12021-008-9041-y
+record: xyzrins:publications/doi-10-1007-s12021-008-9041-y

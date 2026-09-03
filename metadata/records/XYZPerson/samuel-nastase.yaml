@@ -1,0 +1,36 @@
+attributes:
+- predicate: vcard:Email
+  schema_type: dlthings:AttributeSpecification
+  value: sam.nastase@gmail.com
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: Emeritus member of the Center for Open Neuroscience. Formerly Dartmouth Ph.D.
+    student, now at Princeton. Cognitive Neuroscience Ph.D. PyMVPA user and NeuroDebian
+    exhibitor.
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Samuel Nastase
+- predicate: dlthings:family_name
+  schema_type: dlthings:AttributeSpecification
+  value: Nastase
+- predicate: dlthings:formatted_name
+  schema_type: dlthings:AttributeSpecification
+  value: Samuel Nastase
+- predicate: dlthings:given_name
+  schema_type: dlthings:AttributeSpecification
+  value: Samuel
+description: Emeritus member of the Center for Open Neuroscience. Formerly Dartmouth
+  Ph.D. student, now at Princeton. Cognitive Neuroscience Ph.D. PyMVPA user and NeuroDebian
+  exhibitor.
+display_label: Samuel Nastase
+family_name: Nastase
+formatted_name: Samuel Nastase
+given_name: Samuel
+identifiers:
+- notation: snastase
+  schema_type: dlthings:Identifier
+- creator: rrid:SCR_002630
+  notation: snastase
+  schema_type: dlthings:Identifier
+pid: xyzrins:persons/samuel-nastase
+schema_type: xyzri:XYZPerson

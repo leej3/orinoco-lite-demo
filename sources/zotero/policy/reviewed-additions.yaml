@@ -1,0 +1,66 @@
+format_version: 1
+group_id: 6197458
+policy: Only entries marked approved by a repository editor may be written.
+additions:
+  - id: nwb-ecosystem-2022
+    status: approved
+    approved_by: John Lee
+    approved_on: 2026-07-23
+    collection: External
+    rationale: >-
+      The work is relevant to DANDI and NWB, but the publication does not list
+      the Center for Open Neuroscience as an affiliation. The repository owner
+      explicitly classified it as External.
+    evidence:
+      - https://doi.org/10.7554/eLife.78362
+      - https://elifesciences.org/articles/78362
+    item:
+      itemType: journalArticle
+      title: The Neurodata Without Borders ecosystem for neurophysiological data science
+      creators:
+        - creatorType: author
+          firstName: Oliver
+          lastName: Rübel
+        - creatorType: author
+          firstName: Andrew
+          lastName: Tritt
+        - creatorType: author
+          firstName: Ryan
+          lastName: Ly
+        - creatorType: author
+          firstName: Benjamin K
+          lastName: Dichter
+        - creatorType: author
+          firstName: Satrajit
+          lastName: Ghosh
+        - creatorType: author
+          firstName: Lawrence
+          lastName: Niu
+        - creatorType: author
+          firstName: Pamela
+          lastName: Baker
+        - creatorType: author
+          firstName: Ivan
+          lastName: Soltesz
+        - creatorType: author
+          firstName: Lydia
+          lastName: Ng
+        - creatorType: author
+          firstName: Karel
+          lastName: Svoboda
+        - creatorType: author
+          firstName: Loren
+          lastName: Frank
+        - creatorType: author
+          firstName: Kristofer E
+          lastName: Bouchard
+      publicationTitle: eLife
+      volume: "11"
+      pages: e78362
+      date: "2022-10-04"
+      DOI: 10.7554/eLife.78362
+      url: https://elifesciences.org/articles/78362
+      language: en
+      rights: CC BY 4.0
+      tags: []
+      relations: {}

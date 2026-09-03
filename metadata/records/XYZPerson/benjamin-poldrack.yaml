@@ -1,0 +1,31 @@
+attributes:
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: Emeritus member of the Center for Open Neuroscience. Affiliated with INM-7,
+    Research Centre Jülich. DataLad project contributor.
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Benjamin Poldrack
+- predicate: dlthings:family_name
+  schema_type: dlthings:AttributeSpecification
+  value: Poldrack
+- predicate: dlthings:formatted_name
+  schema_type: dlthings:AttributeSpecification
+  value: Benjamin Poldrack
+- predicate: dlthings:given_name
+  schema_type: dlthings:AttributeSpecification
+  value: Benjamin
+description: Emeritus member of the Center for Open Neuroscience. Affiliated with
+  INM-7, Research Centre Jülich. DataLad project contributor.
+display_label: Benjamin Poldrack
+family_name: Poldrack
+formatted_name: Benjamin Poldrack
+given_name: Benjamin
+identifiers:
+- notation: bpoldrack
+  schema_type: dlthings:Identifier
+- creator: rrid:SCR_002630
+  notation: bpoldrack
+  schema_type: dlthings:Identifier
+pid: xyzrins:persons/benjamin-poldrack
+schema_type: xyzri:XYZPerson

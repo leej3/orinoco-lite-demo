@@ -1,0 +1,20 @@
+attributes:
+- predicate: skos:broadMatch
+  schema_type: dlthings:AttributeSpecification
+  value: marcrel:aut
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: The first of a set of authors associated with a publication or release. There
+    may be more than one first author in cases where several authors share primary
+    attribution.
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: First author
+broad_mappings:
+- marcrel:aut
+description: The first of a set of authors associated with a publication or release.
+  There may be more than one first author in cases where several authors share primary
+  attribution.
+display_label: First author
+pid: obo:MS_1002034
+schema_type: xyzri:XYZAgentRole

@@ -1,0 +1,39 @@
+attributed_to:
+- object: xyzrins:persons/james-haxby
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/nikolaas-oosterhof
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+attributes:
+- predicate: bibo:locator
+  schema_type: dlthings:AttributeSpecification
+  value: 27:4, 665-678
+- predicate: dcterms:issued
+  schema_type: dlthings:AttributeSpecification
+  value: '2015'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: The animacy continuum in the human ventral vision pathway
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: The animacy continuum in the human ventral vision pathway
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
+display_label: The animacy continuum in the human ventral vision pathway
+identifiers:
+- notation: 10.1162/jocn_a_00733
+  schema_type: dlthings:DOI
+- notation: zotero:group:6197458:item:NRALR45F
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/doi-10-1162-jocn-a-00733
+schema_type: xyzri:XYZPublication
+title: The animacy continuum in the human ventral vision pathway

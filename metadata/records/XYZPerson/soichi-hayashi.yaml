@@ -1,0 +1,34 @@
+attributes:
+- predicate: vcard:Email
+  schema_type: dlthings:AttributeSpecification
+  value: soichih@gmail.com
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: Emeritus member of the Center for Open Neuroscience. Software engineer at
+    Indiana University, Bloomington, working on brainlife.io.
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Soichi Hayashi
+- predicate: dlthings:family_name
+  schema_type: dlthings:AttributeSpecification
+  value: Hayashi
+- predicate: dlthings:formatted_name
+  schema_type: dlthings:AttributeSpecification
+  value: Soichi Hayashi
+- predicate: dlthings:given_name
+  schema_type: dlthings:AttributeSpecification
+  value: Soichi
+description: Emeritus member of the Center for Open Neuroscience. Software engineer
+  at Indiana University, Bloomington, working on brainlife.io.
+display_label: Soichi Hayashi
+family_name: Hayashi
+formatted_name: Soichi Hayashi
+given_name: Soichi
+identifiers:
+- notation: soichih
+  schema_type: dlthings:Identifier
+- creator: rrid:SCR_002630
+  notation: soichih
+  schema_type: dlthings:Identifier
+pid: xyzrins:persons/soichi-hayashi
+schema_type: xyzri:XYZPerson

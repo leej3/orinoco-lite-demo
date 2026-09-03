@@ -1,0 +1,18 @@
+assertions:
+- assertion_sha256: sha256:0427da410aa4b02ffd614a024d3901ae3fe151b48b445ce33596de21af0b53a6
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZProject.json#record=xyzrins%3Aprojects%2Fcon-duct
+- assertion_sha256: sha256:102f85cb353c28d497c8fca456a69cc62d38b2ad773381db224ea87ad8608454
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZProject.json#record=xyzrins%3Aprojects%2Fcon-duct
+- assertion_sha256: sha256:eb7834b52e7933e9f3a1866a164850009e5f3eb63bd5822aba8a670077039b14
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZProject.json#record=xyzrins%3Aprojects%2Fcon-duct
+- assertion_sha256: sha256:ef64102b16dce04c9309b83aba56b2548a418f3fffe9d4a6d2aa2ffc7e739492
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZProject.json#record=xyzrins%3Aprojects%2Fcon-duct
+record: xyzrins:projects/con-duct

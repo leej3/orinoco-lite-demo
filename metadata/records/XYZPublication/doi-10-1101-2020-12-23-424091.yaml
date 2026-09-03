@@ -1,0 +1,35 @@
+attributed_to:
+- object: xyzrins:persons/samuel-nastase
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+attributes:
+- predicate: dcterms:issued
+  schema_type: dlthings:AttributeSpecification
+  value: 2020-12
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'Narratives: fMRI data for evaluating models of naturalistic language comprehension'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'Narratives: fMRI data for evaluating models of naturalistic language comprehension'
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
+display_label: 'Narratives: fMRI data for evaluating models of naturalistic language
+  comprehension'
+identifiers:
+- notation: 10.1101/2020.12.23.424091
+  schema_type: dlthings:DOI
+- notation: https://doi.org/10.1101/2020.12.23.424091
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:28XS48EF
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/doi-10-1101-2020-12-23-424091
+schema_type: xyzri:XYZPublication
+title: 'Narratives: fMRI data for evaluating models of naturalistic language comprehension'

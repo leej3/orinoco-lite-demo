@@ -1,0 +1,32 @@
+at_location: https://www.wikidata.org/entity/Q131908
+attributes:
+- predicate: foaf:homepage
+  schema_type: dlthings:AttributeSpecification
+  value: https://centerforopenneuroscience.org/
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: Provides open software frameworks, platforms, data and methodologies for
+    neuroscience and beyond.
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Center for Open Neuroscience (CON)
+- predicate: dlthings:name
+  schema_type: dlthings:AttributeSpecification
+  value: Center for Open Neuroscience
+- predicate: dlthings:short_name
+  schema_type: dlthings:AttributeSpecification
+  value: CON
+characterized_by:
+- object: https://www.wikidata.org/entity/Q131908
+  predicate: dlthings:at_location
+- object: ror:049s0rh22
+  predicate: dlthings:part_of
+description: Provides open software frameworks, platforms, data and methodologies
+  for neuroscience and beyond.
+display_label: Center for Open Neuroscience (CON)
+name: Center for Open Neuroscience
+part_of:
+- ror:049s0rh22
+pid: ror:04tfhh831
+schema_type: xyzri:XYZOrganization
+short_name: CON

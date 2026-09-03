@@ -1,0 +1,26 @@
+assertions:
+- assertion_sha256: sha256:538ffafad7890db6d1b30ff9f192b9938a3b6f74c2dad948a11ae87cfd96ef34
+  path: /attributed_to
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPublication.json#record=https%3A%2F%2Fdoi.org%2F10.1002%2Fhbm.25351
+- assertion_sha256: sha256:8018fa411ef50994281a387113baf0272ea451b8ba3731ac7275bae3be7a4b0c
+  path: /attributed_to
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPublication.json#record=https%3A%2F%2Fdoi.org%2F10.1002%2Fhbm.25351
+- assertion_sha256: sha256:9bcb962c00ff594aa5ea191dd4b6877c8ed850c1d8d5f7eb51c2470d5f29f06e
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/245NKVXU
+- assertion_sha256: sha256:cf154444475697e9b2147ec0e58a816067d5883d73bcd58275449701891b7857
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPublication.json#record=https%3A%2F%2Fdoi.org%2F10.1002%2Fhbm.25351
+- assertion_sha256: sha256:e37e3fd9b1275bb3ce5adcac06e779139eae7b0550ed090abf4c71a17d6bb1b2
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZPublication.json#record=https%3A%2F%2Fdoi.org%2F10.1002%2Fhbm.25351
+- assertion_sha256: sha256:daaf525b6f3d3378a5630d6cee38e0b0b19098a51ceab864edf5e50321977190
+  path: /characterized_by
+  pav:importedBy: xyzrins:source-adapters/zotero/v1
+  pav:importedFrom: https://api.zotero.org/groups/6197458/items/245NKVXU
+record: xyzrins:publications/doi-10-1002-hbm-25351

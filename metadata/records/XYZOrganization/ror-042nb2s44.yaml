@@ -1,0 +1,15 @@
+attributes:
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: MIT
+- predicate: dlthings:name
+  schema_type: dlthings:AttributeSpecification
+  value: Massachusetts Institute of Technology
+- predicate: dlthings:short_name
+  schema_type: dlthings:AttributeSpecification
+  value: MIT
+display_label: MIT
+name: Massachusetts Institute of Technology
+pid: ror:042nb2s44
+schema_type: xyzri:XYZOrganization
+short_name: MIT

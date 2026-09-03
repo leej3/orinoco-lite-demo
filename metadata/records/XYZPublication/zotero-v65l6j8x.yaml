@@ -1,0 +1,30 @@
+attributed_to:
+- object: xyzrins:persons/kyle-meyer
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+attributes:
+- predicate: dcterms:issued
+  schema_type: dlthings:AttributeSpecification
+  value: '2018'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: 'NICEMAN: NeuroImaging Computational Environments Manager'
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: 'NICEMAN: NeuroImaging Computational Environments Manager'
+characterized_by:
+- object: bibo:Document
+  predicate: dcterms:type
+display_label: 'NICEMAN: NeuroImaging Computational Environments Manager'
+identifiers:
+- notation: zotero:group:6197458:item:V65L6J8X
+  schema_type: dlthings:Identifier
+kind: bibo:Document
+pid: xyzrins:publications/zotero-v65l6j8x
+schema_type: xyzri:XYZPublication
+title: 'NICEMAN: NeuroImaging Computational Environments Manager'

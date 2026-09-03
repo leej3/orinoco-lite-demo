@@ -1,0 +1,34 @@
+assertions:
+- assertion_sha256: sha256:2859245b5ab43015ca6d649731708e3ce90afcd21cf9626fb57e5725ac4330cc
+  path: /attributed_to
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZGrant.json#record=xyzrins%3Agrants%2Fnih-openneuro
+- assertion_sha256: sha256:bfbbc35fa16a2b18927de3d8dd5bb401ddaaea96f7587ca273222bc8a2a4349b
+  path: /attributed_to
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZGrant.json#record=xyzrins%3Agrants%2Fnih-openneuro
+- assertion_sha256: sha256:059d9bf28a3103a920abc4fba10d6a3074d859a2b4a8a4638ad75b64dceadaf7
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZGrant.json#record=xyzrins%3Agrants%2Fnih-openneuro
+- assertion_sha256: sha256:12cfc9f8bc606639a8e568013b32e23cf8ecf6e3448eb62ac399fa8da152a7e3
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZGrant.json#record=xyzrins%3Agrants%2Fnih-openneuro
+- assertion_sha256: sha256:94ae65495640ecc229be472e8141560237018cfe0a92c7eba0ea5b247d264e42
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZGrant.json#record=xyzrins%3Agrants%2Fnih-openneuro
+- assertion_sha256: sha256:abe9ce41e328df38829fbfc22507e3cc7d8fca64aaf4640f07fd8fd005c5853d
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZGrant.json#record=xyzrins%3Agrants%2Fnih-openneuro
+- assertion_sha256: sha256:cc1a7f55023ae1ac86e6d7fef9d45dd76ad0ad5204dcd503efc65384860c9695
+  path: /attributes
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZGrant.json#record=xyzrins%3Agrants%2Fnih-openneuro
+- assertion_sha256: sha256:64e80247fb6dd265296719e3b6ff2110b45e3b9737252e7617e127c90d5ef48e
+  path: /identifiers
+  pav:importedBy: xyzrins:source-adapters/dump-research-info/v2
+  pav:importedFrom: https://github.com/con/dump-research-info/blob/main/data/con_site/XYZGrant.json#record=xyzrins%3Agrants%2Fnih-openneuro
+record: xyzrins:grants/nih-openneuro

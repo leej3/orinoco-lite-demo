@@ -1,0 +1,34 @@
+attributed_to:
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+attributes:
+- predicate: dcterms:issued
+  schema_type: dlthings:AttributeSpecification
+  value: 2021-02
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: The interaction between lifetime depression severity and BMI is related to
+    altered activation pattern in the right inferior frontal gyrus during food anticipation
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: The interaction between lifetime depression severity and BMI is related to
+    altered activation pattern in the right inferior frontal gyrus during food anticipation
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
+display_label: The interaction between lifetime depression severity and BMI is related
+  to altered activation pattern in the right inferior frontal gyrus during food anticipation
+identifiers:
+- notation: 10.1101/2021.02.17.21251922
+  schema_type: dlthings:DOI
+- notation: https://doi.org/10.1101/2021.02.17.21251922
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:9DTLJ2HP
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/doi-10-1101-2021-02-17-21251922
+schema_type: xyzri:XYZPublication
+title: The interaction between lifetime depression severity and BMI is related to
+  altered activation pattern in the right inferior frontal gyrus during food anticipation

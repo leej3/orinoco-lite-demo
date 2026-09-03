@@ -1,0 +1,33 @@
+attributes:
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: Collaborator at the Center for Open Neuroscience. J.-Prof. at INM-7, Research
+    Centre Jülich, Germany and University of Magdeburg. Official Debian developer.
+    Lead of PyMVPA, NeuroDebian, DataLad projects.
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Michael Hanke
+- predicate: dlthings:family_name
+  schema_type: dlthings:AttributeSpecification
+  value: Hanke
+- predicate: dlthings:formatted_name
+  schema_type: dlthings:AttributeSpecification
+  value: Michael Hanke
+- predicate: dlthings:given_name
+  schema_type: dlthings:AttributeSpecification
+  value: Michael
+description: Collaborator at the Center for Open Neuroscience. J.-Prof. at INM-7,
+  Research Centre Jülich, Germany and University of Magdeburg. Official Debian developer.
+  Lead of PyMVPA, NeuroDebian, DataLad projects.
+display_label: Michael Hanke
+family_name: Hanke
+formatted_name: Michael Hanke
+given_name: Michael
+identifiers:
+- notation: hanke
+  schema_type: dlthings:Identifier
+- creator: rrid:SCR_002630
+  notation: hanke
+  schema_type: dlthings:Identifier
+pid: xyzrins:persons/michael-hanke
+schema_type: xyzri:XYZPerson

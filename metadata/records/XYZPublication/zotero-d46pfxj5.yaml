@@ -1,0 +1,52 @@
+attributed_to:
+- object: xyzrins:persons/samuel-nastase
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/nikolaas-oosterhof
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/yaroslav-halchenko
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/matteo-visconti-di-oleggio-castello
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/jason-gors
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+- object: xyzrins:persons/james-haxby
+  roles:
+  - marcrel:aut
+  schema_type: dlthings:Attribution
+attributes:
+- predicate: bibo:locator
+  schema_type: dlthings:AttributeSpecification
+  value: 27, 8, 4277-4291
+- predicate: dcterms:issued
+  schema_type: dlthings:AttributeSpecification
+  value: '2017'
+- predicate: dlthings:title
+  schema_type: dlthings:AttributeSpecification
+  value: Attention selectively reshapes the geometry of distributed semantic representation
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Attention selectively reshapes the geometry of distributed semantic representation
+characterized_by:
+- object: bibo:AcademicArticle
+  predicate: dcterms:type
+display_label: Attention selectively reshapes the geometry of distributed semantic
+  representation
+identifiers:
+- notation: https://doi.org/10.1093/cercor/bhx138
+  schema_type: dlthings:Identifier
+- notation: zotero:group:6197458:item:D46PFXJ5
+  schema_type: dlthings:Identifier
+kind: bibo:AcademicArticle
+pid: xyzrins:publications/zotero-d46pfxj5
+schema_type: xyzri:XYZPublication
+title: Attention selectively reshapes the geometry of distributed semantic representation

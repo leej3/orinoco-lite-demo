@@ -1,0 +1,34 @@
+attributes:
+- predicate: vcard:Email
+  schema_type: dlthings:AttributeSpecification
+  value: jbpoline@mcgill.ca
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: Collaborator at the Center for Open Neuroscience. Affiliated with McGill
+    University, Canada.
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Jean-Baptiste Poline
+- predicate: dlthings:family_name
+  schema_type: dlthings:AttributeSpecification
+  value: Poline
+- predicate: dlthings:formatted_name
+  schema_type: dlthings:AttributeSpecification
+  value: Jean-Baptiste Poline
+- predicate: dlthings:given_name
+  schema_type: dlthings:AttributeSpecification
+  value: Jean-Baptiste
+description: Collaborator at the Center for Open Neuroscience. Affiliated with McGill
+  University, Canada.
+display_label: Jean-Baptiste Poline
+family_name: Poline
+formatted_name: Jean-Baptiste Poline
+given_name: Jean-Baptiste
+identifiers:
+- notation: jbpoline
+  schema_type: dlthings:Identifier
+- creator: rrid:SCR_002630
+  notation: jbpoline
+  schema_type: dlthings:Identifier
+pid: xyzrins:persons/jean-baptiste-poline
+schema_type: xyzri:XYZPerson

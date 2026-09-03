@@ -1,0 +1,48 @@
+additional_names:
+- O.
+attributes:
+- predicate: vcard:Email
+  schema_type: dlthings:AttributeSpecification
+  value: yaroslav.o.halchenko@oneukrainian.com
+- predicate: foaf:homepage
+  schema_type: dlthings:AttributeSpecification
+  value: https://centerforopenneuroscience.org/whoweare
+- predicate: dlthings:additional_names
+  schema_type: dlthings:AttributeSpecification
+  value: O.
+- predicate: dcterms:description
+  schema_type: dlthings:AttributeSpecification
+  value: Founding Director of the Center for Open Neuroscience. Research Professor
+    of Psychological and Brain Sciences and Adjunct Professor of Computer Science
+    at Dartmouth College. Official Debian Developer and open source contributor leading
+    DANDI, DataLad, PyMVPA, and NeuroDebian projects. Serves on BIDS and NWB technical
+    advisory committees.
+- predicate: skos:prefLabel
+  schema_type: dlthings:AttributeSpecification
+  value: Yaroslav O. Halchenko
+- predicate: dlthings:family_name
+  schema_type: dlthings:AttributeSpecification
+  value: Halchenko
+- predicate: dlthings:formatted_name
+  schema_type: dlthings:AttributeSpecification
+  value: Yaroslav O. Halchenko
+- predicate: dlthings:given_name
+  schema_type: dlthings:AttributeSpecification
+  value: Yaroslav
+description: Founding Director of the Center for Open Neuroscience. Research Professor
+  of Psychological and Brain Sciences and Adjunct Professor of Computer Science at
+  Dartmouth College. Official Debian Developer and open source contributor leading
+  DANDI, DataLad, PyMVPA, and NeuroDebian projects. Serves on BIDS and NWB technical
+  advisory committees.
+display_label: Yaroslav O. Halchenko
+family_name: Halchenko
+formatted_name: Yaroslav O. Halchenko
+given_name: Yaroslav
+identifiers:
+- notation: yarikoptic
+  schema_type: dlthings:Identifier
+- creator: rrid:SCR_002630
+  notation: yarikoptic
+  schema_type: dlthings:Identifier
+pid: xyzrins:persons/yaroslav-halchenko
+schema_type: xyzri:XYZPerson

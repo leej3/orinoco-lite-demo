@@ -1,0 +1,643 @@
+adapter: zotero
+decisions:
+  xyzrins:publications/datalad-joss-2021:
+    claim_sha256: sha256:4aa9d549434017acb448d7147499f01e0edb12f487d2ee243d07c28fc1a144d7
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:H8IFRMC4
+  xyzrins:publications/doi-10-1002-brb3-2695:
+    claim_sha256: sha256:715fc680b427b0aacd7733f1cabc476d41c113c2ed1d4a0a42042c6825ad52dd
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:BRCGW76M
+  xyzrins:publications/doi-10-1002-hbm-25351:
+    claim_sha256: sha256:33d09a21f3c3232178fe042c6935dc72741630a56862a2b443b93128bcb9edab
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:245NKVXU
+  xyzrins:publications/doi-10-1007-s00418-023-02209-1:
+    claim_sha256: sha256:2c2b3a089792f232c088e1aa1b6fca1b3b203ccd162ff6f56f228ed2fa6ee4ef
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:GQSABLEW
+  xyzrins:publications/doi-10-1007-s00429-007-0160-2:
+    claim_sha256: sha256:c5c35b42a58d3ff52600bd82792747ef5ead58c479179bb355f30cd773bc96d6
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:46M66NTZ
+  xyzrins:publications/doi-10-1007-s12021-008-9041-y:
+    claim_sha256: sha256:a13bd89ca24998cc69bbc316f8e377f4aa028d771159a737987ed261162fba4e
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:TH5UEY9U
+  xyzrins:publications/doi-10-1016-j-biopsych-2021-02-385:
+    claim_sha256: sha256:373e9f262b98d290e51f2f5dfd683512e26ec9fef0edee10fbb7ba46c10d6fd6
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:EPNPNFV7
+  xyzrins:publications/doi-10-1016-j-concog-2013-05-002:
+    claim_sha256: sha256:14b8d53fde176a2037dd85f12238de66afb5ac8525c6ab21c9b5ff29ec42254e
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:LUY3F93F
+  xyzrins:publications/doi-10-1016-j-mex-2021-101595:
+    claim_sha256: sha256:c63d722045a74a71a97945af39bcb92088831f0d95df0e53afd4a29b0169fada
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:I3FRTJW7
+  xyzrins:publications/doi-10-1016-j-mri-2007-03-013:
+    claim_sha256: sha256:7bb951bfb1d43d3ea2385a2e395be68ffd03ab077f5d9c271f20de80f3d522eb
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:MK2JAMFC
+  xyzrins:publications/doi-10-1016-j-neuroimage-2009-08-065:
+    claim_sha256: sha256:4d5c012d5fd6614fc5af3d725de8a27d751b203bcecd5b13a03901920c04b125
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:NSXTR2GI
+  xyzrins:publications/doi-10-1016-j-neuroimage-2013-04-019:
+    claim_sha256: sha256:711e2867bfdb9416674bbcff9b343eea427bbc242fc6408c66b3d1216feba242
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:9G4QLIAD
+  xyzrins:publications/doi-10-1016-j-neuroimage-2022-119623:
+    claim_sha256: sha256:16f78abe762a58718b89b5a7858bcb3ebef4b9d9a48f354386876a405a397274
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:FWQ9U3XV
+  xyzrins:publications/doi-10-1016-j-neuron-2011-08-026:
+    claim_sha256: sha256:6623c521a32be6a1bd2af278e2210f9c194c528d40b9e7c72b8cb50546e2d476
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:HARUUH9R
+  xyzrins:publications/doi-10-1016-j-neuron-2016-10-033:
+    claim_sha256: sha256:290bf40118032e9130da69ae78226ef98221326bb8bc2858c8fb1a18bd030d5c
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:G67VDG29
+  xyzrins:publications/doi-10-1016-j-neuron-2021-04-001:
+    claim_sha256: sha256:74d141b4b61c8464039ca0017dafd28e9681d04db8c39e1a35b02c74d7c18cee
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:UIBT7JR4
+  xyzrins:publications/doi-10-1038-nn-4550:
+    claim_sha256: sha256:08ae9f4f4d41f84cbd05f7265ab75ff564cb10d6b004b76b14cbe32895b49aa0
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:8SM6U444
+  xyzrins:publications/doi-10-1038-s41398-022-02211-6:
+    claim_sha256: sha256:ccac50c4567b3e809c375e94cecb1df86f016aa40fbe74a7fed3f67567264088
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:BL29REW4
+  xyzrins:publications/doi-10-1038-s41562-023-01647-0:
+    claim_sha256: sha256:070b709297868aa116e2a5308b8688c57d02b8cf586d0ac75834dff2001dcf59
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:WR3PJI7I
+  xyzrins:publications/doi-10-1038-s41592-022-01681-2:
+    claim_sha256: sha256:7da75ed7cd90a376a335b5336d59f482dd984d883c3613c66c76d1c14a2a062a
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:YJDVXBFQ
+  xyzrins:publications/doi-10-1038-s41592-023-02145-x:
+    claim_sha256: sha256:d3305202cd724d9d06d529f09c2213f8303201590d9bc6d1cfeefdf9341e9ce2
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:7LQHX3IT
+  xyzrins:publications/doi-10-1038-s41597-021-01033-3:
+    claim_sha256: sha256:d7de2ed2f2b9f3d27a8b4fee4b57110cd3d43021db1cc88a2861a2cc55c47e41
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:NFYHSYVV
+  xyzrins:publications/doi-10-1038-s41597-023-02614-0:
+    claim_sha256: sha256:20aa116b584357f9fb5239af35cbdaaa719329b9b953b1a772c3dbd795a7e443
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:CWP3HZ39
+  xyzrins:publications/doi-10-1038-s41597-025-05154-x:
+    claim_sha256: sha256:5f98a44094d94457780d74270c503e842d759f8b1cc369436f5fc948daf3e81d
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:MUYTSHYU
+  xyzrins:publications/doi-10-1038-s41597-025-05503-w:
+    claim_sha256: sha256:818476066057569cf8523e8463b9b82d7f8aafe34b4798f8cf0c1dff995a097a
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:Y6N4MSQK
+  xyzrins:publications/doi-10-1038-s41597-025-05543-2:
+    claim_sha256: sha256:4f72ba0ab6307fda19636805b6c53521ba6140c9587fe3dc9fe87e398db92aed
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:VYEFN2PE
+  xyzrins:publications/doi-10-1038-s41598-017-12559-1:
+    claim_sha256: sha256:6d7dd94253b5deb0fc7e965a6c25c211f410a593eb1dd2b6889cfdafaa4a84f7
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:LMBPDTEZ
+  xyzrins:publications/doi-10-1038-s41598-021-87069-2:
+    claim_sha256: sha256:e5ecb2647c27a340241ef40d1f720b545950b6eb0b6dc495f92bd4f9a50534f6
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:7GEEUYUP
+  xyzrins:publications/doi-10-1038-sdata-2016-44:
+    claim_sha256: sha256:92ee5c3e920ea074f2ed0b402e2a749bbf3cd5a42243431f3071b993952cc29c
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:9KS9CGNB
+  xyzrins:publications/doi-10-1093-cercor-bhw068:
+    claim_sha256: sha256:51b0f0551544ce58e65d25d719037d0e189226d913c2f05c9a83137408308b98
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:XG2GWNFB
+  xyzrins:publications/doi-10-1101-034561:
+    claim_sha256: sha256:d689fb0759f8e3e4bcfa40f135e84f8da3601c9083009d225c1399404185d213
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:ER3GRXMK
+  xyzrins:publications/doi-10-1101-045104:
+    claim_sha256: sha256:c3725926702343e607b11ee2a925a41dbf653c84dd96770dc2c8663a5e71d2ec
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:7NJBVY9C
+  xyzrins:publications/doi-10-1101-045252:
+    claim_sha256: sha256:c790eb57a8f8c7f8aea33d6207ae643e90a21f9f3814a2f585b4699025197c2f
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:W7QBXMBZ
+  xyzrins:publications/doi-10-1101-138297:
+    claim_sha256: sha256:2339708d2e60800a6b970c663b54b934b116f6cfd13baf516d3d78e5abf6f58d
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:8HBGMN62
+  xyzrins:publications/doi-10-1101-2020-10-19-343129:
+    claim_sha256: sha256:dd6f496ff584a1cdcbcfb9d1d4aec750916e31eeccb2a0a3f4b4f21c5b6ab00d
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:XIW9MRZ2
+  xyzrins:publications/doi-10-1101-2020-12-23-424091:
+    claim_sha256: sha256:2fdffaa826edabaf409d191692457d1474ec47f9f8e968a2cd3126b9361cd81f
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:28XS48EF
+  xyzrins:publications/doi-10-1101-2021-02-10-430678:
+    claim_sha256: sha256:744b22119e69a0b55475cb4a49f50bba302005ad905a5e3c413144e74d87391e
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:BEINDI3Z
+  xyzrins:publications/doi-10-1101-2021-02-17-21251922:
+    claim_sha256: sha256:59517b3fda4961d215ace3e6e9b7216275f14a80cbb83378acf4e69a7be65450
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:9DTLJ2HP
+  xyzrins:publications/doi-10-1101-2021-02-25-21252472:
+    claim_sha256: sha256:f245db37c144bab8326cca159911718472f2bafde7510ee3c729c9a81afe328b
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:NTH9GIBW
+  xyzrins:publications/doi-10-1101-2022-05-15-492022:
+    claim_sha256: sha256:e6f161e53e759dc2400ecc8282a1aab6b834fedf4b99d1d56ca1e5d6361bb1b3
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:MG9XQ2NA
+  xyzrins:publications/doi-10-1101-2023-02-17-528834:
+    claim_sha256: sha256:8042dfef85f7b5ca4eb634845d944d85b73cfb9334595b0da332fb7fbab56000
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:NYUMV9AZ
+  xyzrins:publications/doi-10-1101-2024-06-21-599974:
+    claim_sha256: sha256:e48c2db6637ef58a1aaed70b039e482fcb788b4af9f7ef2357bbe24939ea09c3
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:IKDDSUSK
+  xyzrins:publications/doi-10-1101-2024-11-26-624178:
+    claim_sha256: sha256:a87510138a0e36f2d3afd2c2e2c3faea210bc262f1358d3d4032523813c609d6
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:5B6WRNBX
+  xyzrins:publications/doi-10-1101-694364:
+    claim_sha256: sha256:b6f1eebe5fbae1dab905970ad5a4c6a5876f9c5cb781fb6852b0aecd9e0cd723
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:MFQ9RIJA
+  xyzrins:publications/doi-10-1109-prni-2016-7552355:
+    claim_sha256: sha256:0a7d28b9793dd931f4843b4577842e4c089835e0e139f41febe7497eb179deb1
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:J697F9FM
+  xyzrins:publications/doi-10-1111-j-1467-9280-2009-02460-x:
+    claim_sha256: sha256:3c250710eea7dbca01efc26b7b558e8a6159f536754c5bae4db60f43ae782d1d
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:K3L4HX7G
+  xyzrins:publications/doi-10-1117-12-360283:
+    claim_sha256: sha256:1b706daae527d8a17ab9f76f19fc488f682e02d2661310cda77921cbd151dafe
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:DD5DYRRP
+  xyzrins:publications/doi-10-1117-12-388446:
+    claim_sha256: sha256:6aec0e004d15dae825a61982d0aad28d6295de1771f6f7b7cb17b745bfdb68d6
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:MTDEYQV7
+  xyzrins:publications/doi-10-1145-3701716-3715483:
+    claim_sha256: sha256:817eb0d6d7e5b6554f007df7bb5f13088725e30bf94d7f73b0f51d675fe0cd78
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:FURW46DX
+  xyzrins:publications/doi-10-1162-imag-a-00032:
+    claim_sha256: sha256:4dc61cf7d2995f68f586b15098d0d5a8cb00085fe6720fc28837e216ccce5916
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:49TESTU4
+  xyzrins:publications/doi-10-1162-imag-a-00074:
+    claim_sha256: sha256:928ea6f0b15f7dafa7657f0fef4f853b6b0db5509204b24e83a16e5e1c22bbdf
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:6XXHCPAH
+  xyzrins:publications/doi-10-1162-imag-a-00103:
+    claim_sha256: sha256:d327bad461efed8bb2f5c7aa58ee4be21cb2579ba9529b9655267b6ab1434d6a
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:YTICP679
+  xyzrins:publications/doi-10-1162-jocn-a-00733:
+    claim_sha256: sha256:a4c6b616c93125b0ab875ddf5e68ffc5e6bda856565f9b7aeeb04f2b18153959
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:NRALR45F
+  xyzrins:publications/doi-10-1162-neco-2007-09-06-340:
+    claim_sha256: sha256:1e3ffb8e65a2439b7b28329bcd7934af0b74054a3386e93904587633f61bd8a2
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:HC35UCWW
+  xyzrins:publications/doi-10-1186-s13742-015-0072-7:
+    claim_sha256: sha256:dce5bc825e4b573b4a701ad49843b3767011bc2959721f278693ada1d21e10f7
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:KPIENLBK
+  xyzrins:publications/doi-10-12688-f1000research-10783-2:
+    claim_sha256: sha256:8c367dd29e119775e8d644ea4d72929bdef2de436e253016048df33d192b0f61
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:RU4FEZ66
+  xyzrins:publications/doi-10-12688-f1000research-6229-1:
+    claim_sha256: sha256:939cc745ea67e222bb1a1b5a4583e6b49aa7b233240091926c53301456ca060d
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:WUNRF8WV
+  xyzrins:publications/doi-10-1371-journal-pbio-3002133:
+    claim_sha256: sha256:944c38162ef2358fc27e02635ad3a3b8ed6fc2ef2908a34218ce334988bd6235
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:CMI7RGJ8
+  xyzrins:publications/doi-10-1371-journal-pone-0066620:
+    claim_sha256: sha256:6f5eca544ceccfcd2ec7cfc271ccb94f4007da1c15c27a81ccbe5d8c1ea651db
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:Z3AQGPJK
+  xyzrins:publications/doi-10-1515-nf-2020-0037:
+    claim_sha256: sha256:598fd9479a96587a5ac462ee8fc64e739d6d0a6c60fe722f1090fd4460d8472c
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:9C4GQNET
+  xyzrins:publications/doi-10-1523-jneurosci-3395-15-2016:
+    claim_sha256: sha256:0727ca1525bbe9170483c40302aaa477c7ba0550610017be28e8ad4946a91c26
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:UN8ND95X
+  xyzrins:publications/doi-10-1523-jneurosci-5547-11-2012:
+    claim_sha256: sha256:d48646a0de37e27028c2c4cb24f09b38eb05d02204b2eedd0909168fe7cd6ded
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:KHCCE3BE
+  xyzrins:publications/doi-10-21105-joss-01294:
+    claim_sha256: sha256:73fb9f776b385aff02f62f36c246c250aa62922965c054157bf22cfeb9121879
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:GRBB676I
+  xyzrins:publications/doi-10-21105-joss-01525:
+    claim_sha256: sha256:7132e7da186caf96edc9caca3a646bf268e360508e4d8eebc512dbf06e31cd2e
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:SFAGW82E
+  xyzrins:publications/doi-10-21105-joss-05839:
+    claim_sha256: sha256:ade2b7a27f997609d6234d180d313e35aebc91639fa946b440e25207281f2bd3
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:W9MC83Q7
+  xyzrins:publications/doi-10-2417-1200909-1683:
+    claim_sha256: sha256:3249bce6788620f58223b806a3f77c9adad534678270f7010ae550072eedb642
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:DD2JG54D
+  xyzrins:publications/doi-10-31219-osf-io-pu5vb:
+    claim_sha256: sha256:cfb6eb448182f5e4745e2be54aabb31cde6d0ac78002a83c35974ac7eddb4a1e
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:M6CYXQC2
+  xyzrins:publications/doi-10-31234-osf-io-f6mnp:
+    claim_sha256: sha256:0749b690ded8f54d9a30205ad9984ff738b2fe7b1350cde95794829a90982add
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:CFGYPVL3
+  xyzrins:publications/doi-10-3389-fnhum-2022-749767:
+    claim_sha256: sha256:52611b888b32ca3e4fc87fa69883df6203b9d062ac1539cea79905a37403baa4
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:QSATSU83
+  xyzrins:publications/doi-10-3389-fninf-2011-00008:
+    claim_sha256: sha256:74f42d3b80be740df51fd683992388ca3c462b26c2e07dad8074e219293df2c3
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:RY6RBBJF
+  xyzrins:publications/doi-10-3389-fninf-2011-00013:
+    claim_sha256: sha256:51c249a91e54b62f39f7d72c71da3bdcc7a4806f21b379ca9c6cf4ac6df28bf7
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:VMLFE7HJ
+  xyzrins:publications/doi-10-3389-fninf-2012-00009:
+    claim_sha256: sha256:9761d72a1f8cc80ff84ff955fa529d5242c410948385c3ba06794c73fced653d
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:JMGMU882
+  xyzrins:publications/doi-10-3389-fninf-2012-00022:
+    claim_sha256: sha256:789cf1d5b391dc8f889d3e51fa5f9d1f777c0cbe25c6aba2e32fca4ed4aea149
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:R9YLFWR2
+  xyzrins:publications/doi-10-3389-fninf-2024-1376022:
+    claim_sha256: sha256:0ec8a6bc7356a0da20319537db631123db96062c2cf4a3946ea63e265b3a874b
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:W5M5BMYG
+  xyzrins:publications/doi-10-3389-fnins-2022-871228:
+    claim_sha256: sha256:714b9f3e231990b0ec42409d7fe82dc9f0af07e52040021fcf339cfc64818ebe
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:SLYSCID8
+  xyzrins:publications/doi-10-3389-fnins-2023-1233416:
+    claim_sha256: sha256:ea4a4171c6d95e34335649aa131c2f14ee76f7af20e7c405b462973de6e8508b
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:LBTV4USE
+  xyzrins:publications/doi-10-3389-neuro-01-007-2010:
+    claim_sha256: sha256:17abd280be3d29f9041f407162a97693241b4cad39a9bf45f196e34ebc7f5321
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:73HMRZB4
+  xyzrins:publications/doi-10-3389-neuro-11-003-2009:
+    claim_sha256: sha256:512d6c929a2c83e16e3f9867c9876472107e58bf0796723fdeba8c2e82fb4d12
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:GT4IQW3U
+  xyzrins:publications/doi-10-48550-arxiv-2309-05768:
+    claim_sha256: sha256:de3a7695488be7e54bd53fe4767d7a3bb60938ab7b8de9d80c349fdd755f393b
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:A8MQ2A7G
+  xyzrins:publications/doi-10-48550-arxiv-2401-00077:
+    claim_sha256: sha256:d78a3e3965d417c3771c33490bdf34c3f6889352f9afea0f5e2da00ab44ad4c7
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:N8L2GWY5
+  xyzrins:publications/doi-10-48550-arxiv-2504-07824:
+    claim_sha256: sha256:772aefc1ee845f2f73f2a490070b4a346530b2b240aefde18631396994f675cf
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:IGKMKAM3
+  xyzrins:publications/doi-10-5281-zenodo-3720628:
+    claim_sha256: sha256:dfc77becee8e95af9eca063933e4bc44f7b2ef8fee677fd5857aa6a32860734b
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:G94NIJ3V
+  xyzrins:publications/doi-10-5281-zenodo-8253053:
+    claim_sha256: sha256:dc85ff7da4908cf111d6d2812c26046355a761ec800556553b22bf4402df1d6f
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:DB8BLT9J
+  xyzrins:publications/doi-10-64898-2026-04-30-721944:
+    claim_sha256: sha256:e1ac3be03b5f206ef49c10d73d29d186d7e16fac7b58e50c311626f6a18cd0b2
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:G2UZ7L39
+  xyzrins:publications/doi-10-7490-f1000research-1116363-1:
+    claim_sha256: sha256:c4583033aa4bd31faad60bba2819f7a134fc3ce478b05aca3a2529e31d50c9f7
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:S7T734SL
+  xyzrins:publications/zotero-3zvyrxu7:
+    claim_sha256: sha256:e22c949a5775b5fecf3407d771d74f71ad362708a392f3de49ef28496b1adf14
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:3ZVYRXU7
+  xyzrins:publications/zotero-4f4fcvy7:
+    claim_sha256: sha256:9472344382fcb7a8f63f9f7d0cd5a0a6587931a5705706a4ba886a1401b80b8e
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:4F4FCVY7
+  xyzrins:publications/zotero-4j5d6v7h:
+    claim_sha256: sha256:a517624f340bdf70bb95ec989d6c97dc0efd5f4bd0b1edb779dc33f6e8b26e9f
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:4J5D6V7H
+  xyzrins:publications/zotero-5t9a4qcy:
+    claim_sha256: sha256:a32fef58a5a7d378153ce940495f11cb3c95d081ea30a0d7b93578cebb59ee63
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:5T9A4QCY
+  xyzrins:publications/zotero-5z7a6krc:
+    claim_sha256: sha256:91c3058904f1f0b22329b764b43b6aaa4561e64a419721359a2f9ba015a1c06f
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:5Z7A6KRC
+  xyzrins:publications/zotero-6pq9qz2j:
+    claim_sha256: sha256:21f6beb2b5bb0afdbc34ed57a3b3e09d4021ef2e0bc72f220f535ac9717225f0
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:6PQ9QZ2J
+  xyzrins:publications/zotero-7ahrxd2x:
+    claim_sha256: sha256:74195a2cad72d26f9e7cdcb25870690750a55b1d54839bc8e59b2f59cb11b46b
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:7AHRXD2X
+  xyzrins:publications/zotero-7u85zj95:
+    claim_sha256: sha256:9c6a53973d1030c9a0449745de7cdd8dd0922ab3588f9ebc70765ee2858a909f
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:7U85ZJ95
+  xyzrins:publications/zotero-82iu29zk:
+    claim_sha256: sha256:12861b411d42c2bd41e4c6b1a59d93f1198650b6cdc8fd16641b3a6182579946
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:82IU29ZK
+  xyzrins:publications/zotero-99yqf7jr:
+    claim_sha256: sha256:f6340ee6a436102c4d198e22299fcaebe16115c74d7d15b6cd855cae7dd546b2
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:99YQF7JR
+  xyzrins:publications/zotero-abze6dsn:
+    claim_sha256: sha256:bfd63ec455e82aeac564a15cd919c35cc340c361b02416b8ba6ce5c09b1d19e8
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:ABZE6DSN
+  xyzrins:publications/zotero-c62b4pex:
+    claim_sha256: sha256:c4c4839cb7ef96b9bbd59175fa9f0d48a00abf141fe084233018fcd7ed47a585
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:C62B4PEX
+  xyzrins:publications/zotero-d46pfxj5:
+    claim_sha256: sha256:b2a99bcd5b760d5ed046fc546ff87e3c416451d3b35681cc3b255204dc83b79c
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:D46PFXJ5
+  xyzrins:publications/zotero-dgvnva4t:
+    claim_sha256: sha256:a066ec608189c7c3c7a8a7cd7864c67a87800dbeea3b0a182fc28dd37d89c45c
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:DGVNVA4T
+  xyzrins:publications/zotero-e4ytlfl4:
+    claim_sha256: sha256:889f3deb9b5d7e8f4b1f48a88dd3c68c7b06ef07e9e558a51ccd3d8dcc17a5fa
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:E4YTLFL4
+  xyzrins:publications/zotero-egbb5ta7:
+    claim_sha256: sha256:7395b654cd6f34a632279f58bc10a111633a87ff12734027599f12516f9de19c
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:EGBB5TA7
+  xyzrins:publications/zotero-ercq9db2:
+    claim_sha256: sha256:16e4e66cc3bb775d3a93a2c133789a4fbde28e7f48a4978eaf7598a72b214bcf
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:ERCQ9DB2
+  xyzrins:publications/zotero-fdb48tzj:
+    claim_sha256: sha256:2f50a2b495e754267d9641f53a8a294f81f3d6942f6aaca39cf49f87f7a85b45
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:FDB48TZJ
+  xyzrins:publications/zotero-hywv9d2a:
+    claim_sha256: sha256:7844133ff5c03118d6af3cacd35d9ec7186654f3b34303df01762a58e824fdbb
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:HYWV9D2A
+  xyzrins:publications/zotero-iw32d26f:
+    claim_sha256: sha256:ba4cd928461cc31a4a0c39a52f223caab77254e4efc5c0ab98bc2ac5d2665503
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:IW32D26F
+  xyzrins:publications/zotero-k7pww352:
+    claim_sha256: sha256:e1aad6f8af0bb4c9ac2f3e76df007e6aa4c830b1201fe6a4aaa15759b474760c
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:K7PWW352
+  xyzrins:publications/zotero-kp46b5su:
+    claim_sha256: sha256:e2d9f0ed68f4ed6331527ff3f9ef88e57e4e32ee29815a37952a71e3d2370429
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:KP46B5SU
+  xyzrins:publications/zotero-m5e9bt5h:
+    claim_sha256: sha256:2ee882770f8e783f234058f730a7fb62cd816d33b40171e2ad0e531528286f32
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:M5E9BT5H
+  xyzrins:publications/zotero-msjlptey:
+    claim_sha256: sha256:96bd9e00aba2d670c9ffbb06bc4e528b1edf6e0ae744dec6b5fcc367d80131cc
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:MSJLPTEY
+  xyzrins:publications/zotero-pj5u5btz:
+    claim_sha256: sha256:203d866f415ce6a297c632036a0d24f3c8e1a6d97673b4998e88da20f4edd0de
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:PJ5U5BTZ
+  xyzrins:publications/zotero-ppl6eufk:
+    claim_sha256: sha256:3055cc5ab107e6d8b2a00e555992878bc1259f2028d4ce9e9d3f4d0547c312d1
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:PPL6EUFK
+  xyzrins:publications/zotero-q6fwwrde:
+    claim_sha256: sha256:8c340579d2c162dbfd756f0b9b688e32ea808cfb37f80449b98017294fde2a29
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:Q6FWWRDE
+  xyzrins:publications/zotero-qhqktyyq:
+    claim_sha256: sha256:4f2adc30d155eb358704a9dc75beb2b19b81004748bf3f8cd431df33517ac4db
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:QHQKTYYQ
+  xyzrins:publications/zotero-qltpv7jm:
+    claim_sha256: sha256:6e22bf91bcf7de238bbac2b017bd33323d2bc7358a269a16152266696fa1b053
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:QLTPV7JM
+  xyzrins:publications/zotero-qqagikdx:
+    claim_sha256: sha256:faf546dd995afd4ca3a13a0bbecec9c48d234fe362b161631923b9f902f79acc
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:QQAGIKDX
+  xyzrins:publications/zotero-sarh7hnt:
+    claim_sha256: sha256:fad95a79ba671902c6aef9a4ed511fe0ba609e64ad518bcfd1ddc5c2099f99c8
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:SARH7HNT
+  xyzrins:publications/zotero-sfqu8qby:
+    claim_sha256: sha256:a2ca7fb7020ad7037014c8ec8430a357a423bbb1350a27167cccfa52a78476ae
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:SFQU8QBY
+  xyzrins:publications/zotero-stis8ce3:
+    claim_sha256: sha256:4748a8ab8c6156a7d3e31840e1c9eafdea8912d94bbd28105486f2b5c2e62e0f
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:STIS8CE3
+  xyzrins:publications/zotero-tarqrcj3:
+    claim_sha256: sha256:6bb9ae1e31de4b40dafbf112519ee317948def85a66df446363e1bf6874a0a97
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:TARQRCJ3
+  xyzrins:publications/zotero-u6pyqf8i:
+    claim_sha256: sha256:495fed340bbed82aa51ab2851bc768ad5a9ee53682e311d58fb21a96f559799b
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:U6PYQF8I
+  xyzrins:publications/zotero-v65l6j8x:
+    claim_sha256: sha256:96100a74206dafebcc477c2e72b33eec6d94933ae5de7492b78686b5dc3a36e5
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:V65L6J8X
+  xyzrins:publications/zotero-wbwu53im:
+    claim_sha256: sha256:69794691333a8a35247fad2b34bef18f8ddfd44372f3c7156076e6665177e2c6
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:WBWU53IM
+  xyzrins:publications/zotero-y8uq85mh:
+    claim_sha256: sha256:c009e9c41cc451f847a2dc5527aa6421e082d277e49999637817f1778b4022e1
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:Y8UQ85MH
+  xyzrins:publications/zotero-ycvipyy4:
+    claim_sha256: sha256:a24ecc587cfb8cdc1aa4ebac5647a39de645e14c2db0224bc55ab5a7c4dd9207
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:YCVIPYY4
+  xyzrins:publications/zotero-yq6vtmde:
+    claim_sha256: sha256:d0d285e6bb1e0d226fb14246f58ed4729e719895ad59021b5cb640b360bfdffc
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:YQ6VTMDE
+  xyzrins:publications/zotero-yzynt7j3:
+    claim_sha256: sha256:1e786225412b9de3c826b4ca85294640e66d1c809c067bed68eaecf15f1c9372
+    disposition: accept
+    review: github-comment:5451910959
+    source_record_id: item:YZYNT7J3
+format: orinoco-lite-curation-decisions-v1
+reviews:
+  github-comment:5451910959:
+    review_url: https://github.com/leej3/orinoco-lite-demo/pull/27#issuecomment-5451910959
+    reviewed_at: '2026-08-28T11:22:46Z'
+    reviewer: https://github.com/leej3
+    source_coordinate:
+      content_sha256: sha256:23aa443a248e9e1dfc73003cde76f3a93c533bf9e57cc5674539b80da52f17b8
+      group_id: 6197458
+      kind: zotero-public-library
+      library_version: 668
