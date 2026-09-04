@@ -1,6 +1,10 @@
-colorScheme = {{ site.presentation.color_scheme | default('fire') | json_string }}
-defaultAppearance = {{ site.presentation.default_appearance | default('light') | json_string }}
-autoSwitchAppearance = true
+{% set theme = site.theme | default({}) %}
+{% set header = theme.header | default({}) %}
+{% set homepage = theme.homepage | default({}) %}
+{% set article = theme.article | default({}) %}
+colorScheme = {{ theme.color_scheme | default('fire') | json_string }}
+defaultAppearance = {{ theme.default_appearance | default('light') | json_string }}
+autoSwitchAppearance = {{ theme.auto_switch_appearance | default(true) | json_string }}
 enableSearch = true
 enableCodeCopy = true
 enableImageLazyLoading = true
@@ -9,10 +13,10 @@ enableQuicklink = true
 fingerprintAlgorithm = "sha256"
 
 [header]
-  layout = {{ site.presentation.header_layout | default('hybrid') | json_string }}
-  logo = ""
-  logoDark = ""
-  showTitle = true
+  layout = {{ header.layout | default('hybrid') | json_string }}
+  logo = {{ header.logo | default('') | json_string }}
+  logoDark = {{ header.logo_dark | default('') | json_string }}
+  showTitle = {{ header.show_title | default(true) | json_string }}
 
 [footer]
   showCopyright = true
@@ -21,15 +25,19 @@ fingerprintAlgorithm = "sha256"
   showScrollToTop = true
 
 [homepage]
-  layout = "custom"
-  showRecent = false
+  layout = {{ homepage.layout | default('custom') | json_string }}
+  showRecent = {{ homepage.show_recent | default(false) | json_string }}
 
 [article]
-  showDate = false
-  showAuthor = false
-  showBreadcrumbs = true
-  showHeadingAnchors = true
-  showPagination = true
+  showDate = {{ article.show_date | default(false) | json_string }}
+  showDateUpdated = {{ article.show_date_updated | default(false) | json_string }}
+  showAuthor = {{ article.show_author | default(false) | json_string }}
+  showBreadcrumbs = {{ article.show_breadcrumbs | default(true) | json_string }}
+  showHeadingAnchors = {{ article.show_heading_anchors | default(true) | json_string }}
+  showPagination = {{ article.show_pagination | default(true) | json_string }}
+  showReadingTime = {{ article.show_reading_time | default(false) | json_string }}
+  showTableOfContents = {{ article.show_table_of_contents | default(false) | json_string }}
+  showTaxonomies = {{ article.show_taxonomies | default(false) | json_string }}
 
 [list]
   showBreadcrumbs = true

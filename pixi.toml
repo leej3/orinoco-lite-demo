@@ -10,7 +10,7 @@ hugo = "==0.161.1"
 pyyaml = "==6.0.2"
 
 [pypi-dependencies]
-orinoco-lite = { url = "https://github.com/ORINOCO-Lite/orinoco-lite-dev/releases/download/v0.2.0rc20/orinoco_lite-0.2.0rc20-py3-none-any.whl#sha256=5cec87a7b76457464b478c59567349c4d7db8f84378a92359feb1c381e7bc506" }
+orinoco-lite = { url = "https://github.com/ORINOCO-Lite/orinoco-lite-dev/releases/download/v0.3.0rc2/orinoco_lite-0.3.0rc2-py3-none-any.whl#sha256=88272737eff6e5f16b1b45ed4860be20768afb50ece3cac6d8ad0c598ccd6cd3" }
 datalad = ">=1.6.2,<2"
 
 [tasks]
@@ -25,6 +25,5 @@ verify-build = { depends-on = ["verify-deterministic", "verify-local-preview"] }
 build-pages = { depends-on = ["projection-update"], cmd = "python .orinoco-lite/tools/build_pages.py build/pages" }
 serve = "orinoco serve --directory build/site --port 8765"
 apply-editor-bundle = "orinoco editor apply"
-verify-runtime = "orinoco runtime verify"
 verify-hugo = "python .orinoco-lite/tools/verify_hugo.py --version 0.161.1 --extended"
 verify-ownership = "python .orinoco-lite/tools/verify_template_ownership.py"

@@ -312,9 +312,6 @@ jobs:
             > "$RUNNER_TEMP/shacl-vue-extract.json"
           unset GH_TOKEN GITHUB_TOKEN
           pixi run --manifest-path trusted/pixi.toml orinoco \
-            --root "$GITHUB_WORKSPACE/source" runtime verify --json \
-            > "$RUNNER_TEMP/shacl-vue-runtime.json"
-          pixi run --manifest-path trusted/pixi.toml orinoco \
             --root "$GITHUB_WORKSPACE/source" editor apply \
             "$RUNNER_TEMP/shacl-vue-review-bundle.json" --write \
             > "$RUNNER_TEMP/shacl-vue-apply.json"

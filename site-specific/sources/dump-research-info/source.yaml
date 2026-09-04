@@ -1,5 +1,6 @@
 contract_version: 1
 id: dump-research-info
+repository: con/dump-research-info
 adapter: extensions/source-adapters/dump-research-info/metadata_adapter.py
 candidate_provider: extensions/source-adapters/dump-research-info/candidates.py
 provenance_identity: xyzrins:source-adapters/dump-research-info/v2

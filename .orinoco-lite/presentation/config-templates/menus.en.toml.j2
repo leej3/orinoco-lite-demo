@@ -1,10 +1,26 @@
+{% if not site.navigation.footer %}
 footer = []
-
-{% for item in site.navigation | default([]) -%}
-[[main]]
+{% endif %}
+{% for menu, items in {'main': site.navigation.main, 'footer': site.navigation.footer}.items() %}
+{% for item in items %}
+[[{{ menu }}]]
   name = {{ item.name | json_string }}
+{% if item.url is defined and item.url %}
+  url = {{ item.url | json_string }}
+{% else %}
   pageRef = {{ item.page_ref | json_string }}
+{% endif %}
   weight = {{ item.weight | default(loop.index * 10) }}
+{% if item.icon is defined and item.icon or item.show_name is defined %}
+  [{{ menu }}.params]
+{% if item.icon is defined and item.icon %}
+    icon = {{ item.icon | json_string }}
+{% endif %}
+{% if item.show_name is defined %}
+    showName = {{ item.show_name | json_string }}
+{% endif %}
+{% endif %}
+{% endfor %}
 {% endfor %}
 
 [[main]]
