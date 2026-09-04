@@ -1,1 +1,15 @@
-{"name": {{ site.identity.title | json_string }}, "short_name": {{ site.identity.title | json_string }}, "display": "standalone", "icons": []}
+{% set manifest = site.webmanifest | default({}) %}
+{
+  "name": {{ manifest.name | default(site.identity.title) | json_string }},
+  "short_name": {{ manifest.short_name | default(site.identity.title) | json_string }},
+  "description": {{ manifest.description | default(site.identity.description) | json_string }},
+  "start_url": {{ manifest.start_url | default('.') | json_string }},
+  "display": {{ manifest.display | default('standalone') | json_string }},
+  "icons": {{ manifest.icons | default([]) | json_string }}
+{% if manifest.theme_color is defined %}
+  , "theme_color": {{ manifest.theme_color | json_string }}
+{% endif %}
+{% if manifest.background_color is defined %}
+  , "background_color": {{ manifest.background_color | json_string }}
+{% endif %}
+}

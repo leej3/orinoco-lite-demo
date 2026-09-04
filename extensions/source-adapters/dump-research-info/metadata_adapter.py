@@ -3,7 +3,7 @@
 
 This module owns only source-specific acquisition checks, identity matching,
 and transformation policy. Candidate construction, canonical serialization,
-annotation companions, decisions, and finalization are shared engine
+annotation companions, decisions, and finalization are shared package
 contracts.
 """
 
@@ -18,6 +18,8 @@ import subprocess
 from typing import Mapping
 
 import yaml
+
+from orinoco_lite.config import load_workspace
 
 
 DOI = re.compile(r"^10\.\d{4,9}/\S+$", re.IGNORECASE)
@@ -287,7 +289,7 @@ def load_yaml_records(downstream_root: Path) -> dict[str, dict[str, object]]:
     """Load canonical records with their stable class and relative path."""
 
     result: dict[str, dict[str, object]] = {}
-    records_root = downstream_root / "site-specific/metadata/records"
+    records_root = load_workspace(downstream_root).path("records")
     if not records_root.is_dir() or records_root.is_symlink():
         raise DumpResearchInfoAdapterError(
             f"Downstream metadata root is not an ordinary directory: {records_root}"
@@ -509,6 +511,7 @@ def build_source_targets(
     """Return primary upserts plus their authoritative role dependencies."""
 
     root = downstream_root.resolve()
+    records_root = load_workspace(root).path("records")
     checkout, primary_tree = validate_source_checkout(
         source_checkout,
         expected_commit=expected_source_commit,
@@ -599,7 +602,7 @@ def build_source_targets(
                         f"downstream PID {target_pid} without matching it"
                     )
                 record_path = f"{class_name}/{record_stem(source_pid)}.yaml"
-                target = root / "site-specific/metadata/records" / PurePosixPath(record_path)
+                target = records_root / PurePosixPath(record_path)
                 if target.exists() or target.is_symlink():
                     raise DumpResearchInfoAdapterError(
                         f"Source-only record target already exists: {record_path}"

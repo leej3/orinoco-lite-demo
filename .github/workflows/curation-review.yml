@@ -1,0 +1,42 @@
+name: Curate source metadata
+
+on:
+  workflow_dispatch:
+    inputs:
+      adapter:
+        description: Source adapter to review
+        required: true
+        type: choice
+        options: [dump-research-info, zotero]
+      source_refspec:
+        description: Dump source refspec (resolved to an exact commit)
+        required: false
+        default: main
+        type: string
+      expected_library_version:
+        description: Exact committed Zotero library version (Zotero only)
+        required: false
+        type: string
+      acknowledge_public_review_data:
+        description: Proposal data, reviewer identity, and decisions remain public
+        required: true
+        default: false
+        type: boolean
+  issue_comment:
+    types: [created]
+
+permissions: {}
+
+jobs:
+  curate:
+    permissions:
+      actions: write
+      contents: write
+      issues: write
+      pull-requests: write
+    uses: ORINOCO-Lite/orinoco-lite-dev/.github/workflows/orinoco-curation-review.yml@6cee7f0378241ee3cd56b30642d2b6da0ce03fcc
+    with:
+      adapter: ${{ inputs.adapter || '' }}
+      source_refspec: ${{ inputs.source_refspec || 'main' }}
+      expected_library_version: ${{ inputs.expected_library_version || '' }}
+      acknowledge_public_review_data: ${{ inputs.acknowledge_public_review_data || false }}

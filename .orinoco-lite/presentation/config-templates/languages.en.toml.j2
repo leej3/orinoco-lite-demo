@@ -1,9 +1,21 @@
-languageCode = "en"
-languageName = "English"
-languageDirection = "ltr"
-weight = 1
+{% set language = site.language | default({}) %}
+locale = {{ language.code | default('en') | json_string }}
+label = {{ language.name | default('English') | json_string }}
+direction = {{ language.direction | default('ltr') | json_string }}
+weight = {{ language.weight | default(1) }}
 title = {{ site.identity.title | json_string }}
-copyright = ""
+copyright = {{ site.identity.copyright | default('') | json_string }}
 
 [params]
   description = {{ site.identity.description | json_string }}
+  dateFormat = {{ language.date_format | default('2 January 2006') | json_string }}
+{% if site.author is defined %}
+  [params.author]
+    name = {{ site.author.name | json_string }}
+    headline = {{ site.author.headline | default('') | json_string }}
+    links = [
+{% for link in site.author.links | default([]) %}
+      { {{ link.name | json_string }} = {{ link.url | json_string }} },
+{% endfor %}
+    ]
+{% endif %}
