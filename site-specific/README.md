@@ -2,7 +2,7 @@
 
 This guide covers the site-owned layer of `orinoco-lite-demo`.
 It is for reviewing and operating this concrete CON test site.
-The repository carries the accepted CON metadata baseline, reviewed source-adapter records and provenance, editorial pages, presentation choices, declared assets, and supported presentation overrides.
+The repository carries the accepted CON metadata baseline, reviewed source-adapter records and provenance, editorial pages, presentation choices, ordinary Git assets, and template presentation choices.
 
 This repository is a distribution fixture, not a production-content approval.
 Reuse is encouraged under the matrix in [`LICENSES.md`](../LICENSES.md): original software is MIT, original prose is CC BY 4.0, and factual metadata is CC0 1.0.
@@ -15,9 +15,8 @@ Media and third-party material remain subject to their item-specific licenses an
 | `site-specific/metadata/records/` | Reviewed Things YAML records; preserve stable PIDs. |
 | `site-specific/metadata/overlays/annotations/` | Machine-managed provenance companions. |
 | `site-specific/site.yaml` | CON identity, language, navigation, and presentation choices. |
-| `site-specific/content/pages/` | Human-authored editorial pages. |
+| `site-specific/content/` | Editorial pages, group order, and Hugo page resources. |
 | `site-specific/assets/`, `site-specific/static/` | Declared site assets and static payloads. |
-| `site-specific/overrides/` | Explicit presentation overrides. |
 | `site-specific/sources/`, `site-specific/curation-records/` | Source evidence, site policy, and compact reviewed decisions. |
 | `extensions/source-adapters/` | Site-owned metadata acquisition and curation executables. |
 | `.orinoco-lite/` | Template-owned presentation adaptation, licensed assets, and helper tools. |
@@ -25,7 +24,7 @@ Media and third-party material remain subject to their item-specific licenses an
 | `orinoco.lock` | Exact package, template, and reusable-workflow release selection. |
 
 The template supplies workflows, commands, ownership tools, and generic documentation.
-The executable ownership contract at `.orinoco-lite/template-ownership.yml` defines the supported boundaries.
+The current template ownership guide describes those boundaries.
 
 ## Edit, validate, and preview
 
@@ -33,15 +32,21 @@ For a metadata, editorial, asset, or presentation change:
 
 ```console
 pixi run validate
-pixi run projection-verify
 pixi run build
 pixi run serve
 ```
 
 The tasks regenerate ignored projection output from reviewed source records.
 Review the source diff and the rendered build; do not commit or hand-edit projection output.
-Before proposing a change, run `pixi run verify-ownership`, `pixi run verify-hugo`, and `pixi run verify-build`.
+Before proposing a change, run `pixi run verify-release-selection`, `pixi run verify-hugo`, and `pixi run verify-build`.
 Run an adapter's focused tests when changing its executable behavior.
+
+The homepage editorial source is `content/_index.md`.
+The standard `content/persons/_index.md` retains the published roster groups and order, using the template's `people-group` shortcode with upstream person cards.
+Portraits live beside each person's generated page as `portrait.*`; project artwork uses `logo.*` beside each project's page.
+These are ordinary Hugo page resources, so no downstream theme override or asset-hydration task is needed.
+Git retains the earlier source and hash evidence for relocated assets.
+The unresolved Chris Markiewicz portrait continues to use the upstream placeholder.
 
 Assets used through Hugo's asset pipeline belong in `site-specific/assets/`; files published verbatim belong in `site-specific/static/`.
 The template's required presentation assets are ordinary files under `.orinoco-lite/materialized-presentation/upstream/`.
