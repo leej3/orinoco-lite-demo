@@ -188,11 +188,11 @@ def normalize_artifact_url(value: object) -> str | None:
     return normalized.split("#", 1)[0].rstrip("/")
 
 
-def hashed_engine_url(engine: dict[str, Any]) -> str | None:
+def hashed_package_url(package: dict[str, Any]) -> str | None:
     """Return the hash-enforcing direct URL declared in pixi.toml."""
 
-    url = engine.get("url")
-    digest = engine.get("sha256")
+    url = package.get("url")
+    digest = package.get("sha256")
     if not isinstance(url, str) or not url or "#" in url:
         return None
     if not valid_hex(digest, 64):
@@ -200,15 +200,15 @@ def hashed_engine_url(engine: dict[str, Any]) -> str | None:
     return f"{url}#sha256={digest}"
 
 
-def pixi_engine_pin_failures(
-    root: Path, engine: dict[str, Any]
+def pixi_package_pin_failures(
+    root: Path, package: dict[str, Any]
 ) -> list[str]:
-    """Validate Pixi 0.73's manifest and lock representation of the engine."""
+    """Validate Pixi 0.73's manifest and lock representation of the package."""
 
     failures: list[str] = []
-    expected_requirement = hashed_engine_url(engine)
+    expected_requirement = hashed_package_url(package)
     if expected_requirement is None:
-        return ["engine.url and engine.sha256 cannot form a hashed wheel URL"]
+        return ["package.url and package.sha256 cannot form a hashed wheel URL"]
 
     try:
         manifest = tomllib.loads((root / "pixi.toml").read_text(encoding="utf-8"))
@@ -218,8 +218,8 @@ def pixi_engine_pin_failures(
     requirement_url = dependency.get("url") if isinstance(dependency, dict) else None
     if requirement_url != expected_requirement:
         failures.append(
-            "pixi.toml orinoco-lite URL must append #sha256=engine.sha256 "
-            "to engine.url"
+            "pixi.toml orinoco-lite URL must append #sha256=package.sha256 "
+            "to package.url"
         )
 
     try:
@@ -231,19 +231,19 @@ def pixi_engine_pin_failures(
     if not isinstance(packages, list):
         failures.append("pixi.lock packages must be a list")
         return failures
-    expected_url = normalize_artifact_url(engine.get("url"))
+    expected_url = normalize_artifact_url(package.get("url"))
     matches = [
-        package
-        for package in packages
-        if isinstance(package, dict)
-        and package.get("name") == "orinoco-lite"
-        and package.get("version") == engine.get("version")
-        and normalize_artifact_url(package.get("pypi")) == expected_url
+        locked_package
+        for locked_package in packages
+        if isinstance(locked_package, dict)
+        and locked_package.get("name") == "orinoco-lite"
+        and locked_package.get("version") == package.get("version")
+        and normalize_artifact_url(locked_package.get("pypi")) == expected_url
     ]
     if len(matches) != 1:
         failures.append(
             "pixi.lock must contain exactly one orinoco-lite direct package "
-            "matching engine.version and engine.url"
+            "matching package.version and package.url"
         )
         return failures
     locked_url = matches[0].get("pypi")
@@ -253,6 +253,6 @@ def pixi_engine_pin_failures(
             "#sha256 digest from pixi.toml"
         )
     locked_digest = matches[0].get("sha256")
-    if locked_digest is not None and locked_digest != engine.get("sha256"):
-        failures.append("pixi.lock orinoco-lite SHA-256 differs from engine.sha256")
+    if locked_digest is not None and locked_digest != package.get("sha256"):
+        failures.append("pixi.lock orinoco-lite SHA-256 differs from package.sha256")
     return failures

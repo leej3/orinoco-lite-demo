@@ -1,7 +1,7 @@
 contract_version: 1
 id: zotero
-adapter: .orinoco-lite/source-adapters/zotero/metadata_adapter.py
-candidate_provider: .orinoco-lite/source-adapters/zotero/candidates.py
+adapter: extensions/source-adapters/zotero/metadata_adapter.py
+candidate_provider: extensions/source-adapters/zotero/candidates.py
 provenance_identity: xyzrins:source-adapters/zotero/v1
 enabled_by_default: true
 snapshot: site-specific/sources/zotero/content/snapshot.json

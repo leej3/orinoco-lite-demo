@@ -14,9 +14,10 @@ from urllib.parse import quote
 import yaml
 
 from linkml_runtime.utils.schemaview import SchemaView
-from orinoco_lite.annotations import compact_enrichment_view
+from orinoco_lite.annotations import annotation_root, compact_enrichment_view
 from orinoco_lite.canonical import canonical_json_bytes
 from orinoco_lite.candidates import Candidate, CandidatePlan
+from orinoco_lite.config import load_workspace
 from orinoco_lite.decisions import load_decision_cache
 from orinoco_lite.enrichment import (
     resolve_enrichment_slot,
@@ -89,7 +90,7 @@ def _load_metadata_adapter(path: Path) -> ModuleType:
 
 
 def _load_companion(root: Path, record_path: str) -> dict[str, object] | None:
-    path = root / "site-specific/metadata/overlays/annotations" / PurePosixPath(record_path)
+    path = annotation_root(load_workspace(root)) / PurePosixPath(record_path)
     if not path.exists():
         return None
     if path.is_symlink() or not path.is_file():

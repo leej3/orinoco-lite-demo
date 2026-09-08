@@ -18,7 +18,7 @@ from template_contract import (
     load_yaml,
     normalize_artifact_url,
     ownership_classes,
-    pixi_engine_pin_failures,
+    pixi_package_pin_failures,
     valid_hex,
 )
 
@@ -52,19 +52,19 @@ FULL_SHA_ACTION = re.compile(
 )
 
 
-def verify_engine_environment(
+def verify_package_environment(
     root: Path, lock: dict[str, object], failures: list[str]
 ) -> None:
-    engine = lock.get("engine", {})
-    if not isinstance(engine, dict):
+    package = lock.get("package", {})
+    if not isinstance(package, dict):
         return
-    expected_version = engine.get("version")
+    expected_version = package.get("version")
     try:
         installed = metadata.distribution("orinoco-lite")
     except metadata.PackageNotFoundError:
         # Ownership checks may run outside the locked Pixi environment while a
-        # repository is being initialized. CI's frozen Pixi install and
-        # `orinoco runtime verify` exercise the installed environment.
+        # repository is being initialized. CI's frozen Pixi install enforces
+        # the package version and wheel integrity.
         installed = None
     installed_version = installed.version if installed is not None else None
     if installed_version is not None and installed_version != expected_version:
@@ -84,13 +84,13 @@ def verify_engine_environment(
                 failures.append("installed orinoco-lite direct_url.json is invalid")
             else:
                 if normalize_artifact_url(direct_url.get("url")) != normalize_artifact_url(
-                    engine.get("url")
+                    package.get("url")
                 ):
                     failures.append(
-                        "installed orinoco-lite direct URL differs from engine.url"
+                        "installed orinoco-lite direct URL differs from package.url"
                     )
 
-    failures.extend(pixi_engine_pin_failures(root, engine))
+    failures.extend(pixi_package_pin_failures(root, package))
 
 
 def verify(root: Path) -> list[str]:
@@ -143,23 +143,13 @@ def verify(root: Path) -> list[str]:
             failures.append("template.source differs from Copier _src_path")
         if not isinstance(template.get("version"), str) or not template["version"]:
             failures.append("template.version must identify an immutable template tag")
-    engine = lock.get("engine", {})
-    if not isinstance(engine, dict) or engine.get("distribution") != "orinoco-lite":
+    package = lock.get("package", {})
+    if not isinstance(package, dict) or package.get("distribution") != "orinoco-lite":
         failures.append("orinoco.lock must pin the orinoco-lite distribution")
-    elif not valid_hex(engine.get("sha256"), 64):
-        failures.append("engine.sha256 must be a 64-character lower-case digest")
-    elif not isinstance(engine.get("url"), str) or not engine["url"]:
-        failures.append("engine.url must identify an immutable release wheel")
-    runtime = lock.get("runtime", {})
-    if not isinstance(runtime, dict):
-        failures.append("orinoco.lock runtime must be a mapping")
-    else:
-        if not valid_hex(runtime.get("sha256"), 64):
-            failures.append("runtime.sha256 must be a 64-character lower-case digest")
-        if not valid_hex(runtime.get("manifest_sha256"), 64):
-            failures.append(
-                "runtime.manifest_sha256 must be a 64-character lower-case digest"
-            )
+    elif not valid_hex(package.get("sha256"), 64):
+        failures.append("package.sha256 must be a 64-character lower-case digest")
+    elif not isinstance(package.get("url"), str) or not package["url"]:
+        failures.append("package.url must identify an immutable release wheel")
     workflow = lock.get("workflow", {})
     if not isinstance(workflow, dict) or not valid_hex(workflow.get("sha"), 40):
         failures.append("workflow.sha must be a full 40-character commit SHA")
@@ -168,16 +158,12 @@ def verify(root: Path) -> list[str]:
     ):
         failures.append("workflow.ref must end with the exact workflow.sha pin")
 
-    # All-zero coordinates define the content-neutral, unpublished default
-    # rendering. Concrete consumers must carry a Pixi lock with matching wheel
-    # URL, version, and digest.
     if (
-        isinstance(engine, dict)
-        and valid_hex(engine.get("sha256"), 64)
-        and set(engine["sha256"]) != {"0"}
+        isinstance(package, dict)
+        and valid_hex(package.get("sha256"), 64)
+        and os.environ.get("ORINOCO_UNSAFE_DEVELOPMENT_PACKAGE") != "1"
     ):
-        if os.environ.get("ORINOCO_UNSAFE_DEVELOPMENT_RUNTIME") != "1":
-            verify_engine_environment(root, lock, failures)
+        verify_package_environment(root, lock, failures)
 
     for workflow_path in sorted((root / ".github" / "workflows").glob("*.yml")):
         text = workflow_path.read_text(encoding="utf-8")

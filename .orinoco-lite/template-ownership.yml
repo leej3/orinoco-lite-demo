@@ -44,7 +44,7 @@ classes:
       - CONTRIBUTING*
       - CODE_OF_CONDUCT*
   generated:
-    behavior: ignored-runtime-output
+    behavior: ignored-build-output
     paths:
       - generated/**
       - build/**
