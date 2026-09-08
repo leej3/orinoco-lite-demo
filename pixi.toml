@@ -10,7 +10,7 @@ hugo = "==0.161.1"
 pyyaml = "==6.0.2"
 
 [pypi-dependencies]
-orinoco-lite = { url = "https://github.com/ORINOCO-Lite/orinoco-lite-dev/releases/download/v0.3.0rc2/orinoco_lite-0.3.0rc2-py3-none-any.whl#sha256=88272737eff6e5f16b1b45ed4860be20768afb50ece3cac6d8ad0c598ccd6cd3" }
+orinoco-lite = { url = "https://github.com/ORINOCO-Lite/orinoco-lite-dev/releases/download/v0.3.0rc3/orinoco_lite-0.3.0rc3-py3-none-any.whl#sha256=0fe031eba7e809a5d7014af3e946f14710cf2571f5cb71b09ea3f9e83d19b7fc" }
 datalad = ">=1.6.2,<2"
 
 [tasks]

@@ -2,15 +2,15 @@ lock_version: 1
 
 package:
   distribution: orinoco-lite
-  version: "0.3.0rc2"
-  url: "https://github.com/ORINOCO-Lite/orinoco-lite-dev/releases/download/v0.3.0rc2/orinoco_lite-0.3.0rc2-py3-none-any.whl"
-  sha256: "88272737eff6e5f16b1b45ed4860be20768afb50ece3cac6d8ad0c598ccd6cd3"
+  version: "0.3.0rc3"
+  url: "https://github.com/ORINOCO-Lite/orinoco-lite-dev/releases/download/v0.3.0rc3/orinoco_lite-0.3.0rc3-py3-none-any.whl"
+  sha256: "0fe031eba7e809a5d7014af3e946f14710cf2571f5cb71b09ea3f9e83d19b7fc"
 
 template:
   source: "gh:ORINOCO-Lite/orinoco-lite-template"
-  version: "6e7744c831ba46684f019a99daf75b12d8c8adf8"
+  version: "v0.3.0rc1"
 
 workflow:
   repository: "ORINOCO-Lite/orinoco-lite-dev"
-  sha: "6cee7f0378241ee3cd56b30642d2b6da0ce03fcc"
-  ref: "ORINOCO-Lite/orinoco-lite-dev/.github/workflows/orinoco-consumer-ci.yml@6cee7f0378241ee3cd56b30642d2b6da0ce03fcc"
+  sha: "553ba050bb2b01edf81a01994dd3e9b2a19fa34e"
+  ref: "ORINOCO-Lite/orinoco-lite-dev/.github/workflows/orinoco-consumer-ci.yml@553ba050bb2b01edf81a01994dd3e9b2a19fa34e"
