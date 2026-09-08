@@ -1,19 +1,13 @@
 # Orinoco Lite template internals
 
-`.orinoco-lite/presentation/` is a small adapter applied to the upstream
-presentation resolved by the verified engine runtime. It contains only the
-configuration, footer, and static-file templates needed to map the generic
-source to this downstream contract; it is not a standalone website.
+`.orinoco-lite/presentation/` is a small adapter applied to the upstream presentation resolved by the verified `orinoco-lite` package.
+It contains only the configuration, footer, and static-file templates needed to map the generic source to this downstream contract; it is not a standalone website.
 
-`.orinoco-lite/materialized-presentation/upstream/` is the bounded overlay for
-required presentation assets copied by maintainer repinning. Files retain
-their upstream-relative paths and are ordinary Git files covered by the
-adjacent `LICENSE`; the downstream never uses Git Annex.
+`.orinoco-lite/materialized-presentation/upstream/` is the bounded overlay for required presentation assets copied by maintainer repinning.
+Files retain their upstream-relative paths and are ordinary Git files covered by the adjacent `LICENSE`; the downstream never uses Git Annex.
 
-`.orinoco-lite/tools/` supports deterministic builds, ownership validation, and
-static curation interfaces. The whole `.orinoco-lite/` namespace is
-framework-owned and replaced by template updates.
+`.orinoco-lite/tools/` supports deterministic builds, ownership validation, and static curation interfaces.
+The whole `.orinoco-lite/` namespace is framework-owned and replaced by template updates.
 
-Downstream data and policy belong under `site-specific/` and `extensions/`;
-downstream-specific acceptance tests belong under top-level `tests/`.
-Generated projection, browser, runtime, and build state is ignored.
+Downstream data and policy belong under `site-specific/` and `extensions/`; downstream-specific acceptance tests belong under top-level `tests/`.
+Generated projection, browser downloads, package caches, and build state is ignored.
