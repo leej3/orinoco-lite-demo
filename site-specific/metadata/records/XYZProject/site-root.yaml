@@ -137,8 +137,7 @@ attributes:
 - predicate: foaf:homepage
   schema_type: dlthings:AttributeSpecification
   value: https://centerforopenneuroscience.org/
-description: Provides open software frameworks, platforms, data and methodologies
-  for neuroscience and beyond.
+description: Disposable live proposal test by Codex; do not merge.
 display_label: Center for Open Neuroscience (CON)
 pid: xyzrins:.
 schema_type: xyzri:XYZProject
