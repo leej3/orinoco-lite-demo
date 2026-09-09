@@ -9,3 +9,12 @@ The downstream owns all declarative inputs under `site-specific/`, executable me
 Ordinary presentation belongs in `site-specific/site.yaml`, content, assets, and static inputs.
 A custom layout is supported only as an explicit file under `site-specific/overrides/layouts/`.
 Website code under `extensions/` is invalid, and extension source or generated outputs are never copied into a build.
+
+Editorial files in `site-specific/content/` are applied after generated pages.
+A site can supply `_index.md` for its homepage or a section and place ordinary Hugo page resources beside generated records, without copying their layouts.
+Use `portrait.*` for people and `logo.*` for projects.
+
+For a grouped people index, use `layout: editorial` and the `people-group` shortcode, with one `persons/<record-name>` page reference per line in its body.
+The shortcode reuses the upstream cards and preserves the supplied order.
+The `graph` shortcode embeds the upstream graph on an editorial page.
+Set `params.hideGraph: true` on an editorial homepage to show its text alone.

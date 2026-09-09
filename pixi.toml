@@ -10,20 +10,17 @@ hugo = "==0.161.1"
 pyyaml = "==6.0.2"
 
 [pypi-dependencies]
-orinoco-lite = { url = "https://github.com/ORINOCO-Lite/orinoco-lite-dev/releases/download/v0.3.0rc3/orinoco_lite-0.3.0rc3-py3-none-any.whl#sha256=0fe031eba7e809a5d7014af3e946f14710cf2571f5cb71b09ea3f9e83d19b7fc" }
+orinoco-lite = { url = "https://github.com/ORINOCO-Lite/orinoco-lite-dev/releases/download/v0.3.0rc5/orinoco_lite-0.3.0rc5-py3-none-any.whl#sha256=55f67bd3dcc1e5d1f94d40436721913d52eb22ab918cb5c36a528db6853d3b0e" }
 datalad = ">=1.6.2,<2"
 
 [tasks]
 projection-update = "mkdir -p generated && orinoco projection update"
 validate = { depends-on = ["projection-update"], cmd = "orinoco validate" }
-projection-verify = { depends-on = ["projection-update"], cmd = "orinoco projection verify" }
 build = { depends-on = ["projection-update"], cmd = "orinoco build --destination build/site --base-url /" }
-build-repeat = { depends-on = ["projection-update"], cmd = "orinoco build --destination build/site-repeat --base-url /" }
-verify-deterministic = { depends-on = ["build", "build-repeat"], cmd = "python .orinoco-lite/tools/verify_deterministic_build.py build/site build/site-repeat --manifest build/deterministic-build.json" }
 verify-local-preview = { depends-on = ["build"], cmd = "python .orinoco-lite/tools/verify_local_preview.py build/site" }
-verify-build = { depends-on = ["verify-deterministic", "verify-local-preview"] }
+verify-build = { depends-on = ["verify-local-preview"] }
 build-pages = { depends-on = ["projection-update"], cmd = "python .orinoco-lite/tools/build_pages.py build/pages" }
 serve = "orinoco serve --directory build/site --port 8765"
 apply-editor-bundle = "orinoco editor apply"
 verify-hugo = "python .orinoco-lite/tools/verify_hugo.py --version 0.161.1 --extended"
-verify-ownership = "python .orinoco-lite/tools/verify_template_ownership.py"
+verify-release-selection = "python .orinoco-lite/tools/verify_template_ownership.py"

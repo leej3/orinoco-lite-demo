@@ -1,10 +1,20 @@
+{% if not site.footer_navigation | default([]) %}
 footer = []
+{% endif %}
 
 {% for item in site.navigation | default([]) -%}
 [[main]]
   name = {{ item.name | json_string }}
-  pageRef = {{ item.page_ref | json_string }}
+  title = {{ item.name | json_string }}
+{% if item.page_ref is defined %}  pageRef = {{ item.page_ref | json_string }}
+{% endif %}{% if item.identifier is defined %}  identifier = {{ item.identifier | json_string }}
+{% endif %}{% if item.parent is defined %}  parent = {{ item.parent | json_string }}
+{% endif %}
   weight = {{ item.weight | default(loop.index * 10) }}
+{% if item.icon is defined %}  [main.params]
+    icon = {{ item.icon | json_string }}
+    showName = false
+{% endif %}
 {% endfor %}
 
 [[main]]
@@ -12,3 +22,10 @@ footer = []
   weight = 99
   [main.params]
     action = "search"
+
+{% for item in site.footer_navigation | default([]) %}
+[[footer]]
+  name = {{ item.name | json_string }}
+  title = {{ item.name | json_string }}
+  pageRef = {{ item.page_ref | json_string }}
+{% endfor %}

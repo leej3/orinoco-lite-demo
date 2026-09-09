@@ -18,7 +18,7 @@ jobs:
       (github.event_name == 'push' &&
       github.ref == format('refs/heads/{0}', github.event.repository.default_branch)) ||
       github.event_name == 'workflow_dispatch')
-    uses: ORINOCO-Lite/orinoco-lite-dev/.github/workflows/orinoco-consumer-ci.yml@553ba050bb2b01edf81a01994dd3e9b2a19fa34e
+    uses: ORINOCO-Lite/orinoco-lite-dev/.github/workflows/orinoco-consumer-ci.yml@41d349ed2680d89044596800e3af6b6f7e133b72
     with:
       pixi-version: v0.73.0
       runner: macos-14
@@ -31,7 +31,7 @@ jobs:
       (github.event_name == 'push' &&
       github.ref == format('refs/heads/{0}', github.event.repository.default_branch)) ||
       github.event_name == 'workflow_dispatch')
-    uses: ORINOCO-Lite/orinoco-lite-dev/.github/workflows/orinoco-consumer-ci.yml@553ba050bb2b01edf81a01994dd3e9b2a19fa34e
+    uses: ORINOCO-Lite/orinoco-lite-dev/.github/workflows/orinoco-consumer-ci.yml@41d349ed2680d89044596800e3af6b6f7e133b72
     with:
       pixi-version: v0.73.0
       runner: ubuntu-24.04
