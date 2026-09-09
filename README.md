@@ -2,7 +2,8 @@
 
 This is an Orinoco Lite metadata-driven website.
 Set its public identity in `site-specific/site.yaml`.
-The package resolves its pinned upstream presentation and composes it with this scaffold's small `.orinoco-lite/presentation/` adapter, its bounded `.orinoco-lite/materialized-presentation/upstream/` asset overlay, and the repository's declarative `site-specific/` inputs.
+The starter records and `/explore` page build and preview immediately; replace them with reviewed site metadata and editorial content before publishing.
+Orinoco Lite resolves its pinned upstream presentation and composes it with this scaffold's small `.orinoco-lite/presentation/` adapter, its bounded `.orinoco-lite/materialized-presentation/upstream/` asset overlay, and the repository's declarative `site-specific/` inputs.
 
 ```console
 pixi run validate

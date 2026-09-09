@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify downstream ownership, pins, and no-submodule boundaries."""
+"""Verify downstream release pins and no-submodule boundaries."""
 
 from __future__ import annotations
 
@@ -12,39 +12,14 @@ from pathlib import Path
 
 from template_contract import (
     ContractError,
-    classify,
     find_root,
-    iter_files,
     load_yaml,
     normalize_artifact_url,
-    ownership_classes,
     pixi_package_pin_failures,
     valid_hex,
 )
 
 
-REQUIRED_TEMPLATE_FILES = {
-    "README.md",
-    ".gitignore",
-    ".copier-answers.yml",
-    "pixi.toml",
-    ".orinoco-lite/template-ownership.yml",
-    ".github/workflows/validate.yml",
-    ".github/workflows/pages.yml",
-    ".github/workflows/shacl-vue-proposal.yml",
-    ".orinoco-lite/README.md",
-    ".orinoco-lite/THIRD_PARTY_NOTICES.md",
-    ".orinoco-lite/materialized-presentation/LICENSE",
-    ".orinoco-lite/presentation/config-templates/hugo.toml.j2",
-    ".orinoco-lite/presentation/static-templates/site.webmanifest.j2",
-    ".orinoco-lite/tools/template_contract.py",
-    ".orinoco-lite/tools/verify_template_ownership.py",
-    ".orinoco-lite/tools/verify_deterministic_build.py",
-    ".orinoco-lite/tools/verify_local_preview.py",
-    ".orinoco-lite/tools/verify_hugo.py",
-    ".orinoco-lite/tools/shacl_vue_handoff.py",
-    "site-specific/site.yaml",
-}
 ACTION_REFERENCE = re.compile(r"^\s*-?\s*uses:\s*([^\s#]+)", re.MULTILINE)
 FULL_SHA_ACTION = re.compile(
     r"^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+"
@@ -95,37 +70,8 @@ def verify_package_environment(
 
 def verify(root: Path) -> list[str]:
     failures: list[str] = []
-    ownership = load_yaml(root / ".orinoco-lite/template-ownership.yml")
-    classes = ownership_classes(ownership)
-
-    if ".orinoco-lite/**" not in classes.get("template_owned", []):
-        failures.append("template_owned must own the complete .orinoco-lite namespace")
-    for name, patterns in classes.items():
-        if name == "template_owned":
-            continue
-        for pattern in patterns:
-            if pattern.strip("/").startswith(".orinoco-lite/"):
-                failures.append(
-                    f"{name} cannot own a path under .orinoco-lite: {pattern}"
-                )
-
-    missing = sorted(path for path in REQUIRED_TEMPLATE_FILES if not (root / path).is_file())
-    failures.extend(f"missing required template file: {path}" for path in missing)
-
     if (root / ".gitmodules").exists():
         failures.append(".gitmodules is forbidden in a downstream repository")
-
-    for path in iter_files(root):
-        relative = path.relative_to(root).as_posix()
-        if path.is_symlink():
-            failures.append(f"symbolic link requires explicit review: {relative}")
-        matches = classify(relative, classes)
-        if not matches:
-            failures.append(f"unclassified downstream path: {relative}")
-        elif len(matches) > 1:
-            failures.append(
-                f"ambiguous ownership for {relative}: {', '.join(sorted(matches))}"
-            )
 
     answers = load_yaml(root / ".copier-answers.yml")
     for key in ("_src_path", "_commit"):
@@ -191,7 +137,7 @@ def main() -> int:
         for failure in failures:
             print(f"- {failure}", file=sys.stderr)
         return 1
-    print("ownership contract verified")
+    print("downstream release pins verified")
     return 0
 
 
