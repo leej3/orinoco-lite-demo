@@ -138,7 +138,7 @@ attributes:
   schema_type: dlthings:AttributeSpecification
   value: https://centerforopenneuroscience.org/
 description: Provides open software frameworks, platforms, data and methodologies
-  for neuroscience and beyond.
+  for neuroscience and beyond. End-to-end browser acceptance check.
 display_label: Center for Open Neuroscience (CON)
 pid: xyzrins:.
 schema_type: xyzri:XYZProject
