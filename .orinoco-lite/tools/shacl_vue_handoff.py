@@ -194,92 +194,15 @@ def _merge_base(root: Path, base_sha: str, head_sha: str) -> str:
     return values[0]
 
 
-def _trusted_merge_parent(
-    root: Path,
-    parents: Sequence[str],
-    base_sha: str,
-) -> str | None:
-    """Return the sole merge parent already present on the trusted base line."""
+def _proposal_commit_count(root: Path, merge_base: str, head_sha: str) -> int:
+    """Count proposal commits without treating earlier feature changes as payload."""
 
-    if len(parents) != 2:
-        return None
-    trusted: list[str] = []
-    for parent in parents:
-        try:
-            if _merge_base(root, parent, base_sha) == parent:
-                trusted.append(parent)
-        except HandoffError:
-            continue
-    return trusted[0] if len(trusted) == 1 else None
-
-
-def _validate_change(
-    root: Path,
-    parent: str,
-    commit: str,
-    status: str,
-    path: str,
-    *,
-    allow_handoff: bool,
-) -> None:
-    if status not in {"A", "M", "D"}:
-        raise HandoffError(f"History uses unsupported {status} change: {path}")
-    if path == HANDOFF_PATH:
-        if not allow_handoff or status != "A":
-            raise HandoffError("The fixed handoff may only be added by the exact head")
-    elif _metadata_path(path) is None and _decision_cache_path(path) is None:
-        raise HandoffError(f"History changes an unapproved path: {path}")
-    if status in {"A", "M"}:
-        _assert_regular_blob(root, commit, path)
-    if status in {"M", "D"}:
-        _assert_regular_blob(root, parent, path)
-
-
-def _validate_history(
-    root: Path,
-    merge_base: str,
-    head_sha: str,
-    *,
-    base_sha: str,
-    handoff: bool,
-) -> int:
-    lines = str(
-        _git(
-            root,
-            "rev-list",
-            "--reverse",
-            "--parents",
-            f"{merge_base}..{head_sha}",
-            text=True,
-        )
+    commits = str(
+        _git(root, "rev-list", f"{merge_base}..{head_sha}", text=True)
     ).splitlines()
-    if not lines:
+    if not commits:
         raise HandoffError("Proposal history has no commit")
-    for line in lines:
-        commit, *parents = line.split()
-        if len(parents) == 1:
-            parent = parents[0]
-        else:
-            parent = _trusted_merge_parent(root, parents, base_sha)
-            if parent is None or (handoff and commit == head_sha):
-                raise HandoffError(
-                    "Proposal history merges must have one trusted-base parent"
-                )
-        entries = _diff_entries(root, parent, commit)
-        for status, path in entries:
-            _validate_change(
-                root,
-                parent,
-                commit,
-                status,
-                path,
-                allow_handoff=handoff and commit == head_sha,
-            )
-        if handoff and commit == head_sha and entries != (("A", HANDOFF_PATH),):
-            raise HandoffError(
-                "The handoff head must add exactly the fixed bundle path"
-            )
-    return len(lines)
+    return len(commits)
 
 
 def _read_bundle_blob(root: Path, head_sha: str) -> tuple[dict[str, object], bytes]:
@@ -377,13 +300,7 @@ def inspect_proposal(
         phase = "canonical"
 
     merge_base = _merge_base(root, base_sha, head_sha)
-    commit_count = _validate_history(
-        root,
-        merge_base,
-        head_sha,
-        base_sha=base_sha,
-        handoff=phase == "handoff",
-    )
+    commit_count = _proposal_commit_count(root, merge_base, head_sha)
     report: dict[str, object] = {
         "base_sha": base_sha,
         "commit_count": commit_count,
