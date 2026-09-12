@@ -1,0 +1,49 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dlthings: <https://concepts.datalad.org/s/things/v2/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xyzri: <https://concepts.datalad.org/s/demo-research-information/unreleased/> .
+@prefix xyzrins: <https://concepts.datalad.org/s/demo-research-information/ns/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+{% set recordId = _randomUUID() -%}
+{% set recordPrefixes = {
+    'https://concepts.datalad.org/s/things/v2/AnnotationTag': 'annotation-tags/',
+    'https://concepts.datalad.org/s/things/v2/Property': 'properties/',
+    'https://concepts.datalad.org/s/things/v2/Rule': 'rules/',
+    'https://concepts.datalad.org/s/demo-research-information/unreleased/XYZAccolade': 'accolades/',
+    'https://concepts.datalad.org/s/demo-research-information/unreleased/XYZActivity': 'activities/',
+    'https://concepts.datalad.org/s/demo-research-information/unreleased/XYZActivityRole': 'activity-roles/',
+    'https://concepts.datalad.org/s/demo-research-information/unreleased/XYZAgentRole': 'agent-roles/',
+    'https://concepts.datalad.org/s/demo-research-information/unreleased/XYZBibliographicType': 'bibliographic-types/',
+    'https://concepts.datalad.org/s/demo-research-information/unreleased/XYZCompetition': 'competitions/',
+    'https://concepts.datalad.org/s/demo-research-information/unreleased/XYZCompetitionType': 'competition-types/',
+    'https://concepts.datalad.org/s/demo-research-information/unreleased/XYZConcept': 'concepts/',
+    'https://concepts.datalad.org/s/demo-research-information/unreleased/XYZConvention': 'conventions/',
+    'https://concepts.datalad.org/s/demo-research-information/unreleased/XYZDataItem': 'dataitems/',
+    'https://concepts.datalad.org/s/demo-research-information/unreleased/XYZDataType': 'datatypes/',
+    'https://concepts.datalad.org/s/demo-research-information/unreleased/XYZDataset': 'datasets/',
+    'https://concepts.datalad.org/s/demo-research-information/unreleased/XYZDepiction': 'depictions/',
+    'https://concepts.datalad.org/s/demo-research-information/unreleased/XYZDepictionType': 'depiction-types/',
+    'https://concepts.datalad.org/s/demo-research-information/unreleased/XYZDocument': 'documents/',
+    'https://concepts.datalad.org/s/demo-research-information/unreleased/XYZEntityRole': 'entity-roles/',
+    'https://concepts.datalad.org/s/demo-research-information/unreleased/XYZFile': 'files/',
+    'https://concepts.datalad.org/s/demo-research-information/unreleased/XYZGrant': 'grants/',
+    'https://concepts.datalad.org/s/demo-research-information/unreleased/XYZInstrument': 'instruments/',
+    'https://concepts.datalad.org/s/demo-research-information/unreleased/XYZInstrumentType': 'instrument-types/',
+    'https://concepts.datalad.org/s/demo-research-information/unreleased/XYZObjective': 'objectives/',
+    'https://concepts.datalad.org/s/demo-research-information/unreleased/XYZOrganization': 'organizations/',
+    'https://concepts.datalad.org/s/demo-research-information/unreleased/XYZPerson': 'persons/',
+    'https://concepts.datalad.org/s/demo-research-information/unreleased/XYZProject': 'projects/',
+    'https://concepts.datalad.org/s/demo-research-information/unreleased/XYZPublication': 'publications/',
+    'https://concepts.datalad.org/s/demo-research-information/unreleased/XYZPublicationVenue': 'publication-venues/',
+    'https://concepts.datalad.org/s/demo-research-information/unreleased/XYZQuality': 'qualities/',
+    'https://concepts.datalad.org/s/demo-research-information/unreleased/XYZStudy': 'studies/',
+    'https://concepts.datalad.org/s/demo-research-information/unreleased/XYZSubject': 'subjects/',
+    'https://concepts.datalad.org/s/demo-research-information/unreleased/XYZSubjectType': 'subject-types/',
+    'https://concepts.datalad.org/s/demo-research-information/unreleased/XYZTopic': 'topics/'} -%}
+{% set recordPre = recordPrefixes[class_uri] -%}
+{% set recordURI = 'https://concepts.datalad.org/s/demo-research-information/unreleased/' + recordPre + recordId -%}
+<{{ recordURI }}> a <{{ class_uri }}>;
+    dcterms:description {{ description | ttl}};
+    skos:prefLabel {{ name | ttl }}.

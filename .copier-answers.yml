@@ -1,8 +1,0 @@
-_commit: v0.3.0rc3
-_src_path: gh:ORINOCO-Lite/orinoco-lite-template
-pr_previews: none
-project_name: Center for Open Neuroscience — Orinoco Test Site
-project_slug: orinoco-lite-demo
-site_base_url: https://leej3.github.io/orinoco-lite-demo/
-site_description: Test-only full-content Orinoco Lite downstream for the Center for
-  Open Neuroscience.

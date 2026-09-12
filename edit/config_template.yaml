@@ -1,0 +1,81 @@
+# --------------------
+# General app settings
+# --------------------
+# app_name:
+# documentation_url:
+# external_config_url:
+# footer_links:
+# page_title:
+# source_code_url:
+
+# -------
+# Content
+# -------
+# content:
+
+# --------------
+# Theme settings
+# --------------
+# app_theme:
+# front_page_content:
+
+# --------------------------
+# Application inputs sources
+# --------------------------
+# class_url:
+# data_url:
+# shapes_url:
+# update_shapes:
+# use_default_classes:
+# use_default_data:
+# use_default_shapes:
+
+# -------------------
+# Identifier settings
+# -------------------
+# id_autogenerate:
+# id_autogenerate_override:
+# id_iri:
+# id_resolves_externally:
+# prefixes:
+
+# ------------
+# UI behaviour
+# ------------
+# allow_copy_record_urls:
+# allow_edit_instances:
+# class_name_display:
+# class_icons:
+# component_config:
+# display_name_autogenerate:
+# display_name_autogenerate_placeholder:
+# editor_selection:
+# filter_records_by:
+# hide_classes:
+# hide_classes_with_prefix:
+# no_edit_classes:
+# show_all_fields:
+# show_classes:
+# show_classes_with_prefix:
+# show_shapes_wo_id:
+
+# -----------------------
+# Service API integration
+# -----------------------
+# service_base_url:
+# service_constrained_search:
+# service_endpoints:
+# service_fetch_before:
+# token_info:
+# token_info_url:
+# use_service:
+# use_token:
+
+# ----------------
+# Special features
+# ----------------
+# gitannex_p2phttp_config:
+#   base_url:
+#   annex_uuid:
+#   client_uuid:
+# use_gitannex_p2phttp:
