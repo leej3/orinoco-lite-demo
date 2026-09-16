@@ -1,0 +1,19 @@
+# Netlify builds pull-request deploy previews for this site and nothing else.
+# The canonical site stays on GitHub Pages, published from the default branch
+# by .github/workflows/pages.yml.
+#
+# A preview is this repository's ordinary root-relative build: the same
+# `pixi run build` that produces the local `pixi run serve` preview, from the
+# same frozen lock, with no repository identity and no extra build tooling.
+
+[build]
+  publish = "build/site"
+  command = "curl -fsSL https://pixi.sh/install.sh | PIXI_VERSION=v0.73.0 sh && $HOME/.pixi/bin/pixi run --frozen build"
+
+# An ignore command that exits 0 cancels the build, so Netlify never publishes
+# a second copy of the canonical site or of an arbitrary branch.
+[context.production]
+  ignore = "exit 0"
+
+[context.branch-deploy]
+  ignore = "exit 0"

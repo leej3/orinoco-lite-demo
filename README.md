@@ -19,7 +19,7 @@ The source boundary is:
 - `site-specific/overrides/` — explicit declarative config, layout, or static overrides; and
 - `extensions/` — optional metadata acquisition and curation executables that never ship with or execute during the website build.
 
-See [getting started](docs/getting-started.md), [ownership](docs/ownership.md), and [custom-domain setup](docs/custom-domain.md).
+See [getting started](docs/getting-started.md), [ownership](docs/ownership.md), and [custom-domain setup](docs/custom-domain.md). Pull requests also get a disposable Netlify rendering; see [pull-request previews](docs/pr-previews.md).
 
 The selected package revision is the single authority for the upstream website and theme pins.
 The downstream selects its package through Pixi, its template through `.copier-answers.yml`, and actions through pinned workflow references.
