@@ -1,4 +1,0 @@
-interface:
-  display_name: "Operate Orinoco Metadata Adapters"
-  short_description: "Review source candidates and record decisions"
-  default_prompt: "Use $operate-orinoco-metadata-adapters to run or review this site's metadata adapter and preserve explicit human decisions."

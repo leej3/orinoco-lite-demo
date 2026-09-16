@@ -1,5 +1,0 @@
-description: A bounded representation of a body of information designed with the capacity
-  and usually the intent to communicate.
-display_label: Document
-pid: bibo:Document
-schema_type: xyzri:XYZBibliographicType

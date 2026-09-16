@@ -1,7 +1,0 @@
-description: Versioned Orinoco Lite software that maps the reviewed Zotero source
-  snapshot into canonical Things metadata.
-display_label: Zotero source adapter v1
-kind: obo:IAO_0000010
-name: Orinoco Lite Zotero source adapter v1
-pid: xyzrins:source-adapters/zotero/v1
-schema_type: xyzri:XYZInstrument

@@ -1,0 +1,10 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dlthings: <https://concepts.datalad.org/s/things/v2/> .
+@prefix ror: <https://ror.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<{pid}> dcterms:identifier _:n0-1.
+_:n0-1 a dlthings:DOI;
+    skos:notation "{notation}";
+    dcterms:creator ror:01fyxcz70.
