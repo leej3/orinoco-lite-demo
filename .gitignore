@@ -4,6 +4,7 @@
 .orinoco-lite/state/
 build/
 generated/
+.netlify/
 node_modules/
 test-results/
 playwright-report/
