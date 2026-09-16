@@ -6,7 +6,6 @@ The starter records and `/explore` page build and preview immediately; replace t
 Orinoco Lite resolves its pinned upstream presentation and composes it with this scaffold's small `.orinoco-lite/presentation/` adapter, its bounded `.orinoco-lite/materialized-presentation/upstream/` asset overlay, and the repository's declarative `site-specific/` inputs.
 
 ```console
-pixi run validate
 pixi run build
 pixi run serve
 ```
@@ -22,6 +21,6 @@ The source boundary is:
 
 See [getting started](docs/getting-started.md), [ownership](docs/ownership.md), and [custom-domain setup](docs/custom-domain.md).
 
-The released package is the single authority for the upstream website and theme pins.
-The downstream selects its package release in the `package` mapping in `orinoco.lock` and the `package_version`, `package_url`, and `package_sha256` answers in `.copier-answers.yml`.
-Template and workflow selections remain separate coordinates.
+The selected package revision is the single authority for the upstream website and theme pins.
+The downstream selects its package through Pixi, its template through `.copier-answers.yml`, and actions through pinned workflow references.
+Resources and specifications required to build or operate Orinoco Lite are internal to the selected package commit.
