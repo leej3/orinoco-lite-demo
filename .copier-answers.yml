@@ -7,5 +7,5 @@ site_base_url: https://leej3.github.io/orinoco-lite-demo/
 site_description: Test-only full-content Orinoco Lite downstream for the Center for
   Open Neuroscience.
 package_repository: https://github.com/ORINOCO-Lite/orinoco-lite-dev.git
-package_revision: 5ff259440b7ef7e12a8a36ff7ea22d256dd76183
+package_revision: 734c935a983e064236b6fb6d5708f736be964afb
 include_site_specific: true
