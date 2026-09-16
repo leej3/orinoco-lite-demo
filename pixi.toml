@@ -15,5 +15,5 @@ datalad = ">=1.6.2,<2"
 
 [tasks]
 build = "orinoco-lite build --destination build/site --base-url /"
-build-pages = "orinoco-lite build --destination build/pages"
+build-pages = "orinoco-lite build --destination build/pages --publication-bundle build/pages-publication.bundle"
 serve = "orinoco-lite serve --directory build/site --port 8765"
