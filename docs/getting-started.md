@@ -3,7 +3,7 @@
 1. Set the site identity and canonical public URL in `site-specific/site.yaml`.
 2. Replace the starter records and `/explore` page with reviewed site metadata and editorial content before publishing.
 3. Add further editorial pages, assets, and static inputs only under their `site-specific/` directories.
-4. Run `pixi run validate` and `pixi run build`.
+4. Run `pixi run orinoco-lite validate` and `pixi run build`.
 5. Configure repository Pages and curation settings before enabling hosted editing.
 
 Orinoco Lite supplies the default projection and resolves the presentation selected by its packaged resources.
