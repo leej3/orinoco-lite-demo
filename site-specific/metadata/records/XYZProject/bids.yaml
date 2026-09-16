@@ -22,6 +22,7 @@ attributes:
   value: Brain Imaging Data Structure
 description: A standard providing a simple and intuitive way to organize and describe
   neuroimaging and behavioral data. Governed by a community-elected steering group.
+  Temporary acceptance-test edit.
 display_label: BIDS
 part_of:
 - xyzrins:.
