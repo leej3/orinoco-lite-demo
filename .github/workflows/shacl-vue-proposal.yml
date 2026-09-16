@@ -169,7 +169,6 @@ jobs:
         with:
           cache: true
           frozen: true
-          pixi-version: v0.73.0
           manifest-path: trusted/pixi.toml
           pixi-version: v0.73.0
 
