@@ -32,6 +32,7 @@ jobs:
         with:
           cache: true
           frozen: true
+          pixi-version: v0.73.0
       - name: Validate and build
         run: |
           pixi run build && pixi run orinoco-lite verify-site build/site
