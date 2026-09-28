@@ -11,7 +11,7 @@ hugo = "==0.154.5"
 pyyaml = "==6.0.2"
 
 [pypi-dependencies]
-orinoco-lite = { git = "https://github.com/ORINOCO-Lite/orinoco-lite-dev.git", rev = "b079ceaecb960170a04c7c3960b1fba8e54d10d7" }
+orinoco-lite = { git = "https://github.com/ORINOCO-Lite/orinoco-lite-dev.git", rev = "c51dce2d2256e061a0fbfe69a8fe4008e85bd0cd" }
 datalad = ">=1.6.2,<2"
 
 [tasks]
