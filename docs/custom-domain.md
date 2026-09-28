@@ -1,7 +1,7 @@
 # Custom domain and secure GitHub submission
 
 Orinoco Lite keeps editing on this deployed site.
-The central curation service supplies only the GitHub App authentication and submission boundary; it does not host a second editor, review page, landing page, or copy of the site's presentation inputs.
+The central curation service supplies only the GitHub App authentication and submission boundary; it does not host a second editor, review page, landing page, or copy of the site's UI assets.
 
 ## Choose the browser origin
 
@@ -23,14 +23,14 @@ The warning explains the remaining browser-origin limitation rather than replaci
 Use a hostname dedicated to this trusted site, then follow these steps:
 
 1. Verify the domain for the owning GitHub account or organization before attaching it to the repository.
-Follow GitHub's [domain-verification procedure](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages) and keep the verification TXT record in DNS.
+   Follow GitHub's [domain-verification procedure](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages) and keep the verification TXT record in DNS.
 2. In the site's repository, open **Settings → Pages**, add the custom domain, and save it before pointing DNS at GitHub Pages.
 3. Configure the required DNS record with the domain provider by following GitHub's [custom-domain guide](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site).
-Do not use a wildcard DNS record.
-This template publishes with GitHub Actions, so it neither needs nor tracks a `CNAME` file.
+   Do not use a wildcard DNS record.
+   This template publishes with GitHub Actions, so it neither needs nor tracks a `CNAME` file.
 4. Wait for GitHub's DNS and certificate checks to succeed, then enable **Enforce HTTPS** using GitHub's [HTTPS procedure](https://docs.github.com/en/pages/getting-started-with-github-pages/securing-your-github-pages-site-with-https).
 5. Set `identity.base_url` in `site-specific/site.yaml` to the exact canonical HTTPS URL, including any path and a trailing slash.
-Commit that identity change and let the Pages workflow deploy it.
+   Commit that identity change and let the Pages workflow deploy it.
 
 For a GitHub Actions Pages deployment, repository settings are authoritative for the custom domain.
 A tracked `CNAME` file is ignored and is not a substitute for those settings.

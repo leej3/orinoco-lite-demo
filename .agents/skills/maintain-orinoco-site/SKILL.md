@@ -5,7 +5,7 @@ description: Inspect, validate, and review an ordinary released Orinoco Lite dow
 
 # Maintain an Orinoco site
 
-Keep released scaffold maintenance separate from the site's data, policy, presentation choices, source configuration, curation decisions, and source-adapter extensions.
+Keep released scaffold maintenance separate from the site's data, policy, appearance choices, source configuration, curation decisions, and source-adapter extensions.
 
 ## Establish the local contract
 
