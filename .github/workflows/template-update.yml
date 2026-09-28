@@ -149,7 +149,7 @@ jobs:
           git bundle verify "$RUNNER_TEMP/template-update/template-update.bundle"
           git fetch "$RUNNER_TEMP/template-update/template-update.bundle" refs/heads/orinoco-template-result
           git merge-base --is-ancestor "$GITHUB_SHA" FETCH_HEAD
-          git reset --hard FETCH_HEAD
+          git checkout -B "$GITHUB_REF_NAME" FETCH_HEAD
       - name: Open update draft pull request
         id: pull
         uses: peter-evans/create-pull-request@22a9089034f40e5a961c8808d113e2c98fb63676 # v7
@@ -175,6 +175,10 @@ jobs:
           CONFLICTS: ${{ needs.update.outputs.conflicts }}
           VALIDATION: ${{ needs.update.outputs.validation }}
         run: |
+          if [[ -z "$PULL_URL" ]]; then
+            echo '::error::The recorded update did not produce a pull request.'
+            exit 1
+          fi
           echo "[Review the template update]($PULL_URL)" >> "$GITHUB_STEP_SUMMARY"
           echo "Conflict status: $CONFLICTS. Validation: $VALIDATION." >> "$GITHUB_STEP_SUMMARY"
           if [[ "$CONFLICTS" == 1 || "$VALIDATION" == failure ]]; then
