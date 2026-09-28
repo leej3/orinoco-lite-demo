@@ -1,0 +1,8 @@
+{{ if .Params.graphrootnodepid }}
+<div class="orinoco-record-editor-link text-xs">
+  <a class="text-primary-500" target="_blank" rel="noopener noreferrer" href="{{ "edit/" | absURL }}?sh%3ANodeShape=dlthings%3AThing&pid={{ .Params.graphrootnodepid | urlquery }}&edit=true">
+    {{ partial "icon.html" "edit" }}
+    Edit this record
+  </a>
+</div>
+{{ end }}
