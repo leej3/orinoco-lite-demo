@@ -12,7 +12,7 @@ pyyaml = "==6.0.2"
 pydantic = "==2.13.4"
 
 [pypi-dependencies]
-orinoco-lite = { git = "https://github.com/ORINOCO-Lite/orinoco-lite-dev.git", rev = "dc73ad05fc198497b2f6b4877b2cb1f63b1414dd" }
+orinoco-lite = { git = "https://github.com/ORINOCO-Lite/orinoco-lite-dev.git", rev = "ab25d91c7f0eddfe048a031db4c14fbfd4e4b5b5" }
 datalad = ">=1.6.2,<2"
 
 [tasks]
