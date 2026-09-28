@@ -22,6 +22,7 @@ environments:
       linux-64:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/_openmp_mutex-4.5-20_gnu.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/bzip2-1.0.8-hda65f42_10.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-64/git-annex-10.20260601-nodep_h1234567_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/hugo-0.154.5-hecca717_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/icu-78.3-py310h44b86e0_2.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/ld_impl_linux-64-2.46.1-default_hbd61a6d_102.conda
@@ -74,7 +75,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/wcwidth-0.8.2-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/zipp-4.1.0-pyhcf101f3_0.conda
       - pypi: git+https://github.com/ORINOCO-Lite/dump-things-pyclient.git?rev=1e79391195ad4412286344189dc5f81a06accb90#1e79391195ad4412286344189dc5f81a06accb90
-      - pypi: git+https://github.com/ORINOCO-Lite/orinoco-lite-dev.git?rev=31fc15e124329ef1598d38b4b0636882423fbe21#31fc15e124329ef1598d38b4b0636882423fbe21
+      - pypi: git+https://github.com/ORINOCO-Lite/orinoco-lite-dev.git?rev=b079ceaecb960170a04c7c3960b1fba8e54d10d7#b079ceaecb960170a04c7c3960b1fba8e54d10d7
       - pypi: git+https://github.com/ORINOCO-Lite/things-enrichment-tools.git?rev=9f036a4cdfb53f87346152f9cd4620aaef38bce2#9f036a4cdfb53f87346152f9cd4620aaef38bce2
       - pypi: https://files.pythonhosted.org/packages/00/cc/7fbd75d3362e939eb98bcf9bd22f3f7df8c237a85148899ed3d38e5614e5/json_flattener-0.1.9-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/02/10/5da547df7a391dcde17f59520a231527b8571e6f46fc8efb02ccb370ab12/docutils-0.22.4-py3-none-any.whl
@@ -270,7 +271,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/tk-8.6.13-hd3d0363_3.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/yaml-0.2.5-h925e9cb_3.conda
       - pypi: git+https://github.com/ORINOCO-Lite/dump-things-pyclient.git?rev=1e79391195ad4412286344189dc5f81a06accb90#1e79391195ad4412286344189dc5f81a06accb90
-      - pypi: git+https://github.com/ORINOCO-Lite/orinoco-lite-dev.git?rev=31fc15e124329ef1598d38b4b0636882423fbe21#31fc15e124329ef1598d38b4b0636882423fbe21
+      - pypi: git+https://github.com/ORINOCO-Lite/orinoco-lite-dev.git?rev=b079ceaecb960170a04c7c3960b1fba8e54d10d7#b079ceaecb960170a04c7c3960b1fba8e54d10d7
       - pypi: git+https://github.com/ORINOCO-Lite/things-enrichment-tools.git?rev=9f036a4cdfb53f87346152f9cd4620aaef38bce2#9f036a4cdfb53f87346152f9cd4620aaef38bce2
       - pypi: https://files.pythonhosted.org/packages/00/cc/7fbd75d3362e939eb98bcf9bd22f3f7df8c237a85148899ed3d38e5614e5/json_flattener-0.1.9-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/02/10/5da547df7a391dcde17f59520a231527b8571e6f46fc8efb02ccb370ab12/docutils-0.22.4-py3-none-any.whl
@@ -305,6 +306,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/31/e8/715b09df3dab02b07809d812042dc47a46236b5603d9d3a2572dbd1d8a97/prefixcommons-0.1.12-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/34/e2/70692eba662037cddf93391cbbf98297159f3038612e9b9a8129e16feb7a/sentry_sdk-2.67.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/35/7a/987e583882f985fe4d7323774889ec58049171828b58c2217e7f79cdf44e/sphinxcontrib_devhelp-2.0.0-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/3d/cb/78c08cc3bc134ed95ac9da792bc6cd2f28c3c785e706b2fc214d0c9c3848/git_annex-10.20260601-py3-none-macosx_14_0_arm64.whl
       - pypi: https://files.pythonhosted.org/packages/3d/ff/7f72e8170be527b4977b033239a83a68d5c881cc4775fca255c677f7ac5d/uvloop-0.22.1-cp312-cp312-macosx_10_13_universal2.whl
       - pypi: https://files.pythonhosted.org/packages/3e/30/e900b21425a860e195f32e37657aa1f7c7f2b1bfb26f03ca209b90933c06/annotated_doc-0.0.5-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/3e/38/7859ff46355f76f8d19459005ca000b6e7012f2f1ca597746cbcd1fbfe5e/antlr4-python3-runtime-4.9.3.tar.gz
@@ -445,6 +447,17 @@ packages:
     - bzip2 >=1.0.8,<2.0a0
   size: 257808
   timestamp: 1785906269155
+- conda: https://conda.anaconda.org/conda-forge/linux-64/git-annex-10.20260601-nodep_h1234567_0.conda
+  sha256: 1df1ee65626f94b426e73080554f1c624c98c8f89ede8935fb53e5ede699b967
+  md5: b082ab6b8fa11b1eb4630874b8dc8db9
+  constrains:
+  - gnupg >=2.1.1
+  license: AGPL-3.0-only
+  license_family: AGPL
+  purls: []
+  run_exports: {}
+  size: 38538511
+  timestamp: 1781871477793
 - conda: https://conda.anaconda.org/conda-forge/linux-64/hugo-0.154.5-hecca717_0.conda
   sha256: d0d56f2985803009f5248a76ba33baf272b41b528fe9208a0d7c2885690c51ab
   md5: ea4d50a3273a01ba462643709d71b9cd
@@ -1451,9 +1464,9 @@ packages:
   - dump-things-service>=6.2.2 ; extra == 'tests'
   - pytest>=9.0.1 ; extra == 'tests'
   requires_python: '>=3.11'
-- pypi: git+https://github.com/ORINOCO-Lite/orinoco-lite-dev.git?rev=31fc15e124329ef1598d38b4b0636882423fbe21#31fc15e124329ef1598d38b4b0636882423fbe21
+- pypi: git+https://github.com/ORINOCO-Lite/orinoco-lite-dev.git?rev=b079ceaecb960170a04c7c3960b1fba8e54d10d7#b079ceaecb960170a04c7c3960b1fba8e54d10d7
   name: orinoco-lite
-  version: 0.3.0rc9+9.g31fc15e
+  version: 0.3.0rc9+14.gb079cea
   requires_dist:
   - dump-things-pyclient @ git+https://github.com/ORINOCO-Lite/dump-things-pyclient.git@1e79391195ad4412286344189dc5f81a06accb90
   - dump-things-service==6.3.6
@@ -1919,6 +1932,11 @@ packages:
   - types-docutils ; extra == 'lint'
   - sphinx>=5 ; extra == 'standalone'
   - pytest ; extra == 'test'
+  requires_python: '>=3.9'
+- pypi: https://files.pythonhosted.org/packages/3d/cb/78c08cc3bc134ed95ac9da792bc6cd2f28c3c785e706b2fc214d0c9c3848/git_annex-10.20260601-py3-none-macosx_14_0_arm64.whl
+  name: git-annex
+  version: '10.20260601'
+  sha256: 6b6cc79b450701baabe88f0ac741896f8397b066b0d650c50527c3340c22041e
   requires_python: '>=3.9'
 - pypi: https://files.pythonhosted.org/packages/3d/ff/7f72e8170be527b4977b033239a83a68d5c881cc4775fca255c677f7ac5d/uvloop-0.22.1-cp312-cp312-macosx_10_13_universal2.whl
   name: uvloop

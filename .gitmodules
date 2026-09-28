@@ -1,0 +1,3 @@
+[submodule "site-specific"]
+	path = site-specific
+	url = https://github.com/leej3/orinoco-lite-submodule-demo-metadata.git

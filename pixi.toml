@@ -11,10 +11,16 @@ hugo = "==0.154.5"
 pyyaml = "==6.0.2"
 
 [pypi-dependencies]
-orinoco-lite = { git = "https://github.com/ORINOCO-Lite/orinoco-lite-dev.git", rev = "31fc15e124329ef1598d38b4b0636882423fbe21" }
+orinoco-lite = { git = "https://github.com/ORINOCO-Lite/orinoco-lite-dev.git", rev = "b079ceaecb960170a04c7c3960b1fba8e54d10d7" }
 datalad = ">=1.6.2,<2"
 
 [tasks]
 build = "orinoco-lite build --destination build/site --base-url /"
 build-pages = "orinoco-lite build --destination build/pages --publication-bundle build/pages-publication.bundle"
 serve = "orinoco-lite serve --directory build/site --port 8765"
+
+[target.linux-64.dependencies]
+git-annex = "==10.20260601"
+
+[target.osx-arm64-macos-14-0.pypi-dependencies]
+git-annex = "==10.20260601"

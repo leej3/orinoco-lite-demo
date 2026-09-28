@@ -69,3 +69,6 @@ repository = "leej3/orinoco-lite-demo"
 
 [tool.orinoco.operations]
 template_updates = true
+
+[tool.orinoco.media]
+annex = true
