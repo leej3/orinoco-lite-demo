@@ -1,0 +1,715 @@
+# --------------------
+# General app settings
+# --------------------
+# app_name:
+# documentation_url:
+# external_config_url:
+# footer_links:
+# page_title:
+# source_code_url:
+
+# -------
+# Content
+# -------
+# content:
+
+# --------------
+# Theme settings
+# --------------
+# app_theme:
+# front_page_content:
+
+# --------------------------
+# Application inputs sources
+# --------------------------
+class_url: dlschemas_owl.ttl
+data_url: ''
+shapes_url: dlschemas_shacl.ttl
+use_default_classes: false
+use_default_data: false
+use_default_shapes: false
+
+# -------------------
+# Identifier settings
+# -------------------
+id_autogenerate:
+  dlthings:AnnotationTag: 'xyzrins:annotation-tags/{_randomUUID}'
+  dlthings:Property: 'xyzrins:properties/{_randomUUID}'
+  dlthings:Rule: 'xyzrins:rules/{_randomUUID}'
+  xyzri:XYZAccolade: 'xyzrins:accolades/{_randomUUID}'
+  xyzri:XYZActivity: 'xyzrins:activities/{_randomUUID}'
+  xyzri:XYZActivityRole: 'xyzrins:activity-roles/{_randomUUID}'
+  xyzri:XYZAgentRole: 'xyzrins:agent-roles/{_randomUUID}'
+  xyzri:XYZBibliographicType: 'xyzrins:bibliographic-types/{_randomUUID}'
+  xyzri:XYZCompetition: 'xyzrins:competitions/{_randomUUID}'
+  xyzri:XYZCompetitionType: 'xyzrins:competition-types/{_randomUUID}'
+  xyzri:XYZConcept: 'xyzrins:concepts/{_randomUUID}'
+  xyzri:XYZConvention: 'xyzrins:conventions/{_randomUUID}'
+  xyzri:XYZDataItem: 'xyzrins:dataitems/{_randomUUID}'
+  xyzri:XYZDataType: 'xyzrins:datatypes/{_randomUUID}'
+  xyzri:XYZDataset: 'xyzrins:datasets/{_randomUUID}'
+  xyzri:XYZDepiction: 'xyzrins:depictions/{_randomUUID}'
+  xyzri:XYZDepictionType: 'xyzrins:depiction-types/{_randomUUID}'
+  xyzri:XYZDocument: 'xyzrins:documents/{_randomUUID}'
+  xyzri:XYZEntityRole: 'xyzrins:entity-roles/{_randomUUID}'
+  xyzri:XYZFile: 'xyzrins:files/{_randomUUID}'
+  xyzri:XYZGrant: 'xyzrins:grants/{_randomUUID}'
+  xyzri:XYZInstrument: 'xyzrins:instruments/{_randomUUID}'
+  xyzri:XYZInstrumentType: 'xyzrins:instrument-types/{_randomUUID}'
+  xyzri:XYZObjective: 'xyzrins:objectives/{_randomUUID}'
+  xyzri:XYZOrganization: 'xyzrins:organizations/{_randomUUID}'
+  xyzri:XYZPerson: 'xyzrins:persons/{_randomUUID}'
+  xyzri:XYZProject: 'xyzrins:projects/{_randomUUID}'
+  xyzri:XYZPublication: 'xyzrins:publications/{_randomUUID}'
+  xyzri:XYZPublicationVenue: 'xyzrins:publication-venues/{_randomUUID}'
+  xyzri:XYZQuality: 'xyzrins:qualities/{_randomUUID}'
+  xyzri:XYZStudy: 'xyzrins:studies/{_randomUUID}'
+  xyzri:XYZSubject: 'xyzrins:subjects/{_randomUUID}'
+  xyzri:XYZSubjectType: 'xyzrins:subject-types/{_randomUUID}'
+  xyzri:XYZTopic: 'xyzrins:topics/{_randomUUID}'
+id_autogenerate_override: true
+id_iri: https://concepts.datalad.org/s/things/v2/pid
+id_resolves_externally:
+  - bibo
+  - doi
+  - geodata
+  - gepris
+  - IAO
+  - ISSN
+  - marcrel
+  - obo
+  - orcid
+  - ror
+  - rrid
+  - sio
+  - spdxlic
+prefixes:
+  xyzrins: https://concepts.datalad.org/s/demo-research-information/ns/
+
+# ------------
+# UI behaviour
+# ------------
+allow_copy_record_urls: true
+allow_edit_instances:
+  - dlthings:Checksum
+  - dlthings:DOI
+  - xyzri:XYZCommunication
+  - xyzri:XYZInfluence
+class_name_display: name
+class_icons:
+  xyzri:ORCID: mdi-identifier
+  xyzri:XYZAccolade: mdi-medal
+  xyzri:XYZActivity: mdi-run
+  xyzri:XYZActivityRole: mdi-washing-machine
+  xyzri:XYZAgentRole: mdi-function
+  xyzri:XYZBibliographicType: mdi-newspaper
+  xyzri:XYZCommunication: mdi-message-text-outline
+  xyzri:XYZCompetition: mdi-podium-gold
+  xyzri:XYZCompetitionType: mdi-podium
+  xyzri:XYZConcept: mdi-shape-outline
+  xyzri:XYZDataItem: mdi-file-document-outline
+  xyzri:XYZDataType: mdi-tape-measure
+  xyzri:XYZDataset: mdi-database
+  xyzri:XYZDepiction: mdi-image
+  xyzri:XYZDepictionType: mdi-folder-multiple-image
+  xyzri:XYZDocument: mdi-file-document-outline
+  xyzri:XYZEntityRole: mdi-excavator
+  xyzri:XYZFile: mdi-folder-arrow-right-outline
+  xyzri:XYZGrant: mdi-cash-100
+  xyzri:XYZInfluence: mdi-arrow-decision
+  xyzri:XYZInstrument: mdi-microscope
+  xyzri:XYZInstrumentType: mdi-beaker-question-outline
+  xyzri:XYZObjective: mdi-bullseye-arrow
+  xyzri:XYZOrganization: mdi-account-group
+  xyzri:XYZPerson: mdi-face-man
+  xyzri:XYZProject: mdi-briefcase-outline
+  xyzri:XYZPublication: mdi-newspaper-variant-outline
+  xyzri:XYZPublicationVenue: mdi-office-building-outline
+  xyzri:XYZQuality: mdi-bag-personal-tag-outline
+  xyzri:XYZStudy: mdi-school-outline
+  xyzri:XYZSubject: mdi-account-search
+  xyzri:XYZSubjectType: mdi-tag-search
+  xyzri:XYZTopic: mdi-book-information-variant
+  dlthings:Annotation: mdi-tag-outline
+  dlthings:AnnotationTag: mdi-tag-outline
+  dlthings:Association: mdi-account-switch
+  dlthings:Attribution: mdi-account-star
+  dlthings:AttributeSpecification: mdi-playlist-check
+  dlthings:Checksum: mdi-file-check-outline
+  dlthings:Communication: mdi-message-text-outline
+  dlthings:Convention: mdi-script-text-outline
+  dlthings:Dataset: mdi-database
+  dlthings:DataItem: mdi-file-document-outline
+  dlthings:Delegation: mdi-badge-account
+  dlthings:Derivation: mdi-toolbox
+  dlthings:Document: mdi-file-document-outline
+  dlthings:DOI: mdi-identifier
+  dlthings:End: mdi-clock-end
+  dlthings:File: mdi-folder-arrow-right-outline
+  dlthings:Generation: mdi-auto-fix
+  dlthings:Grant: mdi-cash-100
+  dlthings:Identifier: mdi-identifier
+  dlthings:Influence: mdi-arrow-decision
+  dlthings:Instrument: mdi-microscope
+  dlthings:Invalidation: mdi-glass-fragile
+  dlthings:Organization: mdi-account-group
+  dlthings:Person: mdi-face-man
+  dlthings:Project: mdi-briefcase-outline
+  dlthings:Property: mdi-contain-start
+  dlthings:Publication: mdi-newspaper-variant-outline
+  dlthings:Quotation: mdi-comment-quote
+  dlthings:Revision: mdi-numeric-positive-1
+  dlthings:Rule: mdi-gavel
+  dlthings:Start: mdi-clock-start
+  dlthings:Statement: mdi-comment-text-outline
+  dlthings:Study: mdi-school-outline
+  dlthings:Subject: mdi-account-search
+  dlthings:Usage: mdi-format-list-checks
+component_config:
+  # InstancesUploadEditor:
+  InstancesSelectEditor:
+    fetchingsRecordsText: Fetching records...
+    dcterms:Identifier:
+      show_classes: []
+      show_classes_with_prefix:
+        - xyzri
+      hide_classes: []
+      hide_classes_with_prefix: []
+  URIEditor:
+    default: curie
+  W3CISO8601DateTimeEditor:
+    yearStart: 1990
+    yearEnd: 2028
+display_name_autogenerate:
+  dlthings:Annotation: '{dlthings:annotation_tag}: {dlthings:annotation_value}'
+  dlthings:Association: '{rdf:object} ({dlthings:roles})'
+  dlthings:AttributeSpecification: '{rdf:predicate}: {rdf:value}'
+  dlthings:Attribution: '{rdf:object}: ({dlthings:roles})'
+  dlthings:Convention: '{dlthings:short_name}'
+  dlthings:Checksum: '{dcterms:creator}:{skos:notation}'
+  dlthings:Delegation: '{rdf:object}: ({dlthings:roles})'
+  dlthings:DOI: 'DOI: {skos:notation}'
+  dlthings:End: '{dlthings:at_time}'
+  dlthings:Generation: '{rdf:object} {dlthings:at_location} {dlthings:at_time}'
+  dlthings:Identifier: '{skos:notation} ({dcterms:creator})'
+  dlthings:NamedFilePart: '{dlthings:locator}'
+  dlthings:Start: '{dlthings:at_time}'
+  dlthings:Statement: '{rdf:predicate}: {rdf:object}'
+  dlthings:Quotation: '{rdf:object}'
+  dlthings:Rule: '{dlthings:short_name}'
+  dlthings:Usage: '{rdf:object} ({dlthings:roles})'
+  xyzri:ORCID: 'ORCID: {skos:notation}'
+  xyzri:XYZActivity: '{dlthings:name}'
+  xyzri:XYZActivityRole: '{dlthings:name}'
+  xyzri:XYZAccolade: '{dlthings:title}'
+  xyzri:XYZAgentRole: '{dlthings:name}'
+  xyzri:XYZCommunication: '{rdf:object} (through {xyzri:entity})'
+  xyzri:XYZCompetition: '{dlthings:title}'
+  xyzri:XYZConcept: '{dlthings:title}'
+  xyzri:XYZDataset: '{dlthings:title}'
+  xyzri:XYZDepiction: '{dcterms:subject} ({dcterms:type})'
+  xyzri:XYZDocument: '{dlthings:title}'
+  xyzri:XYZDocumentExchange: '{rdf:object} ({dlthings:roles})'
+  xyzri:XYZEntityRole: '{dlthings:name}'
+  xyzri:XYZFile: '{dlthings:format} {dlthings:byte_size} bytes'
+  xyzri:XYZGrant: '{dlthings:title}'
+  xyzri:XYZInfluence: '{rdf:object} ({dlthings:roles})'
+  xyzri:XYZInstrument: '{dlthings:name}'
+  xyzri:XYZNamedDistributionPart: '{dlthings:locator}'
+  xyzri:XYZObjective: '{dlthings:title}'
+  xyzri:XYZOrganization: '{dlthings:name}'
+  xyzri:XYZPerson: '{dlthings:family_name}, {dlthings:given_name}'
+  xyzri:XYZProject: '{dlthings:title}'
+  xyzri:XYZPublication: '{dlthings:title}'
+  xyzri:XYZPublicationVenue: '{dlthings:title}'
+  xyzri:XYZStudy: '{dlthings:title}'
+  xyzri:XYZSubject: '{dlthings:name}'
+display_name_autogenerate_placeholder:
+  default: '?'
+  dcterms:creator: ''
+  dlthings:at_location: ''
+  dlthings:at_time: ''
+editor_selection:
+  sh:datatype:
+    dlthings:w3ctr-datetime: W3CISO8601DateTimeEditor
+  shaclvue:gitAnnexUpload:
+    true: InstancesUploadEditor
+filter_records_by:
+  - skos:prefLabel
+  - shaclvue:displayLabel
+  - dlthings:pid
+hide_classes: []
+hide_classes_with_prefix: []
+no_edit_classes: []
+show_all_fields: false
+show_classes_with_prefix:
+  - xyzri
+show_shapes_wo_id: false
+
+# -----------------------
+# Service API integration
+# -----------------------
+# service_base_url:
+service_constrained_search:
+  min_characters: 3
+service_endpoints:
+  post-record: 'record/{name}?format=ttl'
+  get-record: 'record?pid={curie}&format=ttl'
+  get-records: 'records/{name}?format=ttl'
+  get-records-before: 'records/{name}?format=ttl'
+  get-paginated-records: 'records/p/{name}?format=ttl&size=100&page={page_number}'
+  get-paginated-records-constrained: 'records/p/{name}?format=ttl&matching=%25{match_string}%25&size=100&page={page_number}'
+# service_fetch_before:
+# token_info:
+# token_info_url:
+# use_service:
+# use_token:
+
+# ----------------
+# Special features
+# ----------------
+# gitannex_p2phttp_config:
+#   base_url:
+#   annex_uuid:
+#   client_uuid:
+# use_gitannex_p2phttp:
+
+
+# ---------------
+# Property groups
+#----------------
+property_groups:
+  identity:
+    title: Identity
+    order: 1
+    description: Information about the identity of the record
+  data:
+    title: Data
+    order: 2
+  study:
+    title: Study
+    order: 3
+  distribution:
+    title: Distribution 
+    order: 4
+  temporal:
+    title: Temporal
+    order: 5
+  spatial:
+    title: Spatial
+    order: 6
+  relations:
+    title: Relations
+    order: 7
+  provenance:
+    title: Provenance
+    order: 8
+  fundamentals:
+    title: RDF/PROV fundamentals
+    order: 9
+  roles:
+    title: Roles
+    order: 10
+  rules:
+    title: Rules
+    order: 11
+  mappings:
+    title: Mappings
+    order: 12
+
+# -------------
+# Update shapes
+#--------------
+update_shapes_default:
+  _all_property_shapes:
+    dlthings:pid:
+      sh:order: 1
+      sh:group: identity
+    # data properties 10+
+    dlthings:title:
+      sh:order: 10
+      sh:group: data
+    dlthings:name:
+      sh:order: 10
+      sh:group: data
+    rdf:value:
+      sh:order: 10
+      sh:group: data
+    dlthings:annotation_tag:
+      sh:order: 10
+    dlthings:annotation_value:
+      sh:order: 11
+      dash:singleLine: false
+      shaclvue:markdown: true
+    dlthings:short_name:
+      sh:order: 11
+      sh:group: data
+    dcterms:description:
+      sh:order: 12
+      sh:group: data
+      dash:singleLine: false
+      shaclvue:markdown: true
+    dlthings:family_name:
+      sh:order: 13.0
+      sh:group: data
+    dlthings:given_name:
+      sh:order: 13.1
+      sh:group: data
+    dlthings:additional_names:
+      sh:order: 13.2
+      sh:group: data
+    dlthings:nickname:
+      sh:order: 13.3
+      sh:group: data
+    dlthings:honorific_name_prefix:
+      sh:order: 13.4
+      sh:group: data
+    dlthings:honorific_name_suffix:
+      sh:order: 13.5
+      sh:group: data
+    dlthings:formatted_name:
+      sh:order: 14
+      sh:group: data
+    dlthings:locator:
+      sh:order: 15
+      sh:group: data
+    skos:notation:
+      sh:order: 15
+      sh:group: data
+
+    xyzri:application_deadline:
+      sh:order: 101
+      sh:group: data
+
+    # poor man's linkage
+    dlthings:keywords:
+      sh:order: 201
+      sh:group: data
+
+    #
+    # required sorts here
+    #
+
+    # 1k+
+
+    #
+    # recommended sorts here
+    #
+
+    # 100k+
+    ## study
+    dlthings:factors:
+      sh:order: 100101
+      sh:group: study
+    dlthings:dimensions:
+      sh:order: 100102
+      sh:group: study
+    dlthings:study:
+      sh:order: 100103
+      sh:group: study
+
+    # distribution/file props
+    dlthings:byte_size:
+      sh:order: 100201
+      sh:group: distribution
+    dlthings:checksums:
+      sh:order: 100202
+      sh:group: distribution
+    dlthings:format:
+      sh:order: 100203
+      sh:group: distribution
+    dlthings:media_type:
+      sh:order: 100204
+      sh:group: distribution
+
+    # temporal
+    dlthings:at_time:
+      sh:order: 200101
+      sh:group: temporal
+    dlthings:started:
+      sh:order: 200102
+      sh:group: temporal
+    dlthings:ended:
+      sh:order: 200103
+      sh:group: temporal
+    # spatial
+    dlthings:at_location:
+      sh:order: 200204
+      sh:group: spatial
+
+    rdfs:isDefinedBy:
+      sh:order: 400101
+      sh:group: relations
+    dcterms:type:
+      sh:order: 400102
+      sh:group: relations
+    dcterms:subject:
+      sh:order: 400103
+      sh:group: relations
+    dlthings:depiction:
+      sh:order: 400104
+      sh:group: relations
+
+    obo:UO_0000000:
+      sh:order: 500101
+      sh:group: relations
+    rdfs:range:
+      sh:order: 500101
+      sh:group: relations
+
+    dlthings:part_of:
+      sh:order: 501101
+      sh:group: relations
+    dlthings:parts:
+      sh:order: 501102
+      sh:group: relations
+    dlthings:distribution_of:
+      sh:order: 501103
+      sh:group: relations
+    dlthings:distributions:
+      sh:order: 501104
+      sh:group: relations
+
+    dlthings:same_as:
+      sh:order: 600101
+      sh:group: relations
+    dlthings:alternate_of:
+      sh:order: 600102
+      sh:group: relations
+    dlthings:specialization_of:
+      sh:order: 600103
+      sh:group: relations
+    dlthings:conforms_to:
+      sh:order: 600104
+      sh:group: relations
+    dlthings:depends_on:
+      sh:order: 600105
+      sh:group: relations
+    dlthings:version_of:
+      sh:order: 600106
+      sh:group: relations
+
+    # PROV
+    dcterms:creator:
+      sh:order: 700101
+      sh:group: provenance
+    dlthings:associated_with:
+      sh:order: 701101
+      sh:group: provenance
+    dlthings:attributed_to:
+      sh:order: 701102
+      sh:group: provenance
+    dlthings:delegated_by:
+      sh:order: 701103
+      sh:group: provenance
+    dlthings:derived_from:
+      sh:order: 701104
+      sh:group: provenance
+    dlthings:generated_by:
+      sh:order: 701105
+      sh:group: provenance
+    dlthings:influenced_by:
+      sh:order: 701106
+      sh:group: provenance
+    dlthings:informed_by:
+      sh:order: 701107
+      sh:group: provenance
+    dlthings:invalidated_by:
+      sh:order: 701108
+      sh:group: provenance
+    dlthings:quoted_from:
+      sh:order: 701109
+      sh:group: provenance
+    dlthings:revision_of:
+      sh:order: 701110
+      sh:group: provenance
+    dlthings:used:
+      sh:order: 701111
+      sh:group: provenance
+
+    dcterms:identifier:
+      sh:order: 800101
+      sh:group: identity
+
+    # RDF/PROV foundamentals
+    dlthings:attributes:
+      sh:order: 900101
+      sh:group: fundamentals
+    dlthings:characterized_by:
+      sh:order: 900102
+      sh:group: fundamentals
+    rdf:predicate:
+      sh:order: 901101
+      sh:group: fundamentals
+    rdf:object:
+      sh:order: 901102
+      sh:group: fundamentals
+    xyzri:entity:
+      sh:order: 901103
+      sh:group: fundamentals
+
+    # roles (best listed after `object`)
+    dlthings:roles:
+      sh:order: 901201
+      sh:group: roles
+
+    # rules
+    dlthings:rules:
+      sh:order: 901301
+      sh:group: rules
+
+    # 1M+
+    skos:broadMatch:
+      sh:order: 1001001
+      sh:group: mappings
+    skos:exactMatch:
+      sh:order: 1001002
+      sh:group: mappings
+    skos:narrowMatch:
+      sh:order: 1001003
+      sh:group: mappings
+    skos:closeMatch:
+      sh:order: 1001004
+      sh:group: mappings
+    skos:relatedMatch:
+      sh:order: 1001005
+      sh:group: mappings
+
+    rdf:type:
+      sh:order: 1002001
+    skos:prefLabel:
+      sh:order: 1002002
+    skos:note:
+      sh:order: 1002003
+      dash:singleLine: false
+    skos:editorialNote:
+      sh:order: 1002004
+      dash:singleLine: false
+
+    dlthings:annotations:
+      sh:order: 1002001
+
+update_shapes:
+
+# Things that are "classifiers" (i.e., tags) without a provenance interface
+# Non-Things, such as association classes
+
+  dlthings:Association:
+    sh:property:
+      rdf:object:
+        dash:propertyRole: dash:KeyInfoRole
+        sh:or:
+          - http://www.w3.org/ns/shacl#class: https://concepts.datalad.org/s/demo-research-information/unreleased/XYZPerson
+          - http://www.w3.org/ns/shacl#class: https://concepts.datalad.org/s/demo-research-information/unreleased/XYZOrganization
+        sh:class: null
+      dlthings:roles:
+        sh:class: xyzri:XYZAgentRole
+
+  dlthings:Attribution:
+    sh:property:
+      rdf:object:
+        dash:propertyRole: dash:KeyInfoRole
+        sh:or:
+          - http://www.w3.org/ns/shacl#class: https://concepts.datalad.org/s/demo-research-information/unreleased/XYZPerson
+          - http://www.w3.org/ns/shacl#class: https://concepts.datalad.org/s/demo-research-information/unreleased/XYZOrganization
+        sh:class: null
+      dlthings:roles:
+        sh:class: xyzri:XYZAgentRole
+
+  dlthings:Delegation:
+    sh:property:
+      rdf:object:
+        dash:propertyRole: dash:KeyInfoRole
+        sh:or:
+          - http://www.w3.org/ns/shacl#class: https://concepts.datalad.org/s/demo-research-information/unreleased/XYZPerson
+          - http://www.w3.org/ns/shacl#class: https://concepts.datalad.org/s/demo-research-information/unreleased/XYZOrganization
+        sh:class: null
+      dlthings:roles:
+        sh:class: xyzri:XYZAgentRole
+
+  dlthings:Communication:
+    sh:property:
+      rdf:object:
+        dash:propertyRole: dash:KeyInfoRole
+        sh:or:
+          - http://www.w3.org/ns/shacl#class: https://concepts.datalad.org/s/demo-research-information/unreleased/XYZActivity
+          - http://www.w3.org/ns/shacl#class: https://concepts.datalad.org/s/demo-research-information/unreleased/XYZCompetition
+          - http://www.w3.org/ns/shacl#class: https://concepts.datalad.org/s/demo-research-information/unreleased/XYZProject
+          - http://www.w3.org/ns/shacl#class: https://concepts.datalad.org/s/demo-research-information/unreleased/XYZStudy
+        sh:class: null
+      dlthings:roles:
+        sh:class: xyzri:XYZActivityRole
+
+  dlthings:Generation:
+    sh:property:
+      rdf:object:
+        dash:propertyRole: dash:KeyInfoRole
+        sh:or:
+          - http://www.w3.org/ns/shacl#class: https://concepts.datalad.org/s/demo-research-information/unreleased/XYZActivity
+          - http://www.w3.org/ns/shacl#class: https://concepts.datalad.org/s/demo-research-information/unreleased/XYZCompetition
+          - http://www.w3.org/ns/shacl#class: https://concepts.datalad.org/s/demo-research-information/unreleased/XYZProject
+          - http://www.w3.org/ns/shacl#class: https://concepts.datalad.org/s/demo-research-information/unreleased/XYZStudy
+        sh:class: null
+      dlthings:roles:
+        sh:class: xyzri:XYZActivityRole
+
+  dlthings:Invalidation:
+    sh:property:
+      rdf:object:
+        dash:propertyRole: dash:KeyInfoRole
+        sh:or:
+          - http://www.w3.org/ns/shacl#class: https://concepts.datalad.org/s/demo-research-information/unreleased/XYZActivity
+          - http://www.w3.org/ns/shacl#class: https://concepts.datalad.org/s/demo-research-information/unreleased/XYZCompetition
+          - http://www.w3.org/ns/shacl#class: https://concepts.datalad.org/s/demo-research-information/unreleased/XYZProject
+          - http://www.w3.org/ns/shacl#class: https://concepts.datalad.org/s/demo-research-information/unreleased/XYZStudy
+        sh:class: null
+      dlthings:roles:
+        sh:class: xyzri:XYZActivityRole
+
+  dlthings:Derivation:
+    sh:property:
+      rdf:object:
+        dash:propertyRole: dash:KeyInfoRole
+
+  dlthings:Quotation:
+    sh:property:
+      rdf:object:
+        dash:propertyRole: dash:KeyInfoRole
+
+  dlthings:Start:
+    sh:property:
+      dlthings:at_time:
+        dash:propertyRole: dash:KeyInfoRole
+
+  dlthings:End:
+    sh:property:
+      dlthings:at_time:
+        dash:propertyRole: dash:KeyInfoRole
+
+  xyzri:XYZCommunication:
+    sh:property:
+      rdf:object:
+        dash:propertyRole: dash:KeyInfoRole
+        sh:or:
+          - http://www.w3.org/ns/shacl#class: https://concepts.datalad.org/s/demo-research-information/unreleased/XYZActivity
+          - http://www.w3.org/ns/shacl#class: https://concepts.datalad.org/s/demo-research-information/unreleased/XYZCompetition
+          - http://www.w3.org/ns/shacl#class: https://concepts.datalad.org/s/demo-research-information/unreleased/XYZProject
+          - http://www.w3.org/ns/shacl#class: https://concepts.datalad.org/s/demo-research-information/unreleased/XYZStudy
+        sh:class: null
+      xyzri:entity:
+        shaclvue:gitAnnexUpload: true
+
+  xyzri:XYZDocument:
+    sh:property:
+      xyzri:distributions:
+        shaclvue:gitAnnexUpload: true
+
+  xyzri:XYZInfluence:
+    sh:property:
+      rdf:object:
+        dash:propertyRole: dash:KeyInfoRole
+
+  dlthings:NamedFilePart:
+    sh:property:
+      rdf:object:
+        dash:propertyRole: dash:KeyInfoRole

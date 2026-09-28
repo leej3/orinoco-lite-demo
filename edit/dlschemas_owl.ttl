@@ -1,0 +1,2309 @@
+@prefix FRAPO: <http://purl.org/cerif/frapo/> .
+@prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
+@prefix ODRL: <http://www.w3.org/ns/odrl/2/> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix dash: <http://datashapes.org/dash#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dlthings: <https://concepts.datalad.org/s/things/v2/> .
+@prefix fabio: <http://purl.org/spar/fabio/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pav: <http://purl.org/pav/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema1: <http://schema.org/> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix xyzri: <https://concepts.datalad.org/s/demo-research-information/unreleased/> .
+
+<https://concepts.datalad.org/s/demo-research-information/unreleased.owl.ttl> a owl:Ontology ;
+    rdfs:label "demo-research-information-schema" ;
+    dcterms:license "MIT" ;
+    dcterms:title "Data model for capturing information on research (progress)" ;
+    bibo:status <http://publications.europa.eu/resource/authority/concept-status/DRAFT> ;
+    pav:version "UNRELEASED" ;
+    skos:definition """This schema is using the FLAT approach (Flexbile Low-complexity
+Annotation Technique) and is geared toward metadata entry and
+submission for pooling information across consortium sites and
+partners.
+
+It is to be taken as a demonstrator rather than a schema
+building block.
+
+Key features of this schema:
+
+- adds a PROV interface to a select set of concepts where provenance
+  information shall be recorded. Not all classes receive a PROV interface,
+  because some are just used as classifiers or tags. This limits the
+  expressiveness of the schema, but also its complexity. For example,
+  it is an active decision to *not* be interested in the provenance
+  of a `Convention` or a `Rule`, but to only represent them as facts
+  about the world.
+
+More information may be available on the schema's [about page](about).
+
+The schema definition is available as
+
+- [JSON-LD context](../unreleased.context.jsonld)
+- [LinkML YAML](../unreleased.yaml)
+- [LinkML YAML (static/resolved)](../unreleased.static.yaml)
+- [OWL TTL](../unreleased.owl.ttl)
+- [SHACL TTL](../unreleased.shacl.ttl)
+""" ;
+    skos:note "ALL CONTENT HERE IS UNRELEASED AND MAY CHANGE ANY TIME" .
+
+dlthings:EmailAddress a rdfs:Datatype ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:intersectionOf ( xsd:string [ a rdfs:Datatype ;
+                        owl:onDatatype xsd:string ;
+                        owl:withRestrictions ( [ xsd:pattern "(?:[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?\\.)+[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?|\\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[A-Za-z0-9-]*[A-Za-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])" ] ) ] ) ] .
+
+dlthings:additional_names a owl:DatatypeProperty ;
+    rdfs:label "additional_names" ;
+    dcterms:title "Additional names" ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf dlthings:name ;
+    skos:definition "Additional name(s) associated with the subject, such as one or more middle names." ;
+    skos:exactMatch vcard:additional_name ;
+    skos:inScheme <https://concepts.datalad.org/s/things-social/v1> .
+
+dlthings:annotations a owl:ObjectProperty ;
+    rdfs:label "annotations" ;
+    dcterms:title "Annotations" ;
+    rdfs:range dlthings:Annotation ;
+    skos:definition "A record of properties of the metadata record on a subject, a collection of tag/text tuples with the semantics of OWL Annotation." ;
+    skos:exactMatch obo:NCIT_C44272 ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+dlthings:associated_with a owl:ObjectProperty ;
+    rdfs:label "associated_with" ;
+    rdfs:range dlthings:Association ;
+    rdfs:subPropertyOf dlthings:influenced_by ;
+    skos:definition "An activity association is an assignment of responsibility to an agent for an activity, indicating that the agent had a role in the activity. It further allows for a plan to be specified, which is the plan intended by the agent to achieve some goals in the context of this activity." ;
+    skos:editorialNote "PROV-O \"wasAssociatedWith\" is a short-cut property. \"Association\" also has \"agent\"." ;
+    skos:exactMatch prov:wasAssociatedWith ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+dlthings:attributed_to a owl:ObjectProperty ;
+    rdfs:label "attributed_to" ;
+    rdfs:range dlthings:Attribution ;
+    rdfs:subPropertyOf dlthings:influenced_by ;
+    skos:definition "Attribution is the ascribing of an entity to an agent." ;
+    skos:editorialNote "PROV-O \"wasAttributedTo\" is a short-cut property. \"Attribution\" also has \"agent\"." ;
+    skos:exactMatch prov:wasAttributedTo ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+dlthings:attributes a owl:ObjectProperty ;
+    rdfs:label "attributes" ;
+    dcterms:title "Attributes" ;
+    rdfs:range dlthings:AttributeSpecification ;
+    skos:definition "Declares a relation that associates a `Thing` (or another attribute) with an attribute, where an attribute is an intrinsic characteristic, such as a quality, capability, disposition, function, or is an externally derived attribute determined from some descriptor (e.g. a quantity, position, label/identifier). Technically, this declaration is done via an `AttributeSpecification` that combines a `predicate` with a value declaration and the attribute-related slots of a `Thing`. Importantly, such attributes are declared inline, because they do not have a unique identifier. If an identifier is available, a `Thing` declaration (see `relation`), and a qualification of that relationship via a `Statement` (see `characterized_by`) should be preferred." ;
+    skos:exactMatch sio:SIO_000008 ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+dlthings:broad_mappings a owl:DatatypeProperty ;
+    rdfs:label "broad_mappings" ;
+    dcterms:title "Broad mappings" ;
+    rdfs:range xsd:anyURI ;
+    rdfs:subPropertyOf dlthings:mappings ;
+    skos:definition "A list of terms from different schemas or terminology systems that have broader meaning." ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+dlthings:characterized_by a owl:ObjectProperty ;
+    rdfs:label "characterized_by" ;
+    dcterms:title "Characterized by" ;
+    rdfs:range dlthings:Statement ;
+    skos:definition "Qualifies relationships between a subject `Thing` and an object `Thing` with a `Statement` declaring a `predicate` on the nature of the relationship." ;
+    skos:exactMatch obo:RO_0000053 ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+dlthings:checksums a owl:ObjectProperty ;
+    rdfs:label "checksums" ;
+    rdfs:range dlthings:Checksum ;
+    skos:definition "The checksum property provides a mechanism that can be used to verify that the contents of a file or package have not changed." ;
+    skos:exactMatch spdx:checksum ;
+    skos:inScheme <https://concepts.datalad.org/s/things-files/v1> .
+
+dlthings:close_mappings a owl:DatatypeProperty ;
+    rdfs:label "close_mappings" ;
+    dcterms:title "Close mappings" ;
+    rdfs:range xsd:anyURI ;
+    rdfs:subPropertyOf dlthings:mappings ;
+    skos:definition "A list of terms from different schemas or terminology systems that have close meaning." ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+dlthings:dimensions a owl:ObjectProperty ;
+    rdfs:label "dimensions" ;
+    dcterms:title "Outcomes variables" ;
+    rdfs:range dlthings:Thing ;
+    skos:definition "Associated outcome variables." ;
+    skos:inScheme <https://concepts.datalad.org/s/things-study/v1> .
+
+dlthings:editorial_notes a owl:DatatypeProperty ;
+    rdfs:label "editorial_notes" ;
+    dash:singleLine false ;
+    dcterms:title "Editorial note" ;
+    rdfs:range xsd:string ;
+    skos:definition "A comment about a metadata record either providing additional information for a record curation, or leaving a comment after curation occurred. This can be used to include information that is deemed relevant, but could not be expressed in the provided fields." ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+dlthings:exact_mappings a owl:DatatypeProperty ;
+    rdfs:label "exact_mappings" ;
+    dcterms:title "Exact mappings" ;
+    rdfs:range xsd:anyURI ;
+    rdfs:subPropertyOf dlthings:mappings ;
+    skos:definition "A list of terms from different schemas or terminology systems that have identical meaning." ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+dlthings:factors a owl:ObjectProperty ;
+    rdfs:label "factors" ;
+    dcterms:title "Influencing factors" ;
+    rdfs:range dlthings:Thing ;
+    skos:definition "Factors that influence the subject matter." ;
+    skos:inScheme <https://concepts.datalad.org/s/things-study/v1> .
+
+dlthings:identifiers a owl:ObjectProperty ;
+    rdfs:label "identifiers" ;
+    dcterms:title "Identifiers" ;
+    rdfs:range dlthings:Identifier ;
+    skos:definition "An unambiguous reference to the subject within a given context." ;
+    skos:exactMatch schema1:identifier ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+dlthings:informed_by a owl:ObjectProperty ;
+    rdfs:label "informed_by" ;
+    rdfs:range dlthings:Communication ;
+    rdfs:subPropertyOf dlthings:influenced_by ;
+    skos:definition "Communication is the exchange of an entity by two activities, one activity using the entity generated by the other." ;
+    skos:editorialNote "PROV-O \"wasInformedBy\" is a short-cut property. \"Communication\" also has \"activity\"." ;
+    skos:exactMatch prov:wasInformedBy ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+dlthings:keywords a owl:DatatypeProperty ;
+    rdfs:label "keywords" ;
+    rdfs:range xsd:string ;
+    skos:definition "One or more keywords or tags describing the subject." ;
+    skos:exactMatch IAO:0000629,
+        schema1:keywords,
+        dcat:keyword ;
+    skos:inScheme <https://concepts.datalad.org/s/things-properties/v1> .
+
+dlthings:narrow_mappings a owl:DatatypeProperty ;
+    rdfs:label "narrow_mappings" ;
+    dcterms:title "Narrow mappings" ;
+    rdfs:range xsd:anyURI ;
+    rdfs:subPropertyOf dlthings:mappings ;
+    skos:definition "A list of terms from different schemas or terminology systems that have narrower meaning." ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+dlthings:related_mappings a owl:DatatypeProperty ;
+    rdfs:label "related_mappings" ;
+    dcterms:title "Related mappings" ;
+    rdfs:range xsd:anyURI ;
+    rdfs:subPropertyOf dlthings:mappings ;
+    skos:definition "A list of terms from different schemas or terminology systems that have related meaning." ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+dlthings:relations a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:label "relations" ;
+    dcterms:title "Relations" ;
+    rdfs:range dlthings:Thing ;
+    skos:definition "Declares an unqualified relation of the subject `Thing` to another `Thing`. This schema slot is used to define related things inline. If such a definition is not needed. A qualified relationship can be declared directly using the `characterized_by` slot." ;
+    skos:exactMatch dcterms:relation,
+        dcat:relation ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+dlthings:roles a owl:ObjectProperty ;
+    rdfs:label "roles" ;
+    rdfs:range dlthings:Thing ;
+    skos:definition "Describes the function of an entity or agent (object) within the scope of a relationship with the subject." ;
+    skos:exactMatch dcat:had_role,
+        prov:hadRole ;
+    skos:inScheme <https://concepts.datalad.org/s/things-properties/v1> .
+
+dlthings:rules a owl:ObjectProperty ;
+    rdfs:label "rules" ;
+    dcterms:title "Rules" ;
+    rdfs:range dlthings:Rule ;
+    skos:definition "Permissions, prohibitions, obligations or other rights/policies associated with the resource. This could refer to a standard license, a custom usage agreement, or a codified policy." ;
+    skos:inScheme <https://concepts.datalad.org/s/things-rules/v1> ;
+    skos:narrowMatch dcterms:license,
+        dcterms:rights,
+        ODRL:hasPolicy .
+
+dlthings:same_as a owl:ObjectProperty ;
+    rdfs:label "same_as" ;
+    rdfs:range dlthings:Thing ;
+    skos:closeMatch schema1:sameAs ;
+    skos:definition "Declares that the subject and an object are equal. Can be used to indicate a URL of a reference Web page that unambiguously indicates the subject's identity. For example, the URL of the subject's Wikipedia page, Wikidata entry, or official website." ;
+    skos:exactMatch owl:sameAs ;
+    skos:inScheme <https://concepts.datalad.org/s/things-properties/v1> .
+
+dlthings:used a owl:ObjectProperty ;
+    rdfs:label "used" ;
+    dcterms:title "Used" ;
+    rdfs:range dlthings:Usage ;
+    skos:definition "Usage is the beginning of utilizing an entity by an activity. Before usage, the activity had not begun to utilize this entity and could not have been affected by the entity." ;
+    skos:editorialNote "PROV-O \"used\" is a short-cut property. \"Usage\" also has \"entity\"." ;
+    skos:exactMatch prov:used ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+rdfs:Resource a rdfs:Datatype ;
+    owl:equivalentClass xsd:anyURI .
+
+xsd:nonNegativeInteger a rdfs:Datatype ;
+    owl:equivalentClass xsd:integer .
+
+xyzri:application_deadline a owl:DatatypeProperty ;
+    rdfs:label "application_deadline" ;
+    dcterms:title "Application deadline" ;
+    rdfs:range dlthings:w3ctr-datetime ;
+    skos:definition "The date by which an application, for example a job application, a fellowship application or a grant application, has to be submitted if it is to be considered for acceptance or funding." ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> .
+
+xyzri:entity a owl:ObjectProperty ;
+    rdfs:label "entity" ;
+    rdfs:range dlthings:Thing ;
+    skos:definition "An entity is a physical, digital, conceptual, or other kind of thing with some fixed aspects; entities may be real or imaginary." ;
+    skos:editorialNote "This property exists, because in some cases the needs to be an `object` and an additional property that broadly use a range `Thing`. The concrete, initial use case was PROV's Communication." ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> .
+
+dlthings:Annotation a owl:Class ;
+    rdfs:label "Annotation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom dlthings:AnnotationTag ;
+            owl:onProperty dlthings:annotation_tag ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:annotation_value ],
+        [ a owl:Restriction ;
+            owl:cardinality 1 ;
+            owl:onProperty dlthings:annotation_tag ] ;
+    skos:definition "A tag/value pair with the semantics of OWL Annotation." ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+dlthings:HexBinary a rdfs:Datatype ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:intersectionOf ( xsd:string [ a rdfs:Datatype ;
+                        owl:onDatatype xsd:string ;
+                        owl:withRestrictions ( [ xsd:pattern "^[a-fA-F0-9]+$" ] ) ] ) ] .
+
+dlthings:NamedFilePart a owl:Class ;
+    rdfs:label "NamedFilePart" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:cardinality 1 ;
+            owl:onProperty dlthings:object ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dlthings:File ;
+            owl:onProperty dlthings:object ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( xsd:string [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[^/]+.*$" ] ) ] ) ] ;
+            owl:onProperty dlthings:locator ],
+        [ a owl:Restriction ;
+            owl:cardinality 1 ;
+            owl:onProperty dlthings:locator ] ;
+    skos:definition "An association class for attaching a `locator` as additional information to a `hasPart` relationship between two files." ;
+    skos:inScheme <https://concepts.datalad.org/s/things-files/v1> .
+
+dlthings:about a owl:ObjectProperty ;
+    rdfs:label "about" ;
+    dcterms:title "About" ;
+    rdfs:range dlthings:Thing ;
+    skos:definition "A relation of an information artifact to the subject, such as a URL identifying the topic of a document." ;
+    skos:exactMatch IAO:0000136,
+        schema1:about ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+dlthings:annotation_value a owl:DatatypeProperty ;
+    rdfs:label "annotation_value" ;
+    dcterms:title "Value" ;
+    rdfs:range xsd:string ;
+    skos:definition "The actual annotation." ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+dlthings:at_time a owl:DatatypeProperty ;
+    rdfs:label "at_time" ;
+    rdfs:range dlthings:w3ctr-datetime ;
+    skos:definition "Time at which an instanteneous event takes place or took place." ;
+    skos:exactMatch prov:atTime ;
+    skos:inScheme <https://concepts.datalad.org/s/things-properties/v1> .
+
+dlthings:byte_size a owl:DatatypeProperty ;
+    rdfs:label "byte_size" ;
+    rdfs:range xsd:nonNegativeInteger ;
+    skos:definition "The size of the subject in bytes." ;
+    skos:exactMatch dcat:byteSize ;
+    skos:inScheme <https://concepts.datalad.org/s/things-files/v1> .
+
+dlthings:creator a owl:ObjectProperty ;
+    rdfs:label "creator" ;
+    dcterms:title "Creator" ;
+    rdfs:range dlthings:Thing ;
+    skos:definition "An agent responsible for making an entity." ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+dlthings:defined_by a owl:DatatypeProperty ;
+    rdfs:label "defined_by" ;
+    dcterms:title "Defined by" ;
+    rdfs:range xsd:anyURI ;
+    skos:definition "Indicate a resource defining the subject. This may be a vocabulary that describes the subject." ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+dlthings:delegated_by a owl:ObjectProperty ;
+    rdfs:label "delegated_by" ;
+    rdfs:range dlthings:Delegation ;
+    rdfs:subPropertyOf dlthings:influenced_by ;
+    skos:definition "Delegation is the assignment of authority and responsibility to an agent (by itself or by another agent) to carry out a specific activity as a delegate or representative, while the agent it acts on behalf of retains some responsibility for the outcome of the delegated work. For example, a student acted on behalf of his supervisor, who acted on behalf of the department chair, who acted on behalf of the university; all those agents are responsible in some way for the activity that took place but we do not say explicitly who bears responsibility and to what degree." ;
+    skos:editorialNote "This is PROV-O's \"acted_on_behalf_of\", which is a short-cut property -- \"Delegation\" also identifies an agent.",
+        "naming is different for homogeneity with the other slots" ;
+    skos:exactMatch prov:actedOnBehalfOf ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+dlthings:depends_on a owl:ObjectProperty ;
+    rdfs:label "depends_on" ;
+    rdfs:range dlthings:Thing ;
+    skos:definition "The subject depends on object in some way." ;
+    skos:exactMatch obo:RO_0002502 ;
+    skos:inScheme <https://concepts.datalad.org/s/things-properties/v1> .
+
+dlthings:description a owl:DatatypeProperty ;
+    rdfs:label "description" ;
+    dash:singleLine false ;
+    dcterms:title "Description" ;
+    rdfs:range xsd:string ;
+    skos:broadMatch IAO:0000300 ;
+    skos:closeMatch rdfs:comment ;
+    skos:definition "A free-text account of the subject." ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+dlthings:display_label a owl:DatatypeProperty ;
+    rdfs:label "display_label" ;
+    dcterms:title "Record display label" ;
+    rdfs:range xsd:string ;
+    skos:definition "Label that can be shown when the metadata record is displayed as an item." ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+dlthings:display_note a owl:DatatypeProperty ;
+    rdfs:label "display_note" ;
+    dash:singleLine false ;
+    dcterms:title "Record display note" ;
+    rdfs:range xsd:string ;
+    skos:definition "Note that can be shown when the record is displayed as an item. This is typically longer than a label." ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+dlthings:distribution_of a owl:ObjectProperty ;
+    rdfs:label "distribution_of" ;
+    rdfs:domain dlthings:Distribution ;
+    rdfs:range dlthings:Thing ;
+    owl:inverseOf dlthings:distributions ;
+    skos:broadMatch sio:SIO_000426 ;
+    skos:definition "The resource that the subject is a distribution of." ;
+    skos:inScheme <https://concepts.datalad.org/s/things-distributions/v1> .
+
+dlthings:family_name a owl:DatatypeProperty ;
+    rdfs:label "family_name" ;
+    dcterms:title "Family name" ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf dlthings:name ;
+    skos:definition "The (inherited) family name of the subject. In many Western languages this is the \"last name\"." ;
+    skos:exactMatch vcard:family-name,
+        foaf:familyName ;
+    skos:inScheme <https://concepts.datalad.org/s/things-social/v1> .
+
+dlthings:format a owl:ObjectProperty ;
+    rdfs:label "format" ;
+    rdfs:range dlthings:Thing ;
+    skos:definition "The file format of a distribution." ;
+    skos:editorialNote "When type of the distribution is defined by IANA, `media_type` should be used." ;
+    skos:exactMatch dcterms:format ;
+    skos:inScheme <https://concepts.datalad.org/s/things-files/v1> .
+
+dlthings:formatted_name a owl:DatatypeProperty ;
+    rdfs:label "formatted_name" ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf dlthings:name ;
+    skos:definition "A formatted text corresponding to the name of the subject." ;
+    skos:exactMatch vcard:fn ;
+    skos:inScheme <https://concepts.datalad.org/s/things-social/v1> .
+
+dlthings:given_name a owl:DatatypeProperty ;
+    rdfs:label "given_name" ;
+    dcterms:title "Given name" ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf dlthings:name ;
+    skos:definition "The given (non-inherited) name of the subject." ;
+    skos:exactMatch vcard:given-name,
+        foaf:givenName ;
+    skos:inScheme <https://concepts.datalad.org/s/things-social/v1> .
+
+dlthings:honorific_name_prefix a owl:DatatypeProperty ;
+    rdfs:label "honorific_name_prefix" ;
+    dcterms:title "Title or prefix" ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf dlthings:name ;
+    skos:definition "The honorific prefix(es) of the subject's name. For example, (academic/formal) titles like \"Mrs\", or \"Dr\", \"Dame\"." ;
+    skos:exactMatch vcard:honorific-prefix ;
+    skos:inScheme <https://concepts.datalad.org/s/things-social/v1> .
+
+dlthings:honorific_name_suffix a owl:DatatypeProperty ;
+    rdfs:label "honorific_name_suffix" ;
+    dcterms:title "Suffix" ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf dlthings:name ;
+    skos:definition "The honorific suffix(es) of the subject's name. For example, generation labels (\"III\"), or indicators of an academic degree, a profession, or a position (\"MD\", \"BA\")." ;
+    skos:exactMatch vcard:honorific-suffix ;
+    skos:inScheme <https://concepts.datalad.org/s/things-social/v1> .
+
+dlthings:invalidated_by a owl:ObjectProperty ;
+    rdfs:label "invalidated_by" ;
+    rdfs:range dlthings:Invalidation ;
+    rdfs:subPropertyOf dlthings:influenced_by ;
+    skos:definition "Invalidation is the start of the destruction, cessation, or expiry of an existing entity by an activity. The entity is no longer available for use (or further invalidation) after invalidation. Any generation or usage of an entity precedes its invalidation." ;
+    skos:editorialNote "PROV-O \"wasInvalidatedBy\" is a short-cut property. \"Invalidation\" also identifies an \"entity\"." ;
+    skos:exactMatch prov:wasInvalidatedBy ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+dlthings:media_type a owl:DatatypeProperty ;
+    rdfs:label "media_type" ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://www.iana.org/assignments/media-types> ;
+    skos:definition "The media type of a distribution as defined by IANA" ;
+    skos:exactMatch dcat:mediaType ;
+    skos:inScheme <https://concepts.datalad.org/s/things-files/v1> .
+
+dlthings:nickname a owl:DatatypeProperty ;
+    rdfs:label "nickname" ;
+    dcterms:title "Nickname" ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf dlthings:name ;
+    skos:definition "A short informal, invented given name for a person or thing used instead of the actual name of the person or thing." ;
+    skos:exactMatch vcard:nickname ;
+    skos:inScheme <https://concepts.datalad.org/s/things-social/v1> .
+
+dlthings:pid a owl:DatatypeProperty ;
+    rdfs:label "pid" ;
+    dcterms:title "Persistent identifier" ;
+    rdfs:range xsd:anyURI ;
+    skos:definition "Persistent and globally unique identifier of a `Thing`." ;
+    skos:exactMatch dcterms:identifier,
+        schema1:identifier ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+dlthings:quoted_from a owl:ObjectProperty ;
+    rdfs:label "quoted_from" ;
+    rdfs:range dlthings:Quotation ;
+    rdfs:subPropertyOf dlthings:derived_from ;
+    skos:definition "A quotation is the repeat of (some or all of) an entity, such as text or image, by someone who may or may not be its original author. Quotation is a particular case of derivation." ;
+    skos:editorialNote "PROV-O \"wasQuotedFrom\" is a short-cut property. \"Quotation\" also identifies an \"entity\"." ;
+    skos:exactMatch prov:wasQuotedFrom ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+dlthings:range a owl:DatatypeProperty ;
+    rdfs:label "range" ;
+    dcterms:title "Value type (range)" ;
+    rdfs:range xsd:anyURI ;
+    skos:definition "Declares that the value of a `Thing` or `AttributeSpecification` are instances of a particular class." ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+dlthings:revision_of a owl:ObjectProperty ;
+    rdfs:label "revision_of" ;
+    rdfs:range dlthings:Revision ;
+    rdfs:subPropertyOf dlthings:derived_from ;
+    skos:definition "A revision is a derivation for which the resulting entity is a revised version of some original. The implication here is that the resulting entity contains substantial content from the original. Revision is a particular case of derivation." ;
+    skos:editorialNote "PROV-O \"wasRevisionOf\" is a short-cut property. \"Revision\" also identifies an \"entity\"." ;
+    skos:exactMatch prov:wasRevisionOf ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+dlthings:specialization_of a owl:ObjectProperty ;
+    rdfs:label "specialization_of" ;
+    rdfs:range dlthings:Thing ;
+    rdfs:subPropertyOf dlthings:alternate_of ;
+    skos:definition "An entity that is a specialization of another shares all aspects of the latter, and additionally presents more specific aspects of the same thing as the latter. In particular, the lifetime of the entity being specialized contains that of any specialization. Examples of aspects include a time period, an abstraction, and a context associated with the entity." ;
+    skos:exactMatch prov:specializationOf ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+dlthings:study a owl:ObjectProperty ;
+    rdfs:label "study" ;
+    dcterms:title "Study context" ;
+    rdfs:range dlthings:Study ;
+    skos:definition "The study in which, for example, a subject was investigated." ;
+    skos:inScheme <https://concepts.datalad.org/s/things-study/v1> .
+
+dlthings:unit a owl:DatatypeProperty ;
+    rdfs:label "unit" ;
+    dcterms:title "Unit" ;
+    rdfs:range xsd:anyURI ;
+    skos:definition "A unit of measurement is a standardized quantity of a physical quality." ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+dlthings:value a owl:DatatypeProperty ;
+    rdfs:label "value" ;
+    dcterms:title "Value" ;
+    rdfs:range xsd:string ;
+    skos:definition "Value that is a direct representation of a thing." ;
+    skos:exactMatch rdf:value ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+xyzri:ORCID a owl:Class ;
+    rdfs:label "ORCID" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:notation ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:onDatatype xsd:string ;
+                    owl:withRestrictions ( [ xsd:pattern "^\\d{4}-\\d{4}-\\d{4}-\\d{3}[0-9X]{1}$" ] ) ] ;
+            owl:onProperty xyzri:notation ],
+        dlthings:Identifier ;
+    owl:hasKey ( dlthings:notation ) ;
+    skos:definition "Unique persistent identifier for a person, provided by the Open Researcher and Contributor ID (ORCID) organisation." ;
+    skos:exactMatch IAO:0000708 ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> .
+
+xyzri:XYZAccolade a owl:Class ;
+    rdfs:label "XYZAccolade" ;
+    dcterms:title "Accolade" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZDepiction ;
+            owl:onProperty dlthings:depiction ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:title ],
+        dlthings:EntityMixin,
+        dlthings:Thing ;
+    skos:definition "An award, prize, or other honor received in recognition of an achievement." ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> .
+
+xyzri:XYZActivityRole a owl:Class ;
+    rdfs:label "XYZActivityRole" ;
+    dcterms:title "Activity role" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:name ],
+        dlthings:Thing ;
+    skos:broadMatch dcat:Role,
+        prov:Role ;
+    skos:definition "A role is the function of an activity with respect to a subject, in the context of an influence." ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> .
+
+xyzri:XYZAgentRole a owl:Class ;
+    rdfs:label "XYZAgentRole" ;
+    dcterms:title "Agent role" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:name ],
+        dlthings:Thing ;
+    skos:broadMatch dcat:Role,
+        prov:Role ;
+    skos:definition "A role is the function of an agent with respect to a subject, in the context of an influence." ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> .
+
+xyzri:XYZCompetition a owl:Class ;
+    rdfs:label "XYZCompetition" ;
+    dcterms:title "Competition" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZInfluence ;
+            owl:onProperty xyzri:influenced_by ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZCommunication ;
+            owl:onProperty xyzri:informed_by ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZCompetitionType ;
+            owl:onProperty xyzri:kind ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:title ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:application_deadline ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZTopic ;
+            owl:onProperty xyzri:about ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:kind ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:ended ],
+        dlthings:ActivityMixin,
+        dlthings:Thing ;
+    skos:definition "A process where multiple agents compete for a resource, such as funding, recognition, or participation." ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> ;
+    skos:narrowMatch FRAPO:FundingProgramme .
+
+xyzri:XYZDataItem a owl:Class ;
+    rdfs:label "XYZDataItem" ;
+    dcterms:title "Data item" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:kind ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZDataType ;
+            owl:onProperty xyzri:kind ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZDataset ;
+            owl:onProperty xyzri:part_of ],
+        dlthings:DataItem,
+        dlthings:EntityMixin ;
+    skos:definition """An information content entity that is intended to be a truthful statement about something (modulo, e.g., measurement precision or other systematic errors) and is constructed/acquired by a method which reliably tends to produce (approximately) truthful statements.
+This is a conceptual entity. A single data item might be available in more than one representation, with differing formats, and serializations.""" ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> .
+
+xyzri:XYZDocument a owl:Class ;
+    rdfs:label "XYZDocument" ;
+    dcterms:title "Document" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZBibliographicType ;
+            owl:onProperty xyzri:kind ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZInfluence ;
+            owl:onProperty xyzri:influenced_by ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:kind ],
+        dlthings:Document,
+        dlthings:EntityMixin ;
+    skos:definition "A conceptual entity representing things which a, broadly conceived, \"documents. This includes non-textual things like images. A conceputal document is to be distinguished from its physical, or electronic distributions." ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> .
+
+xyzri:XYZEntityRole a owl:Class ;
+    rdfs:label "XYZEntityRole" ;
+    dcterms:title "Entity role" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:name ],
+        dlthings:Thing ;
+    skos:broadMatch dcat:Role,
+        prov:Role ;
+    skos:definition "A role is the function of an entity with respect to a subject, in the context of an influence." ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> .
+
+xyzri:XYZPerson a owl:Class ;
+    rdfs:label "XYZPerson" ;
+    dcterms:title "Person" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZInfluence ;
+            owl:onProperty xyzri:influenced_by ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:nickname ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZDepiction ;
+            owl:onProperty dlthings:depiction ],
+        dlthings:AgentMixin,
+        dlthings:Person ;
+    skos:definition "Person agents are people, alive, dead, or fictional." ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> .
+
+xyzri:XYZPublication a owl:Class ;
+    rdfs:label "XYZPublication" ;
+    dcterms:title "Publication" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZBibliographicType ;
+            owl:onProperty xyzri:kind ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:title ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:kind ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZDepiction ;
+            owl:onProperty dlthings:depiction ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZTopic ;
+            owl:onProperty xyzri:about ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZInfluence ;
+            owl:onProperty xyzri:influenced_by ],
+        dlthings:EntityMixin,
+        dlthings:Publication ;
+    skos:definition "A resource that is the output of a publishing process." ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> .
+
+xyzri:XYZPublicationVenue a owl:Class ;
+    rdfs:label "XYZPublicationVenue" ;
+    dcterms:title "Publication venue" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:title ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:kind ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZBibliographicType ;
+            owl:onProperty dlthings:kind ],
+        dlthings:Thing ;
+    skos:definition "\"Place\" of a publication, e.g., a journal, a website, an edited collection." ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> .
+
+xyzri:XYZQuality a owl:Class ;
+    rdfs:label "XYZQuality" ;
+    dcterms:title "Quality" ;
+    rdfs:subClassOf dlthings:Thing ;
+    skos:definition "A quality is an attribute that is intrinsically associated with its bearer (or its parts), but whose presence/absence and observed/measured value may vary." ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> .
+
+xyzri:XYZSubject a owl:Class ;
+    rdfs:label "XYZSubject" ;
+    dcterms:title "Subject" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZStudy ;
+            owl:onProperty xyzri:study ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZSubjectType ;
+            owl:onProperty xyzri:kind ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:kind ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:study ],
+        dlthings:EntityMixin,
+        dlthings:Subject ;
+    skos:definition "A subject is an entity being investigated in a study. This is a contextual entity. One and the same individual can be different subjects in two different studies." ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> .
+
+dlthings:AgentMixin a owl:Class ;
+    rdfs:label "AgentMixin" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:delegated_by ] ;
+    skos:definition "Something that bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity." ;
+    skos:exactMatch prov:Agent ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+dlthings:DOI a owl:Class ;
+    rdfs:label "DOI" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:onDatatype xsd:string ;
+                    owl:withRestrictions ( [ xsd:pattern "(?i)^(?!(?:https?://|doi:)).+$" ] ) ] ;
+            owl:onProperty xyzri:notation ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:notation ],
+        dlthings:Identifier ;
+    owl:hasKey ( dlthings:notation ) ;
+    skos:definition "Digital Object Identifier (DOI; ISO 26324), an identifier system governed by the DOI Foundation, where individual identifiers are issued by one of several registration agencies." ;
+    skos:inScheme <https://concepts.datalad.org/s/things-publications/v1> .
+
+dlthings:ISSN a owl:Class ;
+    rdfs:label "ISSN" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:notation ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:onDatatype xsd:string ;
+                    owl:withRestrictions ( [ xsd:pattern "^\\d{4}-\\d{3}[\\dX]$" ] ) ] ;
+            owl:onProperty xyzri:notation ],
+        dlthings:Identifier ;
+    owl:hasKey ( dlthings:notation ) ;
+    skos:definition "International Standard Serial Number (ISSN)." ;
+    skos:inScheme <https://concepts.datalad.org/s/things-publications/v1> ;
+    skos:note "The creator is ror:026ytr635" ;
+    skos:relatedMatch schema1:issn .
+
+dlthings:Statement a owl:Class ;
+    rdfs:label "Statement" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:cardinality 1 ;
+            owl:onProperty dlthings:predicate ],
+        [ a owl:Restriction ;
+            owl:cardinality 1 ;
+            owl:onProperty dlthings:object ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dlthings:Property ;
+            owl:onProperty dlthings:predicate ] ;
+    skos:definition "An RDF statement that links a `predicate` (a `Property`) with an `object` (a `Thing`) to the subject to form a triple. A `Statement` is used to qualify a relation to a `Thing` referenced by its identifier. For specifying a qualified relation to an attribute that has no dedicated identifier, use an `AttributeSpecification`." ;
+    skos:exactMatch rdf:Statement,
+        dlthings:Statement ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+dlthings:ValueSpecification a owl:Class ;
+    rdfs:label "ValueSpecification" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:cardinality 1 ;
+            owl:onProperty xyzri:value ],
+        dlthings:Thing,
+        dlthings:ValueSpecificationMixin ;
+    skos:definition "A `Thing` that is a value of some kind. This class can be used to describe an outcome of a measurement, a factual value or constant, or other qualitative or quantitative information with an associated identifier. If no identifier is available, an `AttributeSpecification` can be used within the context of an associated `Thing` (`attributes`)." ;
+    skos:exactMatch obo:OBI_0001933 ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+dlthings:alternate_of a owl:ObjectProperty ;
+    rdfs:label "alternate_of" ;
+    rdfs:range dlthings:Thing ;
+    skos:definition "Two alternate entities present aspects of the same thing. These aspects may be the same or different, and the alternate entities may or may not overlap in time." ;
+    skos:exactMatch prov:alternateOf ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+dlthings:annotation_tag a owl:ObjectProperty ;
+    rdfs:label "annotation_tag" ;
+    dcterms:title "Tag" ;
+    rdfs:range dlthings:Thing ;
+    skos:definition "A tag identifying an annotation." ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+dlthings:at_location a owl:ObjectProperty ;
+    rdfs:label "at_location" ;
+    rdfs:range dlthings:Thing ;
+    skos:definition "Associate the subject with a location. This can be a geographic place, or another uniquely identified object." ;
+    skos:editorialNote "For specifying a context-specific location see `locator`." ;
+    skos:exactMatch schema1:location,
+        prov:atLocation ;
+    skos:inScheme <https://concepts.datalad.org/s/things-properties/v1> .
+
+dlthings:conforms_to a owl:ObjectProperty ;
+    rdfs:label "conforms_to" ;
+    rdfs:range dlthings:Thing ;
+    skos:definition "An established standard to which the subject conforms." ;
+    skos:exactMatch dcterms:conformsTo ;
+    skos:inScheme <https://concepts.datalad.org/s/things-properties/v1> ;
+    skos:note "This property SHOULD be used to indicate a model, schema, ontology, view or profile that the subject conforms to." .
+
+dlthings:derived_from a owl:ObjectProperty ;
+    rdfs:label "derived_from" ;
+    dcterms:title "Derived from" ;
+    rdfs:range dlthings:Derivation ;
+    rdfs:subPropertyOf dlthings:influenced_by ;
+    skos:definition "A entity from which the subject was created through some kind of process. Derivation is a transformation of an entity into another, an update of an entity resulting in a new one, or the construction of a new entity based on a pre-existing entity." ;
+    skos:editorialNote "PROV-O \"wasDerivedFrom\" is a short-cut property. \"Derivation\" also has \"entity\"." ;
+    skos:exactMatch prov:wasDerivedFrom ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+dlthings:distributions a owl:ObjectProperty ;
+    rdfs:label "distributions" ;
+    dcterms:title "Distributions" ;
+    rdfs:domain dlthings:Thing ;
+    rdfs:range dlthings:Distribution ;
+    owl:inverseOf dlthings:distribution_of ;
+    skos:broadMatch sio:SIO_000341 ;
+    skos:definition "Available distributions of an entity." ;
+    skos:exactMatch dcat:distribution ;
+    skos:inScheme <https://concepts.datalad.org/s/things-distributions/v1> .
+
+dlthings:generated_by a owl:ObjectProperty ;
+    rdfs:label "generated_by" ;
+    dcterms:title "Generated by" ;
+    rdfs:range dlthings:Generation ;
+    rdfs:subPropertyOf dlthings:influenced_by ;
+    skos:definition "Identification of the process that led to the production of the subject entity. Generation is the completion of production of a new entity by an activity. This entity did not exist before generation and becomes available for usage after this generation." ;
+    skos:editorialNote "PROV-O \"wasGeneratedBy\" is a short-cut property. \"Generation\" also has \"activity\"." ;
+    skos:exactMatch prov:wasGeneratedBy ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+dlthings:locator a owl:DatatypeProperty ;
+    rdfs:label "locator" ;
+    rdfs:range xsd:string ;
+    skos:definition "A descriptive identifier that locates a resource within a containing resource. This can be a unique name, a numerical key, or another notation that uniquely identifies the subject within the containing resource." ;
+    skos:editorialNote "For specifying a location via a globally unique identifier see `at_location`." ;
+    skos:exactMatch bibo:locator ;
+    skos:inScheme <https://concepts.datalad.org/s/things-properties/v1> .
+
+dlthings:parts a owl:ObjectProperty ;
+    rdfs:label "parts" ;
+    rdfs:domain dlthings:Thing ;
+    rdfs:range dlthings:Thing ;
+    owl:inverseOf dlthings:part_of ;
+    skos:definition "A related resource that is included either physically or logically in the described resource." ;
+    skos:exactMatch dcterms:hasPart,
+        schema1:hasPart ;
+    skos:inScheme <https://concepts.datalad.org/s/things-properties/v1> .
+
+dlthings:version_of a owl:ObjectProperty ;
+    rdfs:label "version_of" ;
+    rdfs:range dlthings:Thing ;
+    skos:definition "A related resource of which the described resource is a version, edition, or adaptation." ;
+    skos:exactMatch dcterms:isVersionOf ;
+    skos:inScheme <https://concepts.datalad.org/s/things-properties/v1> .
+
+dlthings:w3ctr-datetime a rdfs:Datatype ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:intersectionOf ( xsd:string [ a rdfs:Datatype ;
+                        owl:onDatatype xsd:string ;
+                        owl:withRestrictions ( [ xsd:pattern "^([-+]\\d+)|(\\d{4})|(\\d{4}-[01]\\d)|(\\d{4}-[01]\\d-[0-3]\\d)|(\\d{4}-[01]\\d-[0-3]\\dT[0-2]\\d:[0-5]\\d:[0-5]\\d\\.\\d+([+-][0-2]\\d:[0-5]\\d|Z))|(\\d{4}-[01]\\d-[0-3]\\dT[0-2]\\d:[0-5]\\d:[0-5]\\d([+-][0-2]\\d:[0-5]\\d|Z))|(\\d{4}-[01]\\d-[0-3]\\dT[0-2]\\d:[0-5]\\d([+-][0-2]\\d:[0-5]\\d|Z))$" ] ) ] ) ] .
+
+xyzri:XYZActivity a owl:Class ;
+    rdfs:label "XYZActivity" ;
+    dcterms:title "Activity" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZActivity ;
+            owl:onProperty dlthings:part_of ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:name ],
+        dlthings:ActivityMixin,
+        dlthings:Thing ;
+    skos:broadMatch obo:BFO_0000015 ;
+    skos:definition """An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.
+The primary purpose of this metadata type is the descriptions of an entity's provenance (e.g., the identification of the (data) generating activity).""" ;
+    skos:exactMatch prov:Activity ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> .
+
+xyzri:XYZCompetitionType a owl:Class ;
+    rdfs:label "XYZCompetitionType" ;
+    dcterms:title "Competition type" ;
+    rdfs:subClassOf dlthings:Thing ;
+    skos:definition "Type of a competitions, e.g., call for proposals, horse race, job opening." ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> .
+
+xyzri:XYZDepictionType a owl:Class ;
+    rdfs:label "XYZDepictionType" ;
+    dcterms:title "Depiction type" ;
+    rdfs:subClassOf dlthings:Thing ;
+    skos:definition "Type of a depiction." ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> .
+
+xyzri:XYZFile a owl:Class ;
+    rdfs:label "XYZFile" ;
+    dcterms:title "File" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom dlthings:Convention ;
+            owl:onProperty dlthings:conforms_to ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZInfluence ;
+            owl:onProperty xyzri:influenced_by ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:kind ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZDataType ;
+            owl:onProperty xyzri:kind ],
+        dlthings:EntityMixin,
+        dlthings:File ;
+    skos:definition "A specific representation of a data item, which may come in the form of an electronic file, or an archive or (also) a directory comprising many files." ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> .
+
+xyzri:XYZGrant a owl:Class ;
+    rdfs:label "XYZGrant" ;
+    dcterms:title "Grant" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZInfluence ;
+            owl:onProperty xyzri:influenced_by ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZGrant ;
+            owl:onProperty xyzri:part_of ],
+        dlthings:EntityMixin,
+        dlthings:Grant ;
+    skos:definition "A grant, typically financial or otherwise quantifiable, resources." ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> .
+
+xyzri:XYZInstrument a owl:Class ;
+    rdfs:label "XYZInstrument" ;
+    dcterms:title "Instrument" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZDepiction ;
+            owl:onProperty dlthings:depiction ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZInfluence ;
+            owl:onProperty xyzri:influenced_by ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZInstrumentType ;
+            owl:onProperty xyzri:kind ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:kind ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZInstrument ;
+            owl:onProperty dlthings:part_of ],
+        dlthings:EntityMixin,
+        dlthings:Instrument ;
+    skos:definition """A thing that enables an agent to perform an action. This is typically a device (e.g., a machine to perform a particular type of measurement), but it can also be a questionnaire that is used to perform a particular kind of assessment.
+An instrument is typically neither a "reagent", nor an abstract concept. For example, in the case of behavioral experiment with a particular stimulus, only the concrete implementation of the stimulation would be considered an `Instrument`, while the underlying abstract paradigm would be captured as a `Concept`. In the case of a personality test, the `Instrument` is a concrete questionnaire implementation, whereas an underlying personality model factor is to be considered as a `Concept`.
+The primary purpose of this metadata type is the identification of instruments used in (data) generating activities.""" ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> .
+
+xyzri:XYZInstrumentType a owl:Class ;
+    rdfs:label "XYZInstrumentType" ;
+    dcterms:title "Instrument type" ;
+    rdfs:subClassOf dlthings:Thing ;
+    skos:definition "Type of an instrument." ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> .
+
+xyzri:XYZOrganization a owl:Class ;
+    rdfs:label "XYZOrganization" ;
+    dcterms:title "Organization" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZInfluence ;
+            owl:onProperty xyzri:influenced_by ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZOrganization ;
+            owl:onProperty xyzri:part_of ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZDepiction ;
+            owl:onProperty dlthings:depiction ],
+        dlthings:AgentMixin,
+        dlthings:Organization ;
+    skos:definition "A social or legal institution such as a company, a society, or a university." ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> .
+
+xyzri:XYZProject a owl:Class ;
+    rdfs:label "XYZProject" ;
+    dcterms:title "Project" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZDepiction ;
+            owl:onProperty dlthings:depiction ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:started ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZProject ;
+            owl:onProperty dlthings:part_of ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZInfluence ;
+            owl:onProperty xyzri:influenced_by ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZCommunication ;
+            owl:onProperty xyzri:informed_by ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:ended ],
+        dlthings:ActivityMixin,
+        dlthings:Project ;
+    skos:definition "A collective endeavour of some kind. Typically it is a planned process that is undertaken or attempted to meet some requirement, or to achieve a particular goal." ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> .
+
+xyzri:XYZStudy a owl:Class ;
+    rdfs:label "XYZStudy" ;
+    dcterms:title "Study" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:kind ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZDepiction ;
+            owl:onProperty dlthings:depiction ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZConcept ;
+            owl:onProperty xyzri:dimensions ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZConcept ;
+            owl:onProperty xyzri:factors ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZSubjectType ;
+            owl:onProperty xyzri:kind ],
+        dlthings:ActivityMixin,
+        dlthings:Study ;
+    skos:definition "A planned process that consists of parts: planning, study design execution, documentation and which produce conclusion(s). An investigational endeavour that involves research, enabled by a project. The study relates to the scholarly and practical aspects of conducting the research itself, including the hypotheses being investigated, the data being gathered and analysed, the interpretations being drawn from the data, and the results obtained. In contrast, a project that enables it encompasses the administrative aspects of undertaking the endeavour, including the funding obtained, the people involved, and the management of the project in terms of deadlines and deliverables." ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> .
+
+dlthings:AnnotationTag a owl:Class ;
+    rdfs:label "AnnotationTag" ;
+    dcterms:title "Annotation tag" ;
+    rdfs:subClassOf dlthings:Thing ;
+    skos:definition "A tag identifying an annotation." ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+dlthings:Association a owl:Class ;
+    rdfs:label "Association" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:ended ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:started ],
+        dlthings:AgentInfluence ;
+    skos:definition "An activity association is an assignment of responsibility to an agent for an activity, indicating that the agent had a role in the activity." ;
+    skos:exactMatch prov:Association ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+dlthings:AttributeSpecification a owl:Class ;
+    rdfs:label "AttributeSpecification" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom dlthings:Property ;
+            owl:onProperty dlthings:predicate ],
+        [ a owl:Restriction ;
+            owl:cardinality 1 ;
+            owl:onProperty dlthings:predicate ],
+        dlthings:ThingMixin,
+        dlthings:ValueSpecificationMixin ;
+    skos:closeMatch dlthings:Thing ;
+    skos:definition "An attribute is conceptually a thing, but it requires no dedicated identifier (`pid`). Instead, it is linked to a `Thing` via its `attributes` slot and declares a `predicate` on the nature of the relationship." ;
+    skos:exactMatch sio:SIO_000614 ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+dlthings:Attribution a owl:Class ;
+    rdfs:label "Attribution" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:object ],
+        dlthings:AgentInfluence ;
+    skos:definition "Attribution is the ascribing of an entity to an agent. When an entity e is attributed to agent ag, entity e was generated by some unspecified activity that in turn was associated to agent ag. Thus, this relation is useful when the activity is not known, or irrelevant." ;
+    skos:exactMatch prov:Attribution ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+dlthings:Checksum a owl:Class ;
+    rdfs:label "Checksum" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:cardinality 1 ;
+            owl:onProperty xyzri:notation ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dlthings:HexBinary ;
+            owl:onProperty xyzri:notation ],
+        [ a owl:Restriction ;
+            owl:cardinality 1 ;
+            owl:onProperty xyzri:creator ],
+        dlthings:Identifier ;
+    skos:definition "A Checksum is a value that allows to check the integrity of the contents of a file. Even small changes to the content of the file will change its checksum. This class allows the results of a variety of checksum and cryptographic message digest algorithms to be represented." ;
+    skos:exactMatch spdx:Checksum ;
+    skos:inScheme <https://concepts.datalad.org/s/things-files/v1> .
+
+dlthings:DataItem a owl:Class ;
+    rdfs:label "DataItem" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom dlthings:Dataset ;
+            owl:onProperty dlthings:part_of ],
+        dlthings:Thing,
+        dlthings:ValueSpecificationMixin ;
+    skos:definition """An information content entity that is intended to be a truthful statement about something (modulo, e.g., measurement precision or other systematic errors) and is constructed/acquired by a method which reliably tends to produce (approximately) truthful statements.
+This is a conceptual entity. A single data item might be available in more than one representation, with differing formats, and serializations.""" ;
+    skos:exactMatch IAO:0000027 ;
+    skos:inScheme <https://concepts.datalad.org/s/things-data/v1> .
+
+dlthings:Delegation a owl:Class ;
+    rdfs:label "Delegation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:ended ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:started ],
+        dlthings:AgentInfluence ;
+    skos:definition "Delegation is the assignment of authority and responsibility to an agent (by itself or by another agent) to carry out a specific activity as a delegate or representative, while the agent it acts on behalf of retains some responsibility for the outcome of the delegated work. For example, a student acted on behalf of his supervisor, who acted on behalf of the department chair, who acted on behalf of the university; all those agents are responsible in some way for the activity that took place but we do not say explicitly who bears responsibility and to what degree." ;
+    skos:exactMatch prov:Delegation ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+dlthings:End a owl:Class ;
+    rdfs:label "End" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:object ],
+        dlthings:EntityInfluence,
+        dlthings:InstantaneousEventMixin ;
+    skos:definition "End is when an activity is deemed to have been ended by an entity, known as trigger. The activity no longer exists after its end. Any usage, generation, or invalidation involving an activity precedes the activity's end. An end may refer to a trigger entity that terminated the activity, or to an activity, known as ender that generated the trigger." ;
+    skos:exactMatch prov:End ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+dlthings:Generation a owl:Class ;
+    rdfs:label "Generation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:object ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:at_time ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:at_location ],
+        dlthings:ActivityInfluence,
+        dlthings:InstantaneousEventMixin ;
+    skos:definition "Generation is the completion of production of a new entity by an activity. This entity did not exist before generation and becomes available for usage after this generation." ;
+    skos:exactMatch prov:Generation ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+dlthings:Instrument a owl:Class ;
+    rdfs:label "Instrument" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:name ],
+        dlthings:Thing ;
+    skos:definition "A thing that enables an agent to perform an action. This is typically a device (e.g., a machine to perform a particular type of measurement), but it can also be a questionnaire that is used to perform a particular kind of assessment. An instrument is typically not a \"reagent\"." ;
+    skos:editorialNote "It is unclear whether an instrument `name` would provide meaningful and precise information (vs a description or an identifier). There is `display_label`, if the need for a name is just for display purposes (e.g., to say something generic like 'thermometer').",
+        "Slot `name` is added to avoid `display_label` having to carry unique information." ;
+    skos:inScheme <https://concepts.datalad.org/s/things-resources/v1> ;
+    skos:narrowMatch obo:NCIT_C62103 ;
+    skos:relatedMatch schema1:instrument .
+
+dlthings:Invalidation a owl:Class ;
+    rdfs:label "Invalidation" ;
+    rdfs:subClassOf dlthings:ActivityInfluence,
+        dlthings:InstantaneousEventMixin ;
+    skos:definition "Invalidation is the start of the destruction, cessation, or expiry of an existing entity by an activity. The entity is no longer available for use (or further invalidation) after invalidation. Any generation or usage of an entity precedes its invalidation." ;
+    skos:exactMatch prov:Invalidation ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+dlthings:Person a owl:Class ;
+    rdfs:label "Person" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:family_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:given_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:honorific_name_prefix ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:honorific_name_suffix ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:formatted_name ],
+        dlthings:Thing ;
+    skos:definition "Person agents are people, alive, dead, or fictional." ;
+    skos:exactMatch prov:Person,
+        foaf:Person ;
+    skos:inScheme <https://concepts.datalad.org/s/things-social/v1> .
+
+dlthings:Project a owl:Class ;
+    rdfs:label "Project" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:title ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:short_name ],
+        dlthings:Thing ;
+    skos:broadMatch obo:BFO_0000015 ;
+    skos:closeMatch obo:NCIT_C47885 ;
+    skos:definition "A collective endeavour of some kind. Typically it is a planned process that is undertaken or attempted to meet some requirement, or to achieve a particular goal." ;
+    skos:exactMatch foaf:Project ;
+    skos:inScheme <https://concepts.datalad.org/s/things-social/v1> .
+
+dlthings:Publication a owl:Class ;
+    rdfs:label "Publication" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:title ],
+        dlthings:Thing ;
+    skos:definition "A resource that is the output of a publishing process." ;
+    skos:editorialNote "There is not slot to indicate authorship, or a publication venue. This is left to a PROV attribution." ;
+    skos:exactMatch IAO:0000311 ;
+    skos:inScheme <https://concepts.datalad.org/s/things-publications/v1> .
+
+dlthings:Quotation a owl:Class ;
+    rdfs:label "Quotation" ;
+    rdfs:subClassOf dlthings:Derivation ;
+    skos:definition "A quotation is the repeat of (some or all of) an entity, such as text or image, by someone who may or may not be its original author. Quotation is a particular case of derivation." ;
+    skos:exactMatch prov:Quotation ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+dlthings:Revision a owl:Class ;
+    rdfs:label "Revision" ;
+    rdfs:subClassOf dlthings:Derivation ;
+    skos:definition "A revision is a derivation for which the resulting entity is a revised version of some original. The implication here is that the resulting entity contains substantial content from the original. Revision is a particular case of derivation." ;
+    skos:exactMatch prov:Revision ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+dlthings:Rule a owl:Class ;
+    rdfs:label "Rule" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:title ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:short_name ],
+        dlthings:Thing ;
+    skos:definition "Permissions, prohibitions, obligations or other rights/policies. This can be a standard license, a custom usage agreement, or a codified policy." ;
+    skos:inScheme <https://concepts.datalad.org/s/things-rules/v1> .
+
+dlthings:Start a owl:Class ;
+    rdfs:label "Start" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:object ],
+        dlthings:EntityInfluence,
+        dlthings:InstantaneousEventMixin ;
+    skos:definition "Start is when an activity is deemed to have been started by an entity, known as trigger. The activity did not exist before its start. Any usage, generation, or invalidation involving an activity follows the activity's start. A start may refer to a trigger entity that set off the activity, or to an activity, known as starter, that generated the trigger." ;
+    skos:exactMatch prov:Start ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+dlthings:Subject a owl:Class ;
+    rdfs:label "Subject" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:kind ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:study ],
+        dlthings:Thing ;
+    skos:definition "A subject is an entity being investigated in a study. This is a contextual entity. One and the same entity can be different subjects in two different studies." ;
+    skos:inScheme <https://concepts.datalad.org/s/things-study/v1> ;
+    skos:note "Rather than adding a `name` slot to assign a subject identifier, the `identifiers` slot should be used for that -- possible also identifying the issuing entity of that identifier via `creator`." .
+
+dlthings:Usage a owl:Class ;
+    rdfs:label "Usage" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:at_time ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:object ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:at_location ],
+        dlthings:EntityInfluence,
+        dlthings:InstantaneousEventMixin ;
+    skos:definition "Usage is the beginning of utilizing an entity by an activity. Before usage, the activity had not begun to utilize this entity and could not have been affected by the entity." ;
+    skos:exactMatch prov:Usage ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+dlthings:ValueSpecificationMixin a owl:Class ;
+    rdfs:label "ValueSpecificationMixin" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:range ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:unit ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:defined_by ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:value ] ;
+    skos:definition "Mix-in for a (structured) value specification. Two slots are provided to define a (literal) value (`value`) and its type (`range`)." ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> ;
+    skos:note "This mixin enables the expression of quantitative and qualitative assessments/measurements/values. For a quantitative value, the numerical value, and a possible unit is given. For a qualitative value, `defined_by` is used to identify the quality of the assessment from a controlled vocabulary or standard term." .
+
+dlthings:kind a owl:ObjectProperty ;
+    rdfs:label "kind" ;
+    dcterms:title "Kind" ;
+    rdfs:range dlthings:Thing ;
+    skos:definition "The nature of the subject." ;
+    skos:exactMatch dcterms:type ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> ;
+    skos:note "This is conceptually the same as an instance-level `broad_mappings`. It can make sense to use this slot (in addition) in order to enable straightforward type declarations for instances from a controlled, application specific vocabulary, while also keeping the ability to use `broad_mappings` for alignment with external vocabularies and applications." .
+
+xyzri:XYZCommunication a owl:Class ;
+    rdfs:label "XYZCommunication" ;
+    dcterms:title "Communication" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:entity ],
+        dlthings:Communication ;
+    skos:definition "The exchange of an entity by two activities, one activity using the entity generated by the other. This implies a dependency of the subject activity on the associated activity." ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> .
+
+xyzri:XYZConcept a owl:Class ;
+    rdfs:label "XYZConcept" ;
+    dcterms:title "Concept" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:title ],
+        dlthings:Thing ;
+    skos:definition """An idea or notion; a unit of thought.
+In the context of a study, this can be a tag associated with a categorical, independent variable in a study design, an investigative role (e.g., treatments), or an organizational nature (e.g., site labels), or a dependent or outcome variable.
+`Concept` is related to `Topic`. However a concept is more focused and more clearly delineated in comparison.
+The primary purpose of this metadata type is the identification of influencing factors or outcome variable related to (scientific) investigations.""" ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> ;
+    skos:note "The relationship of a focused concept with the broader concept can be described via `broader_mappings`." .
+
+xyzri:XYZDataset a owl:Class ;
+    rdfs:label "XYZDataset" ;
+    dcterms:title "Dataset" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZInfluence ;
+            owl:onProperty xyzri:influenced_by ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZDataType ;
+            owl:onProperty xyzri:kind ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:kind ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZDepiction ;
+            owl:onProperty dlthings:depiction ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZDataset ;
+            owl:onProperty xyzri:part_of ],
+        dlthings:Dataset,
+        dlthings:EntityMixin ;
+    skos:definition "A collection of data, published or curated by a single agent. This is a conceptual entity. A single dataset might be available in more than one representation, with differing schematic layouts, formats, and serializations." ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> .
+
+xyzri:XYZObjective a owl:Class ;
+    rdfs:label "XYZObjective" ;
+    dcterms:title "Objective" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZObjective ;
+            owl:onProperty dlthings:depends_on ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZObjective ;
+            owl:onProperty dlthings:part_of ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZDepiction ;
+            owl:onProperty dlthings:depiction ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:title ],
+        dlthings:EntityMixin,
+        dlthings:Thing ;
+    skos:definition "A proposition that indicates a planned or anticipated outcome." ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> .
+
+xyzri:XYZSubjectType a owl:Class ;
+    rdfs:label "XYZSubjectType" ;
+    dcterms:title "Subject type" ;
+    rdfs:subClassOf dlthings:Thing ;
+    skos:definition "Type of a subject (e.g., human study participant, soil sample, cell culture)." ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> .
+
+dlthings:ActivityMixin a owl:Class ;
+    rdfs:label "ActivityMixin" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:ended ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:started ] ;
+    skos:definition "An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities." ;
+    skos:exactMatch prov:Activity ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+dlthings:Communication a owl:Class ;
+    rdfs:label "Communication" ;
+    rdfs:subClassOf dlthings:ActivityInfluence ;
+    skos:definition "Communication is the exchange of an entity by two activities, one activity using the entity generated by the other." ;
+    skos:exactMatch prov:Communication ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+dlthings:Convention a owl:Class ;
+    rdfs:label "Convention" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:short_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:title ],
+        dlthings:Thing ;
+    skos:definition "A set of agreed, stipulated, or generally accepted standards, norms, social norms, or criteria, often taking the form of a custom." ;
+    skos:exactMatch obo:GSSO_010111,
+        obo:NCIT_C61300 ;
+    skos:inScheme <https://concepts.datalad.org/s/things-resources/v1> ;
+    skos:narrowMatch obo:MS_1000898,
+        obo:T4FS_0000381 .
+
+dlthings:Document a owl:Class ;
+    rdfs:label "Document" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:title ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dlthings:Document ;
+            owl:onProperty dlthings:part_of ],
+        dlthings:Thing ;
+    skos:definition "A conceptual entity representing things which a, broadly conceived, \"documents. This includes non-textual things like images. A conceputal document is to be distinguished from its physical, or electronic distributions." ;
+    skos:editorialNote "A document typically has at least one author. However, there are also generated documents (e.g., a birth certificate) for which this is irrelevant. And there are more roles that could be relevant for a document's provenance. Rather than adding them all, none is provided. PROV should be used to express this information.",
+        "The key difference between a dataset and a document is the collection-nature of the dataset (multiple items of a kind in a collection), whereas a document is \"one of its kind\". A dataset could comprise multiple documents." ;
+    skos:exactMatch foaf:Document ;
+    skos:inScheme <https://concepts.datalad.org/s/things-resources/v1> .
+
+dlthings:Grant a owl:Class ;
+    rdfs:label "Grant" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:title ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:short_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dlthings:Grant ;
+            owl:onProperty dlthings:part_of ],
+        dlthings:Thing ;
+    skos:definition "A grant, typically financial or otherwise quantifiable, resources." ;
+    skos:editorialNote "A grant is not a document. The associated document would be the grant agreement." ;
+    skos:exactMatch obo:NCIT_C16644,
+        schema1:Grant ;
+    skos:inScheme <https://concepts.datalad.org/s/things-resources/v1> .
+
+dlthings:Organization a owl:Class ;
+    rdfs:label "Organization" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:short_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dlthings:Organization ;
+            owl:onProperty dlthings:part_of ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:at_location ],
+        dlthings:Thing ;
+    skos:definition "A social or legal institution such as a company, a society, or a university." ;
+    skos:exactMatch prov:Organization ;
+    skos:inScheme <https://concepts.datalad.org/s/things-social/v1> .
+
+dlthings:ended a owl:ObjectProperty ;
+    rdfs:label "ended" ;
+    rdfs:range dlthings:End ;
+    rdfs:subPropertyOf dlthings:influenced_by ;
+    skos:definition "End is when an activity is deemed to have been ended by an entity, known as trigger. The activity no longer exists after its end. Any usage, generation, or invalidation involving an activity precedes the activity's end. An end may refer to a trigger entity that terminated the activity, or to an activity, known as ender that generated the trigger." ;
+    skos:editorialNote "PROV-O \"endedAt\" is a short-cut property. \"Start\" also has \"atTime\".",
+        "same naming remarks as for \"started\" apply." ;
+    skos:exactMatch prov:wasEndedBy ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+dlthings:notation a owl:DatatypeProperty ;
+    rdfs:label "notation" ;
+    dcterms:title "Notation" ;
+    rdfs:range xsd:string ;
+    skos:definition "String of characters such as \"T58:5\" or \"30:4833\" used to uniquely identify a concept within the scope of a given concept scheme." ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+dlthings:object a owl:ObjectProperty ;
+    rdfs:label "object" ;
+    dcterms:title "Object" ;
+    rdfs:range dlthings:Thing ;
+    skos:definition "Reference to a `Thing` within a `Statement`." ;
+    skos:exactMatch rdf:object ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+dlthings:predicate a owl:ObjectProperty ;
+    rdfs:label "predicate" ;
+    dcterms:title "Predicate" ;
+    rdfs:range dlthings:Thing ;
+    skos:definition "Reference to a `Property` within a `Statement`." ;
+    skos:exactMatch rdf:predicate ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+dlthings:started a owl:ObjectProperty ;
+    rdfs:label "started" ;
+    rdfs:range dlthings:Start ;
+    rdfs:subPropertyOf dlthings:influenced_by ;
+    skos:definition "Start is when an activity is deemed to have been started by an entity, known as trigger. The activity did not exist before its start. Any usage, generation, or invalidation involving an activity follows the activity's start. A start may refer to a trigger entity that set off the activity, or to an activity, known as starter, that generated the trigger." ;
+    skos:editorialNote "PROV-O \"startedAt\" is a short-cut property. \"Start\" also has \"atTime\".",
+        "name is just started, because the association class Start has both time information and trigger information. Hence the name needs to capture both started_by and started_at. \"started\" has the unfortunate ambiguity of having started an activity, however the range \"Start\" is an \"EntityInfluence\" where the linked \"object\" is an Entity -- hopefully limiting the confusion." ;
+    skos:exactMatch prov:wasStartedBy ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+xyzri:XYZBibliographicType a owl:Class ;
+    rdfs:label "XYZBibliographicType" ;
+    dcterms:title "Bibliographic type" ;
+    rdfs:subClassOf dlthings:Thing ;
+    skos:definition "Type of a publication or document, e.g., journal article, book, or webpage." ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> .
+
+xyzri:XYZTopic a owl:Class ;
+    rdfs:label "XYZTopic" ;
+    dcterms:title "Topic" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZTopic ;
+            owl:onProperty dlthings:part_of ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZDepiction ;
+            owl:onProperty dlthings:depiction ],
+        dlthings:Thing ;
+    skos:definition "Topic a subject is about, e.g., a particular research question or domain" ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> .
+
+dlthings:ActivityInfluence a owl:Class ;
+    rdfs:label "ActivityInfluence" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:object ],
+        dlthings:Influence ;
+    skos:definition "ActivitiyInfluence is the capacity of an activity to have an effect on the character, development, or behavior of another by means of generation, invalidation, communication, or other." ;
+    skos:exactMatch prov:ActivityInfluence ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+dlthings:AgentInfluence a owl:Class ;
+    rdfs:label "AgentInfluence" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:object ],
+        dlthings:Influence ;
+    skos:definition "AgentInfluence is the capacity of an agent to have an effect on the character, development, or behavior of another by means of attribution, association, delegation, or other." ;
+    skos:exactMatch prov:AgentInfluence ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+dlthings:Dataset a owl:Class ;
+    rdfs:label "Dataset" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom dlthings:Dataset ;
+            owl:onProperty dlthings:part_of ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:short_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:title ],
+        dlthings:Thing ;
+    skos:definition "A collection of data (data items), published or curated by a single agent.  This is a conceptual entity. A single dataset might be available in more than one representation, with differing schematic layouts, formats, and serializations." ;
+    skos:exactMatch dcat:Dataset ;
+    skos:inScheme <https://concepts.datalad.org/s/things-data/v1> .
+
+dlthings:Derivation a owl:Class ;
+    rdfs:label "Derivation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:object ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:generated_by ],
+        dlthings:EntityInfluence ;
+    skos:definition "A derivation is a transformation of an entity into another, an update of an entity resulting in a new one, or the construction of a new entity based on a pre-existing entity." ;
+    skos:exactMatch prov:Derivation ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+dlthings:Distribution a owl:Class ;
+    rdfs:label "Distribution" ;
+    rdfs:subClassOf dlthings:Thing ;
+    skos:definition "A specific (physical) manifestation conceptual entity." ;
+    skos:exactMatch dcat:Distribution ;
+    skos:inScheme <https://concepts.datalad.org/s/things-distributions/v1> .
+
+dlthings:File a owl:Class ;
+    rdfs:label "File" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom dlthings:File ;
+            owl:onProperty dlthings:part_of ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:format ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:media_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dlthings:NamedFilePart ;
+            owl:onProperty dlthings:parts ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:byte_size ],
+        dlthings:Distribution ;
+    skos:broadMatch fabio:DigitalManifestation ;
+    skos:definition "A specific representation of a data item in the form of an electronic file. The concept of a file here is aligned with the broad UNIX philoshopy of \"everything is a file\". An archive, a disk image, a directory are all valid instances of a file." ;
+    skos:inScheme <https://concepts.datalad.org/s/things-files/v1> ;
+    skos:note "There is no `name` property or similar, because the focus is on the identity of the distribution content, not how it might be named in a particular context. For example, an image in JPEG format might be names \"20250825_102385.jpg\" on a camera and \"me_at_the_party.jpg\" elsewhere, but it would be the exact same image. Expressing naming in some context should be done within the scope of the containing entity (see `named_parts`)." .
+
+dlthings:InstantaneousEventMixin a owl:Class ;
+    rdfs:label "InstantaneousEventMixin" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:at_location ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:at_time ] ;
+    skos:definition "The PROV data model is implicitly based on a notion of instantaneous events (or just events), that mark transitions in the world. Events include generation, usage, or invalidation of entities, as well as starting or ending of activities. This notion of event is not first-class in the data model, but it is useful for explaining its other concepts and its semantics" ;
+    skos:exactMatch prov:InstantaneousEvent ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+dlthings:Property a owl:Class ;
+    rdfs:label "Property" ;
+    rdfs:subClassOf dlthings:Thing ;
+    skos:definition "An RDF property, a `Thing` used to define a `predicate`, for example in a `Statement`." ;
+    skos:exactMatch rdf:Property,
+        dlthings:Property ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+dlthings:Study a owl:Class ;
+    rdfs:label "Study" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:title ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dlthings:Study ;
+            owl:onProperty dlthings:part_of ],
+        dlthings:Thing ;
+    skos:broadMatch obo:BFO_0000015,
+        prov:Activity ;
+    skos:definition "A planned process that consists of parts: planning, study design execution, documentation and which produce conclusion(s). An investigational endeavour that involves research, enabled by a project. The study relates to the scholarly and practical aspects of conducting the research itself, including the hypotheses being investigated, the data being gathered and analysed, the interpretations being drawn from the data, and the results obtained. In contrast, a project that enables it encompasses the administrative aspects of undertaking the endeavour, including the funding obtained, the people involved, and the management of the project in terms of deadlines and deliverables." ;
+    skos:exactMatch obo:OBI_0000066,
+        FRAPO:Investigation,
+        sio:SIO_001066 ;
+    skos:inScheme <https://concepts.datalad.org/s/things-study/v1> ;
+    skos:narrowMatch obo:NCIT_C15206,
+        sio:SIO_000994 .
+
+dlthings:mappings a owl:DatatypeProperty ;
+    rdfs:label "mappings" ;
+    rdfs:range xsd:anyURI ;
+    skos:definition "A list of terms from different schemas or terminology systems that have comparable meaning. These may include terms that are precisely equivalent, broader or narrower in meaning, or otherwise semantically related but not equivalent from a strict ontological perspective." ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+xyzri:XYZDataType a owl:Class ;
+    rdfs:label "XYZDataType" ;
+    dcterms:title "Data type or format" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZDataType ;
+            owl:onProperty dlthings:version_of ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:version_of ],
+        dlthings:Thing ;
+    skos:broadMatch dcterms:format ;
+    skos:definition "Type of an data item." ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> ;
+    skos:narrowMatch obo:NCIT_C171252,
+        obo:NCIT_C172272,
+        obo:NCIT_C42645 .
+
+dlthings:EntityInfluence a owl:Class ;
+    rdfs:label "EntityInfluence" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:object ],
+        dlthings:Influence ;
+    skos:definition "EntityInfluence is the capacity of an entity to have an effect on the character, development, or behavior of another by means of usage, start, end, derivation, or other." ;
+    skos:exactMatch prov:EntityInfluence ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+dlthings:ThingMixin a owl:Class ;
+    rdfs:label "ThingMixin" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:schema_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:display_note ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:display_label ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:kind ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:about ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:description ] ;
+    skos:definition "Mix-in with the common interface of `Thing` and `AttributeSpecification`. This interface enables type specifications (`rdf:type`) for things and attributes via a `type` designator slot to indicate specialized schema classes for validation where a slot's `range` is too generic. A thing or attribute can be further describe with statements on qualified relations to other things (`characterized_by`), or inline attributes (`attributes`). A set of `mappings` slots enables the alignment for arbitrary external schemas and terminologies." ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+dlthings:short_name a owl:DatatypeProperty ;
+    rdfs:label "short_name" ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf dlthings:name ;
+    skos:broadMatch obo:NCIT_C42610 ;
+    skos:definition "A shortened name for the subject. For example, an acronym, initialism, nickname, or other abbreviation of the `name`." ;
+    skos:exactMatch <pq:P1813> ;
+    skos:inScheme <https://concepts.datalad.org/s/things-properties/v1> .
+
+dlthings:Influence a owl:Class ;
+    rdfs:label "Influence" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:object ],
+        dlthings:ThingMixin ;
+    skos:definition "Influence is the capacity of an entity, activity, or agent to have an effect on the character, development, or behavior of another by means of usage, start, end, generation, invalidation, communication, derivation, attribution, association, or delegation." ;
+    skos:exactMatch prov:Influence ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+dlthings:Identifier a owl:Class ;
+    rdfs:label "Identifier" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:cardinality 1 ;
+            owl:onProperty dlthings:notation ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:creator ],
+        dlthings:ThingMixin ;
+    skos:definition "An identifier is a label that uniquely identifies an item in a particular context. Some identifiers are globally unique. All identifiers are unique within their individual scope." ;
+    skos:exactMatch IAO:0020000,
+        dlthings:Identifier ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+dlthings:influenced_by a owl:ObjectProperty ;
+    rdfs:label "influenced_by" ;
+    dcterms:title "Influenced by" ;
+    rdfs:range dlthings:Influence ;
+    skos:definition "Influence is the capacity of an entity, activity, or agent to have an effect on the character, development, or behavior of another by means of usage, start, end, generation, invalidation, communication, derivation, attribution, association, or delegation." ;
+    skos:editorialNote "PROV-O \"wasInfluencedBy\" is a short-cut property. \"Influence\" also identifies an \"influencer\"." ;
+    skos:exactMatch prov:wasInfluencedBy ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+dlthings:depiction a owl:ObjectProperty ;
+    rdfs:label "depiction" ;
+    rdfs:range dlthings:Thing ;
+    skos:definition "An image, or photograph information, or other visualization that annotates some aspect of the subject (e.g., a digital image of a portrait of a person)." ;
+    skos:exactMatch foaf:depiction ;
+    skos:inScheme <https://concepts.datalad.org/s/things-properties/v1> .
+
+dlthings:EntityMixin a owl:Class ;
+    rdfs:label "EntityMixin" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:alternate_of ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:revision_of ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:generated_by ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:quoted_from ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:invalidated_by ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:specialization_of ] ;
+    skos:definition "A physical, digital, conceptual, or other kind of thing with some fixed aspects; entities may be real or imaginary." ;
+    skos:exactMatch prov:Entity ;
+    skos:inScheme <https://concepts.datalad.org/s/things-prov/v1> .
+
+xyzri:XYZDepiction a owl:Class ;
+    rdfs:label "XYZDepiction" ;
+    dcterms:title "Depiction" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom dlthings:Convention ;
+            owl:onProperty dlthings:conforms_to ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZFile ;
+            owl:onProperty dlthings:distributions ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xyzri:XYZDepictionType ;
+            owl:onProperty xyzri:kind ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty xyzri:kind ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:title ],
+        dlthings:EntityMixin,
+        dlthings:Thing ;
+    skos:definition """Reference conveyed through pictures.
+This is a conceptual entity. A single depiction can be available, for example, as a digital images in various (file) formats.""" ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> ;
+    skos:note "A `Depiction` can be annotated with various common aspects using standard PROV properties. For example, `attribution_to` a photographer, depicted subjects or content via a link through `derived_from`, etc." .
+
+xyzri:XYZInfluence a owl:Class ;
+    rdfs:label "XYZInfluence" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:ended ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dlthings:started ],
+        dlthings:Influence ;
+    skos:definition "Influence is the capacity of an entity, activity, or agent to have an effect on the character, development, or behavior of another by means of usage, start, end, generation, invalidation, communication, derivation, attribution, association, or delegation." ;
+    skos:inScheme <https://concepts.datalad.org/s/demo-research-information/unreleased> .
+
+dlthings:part_of a owl:ObjectProperty ;
+    rdfs:label "part_of" ;
+    rdfs:domain dlthings:Thing ;
+    rdfs:range dlthings:Thing ;
+    owl:inverseOf dlthings:parts ;
+    skos:definition "The entity that the subject is a part of. A core relation that holds between a part and its whole." ;
+    skos:exactMatch obo:BFO_0000050,
+        dcterms:isPartOf,
+        schema1:isPartOf ;
+    skos:inScheme <https://concepts.datalad.org/s/things-properties/v1> .
+
+dlthings:name a owl:DatatypeProperty ;
+    rdfs:label "name" ;
+    rdfs:range xsd:string ;
+    skos:closeMatch IAO:0000590,
+        dcterms:title ;
+    skos:definition "Name of the subject. A name is closely related to a `title`, but often more compact and identifier-like, but without the implication of uniqueness of an identifier. A name is often used by technical systems to display an item in an organizational structure, such as a file in a directory hierarchy." ;
+    skos:exactMatch schema1:name,
+        rdfs:label,
+        foaf:name ;
+    skos:inScheme <https://concepts.datalad.org/s/things-properties/v1> .
+
+dlthings:title a owl:DatatypeProperty ;
+    rdfs:label "title" ;
+    rdfs:range xsd:string ;
+    skos:definition "A summarily description of the subject. It is closely related to a `name`, but often less compact and more descriptive. Typically used for documents." ;
+    skos:exactMatch dcterms:title ;
+    skos:inScheme <https://concepts.datalad.org/s/things-properties/v1> ;
+    skos:relatedMatch schema1:name .
+
+dlthings:Thing a owl:Class ;
+    rdfs:label "Thing" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:cardinality 1 ;
+            owl:onProperty dlthings:pid ],
+        dlthings:ThingMixin ;
+    skos:definition "The most basic, identifiable item. In addition to the slots that are common between a `Thing` and an `AttributeSpecification` (see `ThingMixin`), two additional slots are provided. The `pid` slot takes the required identifier for a `Thing`. The `relation` slot allows for the inline specification of other `Thing` instances. Such a relation is unqualified (and symmetric), and should be further characterized via a `Statement` (see `characterized_by`). From a schema perspective, the `relation` slots allows for building self-contained, structured documents (e.g., a JSON object) with arbitrarily complex information on a `Thing`." ;
+    skos:exactMatch schema1:Thing,
+        dlthings:Thing ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+dlthings:schema_type a owl:DatatypeProperty ;
+    rdfs:label "schema_type" ;
+    dcterms:title "Schema type" ;
+    rdfs:range rdfs:Resource ;
+    skos:definition "State that the subject is an instance of a particular schema class. Typically, no explicit value needs to be assigned to this slot, because it matches the class type of a particular record. However, this slots can be used as a type designator of a schema element for validation and schema structure handling purposes. This is used to indicate specialized schema classes for properties that accept a hierarchy of classes as their range." ;
+    skos:exactMatch dcterms:type ;
+    skos:inScheme <https://concepts.datalad.org/s/things/v2> .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:Instrument ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:Instrument .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:File ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:File .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:Thing ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:Thing .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:ThingMixin ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:ThingMixin .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf xyzri:XYZActivity ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom xyzri:XYZActivity .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf xyzri:XYZInstrument ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom xyzri:XYZInstrument .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:Organization ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:Organization .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:Generation ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:Generation .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf xyzri:XYZObjective ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom xyzri:XYZObjective .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf xyzri:XYZDataset ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom xyzri:XYZDataset .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf xyzri:XYZTopic ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom xyzri:XYZTopic .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:Property ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:Property .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf xyzri:XYZDocument ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom xyzri:XYZDocument .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:Distribution ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:Distribution .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:Checksum ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:Checksum .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:End ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:End .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:Study ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:Study .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf xyzri:XYZFile ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom xyzri:XYZFile .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf xyzri:XYZGrant ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom xyzri:XYZGrant .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf xyzri:XYZConcept ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom xyzri:XYZConcept .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:AttributeSpecification ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:AttributeSpecification .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:AnnotationTag ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:AnnotationTag .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf xyzri:XYZEntityRole ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom xyzri:XYZEntityRole .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:EntityInfluence ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:EntityInfluence .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:Derivation ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:Derivation .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf xyzri:XYZPublicationVenue ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom xyzri:XYZPublicationVenue .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:Usage ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:Usage .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:Quotation ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:Quotation .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:Influence ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:Influence .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf xyzri:XYZSubjectType ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom xyzri:XYZSubjectType .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf xyzri:XYZProject ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom xyzri:XYZProject .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:DataItem ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:DataItem .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:Communication ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:Communication .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf xyzri:XYZOrganization ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom xyzri:XYZOrganization .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf xyzri:XYZDepiction ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom xyzri:XYZDepiction .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:Attribution ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:Attribution .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:Project ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:Project .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:Grant ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:Grant .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:Rule ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:Rule .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:Convention ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:Convention .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf xyzri:XYZInstrumentType ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom xyzri:XYZInstrumentType .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:Dataset ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:Dataset .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:DOI ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:DOI .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:ISSN ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:ISSN .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf xyzri:XYZCommunication ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom xyzri:XYZCommunication .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:Invalidation ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:Invalidation .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:Identifier ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:Identifier .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:AgentInfluence ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:AgentInfluence .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf xyzri:XYZAgentRole ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom xyzri:XYZAgentRole .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf xyzri:XYZActivityRole ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom xyzri:XYZActivityRole .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:ValueSpecification ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:ValueSpecification .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:Association ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:Association .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf xyzri:XYZDataType ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom xyzri:XYZDataType .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf xyzri:XYZBibliographicType ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom xyzri:XYZBibliographicType .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf xyzri:XYZPublication ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom xyzri:XYZPublication .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:Delegation ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:Delegation .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf xyzri:XYZAccolade ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom xyzri:XYZAccolade .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf xyzri:XYZCompetition ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom xyzri:XYZCompetition .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf xyzri:XYZCompetitionType ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom xyzri:XYZCompetitionType .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:Document ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:Document .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf xyzri:XYZDataItem ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom xyzri:XYZDataItem .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:Person ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:Person .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:Start ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:Start .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf xyzri:XYZInfluence ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom xyzri:XYZInfluence .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:ActivityInfluence ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:ActivityInfluence .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf xyzri:XYZPerson ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom xyzri:XYZPerson .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf xyzri:XYZSubject ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom xyzri:XYZSubject .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf xyzri:XYZQuality ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom xyzri:XYZQuality .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf xyzri:XYZDepictionType ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom xyzri:XYZDepictionType .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf xyzri:XYZStudy ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom xyzri:XYZStudy .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:Revision ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:Revision .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf xyzri:ORCID ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom xyzri:ORCID .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:Publication ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:Publication .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf dlthings:Subject ;
+    owl:onProperty dlthings:schema_type ;
+    owl:someValuesFrom dlthings:Subject .
+
+

@@ -1,0 +1,49 @@
+@prefix xyzrins: <https://concepts.datalad.org/s/demo-research-information/ns/>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix xyzri: <https://concepts.datalad.org/s/demo-research-information/unreleased/>.
+@prefix dlthings: <https://concepts.datalad.org/s/things/v2/>.
+@prefix obo: <http://purl.obolibrary.org/obo/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix sio: <http://semanticscience.org/resource/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix orcid: <https://orcid.org/>.
+
+{% set pubId = _randomUUID() -%}
+{% set pubURI = "https://concepts.datalad.org/s/demo-research-information/ns/publications/" + pubId -%}
+<{{ pubURI }}> a xyzri:XYZPublication .
+{% if title -%}
+<{{ pubURI }}> dlthings:title {{ title | ttl }} .
+{%- endif %}
+{% if abstract -%}
+<{{ pubURI }}> dcterms:description {{ abstract | ttl }} .
+{%- endif %}
+
+{% if doi %}
+<{{ pubURI }}> dcterms:identifier _:doiNode .
+_:doiNode a dlthings:DOI ;
+    skos:notation {{ doi | ttl }} .
+{% endif %}
+
+{% for author in authors -%}
+{% if author.pid %}
+{% set personURI = author.pid -%}
+{% else -%}
+{% set personId = _randomUUID() -%}
+{% set personURI = "https://concepts.datalad.org/s/demo-research-information/ns/persons/" + personId -%}
+<{{ personURI }}> a xyzri:XYZPerson .
+{% if author.given_name -%}
+<{{ personURI }}> dlthings:given_name {{ author.given_name | ttl }} .
+{%- endif %}
+
+{% if author.family_name -%}
+<{{ personURI }}> dlthings:family_name {{ author.family_name | ttl }} .
+{%- endif %}
+{% endif %}
+
+<{{ pubURI }}> dlthings:attributed_to _:attr{{ loop.index }} .
+_:attr{{ loop.index }} a dlthings:Attribution ;
+    rdf:object <{{ personURI }}> ;
+    dlthings:roles <{{ author.role }}> .
+    
+{% endfor -%}
