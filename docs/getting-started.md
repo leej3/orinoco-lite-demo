@@ -6,6 +6,8 @@
 4. Run `pixi run build`; it validates the inputs as part of building the site.
 5. Configure repository Pages and curation settings before enabling hosted editing.
 
+Use [template updates](template-updates.md) to update the scaffold and package through a GitHub draft pull request or the local CLI.
+
 Orinoco Lite supplies the default projection and resolves the www-from-model checkout selected by its packaged resources.
 Ordinary site construction should use declarative inputs and the supported small overrides under `site-specific/overrides/`, not copy the upstream Hugo components into this repository.
 
