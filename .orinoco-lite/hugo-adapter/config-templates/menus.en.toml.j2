@@ -1,0 +1,34 @@
+{% if not site.footer_navigation | default([]) %}
+footer = []
+{% endif %}
+
+{% for item in site.navigation | default([]) -%}
+[[main]]
+  name = {{ item.name | json_string }}
+  title = {{ item.name | json_string }}
+{% if item.page_ref is defined %}  pageRef = {{ item.page_ref | json_string }}
+{% endif %}{% if item.url is defined %}  url = {{ item.url | json_string }}
+{% endif %}{% if item.identifier is defined %}  identifier = {{ item.identifier | json_string }}
+{% endif %}{% if item.parent is defined %}  parent = {{ item.parent | json_string }}
+{% endif %}
+  weight = {{ item.weight | default(loop.index * 10) }}
+{% if item.icon is defined or item.target is defined %}  [main.params]
+{% if item.icon is defined %}    icon = {{ item.icon | json_string }}
+    showName = false
+{% endif %}{% if item.target is defined %}    target = {{ item.target | json_string }}
+{% endif %}
+{% endif %}
+{% endfor %}
+
+[[main]]
+  identifier = "search"
+  weight = 99
+  [main.params]
+    action = "search"
+
+{% for item in site.footer_navigation | default([]) %}
+[[footer]]
+  name = {{ item.name | json_string }}
+  title = {{ item.name | json_string }}
+  pageRef = {{ item.page_ref | json_string }}
+{% endfor %}

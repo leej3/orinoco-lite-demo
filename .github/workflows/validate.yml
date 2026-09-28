@@ -8,6 +8,9 @@ on:
 permissions:
   contents: read
 
+env:
+  PIXI_LOCKED: "true"
+
 jobs:
   validate:
     if: >-
@@ -31,11 +34,18 @@ jobs:
       - uses: prefix-dev/setup-pixi@f00437f565399d418b0acc85936d12c1fb668347 # v0.10.1
         with:
           cache: true
-          frozen: true
-          pixi-version: v0.73.0
+          locked: true
+      - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: |
+            generated/projection
+            generated/.projection-cache.json
+          key: projection-${{ runner.os }}-${{ github.workflow }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: projection-${{ runner.os }}-
       - name: Validate and build
         run: |
-          pixi run build && pixi run orinoco-lite verify-site build/site
+          pixi run build --publication-bundle build/pages-publication.bundle
+          pixi run orinoco-lite verify-site build/site
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         if: matrix.runner == 'ubuntu-24.04'
         with:

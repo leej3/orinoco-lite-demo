@@ -1,0 +1,57 @@
+# Site settings and permitted operations. See docs/configuration.md.
+[tool.orinoco.site]
+record_prefix = "xyzrins:"
+
+[tool.orinoco.site.identity]
+title = "Orinoco Lite Site"
+description = "A site built with Orinoco Lite."
+base_url = "https://example.invalid/orinoco-site/"
+
+[[tool.orinoco.site.navigation]]
+name = "People"
+page_ref = "/persons/"
+icon = "account-group"
+weight = 10
+
+[[tool.orinoco.site.navigation]]
+name = "Projects"
+page_ref = "/projects/"
+icon = "human-dolly"
+weight = 25
+
+[[tool.orinoco.site.navigation]]
+name = "Publications"
+page_ref = "/publications/"
+icon = "cast-education"
+weight = 30
+
+[[tool.orinoco.site.navigation]]
+name = "Outputs"
+identifier = "outputs"
+icon = "export"
+weight = 32
+
+[[tool.orinoco.site.navigation]]
+name = "Datasets"
+page_ref = "/datasets/"
+parent = "outputs"
+icon = "mdi-database-outline"
+weight = 34
+
+[[tool.orinoco.site.navigation]]
+name = "Instruments"
+page_ref = "/instruments/"
+parent = "outputs"
+icon = "mdi-microscope"
+weight = 36
+
+[[tool.orinoco.site.navigation]]
+name = "Explore"
+page_ref = "/explore/"
+icon = "circle-info"
+weight = 40
+
+[tool.orinoco.site.appearance]
+color_scheme = "fire"
+default_appearance = "light"
+header_layout = "hybrid"
