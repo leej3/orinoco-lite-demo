@@ -1,6 +1,6 @@
 ---
 name: maintain-orinoco-site
-description: Inspect, validate, and review an ordinary released Orinoco Lite downstream while preserving site-owned data and extensions. Use for immutable-release review, downstream recovery, or a deliberate release-adoption pull request. Do not use to release the package or template, change external source systems, or invent an in-place template updater.
+description: Inspect, validate, and review an ordinary released Orinoco Lite downstream while preserving site-owned data and extensions. Use for immutable-release review, downstream recovery, or a deliberate release-adoption pull request. Do not use to release the package or template, change external source systems, or change the package/template update implementation.
 ---
 
 # Maintain an Orinoco site
@@ -9,20 +9,21 @@ Keep released scaffold maintenance separate from the site's data, policy, appear
 
 ## Establish the local contract
 
-1. Read every applicable `AGENTS.md`, the site README, `.orinoco-lite/template-ownership.yml`, `.copier-answers.yml`, `pixi.lock`, and the current Git diff.
-2. Use the ownership manifest to distinguish template-owned files, exact package and workflow pins, create-once site files, extensions, and consumer tests.
-   Do not infer ownership from a path convention that the site has not adopted.
-3. Treat remote latest versions as advisory.
-   Adopt only reviewed, immutable tags, URLs, digests, and workflow commits.
+1. Read applicable `AGENTS.md`, the site README, `.copier-answers.yml`, `pixi.toml`, `pixi.lock`, and the current Git diff.
+2. Use `docs/ownership.md` to distinguish the scaffold from site-owned inputs and extensions.
+3. Resolve package or template defects in their owning repositories.
 
-## Adopt a reviewed release
+## Update the template and package
 
-1. Start with a clean worktree and the exact reviewed package and template release proposed for this downstream.
-2. Review the release's downstream pull request as one change.
-   The package, template, and workflow coordinates must remain a coherent reviewed set; this scaffold intentionally provides no in-place updater.
-3. Confirm that declarative `site-specific/` inputs, `extensions/`, create-once acceptance tests, and repository policy change only when the pull request explicitly requires and explains that site-owned change.
-4. Put reusable defects in the package or template.
-   Keep site-specific behavior in declared downstream inputs, supported overrides, or metadata-adapter extensions.
+Use **Actions → Update downstream template** for a GitHub-only update, or run `pixi run orinoco-lite template update --revision REVISION` in a clean local checkout.
+The selected template supplies the default package revision; use `--package-revision` and `--package-repository` only for an explicit override.
+The command records Copier's actual update through DataLad and records an override separately.
+
+Review the draft pull request, site-owned inputs, submodule selections, and validation results.
+Conflicts are committed for browser editing; resolve them in a separate commit before merging.
+Follow `docs/template-updates.md` for conflict resolution, historical replay, and rollback through Git revert.
+Start a fresh Pixi invocation after changing the package selection.
+Do not replace the command with a hand-maintained file-copy list.
 
 ## Validate and hand off
 

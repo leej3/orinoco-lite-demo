@@ -1,9 +1,9 @@
-_commit: c93bd05353d6bf98612d3bd896cbadf1f558657a
+_commit: f224f578cc6100e75db8b3f95ab10131a8c3dd8b
 _src_path: https://github.com/ORINOCO-Lite/orinoco-lite-template.git
 project_slug: orinoco-lite-demo
 project_name: Orinoco Lite Site
 site_description: A site built with Orinoco Lite.
 site_base_url: https://example.invalid/orinoco-lite-demo/
 pr_previews: none
-include_site_specific: false
+include_site_specific: true
 pages_history_limit: 3
