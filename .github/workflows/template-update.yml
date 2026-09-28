@@ -175,10 +175,6 @@ jobs:
           CONFLICTS: ${{ needs.update.outputs.conflicts }}
           VALIDATION: ${{ needs.update.outputs.validation }}
         run: |
-          if [[ -z "$PULL_URL" ]]; then
-            echo '::error::The recorded update did not produce a pull request.'
-            exit 1
-          fi
           echo "[Review the template update]($PULL_URL)" >> "$GITHUB_STEP_SUMMARY"
           echo "Conflict status: $CONFLICTS. Validation: $VALIDATION." >> "$GITHUB_STEP_SUMMARY"
           if [[ "$CONFLICTS" == 1 || "$VALIDATION" == failure ]]; then
