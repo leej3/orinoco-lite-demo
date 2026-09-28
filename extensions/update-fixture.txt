@@ -1,0 +1,1 @@
+Retain this site-owned extension fixture during template updates.
