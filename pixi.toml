@@ -1,4 +1,5 @@
 [workspace]
+requires-pixi = ">=0.76"
 name = "orinoco-lite-demo"
 channels = ["conda-forge"]
 platforms = [{ platform = "osx-arm64", macos = "14.0" }, "linux-64"]

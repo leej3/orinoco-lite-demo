@@ -1,0 +1,7 @@
+{{ $people := slice }}
+{{ range split (.Inner | strings.TrimSpace) "\n" }}
+  {{ with site.GetPage (. | strings.TrimSpace) }}
+    {{ $people = $people | append . }}
+  {{ end }}
+{{ end }}
+{{ partial "taxonomy-list-grid.html" (dict "Pages" $people "Params" .Page.Params "Data" .Page.Data) }}

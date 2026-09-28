@@ -1,6 +1,6 @@
 ---
 name: manage-orinoco-content
-description: Edit and review an Orinoco Lite downstream's human-authored editorial content and declared presentation inputs. Use when changing files under site-specific/content, site-specific/assets, site-specific/static, or supported overrides, reviewing a focused content diff, or preparing an ordinary site-content pull request. Do not use for metadata source adapters or human curation decisions.
+description: Edit and review an Orinoco Lite downstream's human-authored editorial content and declared website inputs. Use when changing files under site-specific/content, site-specific/assets, site-specific/static, or supported overrides, reviewing a focused content diff, or preparing an ordinary site-content pull request. Do not use for metadata source adapters or human curation decisions.
 ---
 
 # Manage Orinoco content
@@ -30,10 +30,10 @@ Keep generated output, tool state, and migration evidence out of content commits
 
 - Treat `site-specific/` and `extensions/` as user-facing source.
 - Keep a site-specific layout, configuration, or static override under the matching `site-specific/overrides/` directory.
-  Propose reusable presentation behavior to the template or pinned upstream.
-- Treat `.orinoco-lite/presentation/` and `.orinoco-lite/materialized-presentation/` as template-owned presentation inputs.
+  Propose reusable Hugo behavior to the template or pinned upstream.
+- Treat `.orinoco-lite/hugo-adapter/` and `.orinoco-lite/materialized-hugo-assets/` as template-owned Hugo inputs.
   Change them only for an explicit template-development or maintainer repinning task.
-- Keep executable metadata acquisition and curation code under `extensions/source-adapters/`; it is never website presentation code.
+- Keep executable metadata acquisition and curation code under `extensions/source-adapters/`; it is never website rendering code.
 - Never commit `generated/`, `.orinoco-lite/state/`, caches, build output, or a second digest inventory of the same commit.
 - Prefer a small source diff plus rendered review over provenance narration in the downstream tree.
 
