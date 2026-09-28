@@ -1,0 +1,71 @@
+[tool.orinoco.paths]
+records = "site-specific/metadata/records"
+editorial = "site-specific/content"
+extensions = "extensions"
+
+[tool.orinoco.site]
+record_prefix = "xyzrins:"
+
+[tool.orinoco.site.identity]
+title = "CON · Orinoco Lite demo"
+description = "Test-only full-content Orinoco Lite downstream for the Center for Open Neuroscience."
+base_url = "https://leej3.github.io/orinoco-lite-demo/"
+
+[[tool.orinoco.site.navigation]]
+name = "People"
+page_ref = "/persons/"
+icon = "account-group"
+weight = 10
+
+[[tool.orinoco.site.navigation]]
+name = "Projects"
+page_ref = "/projects/"
+icon = "human-dolly"
+weight = 25
+
+[[tool.orinoco.site.navigation]]
+name = "Publications"
+page_ref = "/publications/"
+icon = "cast-education"
+weight = 30
+
+[[tool.orinoco.site.navigation]]
+name = "Outputs"
+identifier = "outputs"
+icon = "export"
+weight = 32
+
+[[tool.orinoco.site.navigation]]
+name = "Datasets"
+page_ref = "/datasets/"
+parent = "outputs"
+icon = "mdi-database-outline"
+weight = 34
+
+[[tool.orinoco.site.navigation]]
+name = "Instruments"
+page_ref = "/instruments/"
+parent = "outputs"
+icon = "mdi-microscope"
+weight = 36
+
+[[tool.orinoco.site.navigation]]
+name = "Explore"
+page_ref = "/explore/"
+icon = "circle-info"
+weight = 40
+
+[[tool.orinoco.site.footer_navigation]]
+name = "Contact"
+page_ref = "/contact/"
+
+[tool.orinoco.site.appearance]
+color_scheme = "con"
+default_appearance = "light"
+header_layout = "hybrid"
+
+[tool.orinoco.github]
+repository = "leej3/orinoco-lite-demo"
+
+[tool.orinoco.operations]
+template_updates = true
